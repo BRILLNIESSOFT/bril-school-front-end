@@ -1,4 +1,4 @@
-# bril-school-front-end
+# brilly-school-front-end
 BRILLNIESS SCHOOL - FRONT EDN STUCK
 
 THE front end of the Brillny School WEB-BASED application , using Angular , angular-routing included
