@@ -1,0 +1,966 @@
+
+/*!
+ * BRILLNIESSSOFT COMPONENTS V-1
+ * Author : MOHSSINE KHALOUFI
+ * Licensed under BRILLMIESSOFT
+ */
+/*! THE CURRENT FILE IS NOT FOR COMMERCIAL NITHER PERSONAL USE, THE FILE IS MADE UNDER THE COPY RIGHTS B.S */
+
+
+//SCSS GLOBAL VARIABLES
+$containerFluidMinHeight: 300px;
+$brillSeconeryColor : #000000;
+$brill-heading-font:'Ubuntu', sans-serif;
+$brillBorder-raduis: 20px;
+$brill-no-border-raduis:0px;
+
+thead{
+    font-family: $brill-heading-font;
+}
+
+//BRILL HIDE COLM IN TABLE
+.brill-table-hide-col{
+    color: #ffffff;
+    background: none;
+    border: none;
+}
+//BRILL PUBLIC INPUT STYLE
+.brill-inputs{
+    padding: 10px;
+    border: 1px solid $brillSeconeryColor;
+    border-radius: 20px;
+    color:$brillSeconeryColor;
+}
+
+.brill-inputs-select-num{
+    background-color: #f5f5fa;
+    color: #000;
+     text-align: center;
+    padding-left: 20px;
+    width: 120px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.brill-inputs-select-text{
+    background-color: #f5f5fa;
+    color: #000;
+     text-align: center;
+    padding-left: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+ }
+
+//CONTAINER FLUID SETTING DEFAULT HEIGHT VALUE, THIS HELPS IN CASE THERE IS NO RECORD
+.brill-in-container{
+    min-height: 465px;
+}
+
+//GLOBAL MODALS
+#brill_edit_this_col input{
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+//PUBLIC BUTTONS
+//PUBLIC BTN CLOSE MODEL TOP RIGHT
+.brill-close-modal-top-righ{
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    font-size: 30px;
+    border: 2px solid #fd6d6d;
+    color: #fd6d6d;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    background-color: #f5f5fa;
+}
+
+//PUBLIC BRILL GLOBAL NOTIFICATION 
+.brill-global-notification{
+    padding: 10px;
+    width: 400px;
+    background-color: white;
+    border-radius: 20px;
+    min-height: 180px;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.brill-global-notification h3{
+    font-family: $brill-heading-font;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 4px;
+    padding-left:30px;
+}
+
+.brill-global-notification p{
+    padding: 4px 4px 4px 4px;
+    font-size: 18px;
+}
+
+//BRILL GLOBAL NOTIFICATION NOTIFICATION FAILED
+.brill-notification-failed{
+    border: 1px solid #D72F4D;    
+}
+
+.brill-notification-failed h3{
+    background-color: #D72F4D;    
+}
+
+//PUBLIC BRILL GLOBAL NOTIFICATION SUCCESS
+.brill-notification-success{
+    border: 1px solid #51ea9c;    
+}
+
+.brill-notification-success h3{
+    background-color: #52cc99;    
+}
+
+// //PUBLIC BRILL GLOBAL NOTIFICATION SIMPLE WARNING
+.brill-notification-warnning{
+    border: 1px solid #d2c200;    
+}
+
+.brill-notification-warnning h3{
+    background-color: #d2c200;    
+}
+
+//BRILL CLOSE NOTIFICATION BUTTON
+.brill-close-notification{
+    position: absolute;
+    right: -20px;
+    font-size: 18px;
+     color: #fd6d6d;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    top: -20px;
+    border: 1px solid #fd6d6d;
+}
+
+
+//BRILL NOTIFICATION FIRST-MOBIEL
+@media only screen and (max-width: 768px){ 
+    .brill-global-notification{  
+        top: 140px;
+        width: 100%;
+        left: 2px;
+        height: 100px;
+        padding: 20px;
+        width: 99%;
+        margin-left: auto;
+    }
+
+    .brill-global-notification h3{
+        padding-left: 30px;
+        font-size: 16px;
+    }
+    
+    .brill-global-notification p{
+     font-size: 14px;
+    }
+
+    .brill-close-notification{
+        position: relative;
+        font-size: 18px;
+        color: #fd6d6d;
+        border-radius: 50px;
+        width: 100%;
+        height: 30px;
+        border: none;
+        margin-bottom: 4px;
+        left: 0;
+        top: 0;
+    }
+ }
+
+ //BRILL CARDS CONTROL BUTTONS
+ .brill-cards-control-btns{
+    padding: 20px;
+    padding: 20px;
+    width: 99%;
+    position: absolute;    
+    left: 0px;
+}
+
+.brill-cards-control-btns button{
+    border-radius: 20px;
+    padding: 10px;
+     background: none;
+    color: #000000;
+    border: 1px solid #000000;
+    background-color: #f5f5fa;
+    &:hover{
+        background-color: #FFFFFF;  
+    }
+}
+
+//PUBLIC NAVBAR
+.input-group input{
+    background-color: #f5f5fa;
+    width: 350px;
+    border-radius: 30px;
+    margin-right: 10px;
+    padding-right: 4px;
+    border: 1px solid $brillSeconeryColor;
+}
+
+.brill-search-button{
+    border-radius: 20px;
+    margin-left: 10px;
+    left: 6px;
+    border-radius: 20px;
+    margin-left: 10px;
+    left: 10px;
+    color: #ffffff;
+    background-color: $brillSeconeryColor;
+    border: 1px solid $brillSeconeryColor;
+}
+
+.brill-search-button:hover{
+    color: #ffffff;
+    background-color: #242424;
+    border: none;
+}
+
+.input-group{
+    box-shadow: none;
+    
+}
+
+.layout-fullwidth #wrapper .btn-toggle-fullwidth {
+    color: $brillSeconeryColor;
+}
+
+.navbar .brand a{
+    color: $brillSeconeryColor;
+    font-family: 'Orbitron', sans-serif;    
+    font-size: 20px;
+    
+ }
+
+ 
+ .navbar-nav > li > .dropdown-menu .see-more {
+    background-color: #d7dee447;
+  }
+
+  @media screen and (max-width: 1024px){ 
+  #wrapper .btn-toggle-fullwidth {
+      color: $brillSeconeryColor;
+  }
+}
+
+  .brill-notification-time{
+      margin-left: 80%;
+  }
+
+ .brill-log-out{
+    background: rgb(2,0,36);
+    background: -moz-linear-gradient(3deg, rgba(2,0,36,1) 0%, rgba(121,9,36,1) 0%, rgba(255,0,0,1) 100%);
+    background: -webkit-linear-gradient(3deg, rgba(2,0,36,1) 0%, rgba(121,9,36,1) 0%, rgba(255,0,0,1) 100%);
+    background: linear-gradient(3deg, rgba(2,0,36,1) 0%, rgba(121,9,36,1) 0%, rgba(255,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#ff0000",GradientType=1);
+    border-radius: 20px;
+    color: #ffffff;
+    border: none;
+ } 
+
+ .brill-log-out:hover{
+     color: #ffffff;
+     background-color: #570000;
+ }
+
+ .modal-footer  {
+     border: none;
+ }
+
+ .modal-footer .brill-btn-confirm-cancel{
+    margin-right: 6px;
+    border-radius: 20px;
+    padding: 10px;
+    width: 140px;
+    height: 45px;
+    background-color: #d4d4d4;
+    border: none;
+    color: $brillSeconeryColor;
+    &:hover{
+        background-color: #B3B3B3;        
+    }
+  }
+
+  .brill-btn-confirm-yes{
+    padding: 10px;
+    border-radius: 20px;
+    width: 120px;
+    height: 45px;
+    border: none;
+    background-color: #1cd2d2;
+    color: #ffffff;
+    &:hover{
+        background-color: #0FB1B1;        
+    }
+  }
+
+  #confirmLogOut .modal-body{
+    padding: 20px;
+    font-size: x-large;
+  }
+
+
+  //SIDE BAR STARTS FROM HERE
+  #wrapper .sidebar {
+    -webkit-transition: all 0.03s ease-in-out;
+    -moz-transition: all 0.03s ease-in-out;
+    -ms-transition: all 0.03s ease-in-out;
+    -o-transition: all 0.03s ease-in-out;
+    transition: all 0.03s ease-in-out;
+    background-color: $brillSeconeryColor;
+}
+
+
+.sidebar .nav > li > a:focus, .sidebar .nav > li > a.active {
+    background-color: $brillSeconeryColor;
+    border-left-color: #ffffff;
+    padding: 30px;
+}
+
+.sidebar .nav > li > a:hover i, .sidebar .nav > li > a:focus i, .sidebar .nav > li > a.active i {
+    color: #ffffff;
+}
+
+
+
+.sidebar .nav .nav {
+    background-color: $brillSeconeryColor;
+}
+
+.brill-sidebar-mobile-close{
+    display: none;
+}
+
+@media only screen and (max-width: 420px)  {
+    .brill-sidebar-mobile-close{
+        display: block;
+        padding: 20px;
+        width: 100%;
+        height: 80px;
+        font-size: 22px;
+     }
+
+     #wrapper #sidebar-nav{
+        width: 63%;
+        background-color: rgba(0, 0, 0, 0.98);
+        padding-top: 10px;
+         z-index: 2000;
+         font-size: 24px
+    }
+    
+    .brill-sidebar-mobile-close button{
+        background-color: #3a3a3a;
+        width: 100%;
+         padding: 10px 10px 10px 10px;
+        border: none;
+        border: 1px solid #ffffff;
+        color: #FFFFFF;
+         font-size: 18px;
+        cursor: pointer;
+        border-radius: 20px;
+        border: 1px solid #fff;
+    }
+}
+
+
+//CONTAINERS 
+.brill-page-path{
+    background-color: #ffffff;
+    padding: 20px;
+    color: #8a8a8a;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.brill-tables{
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.brill-tables thead{
+    background-color: $brillSeconeryColor;
+    border-radius: 20px;
+    color: #ffffff;
+}
+
+.brill-tables tbody tr{
+    color: #000000;
+    text-align: center;
+}
+
+.brill-tables thead tr th{
+     text-align: center;
+}
+
+.brill-tables .brill-table-operations button{
+    border: 1px solid $brillSeconeryColor;
+    background:none;
+    color: $brillSeconeryColor;
+    border-radius: 20px;
+    padding: 6px 6px 6px 6px;
+    width: 40px;
+    &:hover{
+        background-color:#ffffff;
+    }
+}
+
+
+//PRODUCT LISTS
+
+.brill-product-card{
+    background-color: #ffffff;
+    border-radius: 20px;
+     margin-bottom: 16px;
+     min-height: 250px;
+ }
+  
+.brill-product-card img{
+    width: 40%;
+    float: left;
+    height: auto;
+    padding: 4px 4px 4px 4px;
+}
+
+.brill-product-card-info{
+    width: 55%;
+    float: right
+}
+
+.brill-product-card-info h3{
+    font-size: 20px;
+    color: #202020;
+    font-family: $brill-heading-font;
+}
+
+.brill-product-card-info-detail-list ul{
+ list-style: none;
+ color: #1F1F1F;
+}
+
+.brill-product-card-info-detail-list ul li{
+    padding: 2px 0px 2px 0px;    
+   }
+
+
+.brill-cards-control-btns .quantity-btn{
+    border-radius: 20px;
+    padding: 10px;
+     background: none;
+     background-color: #212121;
+     color: #ffffff;
+    &:hover{
+        background-color: #000000;  
+    }
+}
+
+
+@media only screen and (min-width: 900px){
+    .brill-product-card{
+         width: 32%;
+         margin-left: 1%;
+     }
+      
+}
+
+
+
+@media only screen and (max-width: 360px){
+    .brill-product-card-info h3{
+        font-size: 18px;
+        color: #202020;
+        font-family: $brill-heading-font;
+    }
+
+    .brill-product-card-info-detail-list ul li a{
+        padding: 0px 0px 0px 0px;    
+        font-size: 10px;
+       }
+
+       .brill-product-card-control-btns .quantity-btn{
+        border-radius: 20px;
+        padding: 4px;
+    }
+
+    .brill-product-card-info-detail-list ul {
+        padding-left: 0px;
+    }
+}
+
+@media screen and (min-width:1025px) and (max-width:1186px){
+    .brill-product-card-control-btns {
+        bottom: 10px;
+    }
+ }
+
+ @media screen and (min-width:520px) and (max-width:786px){
+    .brill-product-card-control-btns {
+        left: 250px;
+    }
+ }
+
+ @media screen and (min-width:716px) and (max-width:768px){
+    .brill-product-card img{
+        float: left;
+    }
+
+    .brill-product-card-control-btns {
+        left: 360px;
+    }
+
+    
+.brill-product-card {
+   float: left
+ }
+
+}
+
+@media screen and (min-width:765px) and (max-width:940px){
+    .brill-product-card img{
+
+    }
+
+    .brill-product-card-control-btns {
+        width: 56%;
+        bottom: 20px;
+    }
+
+    .brill-product-card-control-btns .quantity-btn{
+       display: none;
+    }
+
+}
+
+@media screen and (min-width:768px) and (max-width:787px){
+    .brill-product-card {
+         margin-left: 4px;
+        width: 32%;
+    }
+    .brill-product-card-info-detail-list ul{
+        position: absolute;
+        left: 0px;
+        width: 100%;
+    }
+
+    .brill-product-card-control-btns {
+ 
+    }
+
+    .brill-product-card-control-btns {
+        position: absolute;
+        left: 0px;
+        top: 160px;
+        width: 100%;
+    }
+
+    .brill-product-card-control-btns .quantity-btn{
+         float: right;
+        font-size: 8px;
+        margin-top: 8px;
+        display: block;
+    }
+
+}
+
+@media screen and (min-width:1540px) and (max-width:2210px){
+
+    .brill-product-card-control-btns {
+       left: 220px
+    }
+
+}
+
+//BRILL SEARCH IN FIXED ICON
+.brill-add-search-fixed-icon{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 40px;
+    right: 120px;
+     z-index: 1000;
+}
+
+.brill-add-search-fixed-icon button{
+    height: 60px;
+    width: 60px;
+    background-color: none;
+    border-radius: 60px;
+    background: none;
+    border: 1px solid $brillSeconeryColor;
+    background-color: #ffffff94;
+    color: $brillSeconeryColor;
+  &:hover{
+    background-color: #ffffff;  
+  }
+}
+
+.brill-add-search-fixed-icon .lnr{
+  font-size: 20px;
+}
+
+//BRILL ADD NEW FIXED ICON
+.brill-add-new-fixed-icon{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+     z-index: 1000;
+}
+
+.brill-add-new-fixed-icon button{
+    height: 60px;
+    width: 60px;
+    background-color: none;
+    border-radius: 60px;
+    background: none;
+    border: 1px solid $brillSeconeryColor;
+    background-color: #ffffff94;
+    color: $brillSeconeryColor;
+  &:hover{
+    background-color: #ffffff;  
+  }
+}
+
+.brill-add-new-fixed-icon button .lnr{
+  font-size: 20px;
+}
+
+//SEARCH FILTER COMPONEN=========================================
+.brill-filter-search-bar{
+   background-color: #ffffff;
+    margin-top: 10px;
+   margin-bottom: 10px;
+   border: 1px solid $brillSeconeryColor;
+    padding: 20px 40px 20px 40px;
+   position: fixed;
+    min-height: 280px;
+   border-radius: 20px;
+   text-align: center;
+  
+}
+
+.brill-filter-search-bar h3{
+    padding: 16px;
+    border-bottom: 1px solid #000000;
+    font-family: $brill-heading-font;
+ }
+
+
+ .brill-filter-search-bar h3 p{
+   float: right;
+   padding-right: 150px;
+   font-size: 15px;
+ }
+
+ 
+
+.brill-filter-search-bydate ul{
+    list-style: none;
+}
+
+.brill-filter-search-bydate ul li{
+    float: left;
+    padding: 0px 4px 0px 4px;
+}
+
+.brill-filter-search-bydate ul li span{
+    padding: 10px;
+    border-radius: 20px;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.brill-filter-search-bydate ul button{
+    border: 1px solid #000000;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #f5f5fa;
+    &:hover{
+        background-color: #FFFFFF;        
+    }
+}
+
+.brill-filter-search-bar .modal-footer{
+    padding: 20px;
+    margin-top: 10px;
+    clear: both;
+}
+
+
+//SEARCH FILTER DIPLAY MOBILE-FIRST
+@media only screen and (max-width: 768px){
+         .brill-filter-search-bar{
+             width: 100%;
+         }
+      
+
+     .brill-filter-search-bar h3{
+        text-align: left;
+        font-size: 16px;
+        padding-bottom: 20px;
+     }
+    
+    
+     .brill-filter-search-bar h3 p{
+        display: none;
+     }
+    
+    
+    .brill-filter-search-bydate{
+      text-align: center;
+      padding: 0px;
+    }
+     
+    
+    .brill-filter-search-bydate ul{
+        padding: 10px 0px 0px 0px;
+     }
+    
+    .brill-filter-search-bydate ul li{
+       float: none;
+    }
+
+    .brill-filter-search-bydate ul button{
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .brill-filter-search-bydate ul li span{
+       display: none;
+    }
+
+    .brill-filter-search-bydate ,.brill-inputs{
+        width: 90%;
+        margin-bottom: 20px;
+      }
+
+      
+    .brill-filter-search-bar .modal-footer{
+        margin-right: 0px;
+        margin-left: 0px;
+        padding: 0px;
+    }
+
+      .brill-filter-search-bar .brill-btn-confirm-yes{
+        float: left;
+        width: 90%;
+        text-align: center;
+
+    }
+
+    .brill-filter-search-bar .brill-btn-confirm-cancel{
+      display: none;
+    }
+
+    .brill-filter-search-bydate ul li #brill_Search_DatePicker{
+        margin-bottom: 0px;
+     }
+      
+}
+
+//FILTER SEARCH MEDUM SCREEN DISPLAY
+@media screen and (min-width:768px) and (max-width:991px){ 
+    .brill-modal-dialog {
+         width: 100%;
+     }
+
+     .brill-filter-search-bar{
+        width: 100%;
+        margin: auto;
+    }
+
+    .brill-filter-search-bar h3{
+        text-align: left;
+        font-size: 18px;
+     }
+    
+    
+     .brill-filter-search-bar h3 p{
+         font-size: 14px;
+      }
+
+      .brill-filter-search-bar .brill-inputs {
+        width: 120px;
+    }
+ }
+
+//BRILL USER'S LIST  ===================
+.brill-users-list{
+    background-color: #ffffff;
+     border-radius: $brillBorder-raduis;
+    min-height: 510px;
+    width: 23%;
+    margin-left: 1%;
+    margin-bottom: 15px;
+}
+
+ .brill-users-list img{
+    width: 100%;
+    padding: 10px;
+    border-radius: $brillBorder-raduis; 
+    border-bottom: 1px solid $brillSeconeryColor;   
+}
+    
+.brill-users-list h3{
+    font-size: 18px;
+    color: #000000;
+    padding-bottom: 8px; 
+    font-family: $brill-heading-font;
+    text-align: center;
+    font-size: 17px;
+    border-bottom: 1px solid #dcdcdc; 
+}
+
+.brill-users-list h3{
+    font-size: 18px;
+    color: #000000;
+    padding-bottom: 8px; 
+    font-family: $brill-heading-font;
+    text-align: center;
+    font-size: 17px;
+    border-bottom: 1px solid #dcdcdc; 
+}
+
+.brill-users-list-info ul{
+    list-style: none;
+    padding-left: 0px;
+}
+
+.brill-users-list-info ul li {
+    font-size: 18px;
+    padding-bottom: 4px;
+ }
+
+.brill-users-list-info ul li .payment-st{
+   color: #01C975;
+}
+
+//BRILL USER'S LIST FIRST-MOBILE ===================
+@media only screen and (max-width: 768px){ 
+    .brill-users-list{
+      width: 100%;
+      min-height: 530px;
+    }
+
+    .brill-users-list .brill-cards-control-btns{
+        position: relative;
+    }
+}
+
+//BRILL USER PROFIFE
+/*BRILL USER PROFILE */
+.brill-profile{
+    background-color: #ffffff;
+    min-height: 700px;
+}
+
+.brill-profile-pic{
+     box-shadow: 1px 2px 3px #000;
+    border-radius: $brillBorder-raduis;
+    padding: 6px;
+}
+
+.brill-profile-pic img{
+    width: 100%;
+    border-radius:$brillBorder-raduis;
+    padding: px;
+  }
+
+  .brill-profile-pic h3{
+    text-align: center;
+    font-size: 22px;
+    font-family: $brill-heading-font;
+  }
+
+.brill-profile-statistics {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+ .brill-profile-statistics ul{
+     list-style: none;
+ } 
+
+ .brill-profile-statistics h3{
+     font-family: $brill-heading-font; 
+     text-align: center;
+     padding-bottom: 20px;
+     border-bottom: 1px solid #cacaca;
+} 
+
+ .brill-profile-statistics ul li{
+    float: left;
+    padding: 20px;
+    background-color: #f5f5fa;
+    margin: 10px;
+    border-radius: $brillBorder-raduis;
+} 
+
+.brill-profile-statistics ul .payment-statue{
+    background-color: #2bd68f;
+    color: #ffffff;
+} 
+
+.brill-profile-basic-details{
+    padding: 20px;
+    clear: both;
+}
+
+.brill-profile-basic-details h3{
+    font-family: $brill-heading-font;
+    font-size: 20px;
+    border-bottom: 1px solid #cacaca;
+    padding-bottom: 10px;
+}
+
+.brill-profile-basic-details ul{
+    padding-top: 10px;
+  list-style: none
+}
+
+.brill-profile-basic-details ul li{
+    font-style: italic;
+    font-size: 16px;
+}
+
+.brill-profile-basic-details ul li button{
+    background: none;
+    border: none;
+    padding: 4px;
+    width: 40px;
+}
+
+
+//BRILL classes sideBar SIDEBAR 
+.brill-left-sidebar-search-tab{
+    background-color: #ffffff;
+    padding: 20x 10px 20px 10px;
+    border-radius: 20px;
+    border:1px solid #000000;
+    
+}
+
+.brill-side-bar-search-name{
+    width: 100%;
+}
+
+.select-options-container{
+    padding: 10px;
+}
+
+
