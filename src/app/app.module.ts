@@ -1,16 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './brillyschoolcomponents/global/navbar/navbar.component';
 import { SidebarComponent } from './brillyschoolcomponents/global/sidebar/sidebar.component';
+import { HeaderComponent } from './brillyschoolcomponents/global/header/header.component';
+import { ContainerfluidComponent } from './brillyschoolcomponents/global/containerfluid/containerfluid.component';
+import { FooterComponent } from './brillyschoolcomponents/global/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    HeaderComponent,
+    ContainerfluidComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

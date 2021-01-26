@@ -11,5 +11,15 @@
 <div id="wrapper">
         <app-navbar></app-navbar>
           <app-sidebar></app-sidebar>
-        <router-outlet></router-outlet>
+          <div class="main">
+	    <!-- MAIN CONTENT -->
+ 	     <div class="main-content">  
+		 <div class="container-fluid brill-in-container">
+                   <router-outlet></router-outlet>
+                 </div>
+                  <!-- END OF CONTAINER FLUID -->
+             </div>
+            <!-- END OF MAIN -->	 
+          </div>
+        <!-- END MAIN CONTENT -->
 </div>
