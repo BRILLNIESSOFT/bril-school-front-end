@@ -39,7 +39,8 @@
 
             "scripts": [
               "src/assets/vendor/jquery/jquery.min.js",
-              "src/assets/vendor/bootstrap/js/bootstrap.min.js"              
+              "src/assets/vendor/bootstrap/js/bootstrap.min.js",
+              "src/assets/brill-framework/js/brill-common.js"              
             ]
           },
           "configurations": {
