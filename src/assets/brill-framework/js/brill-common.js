@@ -219,15 +219,4 @@ $.fn.clickToggle = function( f1, f2 ) {
 
 }
 
-
- 
-			// In your Javascript (external .js resource or <script> tag)
-			$(document).ready(function() {
-				$('#select_class_number').select2();
-				$('#select_class_number2').select2();
-				$('#select_class_number3').select2();
-				$('#select_class_number4').select2();
-			});
-
-
  
