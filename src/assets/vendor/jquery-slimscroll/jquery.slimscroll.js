@@ -320,10 +320,7 @@
             // scroll content
             scrollContent(delta, true);
           }
-
-          // stop window scroll
-          if (e.preventDefault && !releaseScroll) { e.preventDefault(); }
-          if (!releaseScroll) { e.returnValue = false; }
+ 
         }
 
         function scrollContent(y, isWheel, isJump)

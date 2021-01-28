@@ -4370,7 +4370,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-form .input-group > .form-control {
     width: 100%;
+    box-shadow: none;
+    border: 1px solid #474d5e;
   }
+
+  .input-group .form-control:focus{
+    width: 100%;
+    box-shadow: none;
+    border: 1px solid #474d5e;
+  } 
+
   .navbar-form .control-label {
     margin-bottom: 0;
     vertical-align: middle;

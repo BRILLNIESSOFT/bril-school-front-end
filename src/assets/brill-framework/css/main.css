@@ -1,29 +1,4 @@
-/*	
-*	############################################################################################
-*	
-*	BRILLYSCHOOL SOFTWARE ORGANIZATION
-*	---------------------------------------------------------------------
-*
-*	Version: 	0.4.0
-*	Author: 	MOHSSINE KHALOUFI
-*	Website: BRILNIESS SOFT/
-*	Copyright: 	Copyright 2020 klorofil ORIGIN FILE CUSTOMIZED AND BEING MAITANED FOR COMMERCIAL PURPOSES
- *	BY MOHSSIN KHALOUFI YOU CAN FIND THE ORIGINAL FILES FREE AT GITHUB KLOROFIL
-*	############################################################################################
-*/
-/********************
- * GENERAL STYLES
- ********************/
-html {
-  position: relative;
-  min-height: 100%; }
-
-body {
-  background-color: #F3F5F8;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 15px;
-  color: #676a6d; }
-
+ 
 a {
   color: #3287B2; }
   a:hover, a:focus {
@@ -359,6 +334,7 @@ ul.notifications > li {
 .sidebar {
   z-index: 9; }
   .sidebar .nav > li > a {
+    font-size: 13px;
     padding: 18px 30px;
     color: #AEB7C2;
     border-left: 5px solid transparent; }
@@ -404,6 +380,7 @@ ul.notifications > li {
       margin-right: 10px;
       font-size: 18px; }
     .sidebar .nav span {
+      color: #ffffff;
       -webkit-transition: all 0.3s ease-in-out;
       -moz-transition: all 0.3s ease-in-out;
       -ms-transition: all 0.3s ease-in-out;
