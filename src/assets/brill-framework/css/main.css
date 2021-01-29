@@ -131,9 +131,7 @@ html.fullscreen-bg #wrapper {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  -moz-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #474d5e38;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;

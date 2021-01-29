@@ -49,6 +49,11 @@ thead {
 
 .brill-in-container {
   min-height: 465px;
+  min-height: 465px;
+  clear: both;
+  border: 1px solid #474d5e38;
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 
 #brill_edit_this_col input {
@@ -347,10 +352,12 @@ thead {
 
 .brill-page-path {
   background-color: #ffffff;
-  padding: 20px;
-  color: #8a8a8a;
+  padding: 10px;
+  color: #595959;
   margin-bottom: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
+  border: 1px solid #474d5e38;
+  text-transform: uppercas;
 }
 
 .brill-tables {
@@ -709,7 +716,7 @@ thead {
 
 .brill-users-list {
   background-color: #ffffff;
-  border-radius: 20px;
+  border-radius: 10px;
   min-height: 510px;
   width: 23%;
   margin-left: 1%;
@@ -719,7 +726,7 @@ thead {
 .brill-users-list img {
   width: 100%;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   border-bottom: 1px solid #474D5E;
 }
 
@@ -776,13 +783,13 @@ thead {
 .brill-profile-pic {
   -webkit-box-shadow: 1px 2px 3px #000;
           box-shadow: 1px 2px 3px #000;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 6px;
 }
 
 .brill-profile-pic img {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: px;
 }
 
@@ -813,7 +820,7 @@ thead {
   padding: 20px;
   background-color: #f5f5fa;
   margin: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .brill-profile-statistics ul .payment-statue {
