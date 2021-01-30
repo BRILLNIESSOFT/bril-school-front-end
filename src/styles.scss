@@ -1,4 +1,29 @@
+
+//SCSS GLOBAL VARIABLES
+$containerFluidMinHeight: 300px;
+$brillSeconeryColor : #474D5E;
+$brillThirdColor: #006D8A;
+$brill-heading-font: 'PT Sans', sans-serif;
+$brillBorder-raduis: 10px;
+$brill-no-border-raduis:0px;
+$brillContainerBorder: 1px solid #474d5e38;
+
 /* You can add global styles to this file, and also import other style files */
  html body{
     font-family: 'PT Sans', sans-serif;
  }
+
+ //BRILLNIRSSCHOOL BTNS
+ //BRILL BTns
+.brill-btn-2{
+    border-radius: 40px;
+    background-color: 759492;
+    border: none;
+    padding: 10px;
+    width: 100px;
+    color: #ffffff;
+    background-color: #759492;
+    &:hover{
+        background-color: #92B2B0;
+    }
+}

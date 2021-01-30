@@ -6,17 +6,6 @@
  */
 /*! THE CURRENT FILE IS NOT FOR COMMERCIAL NITHER PERSONAL USE, THE FILE IS MADE UNDER THE COPY RIGHTS B.S */
 
-
-//SCSS GLOBAL VARIABLES
-$containerFluidMinHeight: 300px;
-$brillSeconeryColor : #474D5E;
-$brillThirdColor: #006D8A;
-$brill-heading-font: 'PT Sans', sans-serif;
-$brillBorder-raduis: 10px;
-$brill-no-border-raduis:0px;
-$brillContainerBorder: 1px solid #474d5e38;
-
-
 //OVERRIDDING BOOTSTRAP
 
 .navbar-nav > li > .dropdown-menu {
@@ -29,6 +18,8 @@ $brillContainerBorder: 1px solid #474d5e38;
 thead{
     font-family: $brill-heading-font;
 }
+
+
 
 //BRILL HIDE COLM IN TABLE
 .brill-table-hide-col{
@@ -986,3 +977,11 @@ thead{
 }
 
 
+.container-fluid h3{
+    clear: both;
+    text-align: center;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 1.4em;
+    color: #4a4a4a;
+ }

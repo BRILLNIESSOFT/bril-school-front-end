@@ -1,0 +1,170 @@
+/* You can add global styles to this file, and also import other style files */
+html body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+.student-registration-parent {
+  min-height: 600px;
+}
+
+.student-registration-header {
+  text-align: center;
+}
+
+.student-registration-header p {
+  color: #707070;
+  font-size: 0.9em;
+}
+
+.student-registration-footer {
+  margin-top: 10px;
+  background-color: #ffffff;
+  border: 1px solid #474d5e38;
+  clear: both;
+  height: 80px;
+  border-radius: 10px;
+}
+
+.draftt-lable {
+  background-color: #759492;
+  height: 78px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.draftt-lable h4 {
+  text-align: center;
+  padding-top: 6px;
+  color: #ffffff;
+}
+
+.draftt-students-names {
+  margin-top: 4px;
+}
+
+.draftt-students-names ul {
+  list-style: none;
+}
+
+.draftt-students-names ul li {
+  float: left;
+  padding: 1px 10px 1px 10px;
+}
+
+.draftt-students-names ul li a {
+  color: #3a3a3a;
+}
+
+.draftt-students-names ul li a:hover {
+  color: #0291B7;
+}
+
+.show-all-drafts {
+  margin: 4px 0px 0px 0px;
+}
+
+.student-fingerprint {
+  clear: both;
+  margin-bottom: 10px;
+}
+
+.fingerprint-img {
+  text-align: center;
+  padding: 40px;
+}
+
+.fingerprint-img span {
+  padding: 10px;
+  font-size: 5em;
+  color: #000;
+  background-color: #E4E4E4;
+  border-radius: 50%;
+  padding: 24px;
+}
+
+.instructions {
+  float: right;
+  clear: both;
+  padding: 20px 2px 20px 2px;
+  background-color: #efeeee;
+  margin: 20px 6% 20px 0px;
+  border-radius: 10px;
+  width: 40%;
+}
+
+.instructions ul {
+  color: #FF0000;
+}
+
+.timeline {
+  clear: both;
+  padding: 10px 20px 10px 20px;
+  margin: 10px;
+  text-align: center;
+}
+
+.timeline .form-wizard-steps li {
+  width: 10%;
+  float: left;
+  position: relative;
+}
+
+.timeline .form-wizard-steps li::after {
+  background-color: #f3f3f3;
+  content: "";
+  height: 5px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 100%;
+  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+}
+
+.timeline .form-wizard-steps li span {
+  background-color: #dddddd;
+  border-radius: 50%;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  width: 40px;
+  z-index: 1;
+}
+
+.timeline .form-wizard-steps li:last-child::after {
+  width: 50%;
+}
+
+.timeline .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.activated span {
+  background-color: #0291B7;
+  color: #ffffff;
+}
+
+.timeline .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
+  background-color: #0291B7;
+  left: 35%;
+  width: 80%;
+  border-color: #0291B7;
+}
+
+.timeline .form-wizard-steps li.activated::after {
+  width: 100%;
+  border-color: #0291B7;
+}
+
+.timeline .form-wizard-steps li:last-child::after {
+  left: 0;
+}
+
+h5 {
+  padding: 4px;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  color: #0291B7;
+}
+/*# sourceMappingURL=registration.component.css.map */

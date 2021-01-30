@@ -2,4 +2,18 @@
 html body {
   font-family: 'PT Sans', sans-serif;
 }
+
+.brill-btn-2 {
+  border-radius: 40px;
+  background-color: 759492;
+  border: none;
+  padding: 10px;
+  width: 100px;
+  color: #ffffff;
+  background-color: #759492;
+}
+
+.brill-btn-2:hover {
+  background-color: #92B2B0;
+}
 /*# sourceMappingURL=styles.css.map */

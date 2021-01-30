@@ -7,6 +7,7 @@ import { SidebarComponent } from './brillyschoolcomponents/global/sidebar/sideba
 import { HeaderComponent } from './brillyschoolcomponents/global/header/header.component';
 import { ContainerfluidComponent } from './brillyschoolcomponents/global/containerfluid/containerfluid.component';
 import { FooterComponent } from './brillyschoolcomponents/global/footer/footer.component';
+import { RegistrationComponent } from './brillyschoolcomponents/students/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FooterComponent } from './brillyschoolcomponents/global/footer/footer.c
     SidebarComponent,
     HeaderComponent,
     ContainerfluidComponent,
-    FooterComponent
+    FooterComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
