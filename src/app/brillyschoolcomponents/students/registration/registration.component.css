@@ -3,6 +3,20 @@ html body {
   font-family: 'PT Sans', sans-serif;
 }
 
+.brill-btn-2 {
+  border-radius: 40px;
+  background-color: 759492;
+  border: none;
+  padding: 10px;
+  width: 100px;
+  color: #ffffff;
+  background-color: #759492;
+}
+
+.brill-btn-2:hover {
+  background-color: #92B2B0;
+}
+
 .student-registration-parent {
   min-height: 600px;
 }
@@ -85,11 +99,10 @@ html body {
 .instructions {
   float: right;
   clear: both;
-  padding: 20px 2px 20px 2px;
+  padding: 20px 20px 20px 20px;
   background-color: #efeeee;
-  margin: 20px 6% 20px 0px;
   border-radius: 10px;
-  width: 40%;
+  width: 100%;
 }
 
 .instructions ul {

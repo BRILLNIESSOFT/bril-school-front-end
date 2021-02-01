@@ -1,37 +1,93 @@
 <div class="student-registration-parent col-md-12">
     <div class="student-registration-header">
-            <h3>Register new student</h3>
+            <h3>Register new student | {{ stepIndex.stepHeaderTitle }} </h3>
             <p>
-              Ask the student to set his/her fingerprint or skip this step in
-               case the student is not avalaible 
+              {{ stepIndex.stepDescription }} 
             </p> 
     </div>  
-    <!-- HERE IS THE BODY -->
-        <div class="student-fingerprint">
-           <div class="fingerprint-img">
-               <span class="lnr lnr-pointer-up signature-icon"></span>               
+
+            <section [ngSwitch] = "stepIndexNum" >
+                    <!-- HERE IS THE BODY OF THE FINGER PRINT SETTINGS AND INSERATIONS STARTS-->
+                    <div *ngSwitchCase="1" #fingerPringSection>
+                        <div class="registration-body">
+                            <div class="student-fingerprint">
+                            <div class="fingerprint-img">
+                                <span class="lnr lnr-pointer-up signature-icon"></span>               
+                            </div>
+                            </div>
+                        </div>    
+                    </div>
+                    <!-- HERE IS THE BODY OF THE FINGER PRINT SETTINGS AND INSERATIONS ENDS-->
+
+                    <!-- HERE IS THE BODY OF THE STUDENT PHOTO UPLOADS AND INSERATIONS STARTS-->
+                    <div *ngSwitchCase="2" #uploadPhotoSection>
+                         <!-- RENDRING THE CONTAINER TO TAKE A PHOTO STARTS-->
+                        <div class="video-holder" *ngIf="startWebcam">
+                           <div  [@CamLuncherAnimation]="isLanchedAnimate ? 'lanched' : 'shated'" class="video-stram">
+                                <webcam  [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="!webcamImage"
+                                [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+                                [videoOptions]="videoOptions"
+                                [imageQuality]="1"
+                                (cameraSwitched)="cameraWasSwitched($event)"
+                                (initError)="handleInitError($event)"></webcam>
+                               <div class="btns">
+                                    <button *ngIf="!webcamImage" class="cupture-snap brill-btn-2" (click)="triggerSnapshot();">Take photo</button>
+                                    <button *ngIf="!webcamImage" class="cupture-snap brill-btn-3" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Alt cam</button>  
+                                    <button class="cupture-snap brill-btn-0" (click)="toggleWebcam();"> Cancel</button>
+                                    <button *ngIf="webcamImage" class="cupture-snap brill-btn-2" (click)="takeAnotherPhoto();"> Take another </button>                                    
+                                    <button *ngIf="webcamImage" class="cupture-snap brill-btn-1" (click)="saveSnappedPhotot();"> Confirm </button>
+                               </div>  
+                              
+                                 <div class="snapshot" [@SnappedTheImage]="webcamImage ? 'snapped' : 'dismissed' " *ngIf="webcamImage">
+                                     <img [src]="webcamImage.imageAsDataUrl"/>
+                                  </div>
+                           </div>
+                        </div> 
+ 
+
+                            <div class="registration-body">
+                                      <div class="student-photo">
+                                        <div class="fingerprint-img">
+                                            <img *ngIf="webcamImage" [src]="webcamImage.imageAsDataUrl"/>
+                                              <span *ngIf="!webcamImage" class="lnr lnr-camera student-photo-icon"></span>              
+                                        </div>
+
+                                        <div class="takephoto">
+                                                <button (click)="lunchWebcamToUser()" class="brill-btn-2">TAKE PHOTO</button>
+                                            </div>
+
+                                     </div>
+                             </div>   
+                    </div>
+             <!-- HERE IS THE BODY OF THE STUDENT PHOTO UPLOADS AND INSERATIONS ENDS-->
+            </section>
+           <!-- END OF THE FORM ENTIRE BODY  -->      
+            <!-- END OF THE FORM ENTIRE BODY  -->      
+            <!-- END OF THE FORM ENTIRE BODY  -->      
+
+
+                        <!-- HERE IS THE FOOTER STARTS  -->
+         <div class="instructions col-md-12">
+                   <ul [ngSwitch]="NotesFingerPrint.status">
+                       <li *ngSwitchCase="0" [@NotesSignal]="'noneDetected'">{{NotesFingerPrint.message}}</li> 
+                        <li *ngSwitchCase="1" [@NotesSignal]="'confirmFingerPrint'">{{NotesFingerPrint.message}}</li> 
+                        <li *ngSwitchCase="2" [@NotesSignal]="'successedFingerPrint'">{{NotesFingerPrint.message}}</li>                 
+                   </ul>
            </div>
-        </div>
-    <!-- HERE IS THE FOOTER STARTS  -->
- <div class="instructions">
-     <ul>
-         <li>Waiting for the student to insert his/her finger !</li>
-      </ul>
- </div>
-  
-     <!-- HERE IS THE TIME LINE  -->
+            <!-- HERE IS THE TIME LINE  -->
         <div class="timeline col-md-12">
+
             <ul class="list-unstyled form-wizard-steps clearfix">
-                <h5>Fingerprint</h5>
-                <li class="active"><span>1</span></li>
-                <li><span>2</span></li>
-                <li><span>3</span></li>
-                <li><span>4</span></li>
-                <li><span>4</span></li>
-                <li><span>4</span></li>
-                <li><span>4</span></li>
-                <li><span>4</span></li>
-                <button class="brill-btn-2">NEXT</button>               
+                <h5> {{ stepIndex.stepHeaderTitle }} </h5>
+                 <li [class.active]="stepIndexNum == 1"><span>1</span></li>
+                <li [class.active]="stepIndexNum == 2"><span>2</span></li>
+                <li [class.active]="stepIndexNum == 3"><span>3</span></li>
+                <li [class.active]="stepIndexNum == 4"><span>4</span></li>
+                <li [class.active]="stepIndexNum == 5"><span>5</span></li>
+                <li [class.active]="stepIndexNum == 6"><span>6</span></li>
+                <li [class.active]="stepIndexNum == 7"><span>7</span></li>
+                 <button *ngIf="stepIndexNum >= 2" class="brill-btn-0" (click)="backToStep()">BACK</button> 
+                 <button class="brill-btn-2" (click)="Procced()">NEXT</button>              
             </ul>
         </div>
     <!-- HERE IS THE FOOTER STARTS  -->

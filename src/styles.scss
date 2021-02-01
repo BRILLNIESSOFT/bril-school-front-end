@@ -22,8 +22,51 @@ $brillContainerBorder: 1px solid #474d5e38;
     padding: 10px;
     width: 100px;
     color: #ffffff;
+    margin: 2px 4px 2px 4px;    
     background-color: #759492;
     &:hover{
         background-color: #92B2B0;
+    }
+}
+
+.brill-btn-0{
+    border-radius: 40px;
+    background-color: 759492;
+    border: none;
+    padding: 10px;
+    width: 100px;
+    color: #ffffff;
+    background-color: #CB0247;
+    margin: 2px 4px 2px 4px;
+    &:hover{
+        background-color: #DF2263;
+    }
+}
+
+.brill-btn-1{
+    border-radius: 40px;
+    background-color: 759492;
+    border: none;
+    padding: 10px;
+    width: 100px;
+    color: #ffffff;
+    background-color: #0096AE;
+    margin: 2px 4px 2px 4px;
+    &:hover{
+        background-color: #14AD70;
+    }
+}
+
+.brill-btn-3{
+    border-radius: 40px;
+    background-color: 759492;
+    border: none;
+    padding: 10px;
+    width: 100px;
+    color: #ffffff;
+    background-color: #009D5E;
+    margin: 2px 4px 2px 4px;
+    &:hover{
+        background-color: #14AD70;
     }
 }
