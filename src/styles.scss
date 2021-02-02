@@ -70,3 +70,79 @@ $brillContainerBorder: 1px solid #474d5e38;
         background-color: #14AD70;
     }
 }
+
+.brill-btn-light{
+    border-radius: 40px;
+    background-color: 759492;
+    border: none;
+    padding: 10px;
+    width: 80%;
+    color: #FFFFFF;
+    margin: 14px 4px 2px 4px;
+    background-color: #474d5e;
+        &:hover{
+        background-color: #565D6E;
+    }
+}
+
+//STYLING THE MODAL
+.brill-modal-container {
+    background-color: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #474D5E;
+    padding: 20px 40px 20px 40px;
+     min-height: 280px;
+    border-radius: 20px;
+    text-align: center;
+  }
+  
+  .brill-modal-container h3 {
+    padding: 16px;
+    border-bottom: 1px solid #000000;
+    font-family: "PT Sans", sans-serif;
+  }
+  
+  .brill-modal-container h3 p {
+    float: right;
+    padding-right: 150px;
+    font-size: 15px;
+  }
+  
+  .brill-filter-search-bydate ul {
+    list-style: none;
+  }
+  
+  .brill-filter-search-bydate ul li {
+    float: left;
+    padding: 0px 4px 0px 4px;
+  }
+  
+  .brill-filter-search-bydate ul li span {
+    padding: 10px;
+    border-radius: 20px;
+    margin-right: 20px;
+    font-size: 18px;
+  }
+  
+  .brill-filter-search-bydate ul button {
+    border: 1px solid #000000;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #f5f5fa;
+  }
+  
+  .brill-filter-search-bydate ul button:hover {
+    background-color: #FFFFFF;
+  }
+  
+  .brill-filter-search-bar .modal-footer {
+    padding: 20px;
+    margin-top: 10px;
+    clear: both;
+  }
+
+  .modal-footer{
+    border-top: 1px solid #dedede;
+    clear: both;
+  }

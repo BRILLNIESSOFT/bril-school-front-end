@@ -79,14 +79,14 @@
 
             <ul class="list-unstyled form-wizard-steps clearfix">
                 <h5> {{ stepIndex.stepHeaderTitle }} </h5>
-                 <li [class.active]="stepIndexNum == 1"><span>1</span></li>
+                 <li [class.active]="stepIndexNum == 1" [class.passed]="stepIndexNum > 1"><span>1</span></li>
                 <li [class.active]="stepIndexNum == 2"><span>2</span></li>
                 <li [class.active]="stepIndexNum == 3"><span>3</span></li>
                 <li [class.active]="stepIndexNum == 4"><span>4</span></li>
                 <li [class.active]="stepIndexNum == 5"><span>5</span></li>
                 <li [class.active]="stepIndexNum == 6"><span>6</span></li>
                 <li [class.active]="stepIndexNum == 7"><span>7</span></li>
-                 <button *ngIf="stepIndexNum >= 2" class="brill-btn-0" (click)="backToStep()">BACK</button> 
+                 <button *ngIf="stepIndexNum >= 2" class="brill-btn-3" (click)="backToStep()">BACK</button> 
                  <button class="brill-btn-2" (click)="Procced()">NEXT</button>              
             </ul>
         </div>
@@ -95,26 +95,69 @@
         <div class="col-md-2 draftt-lable">
             <h4>UNFINISHED OPERATIONS</h4>
         </div>
-
-          <div class="draftt-students-names col-md-7">
-              <ul>
-                  <li> <a href="#">MOHSSIN KHALOUFI</a> </li>   
-                  <li> <a href="#">MOHSSIN KHALOUFI</a> </li>                 
-                  <li> <a href="#">MOHSSIN KHALOUFI</a> </li>                 
-                  <li> <a href="#">MOHSSIN KHALOUFI</a> </li>                 
-                  <li> <a href="#">MOHSSIN KHALOUFI</a> </li>                 
-                  <li> <a href="#">MOHSSIN KHALOUFI</a> </li>                 
-                  <li> <a href="#">MOHSSIN KHALOUFI</a> </li>                 
-                  <li> <a href="#">MOHSSIN KHALOUFI</a> </li>                 
-                  <li> <a href="#">MOHSSIN KHALOUFI</a> </li>                                   
-              </ul>
-          </div>
- 
-        <div class="show-all-drafts col-md-3">
-            <select show_all_draffts class="brill-inputs brill-inputs-select-text">
-                  <option>MOHSSINE KHALOUFI</option>
-            </select>
+       
+        <div class="draftt-students-names col-md-8">
+            <ul>
+                <li *ngFor="let drafftedStudentName of drafftedStudentArray" id="{{ drafftedStudentName.id }}"> <img src="assets/icons/{{ drafftedStudentName.img }}" alt="">
+                  <span> {{ drafftedStudentName.name + drafftedStudentName.lastname}} </span>
+                </li>                  
+            </ul>
+        </div>
+        
+        <div class="show-all-drafts col-md-2">
+            <button class="brill-btn-light" data-toggle="modal" data-target="#brill_search_filter_modal_call">
+                SHOW ALL </button>
         </div>
     </div>
  
 </div>
+
+
+
+
+<!-- ALL THE MODALS STARTS FROM HERE -->
+	  <!-- DATA MODAL OF SEARCH AND FILTER PRODUCTS -->
+	  <div id= "brill_search_filter_modal_call" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg brill-modal-dialog">
+			  <div class="modal-content">
+				   
+					<section class="row brill-modal-container">
+						<button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                         <span class="search-in-draffts"><input class="brill-inputs" type="text" placeholder="Student or father name ..."></span>
+                           
+                         <div class="draftt-students-names-modal col-md-12">
+                                <ul>
+                                        <li class="col-md-2" *ngFor="let drafftedStudentName of drafftedStudentArray" id="{{ drafftedStudentName.id }}"> 
+                                                <img src="assets/icons/{{ drafftedStudentName.img }}" alt="">
+                                              <span> {{ drafftedStudentName.name + drafftedStudentName.lastname}} </span>
+                                            </li>
+                                            <li class="col-md-2" *ngFor="let drafftedStudentName of drafftedStudentArray" id="{{ drafftedStudentName.id }}"> 
+                                                    <img src="assets/icons/{{ drafftedStudentName.img }}" alt="">
+                                                  <span> {{ drafftedStudentName.name + drafftedStudentName.lastname}} </span>
+                                                </li>
+                                                <li class="col-md-2" *ngFor="let drafftedStudentName of drafftedStudentArray" id="{{ drafftedStudentName.id }}"> 
+                                                        <img src="assets/icons/{{ drafftedStudentName.img }}" alt="">
+                                                      <span> {{ drafftedStudentName.name + drafftedStudentName.lastname}} </span>
+                                                    </li>      
+                                                    <li class="col-md-2" *ngFor="let drafftedStudentName of drafftedStudentArray ; last as lastDraft ; let len = count" id="{{ drafftedStudentName.id }}"> 
+                                                         <div *ngIf="!lastDraft">
+                                                           <img  src="assets/icons/{{ drafftedStudentName.img }}" alt="">
+                                                            <span> {{ drafftedStudentName.name + drafftedStudentName.lastname}} </span>
+                                                        </div> 
+
+                                                        <div class="last-draff" *ngIf="lastDraft">
+                                                                  <span>+{{ len }}5 </span>
+                                                                  <span> More </span>
+                                                          </div> 
+                                                    </li>                                                                                                 
+                                </ul>
+                            </div>
+              
+							 <div class="modal-footer">
+									<button type="button" class="brill-btn-confirm-yes" data-dismiss="modal">GO BACK</button>
+									<button type="button" class="brill-btn-confirm-cancel">APPLY SEARCH</button>
+							 </div>
+					   </section>
+			  </div>
+			</div>
+		  </div>

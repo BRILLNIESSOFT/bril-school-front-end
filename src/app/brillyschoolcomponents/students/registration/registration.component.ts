@@ -3,6 +3,10 @@ import { fingerPrint, lunchCam,SnapImage, StepHolder } from './registration-anim
 import {Subject, Observable} from 'rxjs';
 import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 import { RegistrationStepsCongs } from './registration-steps'
+
+//importing services
+import { RegistrationService } from './../../../brillyschoolservices/students/registration.service';
+
 @Component({
   selector: 'app-registration',
   animations: [
@@ -12,6 +16,9 @@ import { RegistrationStepsCongs } from './registration-steps'
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
+
+    //STUDENT SERVICES THAT MUST COME FROM THE SERVER
+     drafftedStudentArray:object[] = [];
   
    //BINDING THE REGISTRATION STEPS
    // @ViewChild('fingerPringSection') sectionFingerPrint: ElementRef;
@@ -47,7 +54,7 @@ export class RegistrationComponent implements OnInit {
       public isLanchedAnimate = false;
 
    //WEBCAM STUDENT IMAGE
-   public webcamImage?: WebcamImage;
+   public webcamImage: WebcamImage;
 
      // webcam snapshot trigger
   private trigger: Subject<void> = new Subject<void>();
@@ -68,13 +75,17 @@ export class RegistrationComponent implements OnInit {
       secondTry: 'moh'
     };
     
-      constructor() { }
+      constructor(private drafttedStudent: RegistrationService) { }
 
       ngOnInit(): void {
       WebcamUtil.getAvailableVideoInputs()
         .then((mediaDevices: MediaDeviceInfo[]) => {
           this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
         });
+
+        //GETTING ALL SERVICES
+        this.drafttedStudent.getDrafttedStudents() 
+         .subscribe(RecentDrafftedStudents => this.drafftedStudentArray = RecentDrafftedStudents);
       }
 
 
@@ -95,7 +106,7 @@ export class RegistrationComponent implements OnInit {
       
     
       public toggleWebcam(): void {
-        this.startWebcam = false;        
+        if(this.startWebcam !== undefined) { this.startWebcam = undefined }       
         this.isLanchedAnimate = false;
         this.showWebcam = !this.showWebcam;
       }
@@ -141,9 +152,11 @@ export class RegistrationComponent implements OnInit {
         this.startWebcam = false;
         this.isLanchedAnimate = false;
         this.showWebcam = !this.showWebcam;
-        this.studentRegistrationEntireData['Studentfiles'] = {
-          StudentImgURL: this.webcamImage.imageAsDataUrl
-        } 
+        if(this.webcamImage.imageAsDataUrl){ 
+            this.studentRegistrationEntireData['Studentfiles'] = {
+              StudentImgURL: this.webcamImage.imageAsDataUrl
+            } 
+        }
 
         console.log(this.studentRegistrationEntireData);
       }
@@ -163,7 +176,7 @@ export class RegistrationComponent implements OnInit {
 
     //PROCCED TO THE NEXT STEP  
     Procced(){
-      this.isJustSkiped = false;
+       this.isJustSkiped = false;
       if(this.studentFingerPrint.firstTry === this.studentFingerPrint.secondTry){
           this.NotesFingerPrint.message = 'Student finger print successfully detected , proceed to the nex step or set another one !';
           this.NotesFingerPrint.status = 2; 

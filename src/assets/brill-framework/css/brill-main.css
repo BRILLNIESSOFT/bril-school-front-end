@@ -586,62 +586,7 @@ thead {
   font-size: 20px;
 }
 
-.brill-filter-search-bar {
-  background-color: #ffffff;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #474D5E;
-  padding: 20px 40px 20px 40px;
-  position: fixed;
-  min-height: 280px;
-  border-radius: 20px;
-  text-align: center;
-}
 
-.brill-filter-search-bar h3 {
-  padding: 16px;
-  border-bottom: 1px solid #000000;
-  font-family: "PT Sans", sans-serif;
-}
-
-.brill-filter-search-bar h3 p {
-  float: right;
-  padding-right: 150px;
-  font-size: 15px;
-}
-
-.brill-filter-search-bydate ul {
-  list-style: none;
-}
-
-.brill-filter-search-bydate ul li {
-  float: left;
-  padding: 0px 4px 0px 4px;
-}
-
-.brill-filter-search-bydate ul li span {
-  padding: 10px;
-  border-radius: 20px;
-  margin-right: 20px;
-  font-size: 18px;
-}
-
-.brill-filter-search-bydate ul button {
-  border: 1px solid #000000;
-  padding: 10px;
-  border-radius: 20px;
-  background-color: #f5f5fa;
-}
-
-.brill-filter-search-bydate ul button:hover {
-  background-color: #FFFFFF;
-}
-
-.brill-filter-search-bar .modal-footer {
-  padding: 20px;
-  margin-top: 10px;
-  clear: both;
-}
 
 @media only screen and (max-width: 768px) {
   .brill-filter-search-bar {

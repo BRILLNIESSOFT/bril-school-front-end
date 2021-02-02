@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {WebcamModule} from 'ngx-webcam';
+import { HttpClientModule } from '@angular/common/http';
 
+//IMPORTING THE SERVICES
+import { RegistrationService } from './brillyschoolservices/students/registration.service';
 //IMPORTING ALL THE COMPONENT INCLUDING ROOT
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './brillyschoolcomponents/global/navbar/navbar.component';
@@ -27,9 +30,10 @@ import { RegistrationComponent } from './brillyschoolcomponents/students/registr
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    WebcamModule
+    WebcamModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
