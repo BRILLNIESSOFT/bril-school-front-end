@@ -60,6 +60,141 @@
                              </div>   
                     </div>
              <!-- HERE IS THE BODY OF THE STUDENT PHOTO UPLOADS AND INSERATIONS ENDS-->
+           <!-- HERE IS THE BODY OF THE GUARDIAN INFORMATIONS STARTS-->
+             <div *ngSwitchCase="3" #guardianInfoSection class="brill-input-holders">
+                    <div class="inputs-container">
+                       <form [formGroup]="GuardianForm"> 
+                            <div class="brill-row">
+                                <input formControlName="guardianCIN" type="text" placeholder="CIN" class="input obliger">
+                                <input formControlName="guardianFirstName" type="text" placeholder="PRENOM" class="input obliger">
+                                <input formControlName="guardianLastName" type="text" placeholder="NOM" class="input obliger">
+                                
+                             </div>
+                            <div class="brill-row">
+                                <input formControlName="guardianFirstNameArabic" type="text" placeholder=" الاسم العائلي بالعربية" class="input obliger arabic">
+                                <input formControlName="guardianLastNameArabic" type="text" placeholder="   الاسم الشخصي بالعربية" class="input obliger arabic">
+                                <input formControlName="guardianReleventType" type="text" placeholder="Relation avec l'étudiant" class="input obliger">
+
+                            </div>
+                            <div class="brill-row">
+                                <input formControlName="guardianPhoneNumber" type="tel" placeholder="Num télé" class="input obliger" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                                <input formControlName="guardianPhoneNumberAlt" type="tel" placeholder="Num télé 2" class="input" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                                <input formControlName="guardianEmail" type="email" placeholder="Email" class="input">
+
+                            </div>
+
+                    
+                            <div class="brill-row">
+                                 <input formControlName="guardianPlaceOfBirth" type="text" placeholder="Lieu de naissance" class="input">
+                                 <input formControlName="guardianDateOfBirth" matInput [matDatepicker]="guardianBirthDate" type="text" placeholder="Date de naissance" class="input">
+                                 <mat-datepicker-toggle matSuffix [for]="guardianBirthDate"></mat-datepicker-toggle>
+                                 <mat-datepicker #guardianBirthDate></mat-datepicker>
+                                 <input type="button" class="input" value="Sauver le tuteur">
+                            </div>
+                            <div class="brill-row">
+                                <div class="add-guardians">
+                                    <div class="item-guar">
+                                        <p>GARDIENS AJOUTÉS</p>
+                                    </div>
+                                    <div class="item-guar">
+                                        <div class="circel-small bleu"></div>
+                                        <p>Mohssine khaloufi</p>
+                                        <div class="circel-small red">
+                                            <i></i>
+                                        </div>
+                                    </div>
+                                    <div class="item-guar">
+                                        <div class="circel-small bleu"></div>
+                                        <p>Mohssine khaloufi</p>
+                                        <div class="circel-small red">
+                                            <i></i>
+                                        </div>
+                                    </div>
+                                    <div class="item-guar">
+                                        <div class="circel-small bleu"></div>
+                                        <p>Mohssine khaloufi</p>
+                                        <div class="circel-small red">
+                                            <i></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input class="input add" type="button" value="ajouter un autre tuteur">
+                            </div>
+                        </form>
+                        </div>
+             </div> 
+              <!-- HERE IS THE END OF GUARDIAN INFORMATION  END -->  
+              
+              
+              <!-- HERE IS THE BODY OF THE STUDENT INFORMATION  STARTS -->   
+             <div *ngSwitchCase="4" #StudentInfoSection class="brill-input-holders">
+                <div class="inputs-container">
+                    <div class="brill-row">
+                        <input type="text" placeholder="CNE" class="input obliger">
+                        <input type="text" placeholder="Num d'inscription" class="input obliger">
+                        <input type="text" placeholder="Prénom" class="input obliger">
+                        <input type="text" placeholder="Nom " class="input obliger">
+                    </div>
+                    <div class="brill-row">
+                        <input type="text" placeholder="اسم الاب" class="input arabic">
+                        <input type="text" placeholder="اسم الام" class="input arabic">
+                        <input type="text" placeholder="الاسم العائلي" class="input arabic obliger">
+                        <input type="text" placeholder="الاسم الشخصي" class="input arabic obliger">
+                    </div>
+                    <div class="brill-row">
+                        <input type="text" placeholder="Sexe" class="input">
+                        <input type="text" placeholder="Lieu de naissance" class="input">
+                        <input type="text" placeholder="nom du père" class="input obliger">
+                        <input type="text" placeholder="nom de la mère" class="input obliger">
+                    </div>
+                    <div class="brill-row">
+                        <input type="date" placeholder="Date de naissance" class="input">
+                        <input type="tel" placeholder="Num télé" class="input" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                        <input type="text" placeholder="Statue" class="input">
+                        <input type="text" placeholder="Soutien" class="input">
+                    </div>
+                    <div class="brill-row"><input type="email" placeholder="Email" class="input"></div>
+                    
+                </div>
+             </div>
+
+              <!-- HERE IS THE END OF STUDENT INFORMATION  END -->   
+              <div class="brill-input-holders">              
+                <div class="inputs-container" *ngSwitchCase="5" #LinkStudentToServices>
+                        <div class="brill-row">
+                            <input type="text" placeholder="Classe" class="input obliger">
+                            <input type="text" placeholder="Ajouter à la classe" class="input obliger">
+                            <input type="text" placeholder="Groupe" class="input obliger">
+                            <input type="text" placeholder="Ligne trans" class="input obliger">
+                        </div>
+                        <div class="brill-row">
+                            <div class="add-guardians">
+                                <div class="places">
+                                    <p class="blue">- il y a 40 places disponibles sur la ligne trans 6</p>
+                                    <p class="blue">- il y a 40 places disponibles en classe 6 groupe D</p>
+                                    <p class="blue">- il y a 3 places disponibles en classe 6 groupe b</p>
+                                    <p class="blue">- il y a 10 places disponibles en classe 6 groupe c</p>
+                                </div>
+                            </div>
+                            <input type="button" class="input" value="réglage automatique">
+                        </div>
+                    </div>
+                </div>     
+              <!-- HERE IS THE START OF THE STUDENT  OF THE STUDENT INFORMATION  STARTS -->   
+
+
+                            <!-- HERE IS THE END OF STUDENT ADRESSES INFORMATIONS  STARTS -->   
+                  <div class="brill-input-holders">              
+                                 <div class="inputs-container" *ngSwitchCase="6" #LinkStudentToServices>
+                                    <div class="brill-row">
+                                        <input type="text" placeholder="Ville" class="input">
+                                        <input type="text" placeholder="Code postal" class="input">
+                                        <input type="text" placeholder="Ligne adresse" class="input">
+                                        <input type="text" placeholder="Ligne adresse 2" class="input">
+                                    </div>    
+                                </div>   
+                  </div>                 
+                              <!-- HERE IS THE START OF THE STUDENT  OF THE ADRESSES INFORMATIONS ENDS --> 
             </section>
            <!-- END OF THE FORM ENTIRE BODY  -->      
             <!-- END OF THE FORM ENTIRE BODY  -->      
@@ -99,7 +234,7 @@
         <div class="draftt-students-names col-md-8">
             <ul>
                 <li *ngFor="let drafftedStudentName of drafftedStudentArray" id="{{ drafftedStudentName.id }}"> <img src="assets/icons/{{ drafftedStudentName.img }}" alt="">
-                  <span> {{ drafftedStudentName.name + drafftedStudentName.lastname}} </span>
+                  <span> {{ drafftedStudentName.name + drafftedStudentName.lastname | slice:0:16}} </span>
                 </li>                  
             </ul>
         </div>

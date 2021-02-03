@@ -1,4 +1,39 @@
 
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$brillnyschool-primary: mat-palette($mat-indigo);
+$brillnyschool-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$brillnyschool-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$brillnyschool-theme: mat-light-theme((
+  color: (
+    primary: $brillnyschool-primary,
+    accent: $brillnyschool-accent,
+    warn: $brillnyschool-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($brillnyschool-theme);
+
+
 //SCSS GLOBAL VARIABLES
 $containerFluidMinHeight: 300px;
 $brillSeconeryColor : #474D5E;
@@ -146,3 +181,19 @@ $brillContainerBorder: 1px solid #474d5e38;
     border-top: 1px solid #dedede;
     clear: both;
   }
+
+
+  .brill-close-modal-top-righ {
+    position: fixed;
+    right: 30px;
+    top: 10px;
+    font-size: 30px;
+    border: 2px solid #dcdcdc;
+    color: #7e7e7e;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    background-color: #f5f5fa;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

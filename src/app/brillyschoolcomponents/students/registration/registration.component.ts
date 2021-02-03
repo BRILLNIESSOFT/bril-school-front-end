@@ -3,7 +3,11 @@ import { fingerPrint, lunchCam,SnapImage, StepHolder } from './registration-anim
 import {Subject, Observable} from 'rxjs';
 import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 import { RegistrationStepsCongs } from './registration-steps'
+//HANDLIGN ALL THE EXISTING FORMS
+import { FormGroup , FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
+ 
 //importing services
 import { RegistrationService } from './../../../brillyschoolservices/students/registration.service';
 
@@ -15,6 +19,8 @@ import { RegistrationService } from './../../../brillyschoolservices/students/re
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
+
+ 
 export class RegistrationComponent implements OnInit {
 
     //STUDENT SERVICES THAT MUST COME FROM THE SERVER
@@ -54,7 +60,7 @@ export class RegistrationComponent implements OnInit {
       public isLanchedAnimate = false;
 
    //WEBCAM STUDENT IMAGE
-   public webcamImage: WebcamImage;
+   public webcamImage?: WebcamImage;
 
      // webcam snapshot trigger
   private trigger: Subject<void> = new Subject<void>();
@@ -75,7 +81,26 @@ export class RegistrationComponent implements OnInit {
       secondTry: 'moh'
     };
     
-      constructor(private drafttedStudent: RegistrationService) { }
+     
+      //HANDLING ANYTHING HAS TO DO WITH FORM GROUPS
+        GuardianForm =  this.FB.group({
+            guardianCIN: ['SH123432'],
+            guardianFirstName: ['SH123432'],
+            guardianLastName: ['SH123432'],
+            guardianFirstNameArabic: ['SH123432'],
+            guardianLastNameArabic: ['SH123432'],
+            guardianReleventType: ['SH123432'],
+            guardianPhoneNumber: ['SH123432'],
+            guardianPhoneNumberAlt: ['SH123432'],
+            guardianEmail: ['SH123432'],
+            guardianPlaceOfBirth: ['SH123432'],
+            guardianDateOfBirth: ['SH123432']
+        });
+
+
+      constructor(public drafttedStudent: RegistrationService, private FB:FormBuilder) { 
+          console.log(drafttedStudent);
+      } 
 
       ngOnInit(): void {
       WebcamUtil.getAvailableVideoInputs()
@@ -85,8 +110,8 @@ export class RegistrationComponent implements OnInit {
 
         //GETTING ALL SERVICES
         this.drafttedStudent.getDrafttedStudents() 
-         .subscribe(RecentDrafftedStudents => this.drafftedStudentArray = RecentDrafftedStudents);
-      }
+          .subscribe(RecentDrafftedStudents => this.drafftedStudentArray = RecentDrafftedStudents);
+         }
 
 
       lunchWebcamToUser(){
@@ -142,7 +167,7 @@ export class RegistrationComponent implements OnInit {
 
       //TAKE ANOTHER PHOTO
       takeAnotherPhoto(){
-        this.webcamImage = undefined;       
+        //this.webcamImage = undefined;       
         this.startWebcam = true;
         this.isLanchedAnimate = true;
       }
@@ -152,9 +177,9 @@ export class RegistrationComponent implements OnInit {
         this.startWebcam = false;
         this.isLanchedAnimate = false;
         this.showWebcam = !this.showWebcam;
-        if(this.webcamImage.imageAsDataUrl){ 
+        if(this.webcamImage!.imageAsDataUrl !== undefined){ 
             this.studentRegistrationEntireData['Studentfiles'] = {
-              StudentImgURL: this.webcamImage.imageAsDataUrl
+              StudentImgURL: this.webcamImage!.imageAsDataUrl
             } 
         }
 
@@ -176,6 +201,7 @@ export class RegistrationComponent implements OnInit {
 
     //PROCCED TO THE NEXT STEP  
     Procced(){
+      console.log(this.GuardianForm);
        this.isJustSkiped = false;
       if(this.studentFingerPrint.firstTry === this.studentFingerPrint.secondTry){
           this.NotesFingerPrint.message = 'Student finger print successfully detected , proceed to the nex step or set another one !';
@@ -186,7 +212,7 @@ export class RegistrationComponent implements OnInit {
             secondTry: this.studentFingerPrint.secondTry
           }; 
         
-          if(this.stepIndexNum <= 1){
+          if(this.stepIndexNum <= 5){
             console.log(this.stepIndexNum);
               this.stepIndexNum += 1;
               this.stepIndex = {

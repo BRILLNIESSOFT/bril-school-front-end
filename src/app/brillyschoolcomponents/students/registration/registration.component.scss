@@ -6,6 +6,7 @@
 
 .student-registration-header{
     text-align: center;
+    margin-top: 20px;
 }
 
 .student-registration-header p{
@@ -123,6 +124,7 @@
 .last-draff span{
     font-size: 34px;
     padding: 12px 0px 0px 0px;
+    font-size: 17px;
 }
 
 .student-fingerprint{
@@ -299,3 +301,122 @@
     clear: both; 
     width: 100%;
 }
+
+
+
+/************ PAGE 3 ,PAGE 5,PAGE 6,PAGE 7, ***************************************************/
+
+.brill-input-holders .inputs-container 
+{
+    margin: 30px 15px;
+}
+.brill-input-holders .inputs-container .brill-row 
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 20px;
+    margin-left: 20px;
+    margin-right: 20p;
+}
+.brill-input-holders .inputs-container input.input 
+{
+    background: #f5f5fa;
+    border: 1px solid;
+     padding: 11px 18px;
+    font-weight: 600;
+    border-radius: 30px;
+    width: 240px;
+}
+.brill-input-holders .inputs-container input[type='button']
+{
+    background: #474d5e;
+    color: #fff;
+    width: 130px;
+}
+.brill-input-holders .inputs-container input.input::placeholder
+{
+    font-weight: 700;
+    opacity: 0.5;
+
+}
+.brill-input-holders .inputs-container input.input.obliger::placeholder
+{
+    color: rgb(245, 126, 126);
+}
+.brill-input-holders .inputs-container .brill-row:last-of-type >input[type='button']
+{
+    background-color:#38679c;
+    max-height: 45px;
+}
+.brill-input-holders .inputs-container .brill-row>.add-guardians
+{
+    background-color:#ececec;
+    flex-grow:2;
+    margin-right: 30px ;
+    border-radius: 10px 20px 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 30px
+}
+.brill-input-holders .inputs-container .brill-row>.add-guardians .item-guar 
+{
+    display: flex;
+}
+.brill-input-holders .inputs-container .brill-row>.add-guardians .item-guar >p
+{
+    margin: 0;
+    text-transform: uppercase;
+    font-size: .9em;
+}
+.brill-input-holders .inputs-container .brill-row>.add-guardians .item-guar:first-of-type
+{
+    padding: 14px 10px;
+    background: #1b6c85;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+.brill-input-holders .inputs-container .add-guardians .circel-small.red 
+{
+    margin-left: 7px;
+    padding: 5px;
+    position: relative;
+}
+.brill-input-holders .inputs-container .add-guardians .circel-small.red::before
+{
+    content: "";
+    width: 4px;
+    position: absolute;
+    top: 4px;
+    left: 2.9px;
+    border: 1px solid #fff;
+
+}
+.brill-input-holders .inputs-container .add-guardians>.places
+{
+    padding: 30px 40px;
+}
+.brill-input-holders .inputs-container .arabic
+{
+    direction: rtl;
+}
+.brill-input-holders .blue
+{
+    color: #0394c1;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.brill-input-holders .inputs-container>.map
+{
+    margin: 20px 0 0 ;
+}
+.brill-input-holders .inputs-container>.map>div
+{
+    border: 1px solid;
+    height: 200px;
+    width: 90%;
+    margin: auto;
+    border-radius: 20px;
+}
+/************ PAGE 3 ,PAGE 5,PAGE 6,PAGE 7, ***************************************************/

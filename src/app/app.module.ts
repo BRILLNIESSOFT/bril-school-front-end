@@ -5,6 +5,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {WebcamModule} from 'ngx-webcam';
 import { HttpClientModule } from '@angular/common/http';
 
+//importing form to handel form reqs
+import { ReactiveFormsModule } from '@angular/forms';
+//ANGULAR MATERIALS
+ import { MatDatepickerModule } from '@angular/material/datepicker';
+ import { MatNativeDateModule } from '@angular/material/core';
+
 //IMPORTING THE SERVICES
 import { RegistrationService } from './brillyschoolservices/students/registration.service';
 //IMPORTING ALL THE COMPONENT INCLUDING ROOT
@@ -15,6 +21,7 @@ import { HeaderComponent } from './brillyschoolcomponents/global/header/header.c
 import { ContainerfluidComponent } from './brillyschoolcomponents/global/containerfluid/containerfluid.component';
 import { FooterComponent } from './brillyschoolcomponents/global/footer/footer.component';
 import { RegistrationComponent } from './brillyschoolcomponents/students/registration/registration.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -31,8 +38,11 @@ import { RegistrationComponent } from './brillyschoolcomponents/students/registr
     AppRoutingModule,
     BrowserAnimationsModule,
     WebcamModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
+   ],
   providers: [RegistrationService],
   bootstrap: [AppComponent]
 })
