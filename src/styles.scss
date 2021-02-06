@@ -55,8 +55,8 @@ $brillContainerBorder: 1px solid #474d5e38;
     background-color: 759492;
     border: none;
     padding: 10px;
-    width: 100px;
-    color: #ffffff;
+    width: 150px;
+     color: #ffffff;
     margin: 2px 4px 2px 4px;    
     background-color: #759492;
     &:hover{
@@ -83,8 +83,7 @@ $brillContainerBorder: 1px solid #474d5e38;
     background-color: 759492;
     border: none;
     padding: 10px;
-    width: 100px;
-    color: #ffffff;
+     color: #ffffff;
     background-color: #0096AE;
     margin: 2px 4px 2px 4px;
     &:hover{
@@ -197,3 +196,14 @@ $brillContainerBorder: 1px solid #474d5e38;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.navbar-default {
+  transition: all 0.3s ease-in-out;
+   border-radius: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: #fff;
+  box-shadow: -1px 0px 3px 0px rgb(0 0 0 / 87%);
+}

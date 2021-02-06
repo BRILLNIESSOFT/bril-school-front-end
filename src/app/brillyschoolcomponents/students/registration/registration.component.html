@@ -9,7 +9,7 @@
             <section [ngSwitch] = "stepIndexNum" >
                     <!-- HERE IS THE BODY OF THE FINGER PRINT SETTINGS AND INSERATIONS STARTS-->
                     <div *ngSwitchCase="1" #fingerPringSection>
-                        <div class="registration-body">
+                         <div class="registration-body">
                             <div class="student-fingerprint">
                             <div class="fingerprint-img">
                                 <span class="lnr lnr-pointer-up signature-icon"></span>               
@@ -21,15 +21,14 @@
 
                     <!-- HERE IS THE BODY OF THE STUDENT PHOTO UPLOADS AND INSERATIONS STARTS-->
                     <div *ngSwitchCase="2" #uploadPhotoSection>
+                        <div class="inputs-container">
                          <!-- RENDRING THE CONTAINER TO TAKE A PHOTO STARTS-->
                         <div class="video-holder" *ngIf="startWebcam">
                            <div  [@CamLuncherAnimation]="isLanchedAnimate ? 'lanched' : 'shated'" class="video-stram">
                                 <webcam  [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="!webcamImage"
                                 [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
-                                [videoOptions]="videoOptions"
                                 [imageQuality]="1"
-                                (cameraSwitched)="cameraWasSwitched($event)"
-                                (initError)="handleInitError($event)"></webcam>
+                                (cameraSwitched)="cameraWasSwitched($event)"></webcam>
                                <div class="btns">
                                     <button *ngIf="!webcamImage" class="cupture-snap brill-btn-2" (click)="triggerSnapshot();">Take photo</button>
                                     <button *ngIf="!webcamImage" class="cupture-snap brill-btn-3" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Alt cam</button>  
@@ -57,71 +56,90 @@
                                             </div>
 
                                      </div>
-                             </div>   
+                             </div>  
+                         </div>     
                     </div>
              <!-- HERE IS THE BODY OF THE STUDENT PHOTO UPLOADS AND INSERATIONS ENDS-->
            <!-- HERE IS THE BODY OF THE GUARDIAN INFORMATIONS STARTS-->
              <div *ngSwitchCase="3" #guardianInfoSection class="brill-input-holders">
                     <div class="inputs-container">
-                       <form [formGroup]="GuardianForm"> 
-                            <div class="brill-row">
-                                <input formControlName="guardianCIN" type="text" placeholder="CIN" class="input obliger">
-                                <input formControlName="guardianFirstName" type="text" placeholder="PRENOM" class="input obliger">
-                                <input formControlName="guardianLastName" type="text" placeholder="NOM" class="input obliger">
-                                
-                             </div>
-                            <div class="brill-row">
-                                <input formControlName="guardianFirstNameArabic" type="text" placeholder=" الاسم العائلي بالعربية" class="input obliger arabic">
-                                <input formControlName="guardianLastNameArabic" type="text" placeholder="   الاسم الشخصي بالعربية" class="input obliger arabic">
-                                <input formControlName="guardianReleventType" type="text" placeholder="Relation avec l'étudiant" class="input obliger">
-
+                        <form [formGroup]="GuardianForm"> 
+                        <div class="brill-row">
+                            <div>
+                                <label for="cin">cin</label>
+                                <input  formControlName="guardianCIN" type="text" name="cin" placeholder="CIN" class="input obliger">
                             </div>
-                            <div class="brill-row">
-                                <input formControlName="guardianPhoneNumber" type="tel" placeholder="Num télé" class="input obliger" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
-                                <input formControlName="guardianPhoneNumberAlt" type="tel" placeholder="Num télé 2" class="input" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
-                                <input formControlName="guardianEmail" type="email" placeholder="Email" class="input">
-
+                            <div>
+                                <label for="prenom">prénom</label>
+                                <input  formControlName="guardianFirstName" name="prenom" type="text" placeholder="PRENOM" class="input obliger">
                             </div>
-
-                    
-                            <div class="brill-row">
-                                 <input formControlName="guardianPlaceOfBirth" type="text" placeholder="Lieu de naissance" class="input">
-                                 <input formControlName="guardianDateOfBirth" matInput [matDatepicker]="guardianBirthDate" type="text" placeholder="Date de naissance" class="input">
-                                 <mat-datepicker-toggle matSuffix [for]="guardianBirthDate"></mat-datepicker-toggle>
-                                 <mat-datepicker #guardianBirthDate></mat-datepicker>
-                                 <input type="button" class="input" value="Sauver le tuteur">
+                            <div>
+                                <label for="nom">nom</label>
+                                <input formControlName="guardianLastName" name="nom" type="text" placeholder="NOM" class="input obliger">
                             </div>
-                            <div class="brill-row">
-                                <div class="add-guardians">
-                                    <div class="item-guar">
-                                        <p>GARDIENS AJOUTÉS</p>
-                                    </div>
-                                    <div class="item-guar">
-                                        <div class="circel-small bleu"></div>
-                                        <p>Mohssine khaloufi</p>
-                                        <div class="circel-small red">
-                                            <i></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-guar">
-                                        <div class="circel-small bleu"></div>
-                                        <p>Mohssine khaloufi</p>
-                                        <div class="circel-small red">
-                                            <i></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-guar">
-                                        <div class="circel-small bleu"></div>
-                                        <p>Mohssine khaloufi</p>
-                                        <div class="circel-small red">
-                                            <i></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input class="input add" type="button" value="ajouter un autre tuteur">
+                            <div>
+                                <label for="sexe">sexe</label>
+                                 <select class="input-select" formControlName="guardianCIN" name="sexe" id="sexe">
+                                     <option selected value="">Famle</option>
+                                    <option value="volvo">Male</option>
+                                  </select>
                             </div>
-                        </form>
                         </div>
+                        <div class="brill-row">
+                            <div>
+                                <label for="date de naissance">date de naissance</label>
+                                <input formControlName="guardianDateOfBirth" type="date" placeholder="Date de naissance" class="input">
+                            </div>
+                    
+                            <div>
+                                <label  for="prenom" class="arabic">الاسم العائلي</label>
+                                <input formControlName="guardianLastNameArabic" type="text" placeholder="الاسم العائلي" class="input obliger arabic">
+                            </div>
+                            <div>
+                                <label for="nom" class="arabic">الاسم الشخصي</label>
+                                <input formControlName="guardianFirstNameArabic" type="text" placeholder="الاسم الشخصي" class="input obliger arabic">
+                            </div>
+                            <div>
+                                <label for="lieu de naissance" class="arabic">مكان الازدياد</label>
+                                <input formControlName="guardianPlaceOfBirth" type="text" placeholder="مكان الازدياد" class="input arabic">
+                            </div>
+                            
+                        </div>
+                        <div class="brill-row">
+                            <div>
+                                <label for="Lieu de naissance">Lieu de naissance</label>
+                                <input formControlName="guardianPlaceOfBirth" type="text" placeholder="Lieu de naissance" class="input">
+                            </div>
+                            <div>
+                                <label for="guardianReleventType">Relation avec l'étudiant</label>
+                                 <select formControlName="guardianReleventType" class="input-select" name="sexe" id="guardianReleventType">
+                                    <option selected value="">Father</option>
+                                    <option selected value="">Mother</option>
+                                    <option value="volvo">Sister</option>
+                                    <option value="volvo">Brother</option>
+                                    <option value="volvo">Grand Mother</option>
+                                    <option value="volvo">Grand Father</option>
+                                    <option value="volvo">Uncle</option>
+                                 </select>
+                            </div>
+                            <div>
+                                <label for="Num télé">Num téléphone</label>
+                                <input formControlName="guardianPhoneNumber" type="tel" placeholder="Num télé" class="input obliger" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                            </div>
+                            <div>
+                                <label for="email">email</label>
+                                <input formControlName="guardianEmail" type="email" placeholder="Email" class="input">
+                            </div>
+                    
+                        </div>
+                    
+  
+                        <div class="btn-save"> 
+                            <input type="button" class="input" value="Sauver le tuteur">
+                            <input class="input add" type="button" value="ajouter un autre tuteur">
+                        </div>
+                    </form> 
+                     </div>
              </div> 
               <!-- HERE IS THE END OF GUARDIAN INFORMATION  END -->  
               
@@ -130,31 +148,78 @@
              <div *ngSwitchCase="4" #StudentInfoSection class="brill-input-holders">
                 <div class="inputs-container">
                     <div class="brill-row">
-                        <input type="text" placeholder="CNE" class="input obliger">
-                        <input type="text" placeholder="Num d'inscription" class="input obliger">
-                        <input type="text" placeholder="Prénom" class="input obliger">
-                        <input type="text" placeholder="Nom " class="input obliger">
+    
+                        <div>
+                            <label for="CNE">CNE</label>
+                            <input type="text" placeholder="CNE" class="input obliger">
+                        </div>
+                        <div>
+                            <label for="Num d'inscription">Num d'inscription</label>
+                            <input type="text" placeholder="Num d'inscription" class="input obliger">
+                        </div>
+                        <div>
+                            <label for="Prénom">Prénom</label>
+                            <input type="text" placeholder="Prénom" class="input obliger">
+                        </div>
+                        <div>
+                            <label for="Nom">Nom</label>
+                            <input type="text" placeholder="Nom " class="input obliger">
+                        </div>
+    
                     </div>
                     <div class="brill-row">
-                        <input type="text" placeholder="اسم الاب" class="input arabic">
-                        <input type="text" placeholder="اسم الام" class="input arabic">
-                        <input type="text" placeholder="الاسم العائلي" class="input arabic obliger">
-                        <input type="text" placeholder="الاسم الشخصي" class="input arabic obliger">
+ 
+                        <div>
+                            <label for="prenom" class="arabic">الاسم العائلي</label>
+                            <input type="text" placeholder="الاسم العائلي" class="input arabic obliger">
+                        </div>
+                        <div>
+                            <label for="nom" class="arabic">الاسم الشخصي</label>
+                            <input type="text" placeholder="الاسم الشخصي" class="input arabic obliger">
+                        </div>
+
+                        <div>
+                            <label for="Statue">Statue</label>
+                            <input type="text" placeholder="Statue" class="input">
+                        </div>
+                        <div>
+                            <label for="Num d'inscription">Lieu de naissance</label>
+                            <input type="text" placeholder="Lieu de naissance" class="input">
+                        </div>
+    
                     </div>
+ 
                     <div class="brill-row">
-                        <input type="text" placeholder="Sexe" class="input">
-                        <input type="text" placeholder="Lieu de naissance" class="input">
-                        <input type="text" placeholder="nom du père" class="input obliger">
-                        <input type="text" placeholder="nom de la mère" class="input obliger">
+                        <div>
+                            <label for="Sexe">Sexe</label>
+                             <select class="input-select" formControlName="studentSex" name="sexe" id="sexe">
+                                <option selected value="">Famle</option>
+                               <option value="volvo">Male</option>
+                             </select>
+                        </div>	
+                        <div>
+                            <label for="Date de naissance">Date de naissance</label>
+                            <input type="date" placeholder="Date de naissance" class="input">
+                        </div>
+                        <div>
+                            <label for="Soutien">Soutien</label>
+                            <input type="text" placeholder="Soutien" class="input">
+                        </div>
+                        <div>
+                            <label for="tel">Num télé</label>
+                            <input type="tel" placeholder="Num télé" class="input" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                        </div>
+                        
                     </div>
-                    <div class="brill-row">
-                        <input type="date" placeholder="Date de naissance" class="input">
-                        <input type="tel" placeholder="Num télé" class="input" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
-                        <input type="text" placeholder="Statue" class="input">
-                        <input type="text" placeholder="Soutien" class="input">
-                    </div>
-                    <div class="brill-row"><input type="email" placeholder="Email" class="input"></div>
-                    
+                    <!-- <div class="brill-row">
+                        
+                        
+                        <div>
+                            <label for="email">email</label>
+                            <input type="email" placeholder="Email" class="input">
+                        </div>
+                    </div> -->
+    
                 </div>
              </div>
 
@@ -162,12 +227,40 @@
               <div class="brill-input-holders">              
                 <div class="inputs-container" *ngSwitchCase="5" #LinkStudentToServices>
                         <div class="brill-row">
-                            <input type="text" placeholder="Classe" class="input obliger">
-                            <input type="text" placeholder="Ajouter à la classe" class="input obliger">
-                            <input type="text" placeholder="Groupe" class="input obliger">
-                            <input type="text" placeholder="Ligne trans" class="input obliger">
+            
+                            <div>
+                                <label for="CNE">CNE</label>
+                                <input type="text" placeholder="Classe" class="input obliger">
+                            </div>
+                            <div>
+                                <label for="addStuentToServices">Ajouter à la classe</label>
+                                 <select class="input-select" formControlName="addStuentToServices" name="class" id="addStuentToServices">
+                                    <option  value="">Class 1</option>
+                                    <option  value="">Class 2</option>
+                                    <option  value="">Class 4</option>
+                                   <option value="volvo">Class 5</option>
+                                   <option value="volvo">Class 6</option>
+                                 </select>
+                            </div>
+                            <div>
+                                <label for="Groupe">Groupe</label>
+                                 <select class="input-select" formControlName="addStuentToGroup" name="group" id="Groupe">
+                                    <option  value="">group 1</option>
+                                    <option  value="">group 2</option>
+                                    <option  value="">group 4</option>
+                                 </select>
+                            </div>
+                            <div>
+                                <label for="LigneTrans">Ligne trans</label>
+                                 <select class="input-select" formControlName="addStuentToTransLine" name="addStuentToTransLine" id="LigneTrans">
+                                    <option  value="">LigneTrans 1</option>
+                                    <option  value="">LigneTrans 2</option>
+                                    <option  value="">LigneTrans 4</option>
+                                 </select>
+                            </div>
+            
                         </div>
-                        <div class="brill-row">
+                        <div class="brill-row no-center">
                             <div class="add-guardians">
                                 <div class="places">
                                     <p class="blue">- il y a 40 places disponibles sur la ligne trans 6</p>
@@ -176,23 +269,43 @@
                                     <p class="blue">- il y a 10 places disponibles en classe 6 groupe c</p>
                                 </div>
                             </div>
-                            <input type="button" class="input" value="réglage automatique">
+                            <input type="button" class="input add" value="réglage automatique">
                         </div>
                     </div>
-                </div>     
+            
+                 </div>     
               <!-- HERE IS THE START OF THE STUDENT  OF THE STUDENT INFORMATION  STARTS -->   
 
 
                             <!-- HERE IS THE END OF STUDENT ADRESSES INFORMATIONS  STARTS -->   
                   <div class="brill-input-holders">              
                                  <div class="inputs-container" *ngSwitchCase="6" #LinkStudentToServices>
-                                    <div class="brill-row">
-                                        <input type="text" placeholder="Ville" class="input">
-                                        <input type="text" placeholder="Code postal" class="input">
-                                        <input type="text" placeholder="Ligne adresse" class="input">
-                                        <input type="text" placeholder="Ligne adresse 2" class="input">
-                                    </div>    
-                                </div>   
+                                         <div class="brill-row">
+                        
+                                            <div>
+                                                <label for="Ville">Ville</label>
+                                                <input type="text" placeholder="Ville" class="input">
+                                            </div>
+                                            <div>
+                                                <label for="Code postal">Code postal</label>
+                                                <input type="text" placeholder="Code postal" class="input">
+                                            </div>
+                                            <div>
+                                                <label for="line">Ligne adresse</label>
+                                                <input type="text" placeholder="Ligne adresse" class="input">
+                                            </div>
+                                            <div>
+                                                <label for="Ligne">Ligne adresse 2</label>
+                                                <input type="text" placeholder="Ligne adresse 2" class="input">
+                                            </div>
+                        
+                                        </div>
+                                        <div class="map">
+                                            <div>
+                        
+                                            </div>
+                                        </div>
+                                 </div>   
                   </div>                 
                               <!-- HERE IS THE START OF THE STUDENT  OF THE ADRESSES INFORMATIONS ENDS --> 
             </section>
@@ -202,24 +315,17 @@
 
 
                         <!-- HERE IS THE FOOTER STARTS  -->
-         <div class="instructions col-md-12">
-                   <ul [ngSwitch]="NotesFingerPrint.status">
-                       <li *ngSwitchCase="0" [@NotesSignal]="'noneDetected'">{{NotesFingerPrint.message}}</li> 
-                        <li *ngSwitchCase="1" [@NotesSignal]="'confirmFingerPrint'">{{NotesFingerPrint.message}}</li> 
-                        <li *ngSwitchCase="2" [@NotesSignal]="'successedFingerPrint'">{{NotesFingerPrint.message}}</li>                 
-                   </ul>
-           </div>
             <!-- HERE IS THE TIME LINE  -->
         <div class="timeline col-md-12">
 
             <ul class="list-unstyled form-wizard-steps clearfix">
                 <h5> {{ stepIndex.stepHeaderTitle }} </h5>
                  <li [class.active]="stepIndexNum == 1" [class.passed]="stepIndexNum > 1"><span>1</span></li>
-                <li [class.active]="stepIndexNum == 2"><span>2</span></li>
-                <li [class.active]="stepIndexNum == 3"><span>3</span></li>
-                <li [class.active]="stepIndexNum == 4"><span>4</span></li>
-                <li [class.active]="stepIndexNum == 5"><span>5</span></li>
-                <li [class.active]="stepIndexNum == 6"><span>6</span></li>
+                <li [class.active]="stepIndexNum == 2" [class.passed]="stepIndexNum > 2"><span>2</span></li>
+                <li [class.active]="stepIndexNum == 3" [class.passed]="stepIndexNum > 3"><span>3</span></li>
+                <li [class.active]="stepIndexNum == 4" [class.passed]="stepIndexNum > 4"><span>4</span></li>
+                <li [class.active]="stepIndexNum == 5" [class.passed]="stepIndexNum > 5"><span>5</span></li>
+                <li [class.active]="stepIndexNum == 6" [class.passed]="stepIndexNum > 6"><span>6</span></li>
                 <li [class.active]="stepIndexNum == 7"><span>7</span></li>
                  <button *ngIf="stepIndexNum >= 2" class="brill-btn-3" (click)="backToStep()">BACK</button> 
                  <button class="brill-btn-2" (click)="Procced()">NEXT</button>              

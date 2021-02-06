@@ -24,7 +24,7 @@ import { RegistrationService } from './../../../brillyschoolservices/students/re
 export class RegistrationComponent implements OnInit {
 
     //STUDENT SERVICES THAT MUST COME FROM THE SERVER
-     drafftedStudentArray:object[] = [];
+     drafftedStudentArray?:Array<any>;
   
    //BINDING THE REGISTRATION STEPS
    // @ViewChild('fingerPringSection') sectionFingerPrint: ElementRef;
@@ -100,24 +100,24 @@ export class RegistrationComponent implements OnInit {
 
       constructor(public drafttedStudent: RegistrationService, private FB:FormBuilder) { 
           console.log(drafttedStudent);
+          
+        //GETTING ALL SERVICES
+        this.drafttedStudent.getDrafttedStudents() 
+        .subscribe(RecentDrafftedStudents => this.drafftedStudentArray = RecentDrafftedStudents);
       } 
 
       ngOnInit(): void {
-      WebcamUtil.getAvailableVideoInputs()
-        .then((mediaDevices: MediaDeviceInfo[]) => {
-          this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
-        });
+          WebcamUtil.getAvailableVideoInputs()
+            .then((mediaDevices: MediaDeviceInfo[]) => {
+              this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
+            });
 
-        //GETTING ALL SERVICES
-        this.drafttedStudent.getDrafttedStudents() 
-          .subscribe(RecentDrafftedStudents => this.drafftedStudentArray = RecentDrafftedStudents);
          }
 
 
       lunchWebcamToUser(){
-        
             this.startWebcam = true;
-           this.isLanchedAnimate = true;
+            this.isLanchedAnimate = true;
       }
 
      //METHODS OF THE CAMERA INITIALIZING 
@@ -167,7 +167,7 @@ export class RegistrationComponent implements OnInit {
 
       //TAKE ANOTHER PHOTO
       takeAnotherPhoto(){
-        //this.webcamImage = undefined;       
+        this.webcamImage = undefined;       
         this.startWebcam = true;
         this.isLanchedAnimate = true;
       }
