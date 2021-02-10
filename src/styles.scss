@@ -48,6 +48,15 @@ $brillContainerBorder: 1px solid #474d5e38;
     font-family: 'PT Sans', sans-serif;
  }
 
+
+ //TEXT AREA
+ textarea{
+   padding: 8px 20px 2px 20px;
+  border-radius: 20px;
+  border: 1px solid #474d5e;
+  color: #000000;
+ }
+
  //BRILLNIRSSCHOOL BTNS
  //BRILL BTns
 .brill-btn-2{
@@ -296,6 +305,7 @@ button{
   padding: 10px;
   text-align: center;
   border-radius: 6px;
+  font-size: 2em;
 }
 
 .global-fixed-control-btns button{
