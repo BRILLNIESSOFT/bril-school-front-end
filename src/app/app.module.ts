@@ -22,6 +22,7 @@ import { ContainerfluidComponent } from './brillyschoolcomponents/global/contain
 import { FooterComponent } from './brillyschoolcomponents/global/footer/footer.component';
 import { RegistrationComponent } from './brillyschoolcomponents/students/registration/registration.component';
 import { from } from 'rxjs';
+import { StaffsComponent } from './brillyschoolcomponents/staff/staffs/staffs.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { from } from 'rxjs';
     HeaderComponent,
     ContainerfluidComponent,
     FooterComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    StaffsComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,8 @@ import { RegistrationStepsCongs } from './registration-steps'
 //HANDLIGN ALL THE EXISTING FORMS
 import { FormGroup , FormControl } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
+
 
  
 //importing services
@@ -32,7 +34,7 @@ export class RegistrationComponent implements OnInit {
     //HERE IS THE WHOLE FORM DATA WHICH IS CONTAINTS EVERYTHING
     studentRegistrationEntireData:any = [];
     //DEFIGNING THE GLOBAL STEP INDEXES AND NAMES
-     public  stepIndexNum: number = 1;
+     public  stepIndexNum: number = 3;
    //CREATING AN INSTANCE FROM THR REGISTRATION STEP WITH A STEP TO THE CONSTRUCTOR
     stepIndexHandler = new RegistrationStepsCongs(); 
     // STEPS TEXT 
@@ -61,6 +63,7 @@ export class RegistrationComponent implements OnInit {
 
    //WEBCAM STUDENT IMAGE
    public webcamImage?: WebcamImage;
+   public studentPhotoInLocal = null;
 
      // webcam snapshot trigger
   private trigger: Subject<void> = new Subject<void>();
@@ -84,17 +87,34 @@ export class RegistrationComponent implements OnInit {
      
       //HANDLING ANYTHING HAS TO DO WITH FORM GROUPS
         GuardianForm =  this.FB.group({
-            guardianCIN: ['SH123432'],
-            guardianFirstName: ['SH123432'],
-            guardianLastName: ['SH123432'],
-            guardianFirstNameArabic: ['SH123432'],
-            guardianLastNameArabic: ['SH123432'],
-            guardianReleventType: ['SH123432'],
-            guardianPhoneNumber: ['SH123432'],
-            guardianPhoneNumberAlt: ['SH123432'],
-            guardianEmail: ['SH123432'],
-            guardianPlaceOfBirth: ['SH123432'],
-            guardianDateOfBirth: ['SH123432']
+              GuardianData: this.FB.group({
+                    guardianCIN: ['' , Validators.required, Validators.minLength(4)],
+                    guardianFirstName: ['SH123432'],
+                    guardianLastName: ['SH123432'],
+                    guardianFirstNameArabic: ['SH123432'],
+                    guardianLastNameArabic: ['SH123432'],
+                    guardianReleventType: ['SH123432'],
+                    guardianPhoneNumber: ['SH123432'],
+                    guardianPhoneNumberAlt: ['SH123432'],
+                    guardianEmail: ['SH123432'],
+                    guardianPlaceOfBirth: ['SH123432'],
+                    guardianDateOfBirth: ['SH123432']
+              }) , 
+
+              studentData: this.FB.group({
+                studentCNE: ['sSH123432'],
+                studentRegistrationNumber: ['sSH123432'],
+                studentFirstName: ['sSH123432'],
+                studentLastName: ['sSH123432'],
+                studentLastNameAR: ['sSH123432'],
+                studentFirstNameAR: ['SH123432'],
+                studentStatus: ['sSH123432'],
+                studentPlaceOfBirth: ['sSH123432'],
+                studentSex: ['sSH123432'],
+                studentDateOfBirth: ['sSH123432'],
+                studentSupport: ['sSH123432'] ,    
+                studentTel: ['sSH123432']          
+              })
         });
 
 
@@ -186,19 +206,31 @@ export class RegistrationComponent implements OnInit {
         console.log(this.studentRegistrationEntireData);
       }
 
-    //BACK TO THE PRIEVIEWS STEP
-    backToStep(){
-      this.isJustSkiped = false;     
-      if(this.stepIndexNum >= 1){
-        console.log(this.stepIndexNum);
-          this.stepIndexNum -= 1;
-          this.stepIndex = {
-            stepHeaderTitle: this.stepIndexHandler.getStepsCongs(this.stepIndexNum).CurrentStepTitle,
-            stepDescription: this.stepIndexHandler.getStepsCongs(this.stepIndexNum).CurrentStepDesc      
+        //BACK TO THE PRIEVIEWS STEP
+        backToStep(){
+          this.isJustSkiped = false;     
+          if(this.stepIndexNum >= 1){
+            console.log(this.stepIndexNum);
+              this.stepIndexNum -= 1;
+              this.stepIndex = {
+                stepHeaderTitle: this.stepIndexHandler.getStepsCongs(this.stepIndexNum).CurrentStepTitle,
+                stepDescription: this.stepIndexHandler.getStepsCongs(this.stepIndexNum).CurrentStepDesc      
+              }
           }
-       }
-    }  
+        }  
 
+      //CHOOSE STUDENT PHOTO
+      // chooseStudentPhoto(){
+      //    return document.querySelector('#student_local_photo').click();
+      // }
+
+      //   //STudentIMAGEuPLOAD cHANGED 
+      //   uploadStudentImg(evt: any){
+      
+      //     const readStudentUploadedPhoto = new FileReader();
+      //     this.studentPhotoInLocal = readStudentUploadedPhoto.readAsDataURL(evt.target.files[0]); 
+      //     console.log(this.studentPhotoInLocal);
+      //   }
     //PROCCED TO THE NEXT STEP  
     Procced(){
       console.log(this.GuardianForm);

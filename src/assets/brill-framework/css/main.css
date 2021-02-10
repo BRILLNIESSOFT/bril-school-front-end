@@ -316,9 +316,20 @@ ul.notifications > li {
   -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  border-color: #eaeaea; }
+  border-color: #eaeaea; 
+  box-shadow: none;
+  border-color: #eaeaea;
+  padding: 10px;
+}
+
+  .dropdown-menu a{
+    color: #474d5e;
+    display: block;
+    padding: 4px;
+  }
   .dropdown-menu > li > a {
-    color: #676a6d; }
+    color: #676a6d; 
+}
   .dropdown-menu > li i {
     margin-right: 6px; }
   .dropdown-menu .active > a, .dropdown-menu .active > a:focus, .dropdown-menu .active > a:hover {

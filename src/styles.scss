@@ -207,3 +207,286 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: #fff;
   box-shadow: -1px 0px 3px 0px rgb(0 0 0 / 87%);
 }
+
+button{
+  outline:none;
+}
+ 
+
+.brill-input-msg{
+  position: absolute;
+  margin-bottom: 0px;
+  margin-left: 220px;
+  background-color: #ffffffeb;
+  padding-bottom: 40px;
+  border-radius: 10px;
+  border: 1px solid #ff8686;
+  width: 260px;
+}
+
+.brill-input-msg .msg{
+  margin: 20px 10px 0px 10px;
+}
+
+
+.brill-input-not-valid{
+  border: 2px solid #ff6161;
+}
+
+
+.brill-container-g{
+  min-height: 800px;
+}
+
+.global-container-header{
+  margin-top: 20px;
+}
+
+.global-container-header h3{
+  clear: both;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 1.4em;
+  color: #4a4a4a;
+}
+
+
+.brill-filter-by-click {
+     min-height: 30px;
+     float: left;
+  }
+
+.brill-filter-by-click ul{
+  list-style: none;
+  float: left;
+
+ }
+
+ .brill-filter-by-click ul li{
+   float: right;
+   margin: 4px 10px 4px 10px;
+ }
+
+ .brill-filter-by-click ul li a{
+   font-size: 1.3em;
+}
+
+
+//CARDS
+.staff-card .brill-card-options button{
+  float: right;
+    background: no-repeat;
+    border: none;
+    font-size: 1.8em;
+}
+
+.brill-card-options .card-options-holder-options{
+  margin-left: 80px;
+}
+
+//GLOBAL CONTROLL BAR IN THE BOTTOM RIGHT OF THE ONTAINER FUILD
+.global-fixed-control-btns{
+  min-width: 100px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 300;
+  background-color: #474d5e78;
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.global-fixed-control-btns button{
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 1px solid #474d5e;
+  margin: 0px 4px 0px 4px;
+}
+
+
+//BRILL INPUTS
+
+
+/************ PAGE 3 ,PAGE 5,PAGE 6,PAGE 7, ***************************************************/
+/************ PAGE 3 ,PAGE 5,PAGE 6,PAGE 7, ***************************************************/
+.brill-input-holders .inputs-container {
+  margin: 30px 15px 0;
+  padding: 20px 0px 0px 1px;
+  background-color: #f5f5f5;
+  border-radius: 30px;
+  min-height: 340px;
+}
+
+.brill-input-holders .inputs-container .brill-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+  align-items: center;        
+  padding: 0px 20px 12px;
+}
+.brill-input-holders .inputs-container .brill-row.no-center
+{
+  align-items: baseline !important;
+  margin-top: 20px;
+}
+.brill-input-holders .inputs-container .brill-row>div
+{
+  margin-right: 20px;
+  width: 23%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.brill-input-holders .inputs-container label
+{
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  padding: 0px 20px 0px 20px;
+}
+.brill-input-holders .inputs-container input.input {
+  background: #fdfdfd;
+  border: 1px solid;
+  width: 100%;
+  padding: 11px 18px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  border-radius: 30px;
+  letter-spacing: .5px;
+}
+
+.brill-input-holders .inputs-container .input-select{
+background: #474d5e;
+  border: 1px solid;
+  width: 100%;
+  padding: 11px 10px 12px 20px;
+      font-weight: 600;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  border-radius: 30px;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.brill-input-holders .inputs-container input[type='button'] {
+  background: #474d5e;
+  color: #fff;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  max-width: 220px;
+}
+.brill-input-holders .inputs-container .btn-save>.add ,.inputs-container .brill-row>.add {
+  background-color: #38679c;
+  max-height: 45px;
+  margin-left: 5px;
+}
+.brill-input-holders .inputs-container input.input::-webkit-input-placeholder {
+  font-weight: 600;
+  
+}
+
+.brill-input-holders .inputs-container input.input.obliger::-webkit-input-placeholder {
+  color: #f57e7e;
+}
+
+
+
+.brill-input-holders .inputs-container .brill-row > .add-guardians {
+  background-color: #ececec;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  margin-right: 30px;
+  border-radius: 10px 20px 20px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 30px;
+  flex-direction: row !important;
+}
+
+.brill-input-holders .inputs-container .brill-row > .add-guardians .item-guar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.brill-input-holders .inputs-container .brill-row > .add-guardians .item-guar > p {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: .9em;
+}
+
+.brill-input-holders .inputs-container .brill-row > .add-guardians .item-guar:first-of-type {
+  padding: 14px 10px;
+  background: #1b6c85;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+.brill-input-holders .inputs-container .add-guardians .circel-small.red {
+  margin-left: 7px;
+  padding: 5px;
+  position: relative;
+}
+
+.brill-input-holders .inputs-container .add-guardians .circel-small.red::before {
+  content: "";
+  width: 4px;
+  position: absolute;
+  top: 4px;
+  left: 2.9px;
+  border: 1px solid #fff;
+}
+
+.brill-input-holders .inputs-container .add-guardians > .places {
+  padding: 30px 40px;
+}
+
+.brill-input-holders .inputs-container .arabic {
+  direction: rtl;
+}
+
+.brill-input-holders .blue {
+  color: #0394c1;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.brill-input-holders .inputs-container > .map {
+  margin: 20px 0 0;
+}
+
+.brill-input-holders .inputs-container > .map > div {
+  border: 1px solid;
+  height: 200px;
+  width: 90%;
+  margin: auto;
+  border-radius: 20px;
+}
+.brill-input-holders .inputs-container .btn-save
+{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 7px 43px 18px;
+}
+
+
+
+
