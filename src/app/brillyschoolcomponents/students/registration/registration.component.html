@@ -1,4 +1,12 @@
 <div class="student-registration-parent col-md-12">
+
+    <div class="brill-validation-notify brill-validation-notify-failed">
+        <button class="close-notification"> <i class="lnr lnr-cross-circle"></i> </button>
+       <p>
+        IT HAS BEEN FAILELD THE OPERATION
+       </p>
+    </div>
+
     <div class="student-registration-header">
             <h3>Register new student | {{ stepIndex.stepHeaderTitle }} </h3>
             <p>
@@ -6,7 +14,7 @@
             </p> 
     </div>  
     <form [formGroup]="GuardianForm"> 
-            <section [ngSwitch] = "stepIndexNum" >
+            <section [ngSwitch] = "stepIndexNum" class="registration-form-parent-sect">
                     <!-- HERE IS THE BODY OF THE FINGER PRINT SETTINGS AND INSERATIONS STARTS-->
                     <div *ngSwitchCase="1" #fingerPringSection>
                          <div class="registration-body">
@@ -69,15 +77,18 @@
                         <div class="brill-row">
                             <div>
                                 <label for="cin">cin</label>
-                                <input  formControlName="guardianCIN" type="text" name="cin" placeholder="CIN" class="input obliger">
+                                <input  formControlName="cin" type="text" name="cin" placeholder="CIN" class="input obliger" required 
+                                [class.input-not-invalid]="GuardianForm.get('GuardianData.cin').invalid && GuardianForm.get('GuardianData.cin').touched">
                             </div>
                             <div>
                                 <label for="prenom">prénom</label>
-                                <input  formControlName="guardianFirstName" name="prenom" type="text" placeholder="PRENOM" class="input obliger">
+                                <input  formControlName="first_name" name="prenom" type="text" placeholder="PRENOM" class="input obliger" required
+                                [class.input-not-invalid]="GuardianForm.get('GuardianData.first_name').invalid && GuardianForm.get('GuardianData.first_name').touched">
                             </div>
                             <div>
                                 <label for="nom">nom</label>
-                                <input formControlName="guardianLastName" name="nom" type="text" placeholder="NOM" class="input obliger">
+                                <input formControlName="last_name" name="nom" type="text" placeholder="NOM" class="input obliger"
+                                [class.input-not-invalid]="GuardianForm.get('GuardianData.last_name').invalid && GuardianForm.get('GuardianData.last_name').touched">
                             </div>
                             <div>
                                 <label for="sexe">sexe</label>
@@ -90,7 +101,8 @@
                         <div class="brill-row">
                             <div>
                                 <label for="date de naissance">date de naissance</label>
-                                <input formControlName="guardianDateOfBirth" type="date" placeholder="Date de naissance" class="input">
+                                <input formControlName="guardianDateOfBirth" type="date" placeholder="Date de naissance" class="input"
+                                [class.input-not-invalid]="GuardianForm.get('GuardianData.birth_date').invalid && GuardianForm.get('GuardianData.birth_date').touched">
                             </div>
                     
                             <div>

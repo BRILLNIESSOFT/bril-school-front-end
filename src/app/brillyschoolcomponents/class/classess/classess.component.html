@@ -1,12 +1,12 @@
 <div class="brill-container-g classes col-md-12">
 
         <!-- BRILL BOTTOM IICONS  -->
-        <div class="global-fixed-control-btns">
-            <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_class"><i class="lnr lnr-graduation-hat"> </i></button>
-            <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_class_section"><i class="lnr lnr-apartment"> </i></button>
+        <div class="global-fixed-control-btns" (mouseover)="onMouseOverTheFixedMenu()" (mouseout)="onMouseOutTheFixedMenu()" [@fixedMenuClosed]="bottomFixedMenuCase ? 'onopned' : 'onclosed'">
+            <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_staff"><i class="lnr lnr-plus-circle"> </i></button>
+            <button type="button"><i class="lnr lnr-crop"> </i></button>
             <button type="button"><i class="lnr lnr-user"> </i></button>
             <button type="button"><i class="lnr lnr-pencil"> </i></button>
-     </div>
+        </div>
 
     <div class="global-container-header">
         <h3> ALL CLASSES OF YOUR SCHOOL </h3>
@@ -14,13 +14,7 @@
 
 
     <div class="classes-list col-md-12">
-        
-
-
-
-
-
-
+        <!-- STUDENT TABLE-->
         <div class="brill-table-container col-md-10">
             <table class="table table-hover brill-tables">
                 <thead>
@@ -124,9 +118,6 @@
 
 
         </div>
-
-
-
 
  <!--START SIDE BAR FIX RIGHT-->
  <div class="col-md-2 brill-left-sidebar-search-tab">

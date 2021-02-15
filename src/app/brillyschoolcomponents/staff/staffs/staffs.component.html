@@ -1,6 +1,6 @@
 <div class="brill-container-g staffs col-md-12">
     <!-- BRILL BOTTOM IICONS  -->
-    <div class="global-fixed-control-btns">
+    <div class="global-fixed-control-btns" (mouseover)="onMouseOverTheFixedMenu()" (mouseout)="onMouseOutTheFixedMenu()" [@fixedMenuClosed]="bottomFixedMenuCase ? 'onopned' : 'onclosed'">
            <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_staff"><i class="lnr lnr-plus-circle"> </i></button>
            <button type="button"><i class="lnr lnr-crop"> </i></button>
            <button type="button"><i class="lnr lnr-user"> </i></button>

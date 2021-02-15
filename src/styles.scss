@@ -87,6 +87,23 @@ $brillContainerBorder: 1px solid #474d5e38;
     }
 }
 
+.brill-btn-4{
+  border-radius: 40px;
+  background-color: 759492;
+  border: none;
+  padding: 10px;
+  width: 100px;
+  color: #3c3c3c;
+  background-color: #e4e4e4;
+  margin: 2px 4px 2px 4px;
+  &:hover{
+      background-color: #d3d3d3;
+  }
+}
+
+
+ 
+
 .brill-btn-1{
     border-radius: 40px;
     background-color: 759492;
@@ -260,6 +277,9 @@ button{
   color: #4a4a4a;
 }
 
+.global-container-header p{
+  text-align: center;
+}
 
 .brill-filter-by-click {
      min-height: 30px;
@@ -328,7 +348,6 @@ button{
   padding: 20px 0px 0px 1px;
   background-color: #f5f5f5;
   border-radius: 30px;
-  min-height: 340px;
 }
 
 .brill-input-holders .inputs-container .brill-row {
@@ -498,5 +517,51 @@ background: #474d5e;
 }
 
 
+//BRILL VALIDATION NOTIFICATION
+.brill-validation-notify{
+  width: 300px;
+  height: 100px;
+     color: #ffffff;
+     position: fixed;
+     right: 20px;
+     top: 120px;
+}
+
+.brill-validation-notify .close-notification{
+  border: none;
+  background: none;
+  cursor: pointer;
+    font-size: 2em;
+    float: right;
+    padding: 10px;
+}
+
+.brill-validation-notify p{
+    text-align: center;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    color: #ffffff;
+}
+
+  
+
+.brill-validation-notify-failed{
+  background-color: #ec2654;
+  border-left: 10px solid #e20035;
+}
+
+.brill-validation-notify-success{
+  background-color: #0db972;
+  border-left: 10px solid #0a8854;
+}
+
+.brill-validation-notify-info{
+  background-color: #009fb9;
+  border-left: 10px solid #00788c;
+}
 
 
+.input-not-invalid{
+  border: 3px solid #d60027 !important;
+}

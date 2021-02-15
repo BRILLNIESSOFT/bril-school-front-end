@@ -1,0 +1,34 @@
+.payment-student-preview {
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-top: 20px;
+  min-height: 165px;
+  border: 1px solid #dcdcdc;
+  padding: 20px;
+}
+
+.preview-info-btn ul {
+  list-style: none;
+}
+
+.payment-student-preview .preview-img img {
+  width: 100%;
+  border-radius: 50%;
+  border: 4px solid #55d1e7;
+}
+
+.payment-student-preview .preview-info {
+  margin-top: 20px;
+  border-right: 1px solid #dcdcdc;
+}
+
+.payment-student-preview .preview-info ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.payment-student-preview .preview-info ul li {
+  font-weight: bold;
+  margin: 8px 0px 8px 0px;
+}
+/*# sourceMappingURL=student-payment.component.css.map */

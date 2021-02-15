@@ -88,32 +88,36 @@ export class RegistrationComponent implements OnInit {
       //HANDLING ANYTHING HAS TO DO WITH FORM GROUPS
         GuardianForm =  this.FB.group({
               GuardianData: this.FB.group({
-                    guardianCIN: ['' , Validators.required, Validators.minLength(4)],
-                    guardianFirstName: ['SH123432'],
-                    guardianLastName: ['SH123432'],
-                    guardianFirstNameArabic: ['SH123432'],
-                    guardianLastNameArabic: ['SH123432'],
-                    guardianReleventType: ['SH123432'],
-                    guardianPhoneNumber: ['SH123432'],
-                    guardianPhoneNumberAlt: ['SH123432'],
-                    guardianEmail: ['SH123432'],
-                    guardianPlaceOfBirth: ['SH123432'],
-                    guardianDateOfBirth: ['SH123432']
+                    cin: ['', Validators.minLength(5)],
+                    first_name: ['', Validators.minLength(5)],
+                    last_name: ['', Validators.minLength(5)],
+                    first_name_ara: ['', Validators.minLength(5)],
+                    last_name_ara: ['', Validators.minLength(5)],
+                    mid_name: ['', Validators.minLength(5)],
+                    mid_name_ar: ['', Validators.minLength(5)],
+                    relationship_type: ['', Validators.minLength(5)],
+                    phone: ['', Validators.minLength(5)],
+                    phone2: [''],
+                    email: ['', Validators.email],
+                    birth_place: [''],
+                    birth_date: ['']
               }) , 
 
               studentData: this.FB.group({
-                studentCNE: ['sSH123432'],
-                studentRegistrationNumber: ['sSH123432'],
-                studentFirstName: ['sSH123432'],
-                studentLastName: ['sSH123432'],
-                studentLastNameAR: ['sSH123432'],
-                studentFirstNameAR: ['SH123432'],
-                studentStatus: ['sSH123432'],
-                studentPlaceOfBirth: ['sSH123432'],
-                studentSex: ['sSH123432'],
-                studentDateOfBirth: ['sSH123432'],
-                studentSupport: ['sSH123432'] ,    
-                studentTel: ['sSH123432']          
+                first_name:  ['', Validators.minLength(5)],
+                last_name:  ['', Validators.minLength(5)],
+                first_name_ar:  ['', Validators.minLength(5)],
+                last_name_ar:  ['', Validators.minLength(5)],
+                mid_name:  ['', Validators.minLength(5)],
+                mid_name_ara:  ['', Validators.minLength(5)],
+                studentStatus:  ['', Validators.minLength(5)],
+                studentSex:  [''],
+                birth_place:  ['', Validators.minLength(5)],
+                birth_date:  ['', Validators.minLength(5)],
+                studentSupport:  ['', Validators.minLength(5)] ,    
+                phone:  ['', Validators.minLength(5)],
+                gender:  ['', Validators.minLength(5)],
+                cne:  ['', Validators.minLength(5)]            
               })
         });
 

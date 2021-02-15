@@ -24,6 +24,8 @@ import { RegistrationComponent } from './brillyschoolcomponents/students/registr
 import { from } from 'rxjs';
 import { StaffsComponent } from './brillyschoolcomponents/staff/staffs/staffs.component';
 import { ClassessComponent } from './brillyschoolcomponents/class/classess/classess.component';
+import { StudentPaymentComponent } from './brillyschoolcomponents/payments/student-payment/student-payment.component';
+import { CheckComponent } from './brillyschoolcomponents/timetables/check/check.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { ClassessComponent } from './brillyschoolcomponents/class/classess/class
     FooterComponent,
     RegistrationComponent,
     StaffsComponent,
-    ClassessComponent
+    ClassessComponent,
+    StudentPaymentComponent,
+    CheckComponent
   ],
   imports: [
     BrowserModule,
