@@ -28,13 +28,13 @@ export class RegistrationComponent implements OnInit {
     //STUDENT SERVICES THAT MUST COME FROM THE SERVER
      drafftedStudentArray?:Array<any>;
   
-   //BINDING THE REGISTRATION STEPS
-   // @ViewChild('fingerPringSection') sectionFingerPrint: ElementRef;
+   //BINDING THE NOTIFICATION VALIDATION
+    // @ViewChild('validateInRegistration') brillNotifier?: ElementRef;
     
     //HERE IS THE WHOLE FORM DATA WHICH IS CONTAINTS EVERYTHING
     studentRegistrationEntireData:any = [];
     //DEFIGNING THE GLOBAL STEP INDEXES AND NAMES
-     public  stepIndexNum: number = 3;
+     public  stepIndexNum: number = 1;
    //CREATING AN INSTANCE FROM THR REGISTRATION STEP WITH A STEP TO THE CONSTRUCTOR
     stepIndexHandler = new RegistrationStepsCongs(); 
     // STEPS TEXT 
@@ -86,13 +86,15 @@ export class RegistrationComponent implements OnInit {
     
      
       //HANDLING ANYTHING HAS TO DO WITH FORM GROUPS
-        GuardianForm =  this.FB.group({
-              GuardianData: this.FB.group({
+      RegistrationFormGroup =  this.FB.group({
+               //GUARDIAN NASTED FORM GROUP
+               guardian: this.FB.group({
                     cin: ['', Validators.minLength(5)],
                     first_name: ['', Validators.minLength(5)],
                     last_name: ['', Validators.minLength(5)],
                     first_name_ara: ['', Validators.minLength(5)],
                     last_name_ara: ['', Validators.minLength(5)],
+                    gender: ['', Validators.minLength(5)],
                     mid_name: ['', Validators.minLength(5)],
                     mid_name_ar: ['', Validators.minLength(5)],
                     relationship_type: ['', Validators.minLength(5)],
@@ -103,22 +105,41 @@ export class RegistrationComponent implements OnInit {
                     birth_date: ['']
               }) , 
 
-              studentData: this.FB.group({
+               //STUDENT NASTED FORM GROUP
+              student: this.FB.group({
+                regidtration_number:  ['', Validators.minLength(5)],
                 first_name:  ['', Validators.minLength(5)],
                 last_name:  ['', Validators.minLength(5)],
                 first_name_ar:  ['', Validators.minLength(5)],
                 last_name_ar:  ['', Validators.minLength(5)],
                 mid_name:  ['', Validators.minLength(5)],
                 mid_name_ara:  ['', Validators.minLength(5)],
-                studentStatus:  ['', Validators.minLength(5)],
+                status:  ['', Validators.minLength(5)],
                 studentSex:  [''],
                 birth_place:  ['', Validators.minLength(5)],
                 birth_date:  ['', Validators.minLength(5)],
-                studentSupport:  ['', Validators.minLength(5)] ,    
+                has_support:  ['', Validators.minLength(5)] ,    
                 phone:  ['', Validators.minLength(5)],
                 gender:  ['', Validators.minLength(5)],
                 cne:  ['', Validators.minLength(5)]            
-              })
+              }),
+               //assigning student to services
+               assigningData: this.FB.group({
+                to_class:  ['', Validators.minLength(5)],
+                to_group:  ['', Validators.minLength(5)],
+                to_trans_line:  ['', Validators.minLength(5)]
+               })   ,
+               
+                         //STUDENT ADRESS INFORMATION 
+                         adressData: this.FB.group({
+                          city:  ['', Validators.minLength(5)],
+                          zip:  ['', Validators.minLength(5)],
+                          line_1:  ['', Validators.minLength(5)],
+                          line_2:  ['', Validators.minLength(5)],
+           
+                        }),
+ 
+
         });
 
 
@@ -237,28 +258,28 @@ export class RegistrationComponent implements OnInit {
       //   }
     //PROCCED TO THE NEXT STEP  
     Procced(){
-      console.log(this.GuardianForm);
-       this.isJustSkiped = false;
-      if(this.studentFingerPrint.firstTry === this.studentFingerPrint.secondTry){
-          this.NotesFingerPrint.message = 'Student finger print successfully detected , proceed to the nex step or set another one !';
-          this.NotesFingerPrint.status = 2; 
-          //ASSIGNING THE FIGNER PRINT VALUE TO THE FORM GROUP GLOBAL ARRAY
-          this.studentRegistrationEntireData['studentfingerPrintData'] = {
-            firstTry: this.studentFingerPrint.firstTry,
-            secondTry: this.studentFingerPrint.secondTry
-          }; 
-        
-          if(this.stepIndexNum <= 5){
-            console.log(this.stepIndexNum);
+         if(this.stepIndexNum <= 5){
               this.stepIndexNum += 1;
-              this.stepIndex = {
-                stepHeaderTitle: this.stepIndexHandler.getStepsCongs(this.stepIndexNum).CurrentStepTitle,
-                stepDescription: this.stepIndexHandler.getStepsCongs(this.stepIndexNum).CurrentStepDesc      
-              }
-           }
-          
-      }
-
+                  this.stepIndex = {
+                  stepHeaderTitle: this.stepIndexHandler.getStepsCongs(this.stepIndexNum).CurrentStepTitle,
+                  stepDescription: this.stepIndexHandler.getStepsCongs(this.stepIndexNum).CurrentStepDesc      
+               }  
+        }else{
+          console.log(this.RegistrationFormGroup.value);
+        }
+  
+    
     }
+
+
+    //SUBMIT THE FORM DATA / REGISTERNEW STUDENT PREQUEST
+    registareNewStudent(){
+      console.log(this.RegistrationFormGroup.value);
+      this.drafttedStudent.submitToRegisterNewStudent(this.RegistrationFormGroup.value)
+        .subscribe(
+          response => console.log("seccess" , response),
+          error => console.log("error occurs" , error)
+        );
+     }
   
 }

@@ -2,7 +2,7 @@
 
         <!-- BRILL BOTTOM IICONS  -->
         <div class="global-fixed-control-btns" (mouseover)="onMouseOverTheFixedMenu()" (mouseout)="onMouseOutTheFixedMenu()" [@fixedMenuClosed]="bottomFixedMenuCase ? 'onopned' : 'onclosed'">
-            <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_staff"><i class="lnr lnr-plus-circle"> </i></button>
+            <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_class"><i class="lnr lnr-plus-circle"> </i></button>
             <button type="button"><i class="lnr lnr-crop"> </i></button>
             <button type="button"><i class="lnr lnr-user"> </i></button>
             <button type="button"><i class="lnr lnr-pencil"> </i></button>
@@ -209,15 +209,16 @@
                       <div class="add-new-staff">
                           <h3> ADD NEW CLASS</h3>
                          <div class="brill-input-holders"> 
-                          <div class="inputs-container"  >
+                          <div class="inputs-container">
+                              <form [formGroup] = "newClassForm">
                             <div class="brill-row">
                                 <div>
                                     <label for="class_name">Class name</label>
-                                    <input name="class_name" type="text" placeholder="class name" class="input obliger">
+                                    <input formControlName = "name" name="class_name" type="text" placeholder="class name" class="input obliger">
                                 </div>
                                 <div>
                                     <label for="clas_code">Class code</label>
-                                    <input name="clas_code" type="text" placeholder="Class code" class="input obliger">
+                                    <input formControlName = "code" name="clas_code" type="text" placeholder="Class code" class="input obliger">
                                 </div>
                                 <div>
                                     <label for="class_number">Class Number</label>
@@ -236,11 +237,11 @@
                             <div class="brill-row">
                                 <div>
                                     <label for="class_desc">Class Description</label>
-                                    <textarea name="class_desc" rows="4" placeholder="You can leave it blank if you want"> </textarea>
+                                    <textarea  formControlName = "description" name="class_desc" rows="4" placeholder="You can leave it blank if you want"> </textarea>
                                 </div>
                                 <div>
                                     <label for="class_notes">Class Notes</label>
-                                    <textarea name="class_notes" rows="4" placeholder="You can leave it blank if you want"> </textarea>
+                                    <textarea formControlName = "note" name="class_notes" rows="4" placeholder="You can leave it blank if you want"> </textarea>
                                 </div>   
                             </div>
                         
@@ -253,6 +254,7 @@
                                 <button type="button" class="brill-btn-3">ADD STAFF</button>
                          </div>
                    </section>
+                </form>
           </div>
         </div>
       </div>

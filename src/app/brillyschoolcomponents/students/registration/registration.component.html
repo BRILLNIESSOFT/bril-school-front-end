@@ -1,6 +1,6 @@
 <div class="student-registration-parent col-md-12">
 
-    <div class="brill-validation-notify brill-validation-notify-failed">
+    <div #validateInRegistration class="brill-validation-notify">
         <button class="close-notification"> <i class="lnr lnr-cross-circle"></i> </button>
        <p>
         IT HAS BEEN FAILELD THE OPERATION
@@ -13,7 +13,7 @@
               {{ stepIndex.stepDescription }} 
             </p> 
     </div>  
-    <form [formGroup]="GuardianForm"> 
+    <form [formGroup]="RegistrationFormGroup" (ngSubmit)="registareNewStudent()"> 
             <section [ngSwitch] = "stepIndexNum" class="registration-form-parent-sect">
                     <!-- HERE IS THE BODY OF THE FINGER PRINT SETTINGS AND INSERATIONS STARTS-->
                     <div *ngSwitchCase="1" #fingerPringSection>
@@ -73,110 +73,116 @@
              <!-- HERE IS THE BODY OF THE STUDENT PHOTO UPLOADS AND INSERATIONS ENDS-->
            <!-- HERE IS THE BODY OF THE GUARDIAN INFORMATIONS STARTS-->
              <div *ngSwitchCase="3" #guardianInfoSection class="brill-input-holders">
-                    <div class="inputs-container" formGroupName="GuardianData">
+                    <div class="inputs-container" formGroupName="guardian">
                         <div class="brill-row">
                             <div>
                                 <label for="cin">cin</label>
-                                <input  formControlName="cin" type="text" name="cin" placeholder="CIN" class="input obliger" required 
-                                [class.input-not-invalid]="GuardianForm.get('GuardianData.cin').invalid && GuardianForm.get('GuardianData.cin').touched">
+                                <input  formControlName="cin" type="text" name="cin" placeholder="CIN" class="input obliger" required >
                             </div>
                             <div>
                                 <label for="prenom">prénom</label>
-                                <input  formControlName="first_name" name="prenom" type="text" placeholder="PRENOM" class="input obliger" required
-                                [class.input-not-invalid]="GuardianForm.get('GuardianData.first_name').invalid && GuardianForm.get('GuardianData.first_name').touched">
+                                <input  formControlName="first_name" name="prenom" type="text" placeholder="PRENOM" class="input obliger" required>
                             </div>
                             <div>
                                 <label for="nom">nom</label>
-                                <input formControlName="last_name" name="nom" type="text" placeholder="NOM" class="input obliger"
-                                [class.input-not-invalid]="GuardianForm.get('GuardianData.last_name').invalid && GuardianForm.get('GuardianData.last_name').touched">
+                                <input formControlName="last_name" name="nom" type="text" placeholder="NOM" class="input obliger" required>
                             </div>
-                            <div>
-                                <label for="sexe">sexe</label>
-                                 <select class="input-select" formControlName="guardianCIN" name="sexe" id="sexe">
-                                     <option selected value="">Famle</option>
-                                    <option value="volvo">Male</option>
-                                  </select>
+                            <div class="brill-input-radio">
+                                 <ul>
+                                    <li>
+                                        <input type="radio" id="f-option" formControlName="gender" name="gender">
+                                        <label for="f-option">Male</label>
+                            
+                                        <div class="check"></div>
+                                    </li>
+                            
+                                    <li>
+                                        <input type="radio" id="s-option" formControlName="gender"  name="gender">
+                                        <label for="s-option">Female</label>
+                                        <div class="check"><div class="inside"></div></div>
+                                    </li>
+                                </ul>
+
                             </div>
                         </div>
                         <div class="brill-row">
                             <div>
                                 <label for="date de naissance">date de naissance</label>
-                                <input formControlName="guardianDateOfBirth" type="date" placeholder="Date de naissance" class="input"
-                                [class.input-not-invalid]="GuardianForm.get('GuardianData.birth_date').invalid && GuardianForm.get('GuardianData.birth_date').touched">
+                                <input formControlName="birth_date" type="date" placeholder="Date de naissance" class="input">
                             </div>
                     
                             <div>
                                 <label  for="prenom" class="arabic">الاسم العائلي</label>
-                                <input formControlName="guardianLastNameArabic" type="text" placeholder="الاسم العائلي" class="input obliger arabic">
+                                <input formControlName="first_name_ara" type="text" placeholder="الاسم العائلي" class="input obliger arabic" required>
                             </div>
                             <div>
                                 <label for="nom" class="arabic">الاسم الشخصي</label>
-                                <input formControlName="guardianFirstNameArabic" type="text" placeholder="الاسم الشخصي" class="input obliger arabic">
+                                <input formControlName="last_name_ara" type="text" placeholder="الاسم الشخصي" class="input obliger arabic" required>
                             </div>
                             <div>
-                                <label for="lieu de naissance" class="arabic">مكان الازدياد</label>
-                                <input formControlName="guardianPlaceOfBirth" type="text" placeholder="مكان الازدياد" class="input arabic">
+                                <label for="lieu de naissance"> date de naissance</label>
+                                <input formControlName="birth_date" type="text" placeholder="date de naissance " class="input">
                             </div>
                             
                         </div>
                         <div class="brill-row">
                             <div>
                                 <label for="Lieu de naissance">Lieu de naissance</label>
-                                <input formControlName="guardianPlaceOfBirth" type="text" placeholder="Lieu de naissance" class="input">
+                                <input formControlName="birth_place" type="text" placeholder="Lieu de naissance" class="input">
                             </div>
                             <div>
                                 <label for="guardianReleventType">Relation avec l'étudiant</label>
-                                 <select formControlName="guardianReleventType" class="input-select" name="sexe" id="guardianReleventType">
-                                    <option selected value="">Father</option>
-                                    <option selected value="">Mother</option>
-                                    <option value="volvo">Sister</option>
-                                    <option value="volvo">Brother</option>
-                                    <option value="volvo">Grand Mother</option>
-                                    <option value="volvo">Grand Father</option>
-                                    <option value="volvo">Uncle</option>
+                                 <select formControlName="relationship_type" class="input-select" name="sexe" id="guardianReleventType">
+                                    <option selected value="Father">Father</option>
+                                    <option value="Mother">Mother</option>
+                                    <option value="Father">Father</option>
+                                    <option value="Brother">Brother</option>
+                                    <option value="Grand Mother">Grand Mother</option>
+                                    <option value="Grand Father">Grand Father</option>
+                                    <option value="Uncle">Uncle</option>
                                  </select>
                             </div>
                             <div>
                                 <label for="Num télé">Num téléphone</label>
-                                <input formControlName="guardianPhoneNumber" type="tel" placeholder="Num télé" class="input obliger" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                                <input formControlName="phone" type="tel" placeholder="Num télé" class="input obliger" required>
                             </div>
                             <div>
                                 <label for="email">email</label>
-                                <input formControlName="guardianEmail" type="email" placeholder="Email" class="input">
+                                <input formControlName="email" type="email" placeholder="Email" class="input">
                             </div>
                     
                         </div>
                     
   
-                        <div class="btn-save"> 
+                        <!-- <div class="btn-save"> 
                             <input type="button" class="input" value="Sauver le tuteur">
                             <input class="input add" type="button" value="ajouter un autre tuteur">
-                        </div>
+                        </div> -->
                       </div>
              </div> 
               <!-- HERE IS THE END OF GUARDIAN INFORMATION  END -->  
               
               
               <!-- HERE IS THE BODY OF THE STUDENT INFORMATION  STARTS -->   
-             <div *ngSwitchCase="4" #StudentInfoSection class="brill-input-holders" formGroupName="studentData">
+             <div *ngSwitchCase="4" #StudentInfoSection class="brill-input-holders" formGroupName="student">
                 <div class="inputs-container">
                     <div class="brill-row">
     
                         <div>
                             <label for="CNE">CNE</label>
-                            <input formControlName="studentCNE" type="text" placeholder="CNE" class="input obliger">
+                            <input formControlName="cne" type="text" placeholder="CNE" class="input obliger">
                         </div>
                         <div>
                             <label for="Num d'inscription">Num d'inscription</label>
-                            <input formControlName="studentRegistrationNumber" type="text" placeholder="Num d'inscription" class="input obliger">
+                            <input formControlName="regidtration_number" type="text" placeholder="Num d'inscription" class="input obliger">
                         </div>
                         <div>
                             <label for="Prénom">Prénom</label>
-                            <input formControlName="studentFirstName" type="text" placeholder="Prénom" class="input obliger">
+                            <input formControlName="first_name" type="text" placeholder="Prénom" class="input obliger">
                         </div>
                         <div>
                             <label for="Nom">Nom</label>
-                            <input formControlName="studentLastName" type="text" placeholder="Nom " class="input obliger">
+                            <input formControlName="last_name" type="text" placeholder="Nom " class="input obliger">
                         </div>
     
                     </div>
@@ -184,20 +190,20 @@
  
                         <div>
                             <label for="prenom" class="arabic">الاسم العائلي</label>
-                            <input formControlName="studentLastNameAR"type="text" placeholder="الاسم العائلي" class="input arabic obliger">
+                            <input formControlName="last_name_ar"type="text" placeholder="الاسم العائلي" class="input arabic obliger">
                         </div>
                         <div>
                             <label for="nom" class="arabic">الاسم الشخصي</label>
-                            <input formControlName="studentFirstNameAR" type="text" placeholder="الاسم الشخصي" class="input arabic obliger">
+                            <input formControlName="first_name_ar" type="text" placeholder="الاسم الشخصي" class="input arabic obliger">
                         </div>
 
                         <div>
                             <label for="Statue">Statue</label>
-                            <input formControlName="studentStatus" type="text" placeholder="Statue" class="input">
+                            <input formControlName="status" type="text" placeholder="Statue" class="input">
                         </div>
                         <div>
                             <label for="Num d'inscription">Lieu de naissance</label>
-                            <input formControlName="studentPlaceOfBirth" type="text" placeholder="Lieu de naissance" class="input">
+                            <input formControlName="birth_place" type="text" placeholder="Lieu de naissance" class="input">
                         </div>
     
                     </div>
@@ -205,22 +211,22 @@
                     <div class="brill-row">
                         <div>
                             <label for="Sexe">Sexe</label>
-                             <select formControlName="studentSex" class="input-select" formControlName="studentSex" name="sexe" id="sexe">
+                             <select formControlName="gender" class="input-select" formControlName="studentSex" name="sexe" id="sexe">
                                 <option selected value="">Famle</option>
                                <option value="volvo">Male</option>
                              </select>
                         </div>	
                         <div>
                             <label for="Date de naissance">Date de naissance</label>
-                            <input formControlName="studentDateOfBirth" type="date" placeholder="Date de naissance" class="input">
+                            <input formControlName="birth_date" type="date" placeholder="Date de naissance" class="input">
                         </div>
                         <div>
                             <label for="Soutien">Soutien</label>
-                            <input formControlName="studentSupport" type="text" placeholder="Soutien" class="input">
+                            <input formControlName="has_support" type="text" placeholder="Soutien" class="input">
                         </div>
                         <div>
                             <label for="tel">Num télé</label>
-                            <input type="tel" formControlName="studentTel" placeholder="Num télé" class="input" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                            <input type="tel" formControlName="phone" placeholder="Num télé" class="input" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
                         </div>
                         
                     </div>
@@ -237,8 +243,11 @@
              </div>
 
               <!-- HERE IS THE END OF STUDENT INFORMATION  END -->   
+
+            <!-- HERE IS THE START OF STUDENT ASSIGNATION -->   
+
               <div class="brill-input-holders">              
-                <div class="inputs-container" *ngSwitchCase="5" #LinkStudentToServices>
+                <div class="inputs-container" *ngSwitchCase="5" #LinkStudentToServices formGroupName="assigningData">
                         <div class="brill-row">
             
                             <div>
@@ -247,7 +256,7 @@
                             </div>
                             <div>
                                 <label for="addStuentToServices">Ajouter à la classe</label>
-                                 <select class="input-select" formControlName="addStuentToServices" name="class" id="addStuentToServices">
+                                 <select class="input-select" formControlName="to_class" name="class" id="addStuentToServices">
                                     <option  value="">Class 1</option>
                                     <option  value="">Class 2</option>
                                     <option  value="">Class 4</option>
@@ -257,7 +266,7 @@
                             </div>
                             <div>
                                 <label for="Groupe">Groupe</label>
-                                 <select class="input-select" formControlName="addStuentToGroup" name="group" id="Groupe">
+                                 <select class="input-select" formControlName="to_group" name="group" id="Groupe">
                                     <option  value="">group 1</option>
                                     <option  value="">group 2</option>
                                     <option  value="">group 4</option>
@@ -265,7 +274,7 @@
                             </div>
                             <div>
                                 <label for="LigneTrans">Ligne trans</label>
-                                 <select class="input-select" formControlName="addStuentToTransLine" name="addStuentToTransLine" id="LigneTrans">
+                                 <select class="input-select" formControlName="to_trans_line" name="addStuentToTransLine" id="LigneTrans">
                                     <option  value="">LigneTrans 1</option>
                                     <option  value="">LigneTrans 2</option>
                                     <option  value="">LigneTrans 4</option>
@@ -292,24 +301,23 @@
 
                             <!-- HERE IS THE END OF STUDENT ADRESSES INFORMATIONS  STARTS -->   
                   <div class="brill-input-holders">              
-                                 <div class="inputs-container" *ngSwitchCase="6" #LinkStudentToServices>
+                                 <div class="inputs-container" *ngSwitchCase="6" #studentAdressGroupe formGroupName="adressData">
                                          <div class="brill-row">
-                        
                                             <div>
                                                 <label for="Ville">Ville</label>
-                                                <input type="text" placeholder="Ville" class="input">
+                                                <input type="text" formControlName="city" placeholder="Ville" class="input">
                                             </div>
                                             <div>
                                                 <label for="Code postal">Code postal</label>
-                                                <input type="text" placeholder="Code postal" class="input">
+                                                <input type="text" placeholder="Code postal" formControlName="zip" class="input">
                                             </div>
                                             <div>
                                                 <label for="line">Ligne adresse</label>
-                                                <input type="text" placeholder="Ligne adresse" class="input">
+                                                <input type="text" placeholder="Ligne adresse" formControlName="line_1" class="input">
                                             </div>
                                             <div>
                                                 <label for="Ligne">Ligne adresse 2</label>
-                                                <input type="text" placeholder="Ligne adresse 2" class="input">
+                                                <input type="text" placeholder="Ligne adresse 2" formControlName="line_2" class="input">
                                             </div>
                         
                                         </div>
@@ -319,7 +327,9 @@
                                             </div>
                                         </div>
                                  </div>   
-                  </div>                 
+                  </div> 
+                  
+                  <button class="btn btn-primary" type="submit"> SUBMIT DATA DATA</button>
                               <!-- HERE IS THE START OF THE STUDENT  OF THE ADRESSES INFORMATIONS ENDS --> 
             </section>
         </form>

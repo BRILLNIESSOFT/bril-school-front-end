@@ -43,8 +43,7 @@ $accents: (
 }
 
 .timetable{
-  @include make-tiles;
-  border: 1px solid #b4b4b4;
+   border: 1px solid #b4b4b4;
   border-radius: 8px;
    display: grid;
   grid-template-areas: ". week"
