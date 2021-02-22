@@ -1,0 +1,120 @@
+<div class="brill-container-g time-tables col-md-12"> 
+<!-- RIGHT BOTTOM FIXED MENU -->
+    <!-- BRILL BOTTOM IICONS  -->
+    <div class="global-fixed-control-btns">
+        <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_subject"><i class="lnr lnr-plus-circle"> </i></button>
+        <button type="button"><i class="lnr lnr-crop"> </i></button>
+        <button type="button"><i class="lnr lnr-user"> </i></button>
+        <button type="button"><i class="lnr lnr-pencil"> </i></button>
+    </div>
+
+
+    <div class="global-container-header">
+         <h3> SUBJECTS </h3>
+         <p> You can add new subject by  clicking add subject from the menu at the bottom </p>
+    </div>  
+
+ <div class="subject-list col-md-12">
+     
+     <div class="subject-card subject-card-math col-sm-3">
+        <i class="fas fa-square-root-alt"></i> 
+        <h4>MATHEMATHIC</h4>
+     </div>
+
+
+     <div class="subject-card subject-card-ar  col-sm-3">
+        <i class="fas fa-language"></i> 
+        <h4>ARABIC</h4>
+     </div>
+
+
+     <div class="subject-card subject-card-eng  col-sm-3">
+        <i class="fas fa-flag-usa"></i> 
+        <h4>ENGLISH</h4>
+     </div>
+
+
+     <div class="subject-card subject-card-physic  col-sm-3">
+        <i class="fas fa-flask"></i> 
+        <h4>PHYSICS</h4>
+     </div>
+
+
+     <div class="subject-card subject-card-islamic  col-sm-3">
+        <i class="fas fa-kaaba"></i> 
+        <h4>ISLAMIC</h4>
+     </div>
+
+     <div class="subject-card subject-card-geo  col-sm-3">
+        <i class="fas fa-globe-europe"></i> 
+        <h4>GEOGRAPHIC</h4>
+     </div>
+
+
+
+ </div>
+</div> 
+
+
+<!--  HERE ARE ALL THE MODALS TO ADD NEW  -->
+<!--  HERE ARE ALL THE MODALS TO ADD NEW  -->
+<!--  HERE ARE ALL THE MODALS TO ADD NEW  -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+	  <!-- DATA MODAL OF ADD NEW CLASSSS -->
+	  <div id= "brill_modal_create_new_subject" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg brill-modal-dialog">
+          <div class="modal-content">
+            <form [formGroup] = "newSubjectForm" (ngSubmit)="submitNewSubject()">
+
+                <section class="row brill-modal-container">
+                    <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                          
+                      <div class="add-new-staff">
+                          <h3> ADD NEW SUBJECT</h3>
+                         <div class="brill-input-holders" formGroupName = "subject"> 
+                          <div class="inputs-container">
+                            <div class="brill-row">
+                                <div>
+                                    <label for="subject_name">Subject name</label>
+                                    <input formControlName = "name" name="subject_name" type="text" placeholder="class name" class="input obliger">
+                                </div>
+                                <div>
+                                    <label for="subject_code">Subject code</label>
+                                    <input formControlName = "code" name="subject_code" type="text" placeholder="Subject code" class="input obliger">
+                                </div>
+ 
+                                <div>
+                                    <label for="subject_type">Subject Type</label>
+                                    <input formControlName = "subject_type" name="subject_type" type="text" placeholder="Subject Type" class="input obliger">
+                                </div>
+                                <div>
+                                    <label for="subject_color">Subject Color</label>
+                                    <input formControlName = "css_class" name="subject_color" title="Setting a color helps you quickly figure the subject" type="color" placeholder="Subject Type" class="input">
+                                </div>
+                            </div>
+
+                            <div class="brill-row">
+                                <div>
+                                    <label for="subject_desc">Subject Description</label>
+                                    <textarea  formControlName = "description" name="subject_desc" rows="4" placeholder="You can leave it blank if you want"> </textarea>
+                                </div>
+                                <div>
+                                    <label for="class_notes">Subject Notes</label>
+                                    <textarea formControlName = "note" name="class_notes" rows="4" placeholder="You can leave it blank if you want"> </textarea>
+                                </div>   
+                            </div>
+                        
+                          </div>
+                        </div>
+                      </div>
+          <hr>
+                         <div class="modal-footer">
+                                <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                                <button type="submit" class="brill-btn-3">ADD Sub</button>
+                         </div>
+                   </section>
+                </form>
+          </div>
+        </div>
+      </div>
+

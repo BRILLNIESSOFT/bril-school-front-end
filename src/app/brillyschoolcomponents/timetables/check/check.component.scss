@@ -99,3 +99,33 @@ $accents: (
     }
   }
 }
+
+//SUBJECT LIST
+
+.subjects-list-draggable{
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #dcd8d8;
+  position: fixed;
+  left: 280px;
+  bottom: 20px;
+  z-index: 1000;
+  box-shadow: 1px 1px 4px 0px;
+  border-radius: 6px;
+}
+.subjects-list-draggable-item{
+  padding: 10px;
+}
+
+.subjects-list-draggable-item i{
+   text-align: center;
+   display: block;
+   padding: 25px;
+   font-size: 1.6em;
+}
+
+.subjects-list-draggable-item h5{
+  margin-top: 6px;
+  text-align: center;
+  display: block;
+}

@@ -7,15 +7,16 @@ import { StaffsComponent } from  './brillyschoolcomponents/staff/staffs/staffs.c
 import {ClassessComponent } from './brillyschoolcomponents/class/classess/classess.component';
 import {StudentPaymentComponent } from './brillyschoolcomponents/payments/student-payment/student-payment.component';
 import {CheckComponent } from './brillyschoolcomponents/timetables/check/check.component';
+import {SubjectComponent } from './brillyschoolcomponents/subjects/subject/subject.component';
+
 
 const routes: Routes = [
   {path : 'students/register', component: RegistrationComponent} ,
   {path : 'staff/staffs', component: StaffsComponent} ,
   {path : 'class/classess', component: ClassessComponent} ,
   {path : 'student/make-payment', component: StudentPaymentComponent} ,
-  {path : 'timetable/check-time-table', component: CheckComponent}
-
-
+  {path : 'timetable/check-time-table', component: CheckComponent} , 
+  {path : 'subjects/subject', component: SubjectComponent} , 
 ];
 
 @NgModule({

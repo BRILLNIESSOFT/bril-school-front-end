@@ -5,6 +5,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {WebcamModule} from 'ngx-webcam';
 import { HttpClientModule } from '@angular/common/http';
 
+//IMPORTING CALENDER FULL-CALENDER JS MODULES
+import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+import timeGridPlugin from '@fullcalendar/timegrid';
+
+
 //importing form to handel form reqs
 import { ReactiveFormsModule } from '@angular/forms';
 //ANGULAR MATERIALS
@@ -26,7 +33,17 @@ import { StaffsComponent } from './brillyschoolcomponents/staff/staffs/staffs.co
 import { ClassessComponent } from './brillyschoolcomponents/class/classess/classess.component';
 import { StudentPaymentComponent } from './brillyschoolcomponents/payments/student-payment/student-payment.component';
 import { CheckComponent } from './brillyschoolcomponents/timetables/check/check.component';
+import { SubjectComponent } from './brillyschoolcomponents/subjects/subject/subject.component';
 
+
+//REGISTER PLUGINS OF FULLCALENDER JS
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin,
+  timeGridPlugin
+]);
+
+//NG MODELS 
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +56,8 @@ import { CheckComponent } from './brillyschoolcomponents/timetables/check/check.
     StaffsComponent,
     ClassessComponent,
     StudentPaymentComponent,
-    CheckComponent
+    CheckComponent,
+    SubjectComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +67,9 @@ import { CheckComponent } from './brillyschoolcomponents/timetables/check/check.
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserModule, 
+    FullCalendarModule // register FullCalendar plugins
    ],
   providers: [RegistrationService],
   bootstrap: [AppComponent]
