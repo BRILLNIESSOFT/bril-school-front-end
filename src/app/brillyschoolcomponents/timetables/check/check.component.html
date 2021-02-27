@@ -31,23 +31,32 @@
       </div>
    
  <div class="time-table-content col-lg-12">
-         <full-calendar [options]="timeTableCalendarOptions">
+         <full-calendar [options]="CalendarOptions">
 
          </full-calendar>
 
-         <div class="subjects-list-draggable col-md-5">
+         <!--SHOW THE SUBJECT ELEMT BUTTON -->
+         
+         <div class="show-subjects-btn">
+             <button (click)="showSubjectsElement()" title="Subjects"><i class="lnr lnr-layers"></i></button>
+         </div>
+
+         <div #SubjectsElmRef [@SubjectsElementContainer]="subjectElmIsShown ? 'showSubjects' : 'hideSubjects'" class="subjects-list-draggable col-md-5">
+            <!-- CLOSE SUBJECT BUTTON IN THE SUBJECT ELEMENT -->
+            <button (click)="hideSubjectsElement()" class="close-edge-element-btn"> <i class="lnr lnr-cross-circle"></i> </button>
+
              <h3>SUBJECTS</h3>
-             <div class="subjects-list-draggable-item col-md-4">
+             <div class="fc-event subjects-list-draggable-item col-md-4">
                 <i class="fas fa-square-root-alt" style="background-color: #e83270 ; color:#ffffff"></i> 
                 <h5 style="color:#e83270">MATHEMATHIC</h5>
              </div>
 
-             <div class="subjects-list-draggable-item col-md-4">
+             <div class="fc-event subjects-list-draggable-item col-md-4">
                 <i class="fas fa-language" style="background-color: #6820bd ; color:#ffffff"></i> 
                 <h5 style="color:#6820bd">ARABIC</h5>
              </div>
 
-             <div class="subjects-list-draggable-item col-md-4">
+             <div class="fc-event subjects-list-draggable-item col-md-4">
                 <i class="fas fa-flag-usa" style="background-color: #00be85 ; color:#ffffff"></i> 
                  <h5 style="color:#00be85">ENGLISH</h5>
              </div>

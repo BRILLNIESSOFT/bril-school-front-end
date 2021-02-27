@@ -103,6 +103,29 @@ $accents: (
 //SUBJECT LIST
 
 .subjects-list-draggable{
+  display: none;
+}
+
+.show-subjects-btn button{
+  position: fixed;
+  cursor: pointer;
+  opacity: 0.5;
+  z-index: 200;
+  left: 280px;
+  bottom: 20px;
+  padding: 10px;
+  font-size: 3em;
+  border: none;
+  background: #474d5e;
+  border-radius: 50%;
+  border: 2px solid #3d3d3e;
+  color: #ffffff;
+  &:hover{
+    opacity: 1;
+  }
+}
+
+.subjects-list-draggable{
   padding: 20px;
   background-color: #ffffff;
   border: 1px solid #dcd8d8;
@@ -113,6 +136,22 @@ $accents: (
   box-shadow: 1px 1px 4px 0px;
   border-radius: 6px;
 }
+
+.subjects-list-draggable .close-edge-element-btn{
+  position: absolute;
+  right: -14px;
+  top: -14px;
+  cursor: pointer;
+   padding: 10px;
+  font-size: 1.4em;
+  border: none;
+  background: #dbdbdb;
+  border-radius: 50%;
+  border: 1px solid #757575;
+  color: #c90032;
+}
+
+
 .subjects-list-draggable-item{
   padding: 10px;
 }
