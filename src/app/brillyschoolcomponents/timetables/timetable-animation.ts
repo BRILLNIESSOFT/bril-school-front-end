@@ -10,7 +10,7 @@ import {
 
 export const SubjectsElement = trigger('SubjectsElementContainer', [
     state('showSubjects', style({
-       width : 'auto',
+       width : '210px',
        display : 'block',
        opacity : '1',
     })), 

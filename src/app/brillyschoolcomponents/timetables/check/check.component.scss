@@ -130,30 +130,37 @@ $accents: (
   background-color: #ffffff;
   border: 1px solid #dcd8d8;
   position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
   left: 280px;
   bottom: 20px;
-  z-index: 1000;
+  z-index: 2000;
   box-shadow: 1px 1px 4px 0px;
   border-radius: 6px;
+  z-index: 2000;
+  height: 500px;
+  width: 260px;
 }
 
 .subjects-list-draggable .close-edge-element-btn{
   position: absolute;
-  right: -14px;
-  top: -14px;
+  left: 0px;
+  top: 0px;
   cursor: pointer;
-   padding: 10px;
+  padding: 10px;
   font-size: 1.4em;
   border: none;
-  background: #dbdbdb;
-  border-radius: 50%;
-  border: 1px solid #757575;
+  background: #ececec;
+ 
   color: #c90032;
+  display: block;
+  width: 100%;
 }
 
 
 .subjects-list-draggable-item{
   padding: 10px;
+  width: 100%;
 }
 
 .subjects-list-draggable-item i{
@@ -168,3 +175,10 @@ $accents: (
   text-align: center;
   display: block;
 }
+
+.fc-scrollgrid tbody tr .fc-theme-standard td, .fc-theme-standard th {
+  border: 1px solid #ddd;
+  border: 1px solid #8c8c8c !important;
+  padding: 4;
+}
+ 

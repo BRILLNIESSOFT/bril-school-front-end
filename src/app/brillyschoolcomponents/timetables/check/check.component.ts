@@ -16,7 +16,7 @@ import { Calendar } from '@fullcalendar/core';
 export class CheckComponent implements OnInit {
 
   //IS SUBJECT DIV ELEMENT SHOWN
-  public subjectElmIsShown:boolean = true;
+  public subjectElmIsShown:boolean = false;
 
   public CalendarOptions = {};
 
@@ -32,17 +32,21 @@ export class CheckComponent implements OnInit {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'timeGridWeek,timeGridDay',
+      right: 'timeGridWeek',
     } ,
     //CALENDER INITIAL VIEWS
     height: 550,
-    initialView: 'dayGridWeek',
+    initialView: 'timeGridWeek',
      weekends: true,
+     allDaySlot: false,
     editable: true,
     selectable: true,
     selectMirror: true,
     dayMaxEvents: true,
     droppable: true,
+   //DISPLAY FROM TO ONLY BUSSNIESS HOURS
+   slotMinTime: '08:00:00',
+   slotMaxTime: '19:00:00',
 
     //CALENDER EVENTS
     dateClick: this.handleDateClick.bind(this), // bind is important!
@@ -57,28 +61,42 @@ export class CheckComponent implements OnInit {
     
       startTime: '08:00', // a start time (10am in this example)
       endTime: '18:00', // an end time (6pm in this example)
-          //DISPLAY FROM TO ONLY BUSSNIESS HOURS
-    minTime:'08:00:00',
-    maxTime:'10:00:00'
-    }
+
+    } , 
+
+    
+
+      //ON THE USER STARTS DRUGGING 
+  eventDragStop( ) {
+    console.log("STOPED ");
+  } ,
+
+
+  eventDragStart( ){
+    console.log("STARTED ");
+  }
+
+    
    };
 
 
   }
   
   ngAfterViewInit(){
+    //DRAGG TJE EXTERNAL EVENTS INTO THE CALENDAR PROPERLY
     new Draggable(this.subjectElementReference.nativeElement, {
       itemSelector: '.fc-event',
       eventData: function(eventEl) {
         return {
           title: eventEl.innerText
         };
-      }
+      }, 
+   
   });
-
+  
   }
-
-
+ //NG AFTER VIEW INIT ENDS
+ 
   //ONCLICK EVENT
   handleDateClick(arg:any) {
     alert('date click! ' + arg.dateStr)
