@@ -314,16 +314,17 @@
                       </div>
                       <!-- ADD MATERIALS TO THE GROUP -->
                         <div class="sections-subject-choices">
-                            <div class="draggable-sects col-md-8">
-                                <h3>Selected Subjects</h3>
-                            </div>
-
-                            <div class="added-materials-to-sects col-md-2">
-                                <h3>Subjects</h3>
+                            <div class="row draggable-sects">
+                               <h3>Selected Subjects</h3>
+                               <div *ngFor= "let section of allSections.data">
+                                    <button type="button" (click)="onCheckSubject(section.id)" class="subject-item col-md-2">
+                                        {{ section.name }}  
+                                    </button>
+                                </div>
                             </div>
                         </div>
                       <!-- FOOTER FOR THE BUTTON ADD -->
-          <hr>
+                      <hr>
                          <div class="modal-footer">
                                 <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
                                 <button type="submit" class="brill-btn-3">Add Sect</button>

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ISections } from './ISections';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,10 @@ export class ClassService {
     getAllClass(){
       return this.http.get(this.classesURL);
     }
-
+    //GET ALL SECTIONS
+    getAllSectionById(secId:number):Observable<ISections[]>{
+        return this.http.get<ISections[]>(this.sectionsURL);
+    }
     //ADD NEW CLASS FUNCTION
     addNewClassService(classData:any){
       return this.http.post(this.classesURL ,classData);

@@ -17,12 +17,24 @@ import { ClassService } from './../../../brillyschoolservices/classes/class.serv
 export class ClassessComponent implements OnInit {
   public bottomFixedMenuCase:boolean = true;
 
-
+  //GET ALL SECTIONS 
+  public allSections: any [] = [];
 
   constructor(private FB:FormBuilder, private addNewClassSer: ClassService) { }
 
   ngOnInit(): void {
-  }
+    //ASSIGN ALL SECTION TO THE MEMBER VARIABKE
+      this.addNewClassSer.getAllSectionById(3)
+      .subscribe(
+        Response => this.allSections = Response,
+        Error => console.log('ERROR', Error)
+      );
+
+
+   }
+
+  
+  
 
   //NEW CLASS FORM DATA OBJECT
   newClassForm = this.FB.group({
@@ -86,6 +98,11 @@ export class ClassessComponent implements OnInit {
       response => console.log('RESPONSE', response),
       error => console.log("ERROR OCCURS", error)
     );
+  }
+
+  // ON CHECK SELECT BUTTON
+  onCheckSubject(subId:number){
+    console.log(subId);
   }
 
 }

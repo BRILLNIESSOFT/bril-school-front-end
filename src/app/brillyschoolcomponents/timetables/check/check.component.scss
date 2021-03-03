@@ -176,9 +176,15 @@ $accents: (
   display: block;
 }
 
-.fc-scrollgrid tbody tr .fc-theme-standard td, .fc-theme-standard th {
-  border: 1px solid #ddd;
-  border: 1px solid #8c8c8c !important;
-  padding: 4;
-}
  
+.fc-timegrid-slot-lane{
+  border: 1px solid #000;}
+ 
+
+.fc .fc-timegrid-slot {
+  border: 1px solid #000;
+  height: 1.5em;
+  border: 1px solid #969292 !important;
+}
+
+
