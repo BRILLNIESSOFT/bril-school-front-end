@@ -11,6 +11,8 @@ export class SubjectComponent implements OnInit {
 
   constructor(private FB:FormBuilder, private subjectService:SubjectService) { }
 
+  //ALL SUBJJECTS 
+  private allSubjects: any[] = [];
   //CREATE NEW FORM GROUP FOR THE SUBJECT OBJECT
   newSubjectForm = this.FB.group({
     subject: this.FB.group({
@@ -24,6 +26,13 @@ export class SubjectComponent implements OnInit {
   });
 
   ngOnInit(): void {
+
+    //GET ALL SUBJECTS 
+    this.subjectService.getAllSubjects()
+    .subscribe(
+      Response => this.allSubjects = Response ,
+      Error => console.log('ERROR', Error)
+    );
   }
 
 //SUBMIT NEW SUBJECT --- ONSUBMIT THE SUBJECT FORMGROUP

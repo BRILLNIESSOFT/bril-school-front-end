@@ -16,42 +16,10 @@
 
  <div class="subject-list col-md-12">
      
-     <div class="subject-card subject-card-math col-sm-3">
+    <div class="subject-card subject-card-math col-sm-3"  *ngFor = "let subject of allSubjects.data">
         <i class="fas fa-square-root-alt"></i> 
-        <h4>MATHEMATHIC</h4>
+        <h4>{{ subject.name }}</h4>
      </div>
-
-
-     <div class="subject-card subject-card-ar  col-sm-3">
-        <i class="fas fa-language"></i> 
-        <h4>ARABIC</h4>
-     </div>
-
-
-     <div class="subject-card subject-card-eng  col-sm-3">
-        <i class="fas fa-flag-usa"></i> 
-        <h4>ENGLISH</h4>
-     </div>
-
-
-     <div class="subject-card subject-card-physic  col-sm-3">
-        <i class="fas fa-flask"></i> 
-        <h4>PHYSICS</h4>
-     </div>
-
-
-     <div class="subject-card subject-card-islamic  col-sm-3">
-        <i class="fas fa-kaaba"></i> 
-        <h4>ISLAMIC</h4>
-     </div>
-
-     <div class="subject-card subject-card-geo  col-sm-3">
-        <i class="fas fa-globe-europe"></i> 
-        <h4>GEOGRAPHIC</h4>
-     </div>
-
-
-
  </div>
 </div> 
 

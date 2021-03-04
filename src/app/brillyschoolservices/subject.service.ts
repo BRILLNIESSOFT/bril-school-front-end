@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ISubjets } from './ISubjects';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +15,10 @@ export class SubjectService {
   //ADD NEW SUBJECT
   addNewSubject(subjectData:any){
     return this.req.post(this.baseUrl, subjectData);
+  }
+
+  //GET ALL SUBJECTS 
+  getAllSubjects():Observable<ISubjets[]>{
+    return this.req.get<ISubjets[]>(this.baseUrl);
   }
 }

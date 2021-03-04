@@ -5,6 +5,7 @@ import { FormBuilder } from '@angular/forms';
 
 //IMPORTING BRILL SERVICES
 import { ClassService } from './../../../brillyschoolservices/classes/class.service';
+import { SubjectService } from './../../../brillyschoolservices/subject.service';
 
 
 @Component({
@@ -20,13 +21,14 @@ export class ClassessComponent implements OnInit {
   //GET ALL SECTIONS 
   public allSections: any [] = [];
 
-  constructor(private FB:FormBuilder, private addNewClassSer: ClassService) { }
+  constructor(private FB:FormBuilder, private addNewClassSer: ClassService ,
+    public subjectsService: SubjectService) { }
 
   ngOnInit(): void {
     //ASSIGN ALL SECTION TO THE MEMBER VARIABKE
-      this.addNewClassSer.getAllSectionById(3)
+      this.subjectsService.getAllSubjects()
       .subscribe(
-        Response => this.allSections = Response,
+        Response => this.allSections = Response.data,
         Error => console.log('ERROR', Error)
       );
 
@@ -57,6 +59,9 @@ export class ClassessComponent implements OnInit {
           seats: ['']
         })
   });
+
+  //SECTIONS SUBJECT ASSIGNER
+  public sectionSubjectsAssiner = [];
 
   //HIDE AND SHOW THE BOTTOM RIGHT MENU BAR 
      onMouseOverTheFixedMenu(){
@@ -101,8 +106,33 @@ export class ClassessComponent implements OnInit {
   }
 
   // ON CHECK SELECT BUTTON
-  onCheckSubject(subId:number){
-    console.log(subId);
+  onCheckSubject(subjictRef:any,subId:number):void{
+       if(!this.sectionSubjectsAssiner.includes(<never>subId)){
+          this.onStyleSelectedSubjects(subjictRef);
+          this.sectionSubjectsAssiner.push(<never>subId);
+          console.log(this.sectionSubjectsAssiner);
+       }else{
+         const subIndex =  this.sectionSubjectsAssiner.indexOf(<never>subId);
+        this.sectionSubjectsAssiner.splice(subIndex, 1);
+        this.onStyleUnSelectedSubjects(subjictRef);
+        console.log(this.sectionSubjectsAssiner);
+       }
+
   }
+
+  //STyling the SELECCTED SUBJECTS
+  onStyleSelectedSubjects(objRef:any){
+    objRef.style.borderRight = "12px solid #474d5e";
+    objRef.style.height = "50px";
+    objRef.style.fontWeight = "700";
+    objRef.style.opacity = "1";
+  }
+
+  //RESETTING AND UNSTYLING UNSELECTED ITEMS
+  onStyleUnSelectedSubjects(objRef:any){
+    objRef.style.borderRight = "1px solid #ffffff";
+     objRef.style.opacity = "0.4";
+  }
+
 
 }

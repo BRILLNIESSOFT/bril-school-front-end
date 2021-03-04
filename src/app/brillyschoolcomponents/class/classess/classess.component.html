@@ -316,8 +316,8 @@
                         <div class="sections-subject-choices">
                             <div class="row draggable-sects">
                                <h3>Selected Subjects</h3>
-                               <div *ngFor= "let section of allSections.data">
-                                    <button type="button" (click)="onCheckSubject(section.id)" class="subject-item col-md-2">
+                               <div *ngFor= "let section of allSections">
+                                    <button #subjectItemRef type="button" (click)="onCheckSubject(subjectItemRef,section.id)" class="subject-item col-md-2">
                                         {{ section.name }}  
                                     </button>
                                 </div>
@@ -334,3 +334,34 @@
           </div>
         </div>
       </div>
+
+    <!-- //DATA MODAL ASSIGN HOURS PER WEEK OR SEMESTER 
+    // DATA MOADAL SSIGN HOURS PER MONTH OE SEMESTER TO THE 
+    //SUBJECT ADDED TO THE CLASS 
+      
+
+    <div id= "brill_modal_assign_to_selected_object" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg brill-modal-dialog">
+          <div class="modal-content">
+ 
+                <section class="row brill-modal-container">
+                    <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                          
+                      <div class="add-new-staff">
+                          <h3> ASSIGN TO SUBJECT</h3>
+                         <div class="brill-input-holders" formGroupName = "classs"> 
+                          <div class="inputs-container">
+                        
+                          </div>
+                        </div>
+                      </div>
+          <hr>
+                         <div class="modal-footer">
+                                <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                                <button type="submit" class="brill-btn-3">CONFIRM</button>
+                         </div>
+                   </section>
+           </div>
+        </div>
+      </div>   -->
+      
