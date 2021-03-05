@@ -36,6 +36,7 @@ import { ClassessComponent } from './brillyschoolcomponents/class/classess/class
 import { StudentPaymentComponent } from './brillyschoolcomponents/payments/student-payment/student-payment.component';
 import { CheckComponent } from './brillyschoolcomponents/timetables/check/check.component';
 import { SubjectComponent } from './brillyschoolcomponents/subjects/subject/subject.component';
+import { AttandanceComponent } from './brillyschoolcomponents/students/attandance/attandance.component';
 
 
 //REGISTER PLUGINS OF FULLCALENDER JS
@@ -59,7 +60,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ClassessComponent,
     StudentPaymentComponent,
     CheckComponent,
-    SubjectComponent
+    SubjectComponent,
+    AttandanceComponent
   ],
   imports: [
     BrowserModule,

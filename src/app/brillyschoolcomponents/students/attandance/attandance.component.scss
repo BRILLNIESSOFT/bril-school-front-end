@@ -1,0 +1,67 @@
+.attendance-mark{
+    background-color: #ffffff;
+    margin-top: 10px;
+    min-height: 700px;
+}
+
+.attendance-mark .student-info-card{
+    display: block;
+     margin-top: 10px;
+    border: 1px solid #d4d4d4;
+    padding: 10px;
+    border-radius: 8px;
+    width: 24%;
+    margin: 2px 1px 2px 1px;
+  }
+
+.attendance-mark .student-info-card img{
+    display: block;
+    clear:both;
+    border-radius: 50%;
+    width: 99%;
+    border: 6px solid #1c9db7;
+ }
+
+ .attendance-mark .student-info-card h3{
+    display: block;
+    clear:both;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 10px;
+ }
+
+ .attendance-mark .student-info-card .control-btn{
+     text-align: center;
+     display: block;
+     clear: both;
+  }
+
+ .attendance-mark .student-info-card .control-btn button{
+   width: 30%;
+   margin: 0px 2px 0px 2px ;
+   padding: 10px;
+   font-weight: bold;
+ }
+
+ //student mark seconfd view
+ .attendance-mark-2{
+     display: block;
+     clear: both;
+ }
+
+ .student-card-2{
+     border-radius: 10px;
+     border: 1px solid #d4d4d4;
+     padding: 10px;
+  }
+
+ .student-card-2 img{
+    width: 140px;
+    border-radius: 50%;
+    border: 3px solid #1c9db7;
+
+}
+
+.student-card-2 .student-name h3{
+ text-align: left;
+}

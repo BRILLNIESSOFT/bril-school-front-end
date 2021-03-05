@@ -8,7 +8,7 @@ import {ClassessComponent } from './brillyschoolcomponents/class/classess/classe
 import {StudentPaymentComponent } from './brillyschoolcomponents/payments/student-payment/student-payment.component';
 import {CheckComponent } from './brillyschoolcomponents/timetables/check/check.component';
 import {SubjectComponent } from './brillyschoolcomponents/subjects/subject/subject.component';
-
+import {AttandanceComponent} from './brillyschoolcomponents/students/attandance/attandance.component';
 
 const routes: Routes = [
   {path : 'students/register', component: RegistrationComponent} ,
@@ -17,6 +17,7 @@ const routes: Routes = [
   {path : 'student/make-payment', component: StudentPaymentComponent} ,
   {path : 'timetable/check-time-table', component: CheckComponent} , 
   {path : 'subjects/subject', component: SubjectComponent} , 
+  {path : 'students/attendance', component: AttandanceComponent} , 
 ];
 
 @NgModule({
