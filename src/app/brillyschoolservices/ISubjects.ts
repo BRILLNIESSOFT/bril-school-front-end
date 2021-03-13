@@ -1,10 +1,11 @@
 export interface ISubjets{
+  data:any[];
     subject: {
         name: string,
         code: string,
         description: string,
         subject_type : string,
-        css_class :string,
+        color :string,
         note: string
       }
 }

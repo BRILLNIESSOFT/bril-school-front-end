@@ -19,24 +19,36 @@ export class RegistrationStepsCongs{
             this.stepDescription = "Ask the student to take a proper position and click take photo";
             this.stepIsSkipable = true;           
             break;
+
+            case 3:
+                this.stepTitle = "FATHER INFORMATIONS";
+                this.stepDescription = "Enter the father informations, you can add multiple guardians";
+                this.stepIsSkipable = true;           
+                break;
+
+                case 4:
+                    this.stepTitle = "MOTHER INFORMATIONS";
+                    this.stepDescription = "Enter the mother informations, you can add multiple guardians";
+                    this.stepIsSkipable = true;           
+                    break;
                 
-                case 3:
+                case 5:
                 this.stepTitle = "GUARDIAN INFORMATIONS";
                 this.stepDescription = "Enter the guardian informations, you can add multiple guardians";
                 this.stepIsSkipable = true;           
                 break;
-                    case 4:
+                    case 6:
                         this.stepTitle = "STUDENT INFORMATIONS";
                         this.stepDescription = "Enter the student informations, some field can be set later";
                         this.stepIsSkipable = true;           
                         break;   
-                case 5:
+                case 7:
                     this.stepTitle = "SPECIFYING THE STUDENT CLASS ";
                     this.stepDescription = "Take a look at the list at the bottom to see which classes are empty";
                     this.stepIsSkipable = true;           
                 break;       
                
-          case 6:
+          case 8:
              this.stepTitle = "ADD THE STUDENT CONTACT INFORMATION ";
              this.stepDescription = "Please add the student information and alternative phone number";
              this.stepIsSkipable = true;           

@@ -87,59 +87,135 @@ export class RegistrationComponent implements OnInit {
      
       //HANDLING ANYTHING HAS TO DO WITH FORM GROUPS
       RegistrationFormGroup =  this.FB.group({
-               //GUARDIAN NASTED FORM GROUP
-               guardian: this.FB.group({
-                    cin: ['', Validators.minLength(5)],
-                    first_name: ['', Validators.minLength(5)],
-                    last_name: ['', Validators.minLength(5)],
-                    first_name_ara: ['', Validators.minLength(5)],
-                    last_name_ara: ['', Validators.minLength(5)],
-                    gender: ['', Validators.minLength(5)],
-                    mid_name: ['', Validators.minLength(5)],
-                    mid_name_ar: ['', Validators.minLength(5)],
-                    relationship_type: ['', Validators.minLength(5)],
-                    phone: ['', Validators.minLength(5)],
-                    phone2: [''],
-                    email: ['', Validators.email],
-                    birth_place: [''],
-                    birth_date: ['']
-              }) , 
+                      //STUDENT NASTED FORM GROUP
+                      student: this.FB.group({
+                        first_name:  [' mohssine', Validators.minLength(5)],
+                        mid_name:  ['abo hsien', Validators.minLength(5)],
+                        last_name:  ['Khaloufi', Validators.minLength(5)],
+                        first_name_ara:  ['محسن', Validators.minLength(5)],
+                        mid_name_ara:  ['ابة حصين', Validators.minLength(5)],
+                        last_name_ara:  ['خلوفي', Validators.minLength(5)],
+                        roll_no:  ['', Validators.minLength(5)],
+                        admission_no:  ['', Validators.minLength(5)],
+                        admission_date:  [''],
+                        birth_date:  ['', Validators.minLength(5)],
+                        birth_place:  ['', Validators.minLength(5)],
+                        cne:  ['222233', Validators.minLength(5)] ,    
+                        phone:  ['', Validators.minLength(5)],
+                        mobile:  ['', Validators.minLength(5)],
+                        email:  ['', Validators.minLength(5)] , 
+                        special_care:  ['', Validators.minLength(5)] ,           
+                        health_problems:  ['', Validators.minLength(5)] ,           
+                        height:  ['', Validators.minLength(5)] ,           
+                        weight:  ['', Validators.minLength(5)] ,           
+                        measurement_date:  ['', Validators.minLength(5)] ,           
+                        photo:  ['', Validators.minLength(5)] ,           
+                        gender:  ['', Validators.minLength(5)] ,   
+                        previous_school:  ['', Validators.minLength(5)] ,          
+                        blood_group:  ['', Validators.minLength(5)] ,          
+                        note:  ['', Validators.minLength(5)] ,          
+                        class_section_id:  ['', Validators.minLength(5)] ,          
+                        address : {
+                          line1:  ['', Validators.minLength(5)] ,
+                          line2:  ['', Validators.minLength(5)] ,
+                          country:  ['', Validators.minLength(5)] ,
+                          state:  ['', Validators.minLength(5)] ,
+                          city:  ['', Validators.minLength(5)] ,
+                          zip:  ['', Validators.minLength(5)] ,
+                          latitude:  ['', Validators.minLength(5)] ,
+                          longitude:  ['', Validators.minLength(5)] ,
+                          note:  ['', Validators.minLength(5)] 
+                        }          
+              
+                      }),
 
-               //STUDENT NASTED FORM GROUP
-              student: this.FB.group({
-                regidtration_number:  ['', Validators.minLength(5)],
-                first_name:  ['', Validators.minLength(5)],
-                last_name:  ['', Validators.minLength(5)],
-                first_name_ar:  ['', Validators.minLength(5)],
-                last_name_ar:  ['', Validators.minLength(5)],
-                mid_name:  ['', Validators.minLength(5)],
-                mid_name_ara:  ['', Validators.minLength(5)],
-                status:  ['', Validators.minLength(5)],
-                studentSex:  [''],
-                birth_place:  ['', Validators.minLength(5)],
-                birth_date:  ['', Validators.minLength(5)],
-                has_support:  ['', Validators.minLength(5)] ,    
-                phone:  ['', Validators.minLength(5)],
-                gender:  ['', Validators.minLength(5)],
-                cne:  ['', Validators.minLength(5)]            
-              }),
-               //assigning student to services
-               assigningData: this.FB.group({
-                to_class:  ['', Validators.minLength(5)],
-                to_group:  ['', Validators.minLength(5)],
-                to_trans_line:  ['', Validators.minLength(5)]
-               })   ,
-               
-                         //STUDENT ADRESS INFORMATION 
-                         adressData: this.FB.group({
-                          city:  ['', Validators.minLength(5)],
-                          zip:  ['', Validators.minLength(5)],
-                          line_1:  ['', Validators.minLength(5)],
-                          line_2:  ['', Validators.minLength(5)],
-           
-                        }),
+                             //FATHER NASTED FORM GROUP
+                             father: this.FB.group({
+                              first_name: ['', Validators.minLength(5)],
+                              mid_name: ['', Validators.minLength(5)],
+                              last_name: ['', Validators.minLength(5)],
+                              first_name_ara: ['', Validators.minLength(5)],
+                              mid_name_ara: ['', Validators.minLength(5)],
+                              last_name_ara: ['', Validators.minLength(5)],
+                              phone: ['', Validators.minLength(5)],
+                              phone2: ['', Validators.minLength(5)],
+                              mobile: ['', Validators.minLength(5)],
+                              email: ['', Validators.minLength(5)],
+                              alt_email: [''],
+                              birth_date: [''],
+                              birth_place: [''],
+                              occupation: [''],
+                              familial_status: [''],
+                              relationship_type: [''],
+                              contact_type: [''],
+                              gender: [''],
+                              cin: [''],
+                              website: [''],
+                              facebook: [''],
+                              twitter: [''],
+                              linkedin: [''],
+                              instagram: [''],
+                              image: [''],
+                            }) ,                       
+
+                             //GUARDIAN NASTED FORM GROUP
+                             mother: this.FB.group({
+                              first_name: ['', Validators.minLength(5)],
+                              mid_name: ['', Validators.minLength(5)],
+                              last_name: ['', Validators.minLength(5)],
+                              first_name_ara: ['', Validators.minLength(5)],
+                              mid_name_ara: ['', Validators.minLength(5)],
+                              last_name_ara: ['', Validators.minLength(5)],
+                              phone: ['', Validators.minLength(5)],
+                              phone2: ['', Validators.minLength(5)],
+                              mobile: ['', Validators.minLength(5)],
+                              email: ['', Validators.minLength(5)],
+                              alt_email: [''],
+                              birth_date: [''],
+                              birth_place: [''],
+                              occupation: [''],
+                              familial_status: [''],
+                              relationship_type: [''],
+                              contact_type: [''],
+                              gender: [''],
+                              cin: [''],
+                              website: [''],
+                              facebook: [''],
+                              twitter: [''],
+                              linkedin: [''],
+                              instagram: [''],
+                              image: [''],
+                            }) , 
+
+                             //GUARDIAN NASTED FORM GROUP
+                             guardian: this.FB.group({
+                              first_name: ['', Validators.minLength(5)],
+                              mid_name: ['', Validators.minLength(5)],
+                              last_name: ['', Validators.minLength(5)],
+                              first_name_ara: ['', Validators.minLength(5)],
+                              mid_name_ara: ['', Validators.minLength(5)],
+                              last_name_ara: ['', Validators.minLength(5)],
+                              phone: ['', Validators.minLength(5)],
+                              phone2: ['', Validators.minLength(5)],
+                              mobile: ['', Validators.minLength(5)],
+                              email: ['', Validators.minLength(5)],
+                              alt_email: [''],
+                              birth_date: [''],
+                              birth_place: [''],
+                              occupation: [''],
+                              familial_status: [''],
+                              relationship_type: [''],
+                              contact_type: [''],
+                              gender: [''],
+                              cin: [''],
+                              website: [''],
+                              facebook: [''],
+                              twitter: [''],
+                              linkedin: [''],
+                              instagram: [''],
+                              image: [''],
+                            }) , 
  
-
         });
 
 
@@ -258,7 +334,7 @@ export class RegistrationComponent implements OnInit {
       //   }
     //PROCCED TO THE NEXT STEP  
     Procced(){
-         if(this.stepIndexNum <= 5){
+         if(this.stepIndexNum <= 7){
               this.stepIndexNum += 1;
                   this.stepIndex = {
                   stepHeaderTitle: this.stepIndexHandler.getStepsCongs(this.stepIndexNum).CurrentStepTitle,

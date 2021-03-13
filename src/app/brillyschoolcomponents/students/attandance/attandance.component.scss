@@ -50,11 +50,21 @@
    font-weight: bold;
  }
 
- //STUDENT ATTENDANCE MARK MOBILE
+ @media only screen and (max-width: 768px) {
+    //STUDENT ATTENDANCE MARK MOBILE
+
+ .attendance-mark-2{
+     display: none !important;
+ }  
+ 
+ .student-card-2{
+     display: none;
+ }
+
  .student-card-m{
-    background-color: #f3f3f3;
+    background-color: #ffffff;
     direction: ltr;
-    padding: 6px;
+    padding: 10px 10px 10px 20px;
     border: 1px solid #ccc9c9;
     border-radius: 8px;
     margin: 4px 0px 4px 0px;
@@ -93,6 +103,15 @@
  .student-card-m img{
      width: 70px;
 }
+  }
+
+
+  //DESKTOP VIEW
+  @media only screen and (min-width: 768px){
+    .student-card-m{
+        display: none;
+    }
+  }
 
  //student mark seconfd view
  .attendance-mark-2{

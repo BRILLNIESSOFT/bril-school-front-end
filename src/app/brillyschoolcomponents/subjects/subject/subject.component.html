@@ -17,9 +17,9 @@
  <div class="subject-list col-md-12">
      
     <div class="subject-card subject-card-math col-sm-3"  *ngFor = "let subject of allSubjects.data">
-        <i class="fas fa-square-root-alt"></i> 
-        <h4>{{ subject.name }}</h4>
-     </div>
+        <i  style="background: {{ subject.color }}"class="fas fa-square-root-alt"></i> 
+        <h4  style="color: {{ subject.color }}">{{ subject.name }}</h4>
+      </div>
  </div>
 </div> 
 
@@ -57,7 +57,7 @@
                                 </div>
                                 <div>
                                     <label for="subject_color">Subject Color</label>
-                                    <input formControlName = "css_class" name="subject_color" title="Setting a color helps you quickly figure the subject" type="color" placeholder="Subject Type" class="input">
+                                    <input formControlName = "color" name="subject_color" title="Setting a color helps you quickly figure the subject" type="color" placeholder="Subject Type" class="input">
                                 </div>
                             </div>
 

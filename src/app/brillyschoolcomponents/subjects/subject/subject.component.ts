@@ -19,9 +19,9 @@ export class SubjectComponent implements OnInit {
       name: ['nameeee'],
       code: ['codeeee'],
       description: ['desccc'],
-      subject_type: ['typeeee'],
-      css_class: ['csssss'],
-      note: ['noteeeee']
+      subject_type: ['not s'],
+      color: ['#ffffff'],
+      note: ['no notes']
     })
   });
 
