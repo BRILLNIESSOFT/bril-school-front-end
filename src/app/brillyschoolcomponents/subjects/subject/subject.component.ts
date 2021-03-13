@@ -30,7 +30,7 @@ export class SubjectComponent implements OnInit {
     //GET ALL SUBJECTS 
     this.subjectService.getAllSubjects()
     .subscribe(
-      Response => this.allSubjects = Response ,
+      (data:any) => this.allSubjects = data.data ,
       Error => console.log('ERROR', Error)
     );
   }

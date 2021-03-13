@@ -22,19 +22,19 @@ export class RegistrationStepsCongs{
 
             case 3:
                 this.stepTitle = "FATHER INFORMATIONS";
-                this.stepDescription = "Enter the father informations, you can add multiple guardians";
+                this.stepDescription = "Enter the father informations";
                 this.stepIsSkipable = true;           
                 break;
 
                 case 4:
                     this.stepTitle = "MOTHER INFORMATIONS";
-                    this.stepDescription = "Enter the mother informations, you can add multiple guardians";
+                    this.stepDescription = "Enter the mother informations";
                     this.stepIsSkipable = true;           
                     break;
                 
                 case 5:
                 this.stepTitle = "GUARDIAN INFORMATIONS";
-                this.stepDescription = "Enter the guardian informations, you can add multiple guardians";
+                this.stepDescription = "Enter the guardian informations, you can use the father/mother as guardians";
                 this.stepIsSkipable = true;           
                 break;
                     case 6:
@@ -43,16 +43,28 @@ export class RegistrationStepsCongs{
                         this.stepIsSkipable = true;           
                         break;   
                 case 7:
+                    this.stepTitle = "STUDENT ADRESS ";
+                    this.stepDescription = "Enter the student address ";
+                    this.stepIsSkipable = true;           
+                break;       
+
+                case 8:
                     this.stepTitle = "SPECIFYING THE STUDENT CLASS ";
                     this.stepDescription = "Take a look at the list at the bottom to see which classes are empty";
                     this.stepIsSkipable = true;           
-                break;       
+                break;     
                
-          case 8:
-             this.stepTitle = "ADD THE STUDENT CONTACT INFORMATION ";
-             this.stepDescription = "Please add the student information and alternative phone number";
+          case 9:
+             this.stepTitle = "SET A APAYMENT ";
+             this.stepDescription = "You can ask the student if he wants to pay now or leter";
              this.stepIsSkipable = true;           
            break;     
+
+           case 10:
+            this.stepTitle = "PRINT DOCUMENTS ";
+            this.stepDescription = "Print the ID card for the student and the payment reciept if exist";
+            this.stepIsSkipable = true;           
+          break; 
         }
         
             return {

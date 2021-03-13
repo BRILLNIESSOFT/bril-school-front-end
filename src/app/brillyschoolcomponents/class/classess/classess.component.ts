@@ -28,7 +28,7 @@ export class ClassessComponent implements OnInit {
     //ASSIGN ALL SECTION TO THE MEMBER VARIABKE
       this.subjectsService.getAllSubjects()
       .subscribe(
-        Response => this.allSections = Response.data,
+        (data:any) => this.allSections = data.data,
         Error => console.log('ERROR', Error)
       );
 

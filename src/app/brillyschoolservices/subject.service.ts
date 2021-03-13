@@ -18,7 +18,7 @@ export class SubjectService {
   }
 
   //GET ALL SUBJECTS 
-  getAllSubjects():Observable<ISubjets[]>{
-    return this.req.get<ISubjets[]>(this.baseUrl);
+  getAllSubjects(){
+    return this.req.get(this.baseUrl);
   }
 }
