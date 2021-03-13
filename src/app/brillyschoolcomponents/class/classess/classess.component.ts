@@ -19,7 +19,7 @@ export class ClassessComponent implements OnInit {
   public bottomFixedMenuCase:boolean = true;
 
   //GET ALL SECTIONS 
-  public allSections: any [] = [];
+  public allSubjectsList: any [] = [];
 
   constructor(private FB:FormBuilder, private addNewClassSer: ClassService ,
     public subjectsService: SubjectService) { }
@@ -28,7 +28,7 @@ export class ClassessComponent implements OnInit {
     //ASSIGN ALL SECTION TO THE MEMBER VARIABKE
       this.subjectsService.getAllSubjects()
       .subscribe(
-        (data:any) => this.allSections = data.data,
+        (data:any) => this.allSubjectsList = data.data,
         Error => console.log('ERROR', Error)
       );
 

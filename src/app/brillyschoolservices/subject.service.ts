@@ -18,7 +18,7 @@ export class SubjectService {
   }
 
   //GET ALL SUBJECTS 
-  getAllSubjects(){
+  public getAllSubjects(){
     return this.req.get(this.baseUrl);
   }
 }

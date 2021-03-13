@@ -316,9 +316,9 @@
                         <div class="sections-subject-choices">
                             <div class="row draggable-sects">
                                <h3>Selected Subjects</h3>
-                               <div *ngFor= "let section of allSections">
-                                    <button style="background-color: {{ section.color }};" #subjectItemRef type="button" (click)="onCheckSubject(subjectItemRef,section.id)" class="subject-item col-md-2">
-                                        {{ section.name }}  
+                               <div *ngFor= "let subject of allSubjectsList">
+                                    <button style="background-color: {{ subject.color }};" #subjectItemRef type="button" (click)="onCheckSubject(subjectItemRef,subject.id)" class="subject-item col-md-2">
+                                        {{ subject.name }}  
                                     </button>
                                 </div>
                             </div>

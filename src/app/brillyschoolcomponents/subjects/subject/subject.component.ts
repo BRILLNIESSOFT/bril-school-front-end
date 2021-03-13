@@ -12,7 +12,7 @@ export class SubjectComponent implements OnInit {
   constructor(private FB:FormBuilder, private subjectService:SubjectService) { }
 
   //ALL SUBJJECTS 
-  private allSubjects: any[] = [];
+  public allSubjects: any[] = [];
   //CREATE NEW FORM GROUP FOR THE SUBJECT OBJECT
   newSubjectForm = this.FB.group({
     subject: this.FB.group({
