@@ -103,23 +103,34 @@ export class RegistrationComponent implements OnInit {
                         roll_no:  ['mohssine', Validators.minLength(5)],
                         admission_no:  ['mohssine', Validators.minLength(5)],
                         admission_date:  [''],
-                        birth_date:  ['mohssine', Validators.minLength(5)],
+                        birth_date:  ['', Validators.minLength(5)],
                         birth_place:  ['mohssine', Validators.minLength(5)],
                         cne:  ['222233', Validators.minLength(5)] ,    
                         phone:  ['mohssine', Validators.minLength(5)],
                         mobile:  ['mohssine', Validators.minLength(5)],
-                        email:  ['mohssine', Validators.minLength(5)] , 
+                        email:  ['', Validators.minLength(5)] , 
                         special_care:  ['mohssine', Validators.minLength(5)] ,           
                         health_problems:  ['mohssine', Validators.minLength(5)] ,           
                         height:  ['mohssine', Validators.minLength(5)] ,           
                         weight:  ['mohssine', Validators.minLength(5)] ,           
-                        measurement_date:  ['mohssine', Validators.minLength(5)] ,           
+                        measurement_date:  ['', Validators.minLength(5)] ,           
                         photo:  ['mohssine', Validators.minLength(5)] ,           
                         gender:  ['mohssine', Validators.minLength(5)] ,   
                         previous_school:  ['mohssine', Validators.minLength(5)] ,          
                         blood_group:  ['mohssine', Validators.minLength(5)] ,          
                         note:  ['mohssine', Validators.minLength(5)] ,          
-                        class_section_id:  ['mohssine', Validators.minLength(5)] ,                  
+                        class_section_id:  ['mohssine', Validators.minLength(5)] ,  
+                        address : {
+                          line1:  '' ,
+                          line2:  '' ,
+                          country:  '' ,
+                          state:  '' ,
+                          city:  '' ,
+                          zip:  '' ,
+                          latitude:  '' ,
+                          longitude:  '' ,
+                          note:  '' 
+                        }
               
                       }),
 
@@ -135,8 +146,8 @@ export class RegistrationComponent implements OnInit {
                               phone2: ['mohssinemohssine', Validators.minLength(5)],
                               mobile: ['mohssine', Validators.minLength(5)],
                               email: ['mohssine', Validators.minLength(5)],
-                              alt_email: ['mohssine'],
-                              birth_date: ['mohssine'],
+                              alt_email: [''],
+                              birth_date: [''],
                               birth_place: ['mohssine'],
                               occupation: ['mohssine'],
                               familial_status: ['mohssine'],
@@ -163,9 +174,9 @@ export class RegistrationComponent implements OnInit {
                               phone: ['mmohssine', Validators.minLength(5)],
                               phone2: ['mmohssine', Validators.minLength(5)],
                               mobile: ['mmohssine', Validators.minLength(5)],
-                              email: ['mmohssine', Validators.minLength(5)],
-                              alt_email: ['mmohssine'],
-                              birth_date: ['mmohssine'],
+                              email: ['', Validators.minLength(5)],
+                              alt_email: [''],
+                              birth_date: [''],
                               birth_place: ['mmohssine'],
                               occupation: ['mmohssine'],
                               familial_status: ['mmohssine'],
@@ -192,9 +203,9 @@ export class RegistrationComponent implements OnInit {
                               phone: ['mmohssine', Validators.minLength(5)],
                               phone2: ['mmohssine', Validators.minLength(5)],
                               mobile: ['mmohssine', Validators.minLength(5)],
-                              email: ['mmohssine', Validators.minLength(5)],
-                              alt_email: ['mmohssine'],
-                              birth_date: ['mmohssine'],
+                              email: ['', Validators.minLength(5)],
+                              alt_email: [''],
+                              birth_date: [''],
                               birth_place: ['mmohssine'],
                               occupation: ['mmohssine'],
                               familial_status: ['mmohssine'],
@@ -209,20 +220,6 @@ export class RegistrationComponent implements OnInit {
                               instagram: ['mmohssine'],
                               image: ['mmohssine'],
                             }) , 
-
-
-                           //STUDENT ADDRESS
-                            address : this.FB.group({ 
-                                line1:  ['mohssine', Validators.minLength(5)] ,
-                                line2:  ['mohssine', Validators.minLength(5)] ,
-                                country:  ['mohssine', Validators.minLength(5)] ,
-                                state:  ['mohssine', Validators.minLength(5)] ,
-                                city:  ['mohssine', Validators.minLength(5)] ,
-                                zip:  ['mohssine', Validators.minLength(5)] ,
-                                latitude:  ['mohssine', Validators.minLength(5)] ,
-                                longitude:  ['mohssine', Validators.minLength(5)] ,
-                                note:  ['mohssine', Validators.minLength(5)] 
-                            }) ,
 
                             //ASSIGNING SERVICES TO STUDENT OPTIONAL
                           assignServices : this.FB.group({
@@ -375,11 +372,11 @@ export class RegistrationComponent implements OnInit {
     //SUBMIT THE FORM DATA / REGISTERNEW STUDENT PREQUEST
     registareNewStudent(){
       console.log(this.RegistrationFormGroup.value);
-      // this.drafttedStudent.submitToRegisterNewStudent(this.RegistrationFormGroup.value)
-      //   .subscribe(
-      //     response => console.log("seccess" , response),
-      //     error => console.log("error occurs" , error)
-      //   );
+       this.drafttedStudent.submitToRegisterNewStudent(this.RegistrationFormGroup.value)
+         .subscribe(
+           response => console.log("seccess" , response),
+           error => console.log("error occurs" , error)
+        );
      }
   
 }

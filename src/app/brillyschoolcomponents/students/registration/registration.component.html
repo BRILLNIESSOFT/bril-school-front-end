@@ -551,7 +551,6 @@
  
                    </div>
                 </div>
-
              </div>
 
               <!-- HERE IS THE END OF STUDENT INFORMATION  END -->   
@@ -606,65 +605,6 @@
             
                  </div>     
               <!-- HERE IS THE START OF THE STUDENT  OF THE STUDENT INFORMATION  STARTS -->   
-
-
-                            <!-- HERE IS THE END OF STUDENT ADRESSES INFORMATIONS  STARTS -->   
-                  <div class="brill-input-holders">              
-                                 <div class="inputs-container" *ngSwitchCase="7" #studentAdressGroupe formGroupName="address">
-                                         <div class="brill-row">
-                                            <div>
-                                                <label for="Line">line 1</label>
-                                                <input type="text" formControlName="line1" placeholder="line 1" class="input">
-                                            </div>
-
-                                            <div>
-                                                <label for="Line">line 2</label>
-                                                <input type="text" formControlName="line2" placeholder="Line 2" class="input">
-                                            </div>
-
-                                            <div>
-                                                <label for="Code postal">Country</label>
-                                                <input type="text" placeholder="Country" formControlName="state" class="input">
-                                            </div>
-                                            <div>
-                                                <label for="line">State</label>
-                                                <input type="text" placeholder="Ligne adresse" formControlName="state" class="input">
-                                            </div>    
-                                    </div>
-
-                                    <div class="brill-row">
-                                        <div>
-                                            <label for="City">City</label>
-                                            <input type="text" placeholder="City" formControlName="city" class="input">
-                                        </div>
-                                        <div>
-                                            <label for="Zip">Zip</label>
-                                            <input type="text" placeholder="ZIP code" formControlName="zip" class="input">
-                                        </div>
-                                        <div>
-                                            <label for="Latitude">Latitude</label>
-                                            <input type="text" placeholder="Latitude" formControlName="latitude" class="input">
-                                        </div>
-                                        <div>
-                                            <label for="Longitude">Longitude</label>
-                                            <input type="text" placeholder="Longitude" formControlName="longitude" class="input">
-                                        </div>
-                                    </div>
-
-                                    <div class="brill-row">
-                                        <div>
-                                            <label for="Longitude">Notes</label>
-                                            <input type="text" placeholder="Notes" formControlName="note" class="input">
-                                        </div>  
-                                    </div>
-                                    
-                                        <div class="map">
-                                            <div>
-                        
-                                            </div>
-                                        </div>
-                                 </div>   
-                  </div> 
                   
                                <!-- HERE IS THE START OF THE STUDENT  OF THE ADRESSES INFORMATIONS ENDS --> 
             </section>
@@ -691,7 +631,6 @@
                 <li [class.active]="stepIndexNum == 7" [class.passed]="stepIndexNum > 7"><span>6</span></li>
                 <li [class.active]="stepIndexNum == 8" [class.passed]="stepIndexNum > 8"><span>7</span></li>
                 <li [class.active]="stepIndexNum == 9" [class.passed]="stepIndexNum > 9"><span>8</span></li>
-                <li [class.active]="stepIndexNum == 10" [class.passed]="stepIndexNum > 10"><span>9</span></li>
                   <button *ngIf="stepIndexNum >= 2" class="brill-btn-3" (click)="backToStep()">BACK</button> 
                  <button class="brill-btn-2" (click)="Procced()">NEXT</button>              
             </ul>

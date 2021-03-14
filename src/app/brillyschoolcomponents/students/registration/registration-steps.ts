@@ -41,26 +41,21 @@ export class RegistrationStepsCongs{
                         this.stepTitle = "STUDENT INFORMATIONS";
                         this.stepDescription = "Enter the student informations, some field can be set later";
                         this.stepIsSkipable = true;           
-                        break;   
-                case 7:
-                    this.stepTitle = "STUDENT ADRESS ";
-                    this.stepDescription = "Enter the student address ";
-                    this.stepIsSkipable = true;           
-                break;       
+                        break;       
 
-                case 8:
+                case 7:
                     this.stepTitle = "SPECIFYING THE STUDENT CLASS ";
                     this.stepDescription = "Take a look at the list at the bottom to see which classes are empty";
                     this.stepIsSkipable = true;           
                 break;     
                
-          case 9:
+          case 8:
              this.stepTitle = "SET A APAYMENT ";
              this.stepDescription = "You can ask the student if he wants to pay now or leter";
              this.stepIsSkipable = true;           
            break;     
 
-           case 10:
+           case 9:
             this.stepTitle = "PRINT DOCUMENTS ";
             this.stepDescription = "Print the ID card for the student and the payment reciept if exist";
             this.stepIsSkipable = true;           
