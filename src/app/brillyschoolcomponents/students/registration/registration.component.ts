@@ -12,6 +12,7 @@ import { Validators } from '@angular/forms';
  
 //importing services
 import { RegistrationService } from './../../../brillyschoolservices/students/registration.service';
+import { ClassService } from './../../../brillyschoolservices/classes/class.service';
 
 @Component({
   selector: 'app-registration',
@@ -24,6 +25,10 @@ import { RegistrationService } from './../../../brillyschoolservices/students/re
 
  
 export class RegistrationComponent implements OnInit {
+
+    
+   //THE NECCESSARY APIs LIKE CLASSES AND GROUPS ...ETC
+   public allClasses:any[] = [];
 
     //STUDENT SERVICES THAT MUST COME FROM THE SERVER
      drafftedStudentArray?:Array<any>;
@@ -95,131 +100,142 @@ export class RegistrationComponent implements OnInit {
                         first_name_ara:  ['محسن', Validators.minLength(5)],
                         mid_name_ara:  ['ابة حصين', Validators.minLength(5)],
                         last_name_ara:  ['خلوفي', Validators.minLength(5)],
-                        roll_no:  ['', Validators.minLength(5)],
-                        admission_no:  ['', Validators.minLength(5)],
+                        roll_no:  ['mohssine', Validators.minLength(5)],
+                        admission_no:  ['mohssine', Validators.minLength(5)],
                         admission_date:  [''],
-                        birth_date:  ['', Validators.minLength(5)],
-                        birth_place:  ['', Validators.minLength(5)],
+                        birth_date:  ['mohssine', Validators.minLength(5)],
+                        birth_place:  ['mohssine', Validators.minLength(5)],
                         cne:  ['222233', Validators.minLength(5)] ,    
-                        phone:  ['', Validators.minLength(5)],
-                        mobile:  ['', Validators.minLength(5)],
-                        email:  ['', Validators.minLength(5)] , 
-                        special_care:  ['', Validators.minLength(5)] ,           
-                        health_problems:  ['', Validators.minLength(5)] ,           
-                        height:  ['', Validators.minLength(5)] ,           
-                        weight:  ['', Validators.minLength(5)] ,           
-                        measurement_date:  ['', Validators.minLength(5)] ,           
-                        photo:  ['', Validators.minLength(5)] ,           
-                        gender:  ['', Validators.minLength(5)] ,   
-                        previous_school:  ['', Validators.minLength(5)] ,          
-                        blood_group:  ['', Validators.minLength(5)] ,          
-                        note:  ['', Validators.minLength(5)] ,          
-                        class_section_id:  ['', Validators.minLength(5)] ,          
-                        address : {
-                          line1:  ['', Validators.minLength(5)] ,
-                          line2:  ['', Validators.minLength(5)] ,
-                          country:  ['', Validators.minLength(5)] ,
-                          state:  ['', Validators.minLength(5)] ,
-                          city:  ['', Validators.minLength(5)] ,
-                          zip:  ['', Validators.minLength(5)] ,
-                          latitude:  ['', Validators.minLength(5)] ,
-                          longitude:  ['', Validators.minLength(5)] ,
-                          note:  ['', Validators.minLength(5)] 
-                        }          
+                        phone:  ['mohssine', Validators.minLength(5)],
+                        mobile:  ['mohssine', Validators.minLength(5)],
+                        email:  ['mohssine', Validators.minLength(5)] , 
+                        special_care:  ['mohssine', Validators.minLength(5)] ,           
+                        health_problems:  ['mohssine', Validators.minLength(5)] ,           
+                        height:  ['mohssine', Validators.minLength(5)] ,           
+                        weight:  ['mohssine', Validators.minLength(5)] ,           
+                        measurement_date:  ['mohssine', Validators.minLength(5)] ,           
+                        photo:  ['mohssine', Validators.minLength(5)] ,           
+                        gender:  ['mohssine', Validators.minLength(5)] ,   
+                        previous_school:  ['mohssine', Validators.minLength(5)] ,          
+                        blood_group:  ['mohssine', Validators.minLength(5)] ,          
+                        note:  ['mohssine', Validators.minLength(5)] ,          
+                        class_section_id:  ['mohssine', Validators.minLength(5)] ,                  
               
                       }),
 
                              //FATHER NASTED FORM GROUP
                              father: this.FB.group({
-                              first_name: ['', Validators.minLength(5)],
-                              mid_name: ['', Validators.minLength(5)],
-                              last_name: ['', Validators.minLength(5)],
-                              first_name_ara: ['', Validators.minLength(5)],
-                              mid_name_ara: ['', Validators.minLength(5)],
-                              last_name_ara: ['', Validators.minLength(5)],
-                              phone: ['', Validators.minLength(5)],
-                              phone2: ['', Validators.minLength(5)],
-                              mobile: ['', Validators.minLength(5)],
-                              email: ['', Validators.minLength(5)],
-                              alt_email: [''],
-                              birth_date: [''],
-                              birth_place: [''],
-                              occupation: [''],
-                              familial_status: [''],
-                              relationship_type: [''],
-                              contact_type: [''],
-                              gender: [''],
-                              cin: [''],
-                              website: [''],
-                              facebook: [''],
-                              twitter: [''],
-                              linkedin: [''],
-                              instagram: [''],
-                              image: [''],
+                              first_name: ['mohssine', Validators.minLength(5)],
+                              mid_name: ['mohssine', Validators.minLength(5)],
+                              last_name: ['mohssine', Validators.minLength(5)],
+                              first_name_ara: ['mohssine', Validators.minLength(5)],
+                              mid_name_ara: ['mohssine', Validators.minLength(5)],
+                              last_name_ara: ['mohssine', Validators.minLength(5)],
+                              phone: ['mohssine', Validators.minLength(5)],
+                              phone2: ['mohssinemohssine', Validators.minLength(5)],
+                              mobile: ['mohssine', Validators.minLength(5)],
+                              email: ['mohssine', Validators.minLength(5)],
+                              alt_email: ['mohssine'],
+                              birth_date: ['mohssine'],
+                              birth_place: ['mohssine'],
+                              occupation: ['mohssine'],
+                              familial_status: ['mohssine'],
+                              relationship_type: ['mohssine'],
+                              contact_type: ['mohssine'],
+                              gender: ['mohssine'],
+                              cin: ['mohssine'],
+                              website: ['mohssine'],
+                              facebook: ['mohssine'],
+                              twitter: ['mohssine'],
+                              linkedin: ['mohssine'],
+                              instagram: ['mohssine'],
+                              image: ['mohssine'],
                             }) ,                       
 
                              //GUARDIAN NASTED FORM GROUP
                              mother: this.FB.group({
-                              first_name: ['', Validators.minLength(5)],
-                              mid_name: ['', Validators.minLength(5)],
-                              last_name: ['', Validators.minLength(5)],
-                              first_name_ara: ['', Validators.minLength(5)],
-                              mid_name_ara: ['', Validators.minLength(5)],
-                              last_name_ara: ['', Validators.minLength(5)],
-                              phone: ['', Validators.minLength(5)],
-                              phone2: ['', Validators.minLength(5)],
-                              mobile: ['', Validators.minLength(5)],
-                              email: ['', Validators.minLength(5)],
-                              alt_email: [''],
-                              birth_date: [''],
-                              birth_place: [''],
-                              occupation: [''],
-                              familial_status: [''],
-                              relationship_type: [''],
-                              contact_type: [''],
-                              gender: [''],
-                              cin: [''],
-                              website: [''],
-                              facebook: [''],
-                              twitter: [''],
-                              linkedin: [''],
-                              instagram: [''],
-                              image: [''],
+                              first_name: ['mmohssine', Validators.minLength(5)],
+                              mid_name: ['mmohssine', Validators.minLength(5)],
+                              last_name: ['mmohssine', Validators.minLength(5)],
+                              first_name_ara: ['mmohssine', Validators.minLength(5)],
+                              mid_name_ara: ['mmohssine', Validators.minLength(5)],
+                              last_name_ara: ['mmohssine', Validators.minLength(5)],
+                              phone: ['mmohssine', Validators.minLength(5)],
+                              phone2: ['mmohssine', Validators.minLength(5)],
+                              mobile: ['mmohssine', Validators.minLength(5)],
+                              email: ['mmohssine', Validators.minLength(5)],
+                              alt_email: ['mmohssine'],
+                              birth_date: ['mmohssine'],
+                              birth_place: ['mmohssine'],
+                              occupation: ['mmohssine'],
+                              familial_status: ['mmohssine'],
+                              relationship_type: ['mmohssine'],
+                              contact_type: ['mmohssine'],
+                              gender: ['mmohssine'],
+                              cin: ['mmohssine'],
+                              website: ['mmohssine'],
+                              facebook: ['mmohssine'],
+                              twitter: ['mmohssine'],
+                              linkedin: ['mmohssine'],
+                              instagram: ['mmohssine'],
+                              image: ['mmohssine'],
                             }) , 
 
                              //GUARDIAN NASTED FORM GROUP
                              guardian: this.FB.group({
-                              first_name: ['', Validators.minLength(5)],
-                              mid_name: ['', Validators.minLength(5)],
-                              last_name: ['', Validators.minLength(5)],
-                              first_name_ara: ['', Validators.minLength(5)],
-                              mid_name_ara: ['', Validators.minLength(5)],
-                              last_name_ara: ['', Validators.minLength(5)],
-                              phone: ['', Validators.minLength(5)],
-                              phone2: ['', Validators.minLength(5)],
-                              mobile: ['', Validators.minLength(5)],
-                              email: ['', Validators.minLength(5)],
-                              alt_email: [''],
-                              birth_date: [''],
-                              birth_place: [''],
-                              occupation: [''],
-                              familial_status: [''],
-                              relationship_type: [''],
-                              contact_type: [''],
-                              gender: [''],
-                              cin: [''],
-                              website: [''],
-                              facebook: [''],
-                              twitter: [''],
-                              linkedin: [''],
-                              instagram: [''],
-                              image: [''],
+                              first_name: ['mmohssine', Validators.minLength(5)],
+                              mid_name: ['mmohssine', Validators.minLength(5)],
+                              last_name: ['mmohssine', Validators.minLength(5)],
+                              first_name_ara: ['mmohssine', Validators.minLength(5)],
+                              mid_name_ara: ['mmohssine', Validators.minLength(5)],
+                              last_name_ara: ['mmohssine', Validators.minLength(5)],
+                              phone: ['mmohssine', Validators.minLength(5)],
+                              phone2: ['mmohssine', Validators.minLength(5)],
+                              mobile: ['mmohssine', Validators.minLength(5)],
+                              email: ['mmohssine', Validators.minLength(5)],
+                              alt_email: ['mmohssine'],
+                              birth_date: ['mmohssine'],
+                              birth_place: ['mmohssine'],
+                              occupation: ['mmohssine'],
+                              familial_status: ['mmohssine'],
+                              relationship_type: ['mmohssine'],
+                              contact_type: ['mmohssine'],
+                              gender: ['mmohssine'],
+                              cin: ['mmohssine'],
+                              website: ['mmohssine'],
+                              facebook: ['mmohssine'],
+                              twitter: ['mmohssine'],
+                              linkedin: ['mmohssine'],
+                              instagram: ['mmohssine'],
+                              image: ['mmohssine'],
                             }) , 
+
+
+                           //STUDENT ADDRESS
+                            address : this.FB.group({ 
+                                line1:  ['mohssine', Validators.minLength(5)] ,
+                                line2:  ['mohssine', Validators.minLength(5)] ,
+                                country:  ['mohssine', Validators.minLength(5)] ,
+                                state:  ['mohssine', Validators.minLength(5)] ,
+                                city:  ['mohssine', Validators.minLength(5)] ,
+                                zip:  ['mohssine', Validators.minLength(5)] ,
+                                latitude:  ['mohssine', Validators.minLength(5)] ,
+                                longitude:  ['mohssine', Validators.minLength(5)] ,
+                                note:  ['mohssine', Validators.minLength(5)] 
+                            }) ,
+
+                            //ASSIGNING SERVICES TO STUDENT OPTIONAL
+                          assignServices : this.FB.group({
+                            line1:  [1] ,
+                            to_group:  [2] ,
+                            to_trans_line:  [3] ,
+                          }),
  
         });
+        
 
-
-      constructor(public drafttedStudent: RegistrationService, private FB:FormBuilder) { 
+      //CONSTRACTION FUNCTION   
+      constructor(public drafttedStudent: RegistrationService, private classService: ClassService ,private FB:FormBuilder) { 
           console.log(drafttedStudent);
           
         //GETTING ALL SERVICES
@@ -228,14 +244,22 @@ export class RegistrationComponent implements OnInit {
       } 
 
       ngOnInit(): void {
+        //INITIALIZING THE CAMERA
           WebcamUtil.getAvailableVideoInputs()
             .then((mediaDevices: MediaDeviceInfo[]) => {
               this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
             });
 
-         }
+            //FETCHING ALL CLASSES
+              this.classService.getAllClass()
+              .subscribe(
+                      (data: any) =>  this.allClasses = data.data,
+                      error => console.log('error', error)
+                    );
+                }
 
 
+      //LUNCHING THE CAMERA FUNCTION          
       lunchWebcamToUser(){
             this.startWebcam = true;
             this.isLanchedAnimate = true;
@@ -334,7 +358,7 @@ export class RegistrationComponent implements OnInit {
       //   }
     //PROCCED TO THE NEXT STEP  
     Procced(){
-         if(this.stepIndexNum <= 7){
+         if(this.stepIndexNum <= 9){
               this.stepIndexNum += 1;
                   this.stepIndex = {
                   stepHeaderTitle: this.stepIndexHandler.getStepsCongs(this.stepIndexNum).CurrentStepTitle,
@@ -351,11 +375,11 @@ export class RegistrationComponent implements OnInit {
     //SUBMIT THE FORM DATA / REGISTERNEW STUDENT PREQUEST
     registareNewStudent(){
       console.log(this.RegistrationFormGroup.value);
-      this.drafttedStudent.submitToRegisterNewStudent(this.RegistrationFormGroup.value)
-        .subscribe(
-          response => console.log("seccess" , response),
-          error => console.log("error occurs" , error)
-        );
+      // this.drafttedStudent.submitToRegisterNewStudent(this.RegistrationFormGroup.value)
+      //   .subscribe(
+      //     response => console.log("seccess" , response),
+      //     error => console.log("error occurs" , error)
+      //   );
      }
   
 }

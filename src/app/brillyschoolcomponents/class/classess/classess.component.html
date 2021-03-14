@@ -278,9 +278,7 @@
                                 <div>
                                     <label for="section_class_name">Class name</label>
                                     <select formControlName = "class_id" class="input-select"  name="class_name" id="section_class_name">
-                                        <option  value="1">class 1 </option>
-                                        <option  value="2">class 2</option>
-                                        <option  value="3">class 3</option>
+                                        <option  *ngFor="let class of ClassesArray" value="{{ class.id }}"> {{ class.name }} </option>
                                      </select>
                                 </div>
                                 <div>
@@ -317,7 +315,7 @@
                             <div class="row draggable-sects">
                                <h3>Selected Subjects</h3>
                                <div *ngFor= "let subject of allSubjectsList">
-                                    <button style="background-color: {{ subject.color }};" #subjectItemRef type="button" (click)="onCheckSubject(subjectItemRef,subject.id)" class="subject-item col-md-2">
+                                    <button style="background-color: {{ subject.color }}" #subjectItemRef type="button" (click)="onCheckSubject(subjectItemRef,subject.id)" class="subject-item col-md-2">
                                         {{ subject.name }}  
                                     </button>
                                 </div>

@@ -18,6 +18,8 @@ import { SubjectService } from './../../../brillyschoolservices/subject.service'
 export class ClassessComponent implements OnInit {
   public bottomFixedMenuCase:boolean = true;
 
+  //GETTING ALL THE NESSESERY APIS TO FETCH
+   public ClassesArray:any = [];
   //GET ALL SECTIONS 
   public allSubjectsList: any [] = [];
 
@@ -31,6 +33,13 @@ export class ClassessComponent implements OnInit {
         (data:any) => this.allSubjectsList = data.data,
         Error => console.log('ERROR', Error)
       );
+
+      //FETCHING CLASSES
+      this.addNewClassSer.getAllClass()
+        .subscribe(
+          (data :any) => this.ClassesArray = data.data ,
+          error => console.log('error', error)
+        ) 
 
 
    }

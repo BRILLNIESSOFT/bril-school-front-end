@@ -559,9 +559,8 @@
             <!-- HERE IS THE START OF STUDENT ASSIGNATION -->   
 
               <div class="brill-input-holders">              
-                <div class="inputs-container" *ngSwitchCase="6" #LinkStudentToServices formGroupName="assigningData">
+                <div class="inputs-container" *ngSwitchCase="6" #LinkStudentToServices formGroupName="assignServices">
                         <div class="brill-row">
-            
                             <div>
                                 <label for="CNE">CNE</label>
                                 <input type="text" placeholder="Classe" class="input obliger">
@@ -569,11 +568,9 @@
                             <div>
                                 <label for="addStuentToServices">Ajouter à la classe</label>
                                  <select class="input-select" formControlName="to_class" name="class" id="addStuentToServices">
-                                    <option  value="">Class 1</option>
-                                    <option  value="">Class 2</option>
-                                    <option  value="">Class 4</option>
-                                   <option value="volvo">Class 5</option>
-                                   <option value="volvo">Class 6</option>
+                                    <option value="1"> CLASS 1 </option>
+                                    <option value="2"> CLASS 2 </option>
+                                    <option value="3"> CLASS 3 </option>
                                  </select>
                             </div>
                             <div>
@@ -613,26 +610,54 @@
 
                             <!-- HERE IS THE END OF STUDENT ADRESSES INFORMATIONS  STARTS -->   
                   <div class="brill-input-holders">              
-                                 <div class="inputs-container" *ngSwitchCase="7" #studentAdressGroupe formGroupName="adressData">
+                                 <div class="inputs-container" *ngSwitchCase="7" #studentAdressGroupe formGroupName="address">
                                          <div class="brill-row">
                                             <div>
-                                                <label for="Ville">Ville</label>
-                                                <input type="text" formControlName="city" placeholder="Ville" class="input">
+                                                <label for="Line">line 1</label>
+                                                <input type="text" formControlName="line1" placeholder="line 1" class="input">
+                                            </div>
+
+                                            <div>
+                                                <label for="Line">line 2</label>
+                                                <input type="text" formControlName="line2" placeholder="Line 2" class="input">
+                                            </div>
+
+                                            <div>
+                                                <label for="Code postal">Country</label>
+                                                <input type="text" placeholder="Country" formControlName="state" class="input">
                                             </div>
                                             <div>
-                                                <label for="Code postal">Code postal</label>
-                                                <input type="text" placeholder="Code postal" formControlName="zip" class="input">
-                                            </div>
-                                            <div>
-                                                <label for="line">Ligne adresse</label>
-                                                <input type="text" placeholder="Ligne adresse" formControlName="line_1" class="input">
-                                            </div>
-                                            <div>
-                                                <label for="Ligne">Ligne adresse 2</label>
-                                                <input type="text" placeholder="Ligne adresse 2" formControlName="line_2" class="input">
-                                            </div>
-                        
+                                                <label for="line">State</label>
+                                                <input type="text" placeholder="Ligne adresse" formControlName="state" class="input">
+                                            </div>    
+                                    </div>
+
+                                    <div class="brill-row">
+                                        <div>
+                                            <label for="City">City</label>
+                                            <input type="text" placeholder="City" formControlName="city" class="input">
                                         </div>
+                                        <div>
+                                            <label for="Zip">Zip</label>
+                                            <input type="text" placeholder="ZIP code" formControlName="zip" class="input">
+                                        </div>
+                                        <div>
+                                            <label for="Latitude">Latitude</label>
+                                            <input type="text" placeholder="Latitude" formControlName="latitude" class="input">
+                                        </div>
+                                        <div>
+                                            <label for="Longitude">Longitude</label>
+                                            <input type="text" placeholder="Longitude" formControlName="longitude" class="input">
+                                        </div>
+                                    </div>
+
+                                    <div class="brill-row">
+                                        <div>
+                                            <label for="Longitude">Notes</label>
+                                            <input type="text" placeholder="Notes" formControlName="note" class="input">
+                                        </div>  
+                                    </div>
+                                    
                                         <div class="map">
                                             <div>
                         
@@ -660,15 +685,14 @@
                  <li [class.active]="stepIndexNum == 1" [class.passed]="stepIndexNum > 1"><span>1</span></li>
                 <li [class.active]="stepIndexNum == 2" [class.passed]="stepIndexNum > 2"><span>2</span></li>
                 <li [class.active]="stepIndexNum == 3" [class.passed]="stepIndexNum > 3"><span>3</span></li>
-                <li [class.active]="stepIndexNum == 4" [class.passed]="stepIndexNum > 3"><span>3</span></li>
-                <li [class.active]="stepIndexNum == 5" [class.passed]="stepIndexNum > 4"><span>4</span></li>
-                <li [class.active]="stepIndexNum == 6" [class.passed]="stepIndexNum > 5"><span>5</span></li>
-                <li [class.active]="stepIndexNum == 7" [class.passed]="stepIndexNum > 6"><span>6</span></li>
-                <li [class.active]="stepIndexNum == 7" [class.passed]="stepIndexNum > 7"><span>7</span></li>
-                <li [class.active]="stepIndexNum == 8" [class.passed]="stepIndexNum > 8"><span>8</span></li>
-                <li [class.active]="stepIndexNum == 9" [class.passed]="stepIndexNum > 9"><span>9</span></li>
-                <li [class.active]="stepIndexNum == 10" [class.passed]="stepIndexNum > 10"><span>10</span></li>
-                 <button *ngIf="stepIndexNum >= 2" class="brill-btn-3" (click)="backToStep()">BACK</button> 
+                <li [class.active]="stepIndexNum == 4" [class.passed]="stepIndexNum > 4"><span>3</span></li>
+                <li [class.active]="stepIndexNum == 5" [class.passed]="stepIndexNum > 5"><span>4</span></li>
+                <li [class.active]="stepIndexNum == 6" [class.passed]="stepIndexNum > 6"><span>5</span></li>
+                <li [class.active]="stepIndexNum == 7" [class.passed]="stepIndexNum > 7"><span>6</span></li>
+                <li [class.active]="stepIndexNum == 8" [class.passed]="stepIndexNum > 8"><span>7</span></li>
+                <li [class.active]="stepIndexNum == 9" [class.passed]="stepIndexNum > 9"><span>8</span></li>
+                <li [class.active]="stepIndexNum == 10" [class.passed]="stepIndexNum > 10"><span>9</span></li>
+                  <button *ngIf="stepIndexNum >= 2" class="brill-btn-3" (click)="backToStep()">BACK</button> 
                  <button class="brill-btn-2" (click)="Procced()">NEXT</button>              
             </ul>
         </div>
