@@ -120,7 +120,7 @@ export class RegistrationComponent implements OnInit {
                         blood_group:  ['mohssine', Validators.minLength(5)] ,          
                         note:  ['mohssine', Validators.minLength(5)] ,          
                         class_section_id:  ['mohssine', Validators.minLength(5)] ,  
-                        address : {
+                         address : {
                           line1:  '' ,
                           line2:  '' ,
                           country:  '' ,
@@ -161,6 +161,7 @@ export class RegistrationComponent implements OnInit {
                               linkedin: ['mohssine'],
                               instagram: ['mohssine'],
                               image: ['mohssine'],
+                              note: [''],
                             }) ,                       
 
                              //GUARDIAN NASTED FORM GROUP
@@ -190,6 +191,7 @@ export class RegistrationComponent implements OnInit {
                               linkedin: ['mmohssine'],
                               instagram: ['mmohssine'],
                               image: ['mmohssine'],
+                              note: [''],
                             }) , 
 
                              //GUARDIAN NASTED FORM GROUP
@@ -219,14 +221,9 @@ export class RegistrationComponent implements OnInit {
                               linkedin: ['mmohssine'],
                               instagram: ['mmohssine'],
                               image: ['mmohssine'],
+                              note: [''],
                             }) , 
-
-                            //ASSIGNING SERVICES TO STUDENT OPTIONAL
-                          assignServices : this.FB.group({
-                            line1:  [1] ,
-                            to_group:  [2] ,
-                            to_trans_line:  [3] ,
-                          }),
+ 
  
         });
         
