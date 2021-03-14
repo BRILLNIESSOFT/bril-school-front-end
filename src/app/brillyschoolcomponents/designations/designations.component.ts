@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RolesService } from '../../brillyschoolservices/roles.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-designations',
@@ -7,9 +9,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DesignationsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private roleService:RolesService, private FB:FormBuilder) { }
 
-  ngOnInit(): void {
+  public allRoles:any [] = [];
+
+      ngOnInit(): void {
+        //GET ALL ROLES AVALIABLE
+        this.roleService.getAllRoles()
+          .subscribe( 
+            (data:any) => this.allRoles = data.data,
+            error => console.log("ERROR" , error)
+          )
+
+      }
+
+      //ROLE FORM GROUP
+      addRoleForm = this.FB.group({
+           role: this.FB.group({
+            name: [''] ,
+            code: [''] ,
+            description: [''] ,
+            note: [''] 
+           })
+      });
+
+
+   onSubmitNewRole(){
+    this.roleService.addNewRole(this.addRoleForm.value)
+     .subscribe(
+       (data:any) => console.log("Error") , 
+       error => console.log("ERROR" , error)
+     );
+      
+
   }
 
 }

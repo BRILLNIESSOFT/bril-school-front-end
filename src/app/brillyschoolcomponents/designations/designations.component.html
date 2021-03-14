@@ -17,62 +17,19 @@
         
    <div class="designatio-list col-md-12">
 
-                <div class="designation-card col-md-12">
+                <div *ngFor = "let role of allRoles" class="designation-card col-md-12">
                         <div class="designation-card-control">
                             <button><i class="lnr lnr-cross-circle"></i></button>
                             <button><i class="lnr lnr-pencil"></i></button>
                         </div> 
-                    <h3>AUTHOR</h3>
-                    <p> an author can delete student and control the payment, and 
-                        set all the nessessary things he needs
+                    <h3>{{ role.name }}</h3>
+                    <p> {{ role.description }}
                     </p>
                     <span class="designation-batch">
                         <i class="lnr lnr-star"></i>
                     </span>
                 </div>
-
-
-                <div class="designation-card col-md-12">
-                    <div class="designation-card-control">
-                        <button><i class="lnr lnr-cross-circle"></i></button>
-                        <button><i class="lnr lnr-pencil"></i></button>
-                    </div> 
-                <h3>AUTHOR</h3>
-                <p> an author can delete student and control the payment, and 
-                    set all the nessessary things he needs
-                </p>
-                <span class="designation-batch">
-                    <i class="lnr lnr-star"></i>
-                </span>
-            </div>
-
-            <div class="designation-card col-md-12">
-                <div class="designation-card-control">
-                    <button><i class="lnr lnr-cross-circle"></i></button>
-                    <button><i class="lnr lnr-pencil"></i></button>
-                </div> 
-            <h3>AUTHOR</h3>
-            <p> an author can delete student and control the payment, and 
-                set all the nessessary things he needs
-            </p>
-            <span class="designation-batch">
-                <i class="lnr lnr-star"></i>
-            </span>
-        </div>
-
-        <div class="designation-card col-md-12">
-            <div class="designation-card-control">
-                <button><i class="lnr lnr-cross-circle"></i></button>
-                <button><i class="lnr lnr-pencil"></i></button>
-            </div> 
-        <h3>AUTHOR</h3>
-        <p> an author can delete student and control the payment, and 
-            set all the nessessary things he needs
-        </p>
-        <span class="designation-batch">
-            <i class="lnr lnr-star"></i>
-        </span>
-    </div>
+   
     </div>
  
 </div>        
@@ -86,53 +43,63 @@
 	  <div id= "brill_modal_create_new_designation" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg brill-modal-dialog">
           <div class="modal-content">
+            <form [formGroup]="addRoleForm" (ngSubmit)="onSubmitNewRole()">
                 <section class="row brill-modal-container">
                     <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
                           
-                      <div class="add-new-staff">
+                      <div class="add-new-designation">
                           <h3> ADD NEW DESINATION</h3>
                          <div class="brill-input-holders"> 
-                          <div class="inputs-container">
-
-                           <div class="brill-row">
+                        <div class="inputs-container">
+                           <div class="brill-row" formGroupName = "role">
                                      <div>
                                         <label for="designation">Designation name</label>
-                                        <input name="desig" title="For example : teacher , driver ...etc" type="text" placeholder="Designation name" class="input">
+                                        <input formControlName = "name" name="desig" title="For example : teacher , driver ...etc" type="text" placeholder="Designation name" class="input">
                                     </div>
 
                                     <div>
                                         <label for="designation">Designation code</label>
-                                        <input name="desig" title="Using a code helps us understand more about the role" type="text" placeholder="Designation code" class="input">
+                                        <input formControlName = "code" name="desig" title="Using a code helps us understand more about the role" type="text" placeholder="Designation code" class="input">
                                     </div>
 
                                     <div>
                                         <label for="designation">Designation description</label>
-                                       <textarea cols="2" class="input"></textarea>
+                                       <textarea formControlName = "description" placeholder="Exp : Staff can add and delete student..." rows="4" class="input"></textarea>
                                      </div>
 
                                      <div>
                                         <label for="designation">Designation notes</label>
-                                       <textarea cols="2" class="input"></textarea>
+                                       <textarea formControlName = "note" rows="4" class="input"></textarea>
                                      </div>
                             </div>
                             <br>
                             <hr>
+                        
+                              <div class="brill-row" style="background-color: #eaf4f5;">
+                                <table class="col-md-12 designation-table-roles">
+                                    <thead>
+                                        <th></th>
+                                        <th class="role-delete"><h4>CAN DELETE</h4></th>
+                                        <th class="role-update"><h4>CAN UPDATE</h4></th>
+                                        <th class="role-add"><h4>CAN ADD</h4></th>
+                                        <th class="role-view"><h4>CAN VIEW</h4></th>
+                                    </thead>
 
-     <div class="brill-row" style="background-color: #eaf4f5;">
-            <table class="col-md-12 designation-table-roles">
-                <thead>
-                    <th></th>
-                     <th class="role-delete"><h4>CAN DELETE</h4></th>
-                    <th class="role-update"><h4>CAN UPDATE</h4></th>
-                    <th class="role-add"><h4>CAN ADD</h4></th>
-                </thead>
-
-                <tbody>
+                                   <tbody>
 
 
                 <tr>
                     <td>
                         <h4>STUDENT MODULE</h4>
+                    </td>
+
+                    <td>
+                        <div class="preveliges-contol">
+                            <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
                     </td>
 
                     <td>
@@ -194,11 +161,29 @@
                         </label>
                     </div>
                     </td>
+
+                    <td>
+                        <div class="preveliges-contol">
+                            <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    </td>
                 </tr>
 
                 <tr>
                     <td>
                         <h4>PAYMENT MODULE</h4>
+                    </td>
+
+                    <td>
+                        <div class="preveliges-contol">
+                            <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
                     </td>
 
                     <td>
@@ -242,7 +227,14 @@
                         </label>
                     </div>
                     </td>
-
+                    <td>
+                        <div class="preveliges-contol">
+                            <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    </td>
                     <td>
                         <div class="preveliges-contol">
                             <label class="switch">
@@ -275,7 +267,10 @@
                                 <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
                                 <button type="submit" class="brill-btn-3">ADD Desig</button>
                          </div>
+
                    </section>
+                </form>
+
            </div>
         </div>
       </div>
