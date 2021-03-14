@@ -19,7 +19,7 @@ export class DesignationsComponent implements OnInit {
           .subscribe( 
             (data:any) => this.allRoles = data.data,
             error => console.log("ERROR" , error)
-          )
+          );
 
       }
 

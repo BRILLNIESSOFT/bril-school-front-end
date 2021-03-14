@@ -456,7 +456,20 @@
                                     <input name="staff_joining_letter" type="button"  value="upload file"  class="input">
                                 </div>
                         
-                            </div>    
+                            </div>   
+                            
+                            
+                            <div class="brill-row">
+                                <div>
+                                    <label for="staffRole">Job title</label>
+
+                                    <select formControlName = "role_id" name="staffRole" class="input-select" id="staffRole">
+                                        <option *ngFor = "let role of allRolesArray" value="{{ role.id }}">{{ role.name }}</option>
+                                     </select>
+
+                                </div>
+                        
+                            </div> 
                            </div>
                         </div>
                     

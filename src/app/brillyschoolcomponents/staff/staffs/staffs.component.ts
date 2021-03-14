@@ -3,6 +3,7 @@ import { toggleFixedBottomMenu } from './../../../global-animation';
 import { FormBuilder } from '@angular/forms';
 //import services 
 import { StaffService } from './../../../brillyschoolservices/staff.service';
+import { RolesService } from '../../../brillyschoolservices/roles.service';
 
 @Component({
   selector: 'app-staffs',
@@ -12,11 +13,20 @@ import { StaffService } from './../../../brillyschoolservices/staff.service';
 })
 export class StaffsComponent implements OnInit {
 
+  //ALL ROLES
+  public allRolesArray:[] = [];
+
   public bottomFixedMenuCase:boolean = true;
 
-  constructor(private FB:FormBuilder, private _staffServices:StaffService) { }
+  constructor(private FB:FormBuilder, private roleServices:RolesService ,private _staffServices:StaffService) { }
 
   ngOnInit(): void {
+            //GET ALL ROLES AVALIABLE
+            this.roleServices.getAllRoles()
+            .subscribe( 
+              (data:any) => this.allRolesArray = data.data,
+              (error:any) => console.log("ERROR" , error)
+            );
   }
 
   //ADDSTAFF FORM GROUP
@@ -62,6 +72,7 @@ export class StaffsComponent implements OnInit {
         joining_letter: ['joining.pdf'] ,
         resignation_letter: ['resigning.pdf'] ,
         department_id: ['12'] ,
+        role_id : [''],
         address: {
           line1: '' ,
           line2: '' ,
