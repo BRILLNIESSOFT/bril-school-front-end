@@ -14,7 +14,7 @@ import { RolesService } from '../../../brillyschoolservices/roles.service';
 export class StaffsComponent implements OnInit {
 
   //ALL ROLES
-  public allRolesArray:[] = [];
+  public allRolesArray:any[] = [];
 
   public bottomFixedMenuCase:boolean = true;
 
