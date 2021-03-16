@@ -4,6 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {WebcamModule} from 'ngx-webcam';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+//THIRD PARTIES ADDITIONAL MODULES
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 //IMPORTING CALENDER FULL-CALENDER JS MODULES
 import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
@@ -38,7 +43,7 @@ import { CheckComponent } from './brillyschoolcomponents/timetables/check/check.
 import { SubjectComponent } from './brillyschoolcomponents/subjects/subject/subject.component';
 import { AttandanceComponent } from './brillyschoolcomponents/students/attandance/attandance.component';
 import { DesignationsComponent } from './brillyschoolcomponents/designations/designations.component';
-
+ 
 
 //REGISTER PLUGINS OF FULLCALENDER JS
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -63,9 +68,11 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     CheckComponent,
     SubjectComponent,
     AttandanceComponent,
-    DesignationsComponent
-  ],
+    DesignationsComponent,
+   ],
   imports: [
+    NgSelectModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

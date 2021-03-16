@@ -2,6 +2,8 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -56,6 +58,85 @@ $brillContainerBorder: 1px solid #474d5e38;
   border: 1px solid #474d5e;
   color: #000000;
  }
+
+
+  //BRILLNIRSSCHOOL BTNS
+ //BRILL BTns
+.brill-btn-s-2{
+  border-radius: 40px;
+  background-color: 759492;
+  border: none;
+   padding: 10px;
+   font-size: 1.3em;
+     color: #ffffff;
+  margin: 2px 4px 2px 4px;    
+  background-color: #759492;
+  &:hover{
+      background-color: #92B2B0;
+  }
+}
+
+.brill-btn-s-0{
+  border-radius: 40px;
+  font-size: 1.3em;
+
+  background-color: 759492;
+  border: none;
+  padding: 10px;
+     color: #ffffff;
+  background-color: #CB0247;
+  margin: 2px 4px 2px 4px;
+  &:hover{
+      background-color: #DF2263;
+  }
+}
+
+.brill-btn-s-4{
+border-radius: 40px;
+background-color: 759492;
+font-size: 1.3em;
+
+border: none;
+display: block;
+ color: #3c3c3c;
+background-color: #e4e4e4;
+margin: 2px 4px 2px 4px;
+&:hover{
+    background-color: #d3d3d3;
+}
+}
+
+
+
+
+.brill-btn-s-1{
+  border-radius: 40px;
+  background-color: 759492;
+  font-size: 1.3em;
+
+  border: none;
+  padding: 10px;
+    color: #ffffff;
+  background-color: #0096AE;
+  margin: 2px 4px 2px 4px;
+  &:hover{
+      background-color: #14AD70;
+  }
+}
+
+.brill-btn-s-3{
+  border-radius: 40px;
+  background-color: 759492;
+  font-size: 1.3em;
+  border: none;
+  padding: 10px;
+   color: #ffffff;
+  background-color: #009D5E;
+  margin: 2px 4px 2px 4px;
+  &:hover{
+      background-color: #14AD70;
+  }
+}
 
  //BRILLNIRSSCHOOL BTNS
  //BRILL BTns
@@ -673,5 +754,8 @@ input[type="color" i] {
   margin: 0 4px;
   width: 0;
 }
+
+
+
 
 

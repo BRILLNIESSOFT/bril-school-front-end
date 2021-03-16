@@ -9,21 +9,27 @@
         <div class="brill-input-holders"> 
             <div class="inputs-container"  >
               <div class="brill-row">
-                  <div>
-                      <label for="payment_number_name">Student name</label>
-                      <input name="payment_number_seats" type="text" placeholder="Number of seats" class="input">
+                <div>
+                    <!--Using ng-option and for loop-->
+                    <label for="payment_number_number">Student name</label>
+                    <ng-select [(ngModel)]="selectSrudentName" (change)="studentNameInputChanged()">
+                        <ng-option *ngFor="let student of allStudentArray" [value]="student.id">{{student.first_name + " " + student.first_name}}</ng-option>
+                    </ng-select>
                   </div>
+
                   <div>
-                      <label for="payment_number_number">Student number</label>
-                      <input name="payment_number_number" type="number" placeholder="Number of students" class="input">
+                    <!--Using ng-option and for loop-->
+                    <label for="payment_number_number">Student Number</label>
+                    <ng-select>
+                        <ng-option *ngFor="let student of allStudentArray" [value]="student.id">{{student.admission_no}}</ng-option>
+                    </ng-select>
                   </div>
-   
               </div>
             </div>
           </div>
-
+  
             <!-- STUDENT SMALL PRIEVIEW HORIZONTAL CARD-->
-            <div class="payment-student-preview">
+             <div class="payment-student-preview">
                 <div class="preview-img col-md-2">
                      <img src="assets/icons/moh.jpg">
                 </div>
@@ -46,15 +52,192 @@
               
               <div class="preview-info-btn col-md-1">
                 <ul>
-                    <li> <button class="brill-btn-3">CONTINUE</button></li>
+                    <li> <button data-toggle="modal" data-target="#brill_modal_create_new_payment_deposite" class="brill-btn-3">CONTINUE</button></li>
                     <li> <button class="brill-btn-0">RESET</button></li>
-                    <li> <button class="brill-btn-4">HISTORY</button></li>
-
+                    <li> <button  data-toggle="modal" data-target="#brill_modal_create_see_payment_history" class="brill-btn-4">HISTORY</button></li>
+                    
                 </ul>
               </div>
-
+ 
             </div>
 
+     <!-- STUDENT PAYMEENT SMALL NULL AND EMPTY PRIEVIEW HORIZONTAL CARD-->
+      <div class="payment-student-preview">
+                            <div class="preview-img col-md-2">
+                                 <img src="assets/icons/boy-icon.png">
+                            </div>
+            
+                            <div class="preview-info col-md-8">
+                                <h4> You can simply scan the student QR or choise from the sselect drop down at e buttom
+                                    When using the QR click on QR on the righ first, when you choise a student 
+                                    a student information will pop ip here before you procced to the payment steps...
+                                </h4>
+                          </div>
+
+                          <div class="preview-img-barcode col-md-2">
+                            <img src="assets/icons/qr-code.png">
+                          </div>
+            
+       </div>
+</div>
+
+ 
+
+
+
+<!-- ALL THE MODALS STARTS FROM HERE -->
+	  <!-- DATA MODAL ADD NEW PAYMENT DEPOSITE -->
+    <!-- ALL THE MODALS STARTS FROM HERE -->
+	  <!-- DATA MODAL ADD NEW PAYMENT DEPOSITE -->
+	  <div id= "brill_modal_create_new_payment_deposite" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg brill-modal-dialog">
+        <div class="modal-content">
+          <form>   
+              <section class="row brill-modal-container">
+                  <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                    <div class="add-new-staff">
+                        <h3> ADD NEW PAYMENT DEPOSITE</h3>
+                       <div class="brill-input-holders"> 
+                        <div class="inputs-container"  formGroupName ="staff">
+                           <h3>MOHSSINE KHALOUFI</h3>
+                           <h3>PAYMENT DEPOSITE</h3>
+                           <h3>PAYMENT DEPOSITE</h3>
+                         </div>
+                      </div>
+                  
+                    </div>
+                 <hr>
+                       <div class="modal-footer">
+                              <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                              <button type="submit" class="brill-btn-3">ADD STAFF</button>
+                       </div>
+                 </section>
+              </form> 
+        </div>
+      </div>
     </div>
 
-</div>
+
+    <!-- ALL THE MODALS STARTS FROM HERE -->
+	  <!-- DATA MODAL SEE PAYMENT HISTORIES -->
+    <!-- ALL THE MODALS STARTS FROM HERE -->
+	  <!-- DATA MODAL DATA MODAL SEE PAYMENT HISTORIES -->
+	  <div id= "brill_modal_create_see_payment_history" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg brill-modal-dialog">
+        <div class="modal-content">
+          <form>   
+              <section class="row brill-modal-container">
+                  <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                    <div class="add-new-payment">
+                        <h3> SEE PAYMENT HISTORY</h3>
+       <div class="payment-history-card-list">
+
+        <div class="payment-history-student">
+            <div class="student-photo col-md-2">
+               <img  src="assets/icons/boy-icon.png"/>
+            </div>
+
+            <div class="student-info col-md-4">
+                <ul>
+                  <li> MOHSSINE KHALOUFI</li>
+                  <li> 8989479759475</li>
+                </ul>
+            </div>
+
+            <div class="student-info2 col-md-4">
+              <ul>
+                <li> MOHSSINE KHALOUFI</li>
+                <li> 8989479759475</li>
+              </ul>
+          </div>
+        </div>
+
+        <!-- PAYMENT HISTORY SINGLE CARD -->
+                        <div class="payment-history-card">
+                          <div class="payment-history-status col-md-1">
+                             <i class="lnr lnr-checkmark-circle"></i>
+                          </div>
+                          <div class="payment-history-date col-md-3">
+                             <h4>04-2021</h4>
+                             <small>09:45 pm 23-04-2021</small>
+                          </div>
+                          <div class="payment-history-desc col-md-5">
+                              <p>
+                                 This payment is for some food and 
+                                 transportation and some food that 
+                                 the student bought
+                              </p>
+                          </div>
+                          
+                          <div class="payment-history-btns col-md-3">
+                            <button type="button" class="brill-btn-s-2"><i class="lnr lnr-eye"></i></button>
+                            <button type="button" class="brill-btn-s-0"><i class="lnr lnr-printer"></i></button>
+                            <button type="button" class="brill-btn-s-1"><i class="lnr lnr-printer"></i></button>
+                          </div>
+                        </div>
+        <!-- PAYMENT HISTORY SINGLE CARD -->       
+        
+                <!-- PAYMENT HISTORY SINGLE CARD -->
+                <div class="payment-history-card">
+                  <div class="payment-history-status col-md-1">
+                     <i class="lnr lnr-checkmark-circle"></i>
+                  </div>
+                  <div class="payment-history-date col-md-3">
+                     <h4>04-2021</h4>
+                     <small>09:45 pm 23-04-2021</small>
+                  </div>
+                  <div class="payment-history-desc col-md-5">
+                      <p>
+                         This payment is for some food and 
+                         transportation and some food that 
+                         the student bought
+                      </p>
+                  </div>
+                  
+                  <div class="payment-history-btns col-md-3">
+                    <button type="button" class="brill-btn-s-2"><i class="lnr lnr-eye"></i></button>
+                    <button type="button" class="brill-btn-s-0"><i class="lnr lnr-printer"></i></button>
+                    <button type="button" class="brill-btn-s-1"><i class="lnr lnr-printer"></i></button>
+                  </div>
+                </div>
+<!-- PAYMENT HISTORY SINGLE CARD -->  
+
+
+               <!-- PAYMENT HISTORY SINGLE CARD -->
+               <div class="payment-history-card">
+                <div class="payment-history-status col-md-1">
+                   <i class="lnr lnr-checkmark-circle"></i>
+                </div>
+                <div class="payment-history-date col-md-3">
+                   <h4>04-2021</h4>
+                   <small>09:45 pm 23-04-2021</small>
+                </div>
+                <div class="payment-history-desc col-md-5">
+                    <p>
+                       This payment is for some food and 
+                       transportation and some food that 
+                       the student bought
+                    </p>
+                </div>
+                
+                <div class="payment-history-btns col-md-3">
+                  <button type="button" class="brill-btn-s-2"><i class="lnr lnr-eye"></i></button>
+                  <button type="button" class="brill-btn-s-0"><i class="lnr lnr-printer"></i></button>
+                  <button type="button" class="brill-btn-s-1"><i class="lnr lnr-printer"></i></button>
+                </div>
+              </div>
+<!-- PAYMENT HISTORY SINGLE CARD --> 
+
+        </div>                  
+                  
+                    </div>
+                 <hr>
+                       <div class="modal-footer">
+                              <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                              <button type="submit" class="brill-btn-3">ADD STAFF</button>
+                       </div>
+                 </section>
+              </form> 
+        </div>
+      </div>
+    </div>

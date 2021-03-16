@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { from } from 'rxjs';
+import { StudentsService } from '../../../brillyschoolservices/students.service';
 
 @Component({
   selector: 'app-student-payment',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentPaymentComponent implements OnInit {
 
-  constructor() { }
+  //all student array 
+  public allStudentArray:any[] = [];
+  public selectSrudentName?: number;
+  //SET DATA FOR STUDENT
+ // public StudentCard:object = {};
+  
+  constructor(private studentServices:StudentsService) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+      //GETT ALL STUDENTS
+      this.studentServices.getAllStudents()
+       .subscribe(
+         (data:any) => this.allStudentArray = data.data,
+         error => console.log(error)
+       )
+    }
+
+
+
+    //studentNameInputChanged FIRE AN EVENT
+    studentNameInputChanged(){
+      console.log("CHANGED" , this.selectSrudentName);
+     
+    }
 
 }
