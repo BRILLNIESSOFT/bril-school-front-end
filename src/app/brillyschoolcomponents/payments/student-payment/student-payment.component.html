@@ -13,7 +13,7 @@
                     <!--Using ng-option and for loop-->
                     <label for="payment_number_number">Student name</label>
                     <ng-select [clearable]="false" [(ngModel)]="selectSrudentName" (change)="studentNameInputChanged()">
-                        <ng-option *ngFor="let student of allStudentArray" [value]="student.id">{{student.first_name + " " + student.first_name}}</ng-option>
+                        <ng-option *ngFor="let student of allStudentArray" [value]="student.id">{{student.first_name + " " + student.first_name }}</ng-option>
                     </ng-select>
                   </div>
 
@@ -21,7 +21,7 @@
                     <!--Using ng-option and for loop-->
                     <label for="payment_number_number">Student Number</label>
                     <ng-select [clearable]="false">
-                        <ng-option *ngFor="let student of allStudentArray" [value]="student.id">{{student.admission_no}}</ng-option>
+                        <ng-option *ngFor="let student of allStudentArray" [value]="student.id">{{student.admission_no }}</ng-option>
                     </ng-select>
                   </div>
               </div>
@@ -36,15 +36,15 @@
 
                 <div class="preview-info col-md-4">
                      <ul>
-                         <li>STUDENT NAME : {{ studentBriefInfoArray.first_name + " " +  studentBriefInfoArray.last_name }}</li>
-                         <li>STUDENT NUMBER : {{ showStudentPreview.admission_no }}</li>
+                         <li>STUDENT NAME : {{ studentBriefInfoArra.first_name + " " +  studentBriefInfoArra.last_name }}</li>
+                         <li>STUDENT NUMBER : {{ studentBriefInfoArra.admission_no }}</li>
                      </ul>
                </div>
 
                <div class="preview-info col-md-4">
                 <ul>
-                    <li>GUARDIAN NAME : {{ studentBriefInfoArray.first_name_ara }}</li>
-                    <li>GURDIAN CIN : {{ studentBriefInfoArray.last_name_ara }}</li>
+                    <li>GUARDIAN NAME : {{ studentBriefInfoArra.first_name_ara }}  </li>
+                    <li>GURDIAN CIN : {{ studentBriefInfoArra.last_name_ara }} </li>
                 </ul>
               </div>
 
@@ -52,7 +52,7 @@
               
               <div class="preview-info-btn col-md-1">
                 <ul>
-                    <li> <button data-toggle="modal" data-target="#brill_modal_create_new_payment_deposite" class="brill-btn-3">CONTINUE</button></li>
+                    <li> <button (click)="proceedYoPayment(studentBriefInfoArra.id)" data-toggle="modal" data-target="#brill_modal_create_new_payment_deposite" class="brill-btn-3">CONTINUE</button></li>
                     <li> <button class="brill-btn-0">RESET</button></li>
                     <li> <button  data-toggle="modal" data-target="#brill_modal_create_see_payment_history" class="brill-btn-4">HISTORY</button></li>
                     

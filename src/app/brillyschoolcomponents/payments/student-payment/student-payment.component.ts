@@ -25,7 +25,16 @@ export class StudentPaymentComponent implements OnInit {
   public isPreiwed:boolean = false;
   public isNullPrivied:boolean = true;
   //SET  BRIEFINFORMATION TO SHOW AFTER  INITIALIZING
-   public studentBriefInfoArray:any[]= [];
+   public studentBriefInfoArra = {
+    id: " ",
+    first_name: " ",
+    mid_name: " ",
+    last_name: " ",
+    first_name_ara: " ",
+    mid_name_ara: " ",
+    last_name_ara: " ",
+    admission_no: " "
+   };
 
   
   constructor(private studentServices:StudentsService) { }
@@ -49,11 +58,7 @@ export class StudentPaymentComponent implements OnInit {
       this.studentServices.getStudentBriefInfo(<number>this.selectSrudentName)
        .subscribe(
           (data:any) => {
-            if(this.isNullPrivied){
-              this.studentBriefInfoArray = data.data;
-            }else{
-              this.studentBriefInfoArray = []
-            }
+            this.studentBriefInfoArra = data.data;
           } ,
           error => console.log(error) , 
           () => {
@@ -70,8 +75,7 @@ export class StudentPaymentComponent implements OnInit {
             //RETRIEVING THE STTUDENT PRIVIEW CARD TRUE TO FALSE
            this.isPreiwed = false;
            this.isNullPrivied = true;
-           this.studentBriefInfoArray = [];
-      }
+       }
 
     }
 
@@ -88,6 +92,14 @@ export class StudentPaymentComponent implements OnInit {
 
            }
 
+     }
+
+
+     //PROCEED TO PAYMENT 
+     proceedYoPayment(id:number){
+       if(this.isPreiwed){
+         console.log("IS PREVIED PROCEES", id);
+       }
      }
   
 
