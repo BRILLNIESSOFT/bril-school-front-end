@@ -5,14 +5,14 @@
     </div>  
 
 
-    <div class="student-paymant-container">
+    <div  class="student-paymant-container">
         <div class="brill-input-holders"> 
             <div class="inputs-container"  >
               <div class="brill-row">
                 <div>
                     <!--Using ng-option and for loop-->
                     <label for="payment_number_number">Student name</label>
-                    <ng-select [(ngModel)]="selectSrudentName" (change)="studentNameInputChanged()">
+                    <ng-select [clearable]="false" [(ngModel)]="selectSrudentName" (change)="studentNameInputChanged()">
                         <ng-option *ngFor="let student of allStudentArray" [value]="student.id">{{student.first_name + " " + student.first_name}}</ng-option>
                     </ng-select>
                   </div>
@@ -20,7 +20,7 @@
                   <div>
                     <!--Using ng-option and for loop-->
                     <label for="payment_number_number">Student Number</label>
-                    <ng-select>
+                    <ng-select [clearable]="false">
                         <ng-option *ngFor="let student of allStudentArray" [value]="student.id">{{student.admission_no}}</ng-option>
                     </ng-select>
                   </div>
@@ -29,22 +29,22 @@
           </div>
   
             <!-- STUDENT SMALL PRIEVIEW HORIZONTAL CARD-->
-             <div class="payment-student-preview">
+             <div *ngIf="isPreiwed" #studentInfoPreview class="payment-student-preview">
                 <div class="preview-img col-md-2">
                      <img src="assets/icons/moh.jpg">
                 </div>
 
                 <div class="preview-info col-md-4">
                      <ul>
-                         <li>STUDENT NAME : MOHSSINE KHALOUFI</li>
-                         <li>STUDENT NUMBER : XS234245</li>
+                         <li>STUDENT NAME : {{ studentBriefInfoArray.first_name + " " +  studentBriefInfoArray.last_name }}</li>
+                         <li>STUDENT NUMBER : {{ showStudentPreview.admission_no }}</li>
                      </ul>
                </div>
 
                <div class="preview-info col-md-4">
                 <ul>
-                    <li>GUARDIAN NAME : HAMADA KHALOUFI</li>
-                    <li>GURDIAN CIN : SH12343</li>
+                    <li>GUARDIAN NAME : {{ studentBriefInfoArray.first_name_ara }}</li>
+                    <li>GURDIAN CIN : {{ studentBriefInfoArray.last_name_ara }}</li>
                 </ul>
               </div>
 
@@ -62,7 +62,7 @@
             </div>
 
      <!-- STUDENT PAYMEENT SMALL NULL AND EMPTY PRIEVIEW HORIZONTAL CARD-->
-      <div class="payment-student-preview">
+      <div  *ngIf = "isNullPrivied" #studentInfoPreviewNull class="payment-student-preview">
                             <div class="preview-img col-md-2">
                                  <img src="assets/icons/boy-icon.png">
                             </div>
@@ -98,7 +98,7 @@
                     <div class="add-new-staff">
                         <h3> ADD NEW PAYMENT DEPOSITE</h3>
                        <div class="brill-input-holders"> 
-                        <div class="inputs-container"  formGroupName ="staff">
+                        <div class="inputs-container" >
                            <h3>MOHSSINE KHALOUFI</h3>
                            <h3>PAYMENT DEPOSITE</h3>
                            <h3>PAYMENT DEPOSITE</h3>
