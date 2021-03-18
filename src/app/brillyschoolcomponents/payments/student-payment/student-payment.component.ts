@@ -53,8 +53,7 @@ export class StudentPaymentComponent implements OnInit {
 
     //studentNameInputChanged FIRE AN EVENT
     studentNameInputChanged(){      
-      this.isNullPrivied = true;
-      console.log("CHANGED" , this.selectSrudentName);
+       console.log("CHANGED" , this.selectSrudentName);
       this.studentServices.getStudentBriefInfo(<number>this.selectSrudentName)
        .subscribe(
           (data:any) => {
@@ -96,7 +95,8 @@ export class StudentPaymentComponent implements OnInit {
 
 
      //PROCEED TO PAYMENT 
-     proceedYoPayment(id:number){
+     proceedYoPayment(id:any){
+      id = parseInt(id);
        if(this.isPreiwed){
          console.log("IS PREVIED PROCEES", id);
        }

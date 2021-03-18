@@ -14,16 +14,8 @@
 <hr>
         <div class="brill-filter-by-click">
              <ul>
-                 <li><a href="#">Teachers</a></li>
-                 <li><a href="#">Secretaries</a></li>
-                 <li><a href="#">Bus drivers</a></li>
-                 <li><a href="#">Administaros</a></li>
-                 <li><a href="#">Volunteers</a></li>
-                 <li><a href="#">Authors</a></li>
-                 <li><a href="#">Specialists</a></li>
-                 <li><a href="#">Advisors</a></li>
-                 <li><a href="#">Trainners</a></li>
-             </ul>
+                 <li *ngFor="let role of allRolesArray"><a href="#">{{role.name}}</a></li>
+              </ul>
         </div>
 
 
@@ -31,15 +23,15 @@
                  <div class="row">
 
                      <!-- START THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-                     <div class="staff-card col-md-3">
+                     <div *ngFor = "let staff of allStaffs" class="staff-card col-md-3">
                          <div class="staff-card-child">
                         <img src="assets/icons/moh.jpg">
-                        <h3>MOHSSINE KHALOUFI</h3>
+                        <h3>{{ staff.father_name +  staff.mother_name}}</h3>
 
                         <div class="staff-card-info">
                           <ul>
                               <li> <i class="lnr lnr-briefcase"> </i>   : Math Teacher </li>
-                              <li> <i class="lnr lnr-diamond"> </i> : 432DH / MONTH </li>
+                              <li> <i class="lnr lnr-diamond"> </i> : {{ staff.basic_salary }} / MONTH </li>
                               <li> <i class="lnr lnr-user"> </i> : Active </li>
                           </ul>
                         </div>
@@ -58,299 +50,8 @@
                     </div>
                     </div> 
                      <!-- END THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-
-                                         <!-- START THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-                                         <div class="staff-card col-md-3">
-                                            <div class="staff-card-child">
-                                           <img src="assets/icons/moh.jpg">
-                                           <h3>MOHSSINE KHALOUFI</h3>
-                   
-                                           <div class="staff-card-info">
-                                             <ul>
-                                                 <li> <i class="lnr lnr-briefcase"> </i>   : Math Teacher </li>
-                                                 <li> <i class="lnr lnr-diamond"> </i> : 432DH / MONTH </li>
-                                                 <li> <i class="lnr lnr-user"> </i> : Active </li>
-                                             </ul>
-                                           </div>
-                                           <div class="brill-card-options">
-                                            <button class="card-opt-btn" type="button" id="card_options_drop_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                 <i class="lnr lnr-menu-circle"> </i> </button>
-                                            <div class="dropdown-menu card-options-holder-options" aria-labelledby="card_options_drop_menu">
-                                                  
-                                            <li> <a class="dropdown-item" href="#"> <i class="lnr lnr-pencil"> </i> Edit info</a> </li> 
-                                            <li> <a class="dropdown-item" href="#"><i class="lnr lnr-user"> </i> Profile</a>  </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-license"> </i> print ID card</a> </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-trash"> </i>Delete staff</a> </li>
-                                            </div>
-                                        </div>
-
-                                       </div>
-                                       </div> 
-                                        <!-- END THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-
-
-                                         <!-- START THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-                                         <div class="staff-card col-md-3">
-                                            <div class="staff-card-child">
-                                           <img src="assets/icons/moh.jpg">
-                                           <h3>MOHSSINE KHALOUFI</h3>
-                   
-                                           <div class="staff-card-info">
-                                             <ul>
-                                                 <li> <i class="lnr lnr-briefcase"> </i>   : Math Teacher </li>
-                                                 <li> <i class="lnr lnr-diamond"> </i> : 432DH / MONTH </li>
-                                                 <li> <i class="lnr lnr-user"> </i> : Active </li>
-                                             </ul>
-                                           </div>
-                                           <div class="brill-card-options">
-                                            <button class="card-opt-btn" type="button" id="card_options_drop_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                 <i class="lnr lnr-menu-circle"> </i> </button>
-                                            <div class="dropdown-menu card-options-holder-options" aria-labelledby="card_options_drop_menu">
-                                                  
-                                            <li> <a class="dropdown-item" href="#"> <i class="lnr lnr-pencil"> </i> Edit info</a> </li> 
-                                            <li> <a class="dropdown-item" href="#"><i class="lnr lnr-user"> </i> Profile</a>  </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-license"> </i> print ID card</a> </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-trash"> </i>Delete staff</a> </li>
-                                            </div>
-                                        </div>
-
-                                       </div>
-                                       </div> 
-                                        <!-- END THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-
-                                        
-                                         <!-- START THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-                                         <div class="staff-card col-md-3">
-                                            <div class="staff-card-child">
-                                           <img src="assets/icons/moh.jpg">
-                                           <h3>MOHSSINE KHALOUFI</h3>
-                   
-                                           <div class="staff-card-info">
-                                             <ul>
-                                                 <li> <i class="lnr lnr-briefcase"> </i>   : Math Teacher </li>
-                                                 <li> <i class="lnr lnr-diamond"> </i> : 432DH / MONTH </li>
-                                                 <li> <i class="lnr lnr-user"> </i> : Active </li>
-                                             </ul>
-                                           </div>
-                                           <div class="brill-card-options">
-                                            <button class="card-opt-btn" type="button" id="card_options_drop_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                 <i class="lnr lnr-menu-circle"> </i> </button>
-                                            <div class="dropdown-menu card-options-holder-options" aria-labelledby="card_options_drop_menu">
-                                                  
-                                            <li> <a class="dropdown-item" href="#"> <i class="lnr lnr-pencil"> </i> Edit info</a> </li> 
-                                            <li> <a class="dropdown-item" href="#"><i class="lnr lnr-user"> </i> Profile</a>  </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-license"> </i> print ID card</a> </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-trash"> </i>Delete staff</a> </li>
-                                            </div>
-                                        </div>
-
-                                       </div>
-                                       </div> 
-                                        <!-- END THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-
-
-                                         <!-- START THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-                                         <div class="staff-card col-md-3">
-                                            <div class="staff-card-child">
-                                           <img src="assets/icons/moh.jpg">
-                                           <h3>MOHSSINE KHALOUFI</h3>
-                   
-                                           <div class="staff-card-info">
-                                             <ul>
-                                                 <li> <i class="lnr lnr-briefcase"> </i>   : Math Teacher </li>
-                                                 <li> <i class="lnr lnr-diamond"> </i> : 432DH / MONTH </li>
-                                                 <li> <i class="lnr lnr-user"> </i> : Active </li>
-                                             </ul>
-                                           </div>
-                                           <div class="brill-card-options">
-                                            <button class="card-opt-btn" type="button" id="card_options_drop_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                 <i class="lnr lnr-menu-circle"> </i> </button>
-                                            <div class="dropdown-menu card-options-holder-options" aria-labelledby="card_options_drop_menu">
-                                                  
-                                            <li> <a class="dropdown-item" href="#"> <i class="lnr lnr-pencil"> </i> Edit info</a> </li> 
-                                            <li> <a class="dropdown-item" href="#"><i class="lnr lnr-user"> </i> Profile</a>  </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-license"> </i> print ID card</a> </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-trash"> </i>Delete staff</a> </li>
-                                            </div>
-                                        </div>
-
-                                       </div>
-                                       </div> 
-                                        <!-- END THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-
-                                         <!-- START THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-                                         <div class="staff-card col-md-3">
-                                            <div class="staff-card-child">
-                                           <img src="assets/icons/moh.jpg">
-                                           <h3>MOHSSINE KHALOUFI</h3>
-                   
-                                           <div class="staff-card-info">
-                                             <ul>
-                                                 <li> <i class="lnr lnr-briefcase"> </i>   : Math Teacher </li>
-                                                 <li> <i class="lnr lnr-diamond"> </i> : 432DH / MONTH </li>
-                                                 <li> <i class="lnr lnr-user"> </i> : Active </li>
-                                             </ul>
-                                           </div>
-                                           <div class="brill-card-options">
-                                            <button class="card-opt-btn" type="button" id="card_options_drop_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                 <i class="lnr lnr-menu-circle"> </i> </button>
-                                            <div class="dropdown-menu card-options-holder-options" aria-labelledby="card_options_drop_menu">
-                                                  
-                                            <li> <a class="dropdown-item" href="#"> <i class="lnr lnr-pencil"> </i> Edit info</a> </li> 
-                                            <li> <a class="dropdown-item" href="#"><i class="lnr lnr-user"> </i> Profile</a>  </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-license"> </i> print ID card</a> </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-trash"> </i>Delete staff</a> </li>
-                                            </div>
-                                        </div>
-
-                                       </div>
-                                       </div> 
-                                        <!-- END THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
    
-                                         <!-- START THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-                                         <div class="staff-card col-md-3">
-                                            <div class="staff-card-child">
-                                           <img src="assets/icons/moh.jpg">
-                                           <h3>MOHSSINE KHALOUFI</h3>
-                   
-                                           <div class="staff-card-info">
-                                             <ul>
-                                                 <li> <i class="lnr lnr-briefcase"> </i>   : Math Teacher </li>
-                                                 <li> <i class="lnr lnr-diamond"> </i> : 432DH / MONTH </li>
-                                                 <li> <i class="lnr lnr-user"> </i> : Active </li>
-                                             </ul>
-                                           </div>
-                                           <div class="brill-card-options">
-                                            <button class="card-opt-btn" type="button" id="card_options_drop_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                 <i class="lnr lnr-menu-circle"> </i> </button>
-                                            <div class="dropdown-menu card-options-holder-options" aria-labelledby="card_options_drop_menu">
-                                                  
-                                            <li> <a class="dropdown-item" href="#"> <i class="lnr lnr-pencil"> </i> Edit info</a> </li> 
-                                            <li> <a class="dropdown-item" href="#"><i class="lnr lnr-user"> </i> Profile</a>  </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-license"> </i> print ID card</a> </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-trash"> </i>Delete staff</a> </li>
-                                            </div>
-                                        </div>
-
-                                       </div>
-                                       </div> 
-                                        <!-- END THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-  
-                                         <!-- START THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-                                         <div class="staff-card col-md-3">
-                                            <div class="staff-card-child">
-                                           <img src="assets/icons/moh.jpg">
-                                           <h3>MOHSSINE KHALOUFI</h3>
-                   
-                                           <div class="staff-card-info">
-                                             <ul>
-                                                 <li> <i class="lnr lnr-briefcase"> </i>   : Math Teacher </li>
-                                                 <li> <i class="lnr lnr-diamond"> </i> : 432DH / MONTH </li>
-                                                 <li> <i class="lnr lnr-user"> </i> : Active </li>
-                                             </ul>
-                                           </div>
-                                           <div class="brill-card-options">
-                                            <button class="card-opt-btn" type="button" id="card_options_drop_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                 <i class="lnr lnr-menu-circle"> </i> </button>
-                                            <div class="dropdown-menu card-options-holder-options" aria-labelledby="card_options_drop_menu">
-                                                  
-                                            <li> <a class="dropdown-item" href="#"> <i class="lnr lnr-pencil"> </i> Edit info</a> </li> 
-                                            <li> <a class="dropdown-item" href="#"><i class="lnr lnr-user"> </i> Profile</a>  </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-license"> </i> print ID card</a> </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-trash"> </i>Delete staff</a> </li>
-                                            </div>
-                                        </div>
-
-                                       </div>
-                                       </div> 
-                                        <!-- END THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
- 
-                                         <!-- START THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-                                         <div class="staff-card col-md-3">
-                                            <div class="staff-card-child">
-                                           <img src="assets/icons/moh.jpg">
-                                           <h3>MOHSSINE KHALOUFI</h3>
-                   
-                                           <div class="staff-card-info">
-                                             <ul>
-                                                 <li> <i class="lnr lnr-briefcase"> </i>   : Math Teacher </li>
-                                                 <li> <i class="lnr lnr-diamond"> </i> : 432DH / MONTH </li>
-                                                 <li> <i class="lnr lnr-user"> </i> : Active </li>
-                                             </ul>
-                                           </div>
-                                           <div class="brill-card-options">
-                                            <button class="card-opt-btn" type="button" id="card_options_drop_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                 <i class="lnr lnr-menu-circle"> </i> </button>
-                                            <div class="dropdown-menu card-options-holder-options" aria-labelledby="card_options_drop_menu">
-                                                  
-                                            <li> <a class="dropdown-item" href="#"> <i class="lnr lnr-pencil"> </i> Edit info</a> </li> 
-                                            <li> <a class="dropdown-item" href="#"><i class="lnr lnr-user"> </i> Profile</a>  </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-license"> </i> print ID card</a> </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-trash"> </i>Delete staff</a> </li>
-                                            </div>
-                                        </div>
-
-                                       </div>
-                                       </div> 
-                                        <!-- END THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
- 
-                                         <!-- START THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-                                         <div class="staff-card col-md-3">
-                                            <div class="staff-card-child">
-                                           <img src="assets/icons/moh.jpg">
-                                           <h3>MOHSSINE KHALOUFI</h3>
-                   
-                                           <div class="staff-card-info">
-                                             <ul>
-                                                 <li> <i class="lnr lnr-briefcase"> </i>   : Math Teacher </li>
-                                                 <li> <i class="lnr lnr-diamond"> </i> : 432DH / MONTH </li>
-                                                 <li> <i class="lnr lnr-user"> </i> : Active </li>
-                                             </ul>
-                                           </div>
-                                           <div class="brill-card-options">
-                                            <button class="card-opt-btn" type="button" id="card_options_drop_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                 <i class="lnr lnr-menu-circle"> </i> </button>
-                                            <div class="dropdown-menu card-options-holder-options" aria-labelledby="card_options_drop_menu">
-                                                  
-                                            <li> <a class="dropdown-item" href="#"> <i class="lnr lnr-pencil"> </i> Edit info</a> </li> 
-                                            <li> <a class="dropdown-item" href="#"><i class="lnr lnr-user"> </i> Profile</a>  </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-license"> </i> print ID card</a> </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-trash"> </i>Delete staff</a> </li>
-                                            </div>
-                                        </div>
-
-                                       </div>
-                                       </div> 
-                                        <!-- END THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-
-                                         <!-- START THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->
-                                         <div class="staff-card col-md-3">
-                                            <div class="staff-card-child">
-                                           <img src="assets/icons/moh.jpg">
-                                           <h3>MOHSSINE KHALOUFI</h3>
-                   
-                                           <div class="staff-card-info">
-                                             <ul>
-                                                 <li> <i class="lnr lnr-briefcase"> </i>   : Math Teacher </li>
-                                                 <li> <i class="lnr lnr-diamond"> </i> : 432DH / MONTH </li>
-                                                 <li> <i class="lnr lnr-user"> </i> : Active </li>
-                                             </ul>
-                                           </div>
-                                           <div class="brill-card-options">
-                                            <button class="card-opt-btn" type="button" id="card_options_drop_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                 <i class="lnr lnr-menu-circle"> </i> </button>
-                                            <div class="dropdown-menu card-options-holder-options" aria-labelledby="card_options_drop_menu">
-                                                  
-                                            <li> <a class="dropdown-item" href="#"> <i class="lnr lnr-pencil"> </i> Edit info</a> </li> 
-                                            <li> <a class="dropdown-item" href="#"><i class="lnr lnr-user"> </i> Profile</a>  </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-license"> </i> print ID card</a> </li>
-                                            <li>  <a class="dropdown-item" href="#"> <i class="lnr lnr-trash"> </i>Delete staff</a> </li>
-                                            </div>
-                                        </div>
-
-                                       </div>
-                                       </div> 
-                                        <!-- END THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->                                                                                                                                                                                                                                                                                 
+                   <!-- END THE SINGLE STAFF CARD INCLUDNNG THE OPTION POP UP-->                                                                                                                                                                                                                                                                                 
  
                  </div>
         </div>

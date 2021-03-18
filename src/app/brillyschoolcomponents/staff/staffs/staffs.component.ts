@@ -13,6 +13,9 @@ import { RolesService } from '../../../brillyschoolservices/roles.service';
 })
 export class StaffsComponent implements OnInit {
 
+  //ALL STAFFS 
+  public allStaffs:any[] = [];
+
   //ALL ROLES
   public allRolesArray:any[] = [];
 
@@ -27,6 +30,13 @@ export class StaffsComponent implements OnInit {
               (data:any) => this.allRolesArray = data.data,
               (error:any) => console.log("ERROR" , error)
             );
+
+            //ALL STAFFS
+            this._staffServices.getAllStaffs()
+             .subscribe(
+               (data:any) => this.allStaffs = data.data,
+               error =>console.log("ERROR", error)
+             )
   }
 
   //ADDSTAFF FORM GROUP
@@ -58,7 +68,7 @@ export class StaffsComponent implements OnInit {
         instagram: ['instagram.co.com'] ,
         image: ['moh.png'] ,
         note: ['The given staff is responsibile for testing data'] ,
-        employee_id: ['12'] ,
+        employee_id: [3] ,
         qualification: ['Phd'] ,
         work_exp: ['almost six years'] ,
         father_name: ['AbdelMalek'] ,
@@ -71,7 +81,8 @@ export class StaffsComponent implements OnInit {
         resume: ['hamo.pdf'] ,
         joining_letter: ['joining.pdf'] ,
         resignation_letter: ['resigning.pdf'] ,
-        department_id: ['12'] ,
+        department_id: [] ,
+        salutation_id: [],
         role_id : [''],
         address: {
           line1: '' ,
