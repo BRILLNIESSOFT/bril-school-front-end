@@ -1,11 +1,8 @@
 <div class="brill-container-g staffs col-md-12">
     <!-- BRILL BOTTOM IICONS  -->
-    <!-- <div class="global-fixed-control-btns" (mouseover)="onMouseOverTheFixedMenu()" (mouseout)="onMouseOutTheFixedMenu()" [@fixedMenuClosed]="bottomFixedMenuCase ? 'onopned' : 'onclosed'">
-           <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_staff"><i class="lnr lnr-plus-circle"> </i></button>
-           <button type="button"><i class="lnr lnr-crop"> </i></button>
-           <button type="button"><i class="lnr lnr-user"> </i></button>
-           <button type="button"><i class="lnr lnr-pencil"> </i></button>
-    </div> -->
+      <div class="global-fixed-control-btns">
+           <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_classroom"><i class="lnr lnr-plus-circle"> </i></button>
+      </div> 
 
     <div class="global-container-header">
         <h3> ALL THE SCHOOL CLASS ROOM </h3>
@@ -77,3 +74,75 @@
     </div>
 
 </div>    
+
+
+
+      <!-- ALL THE MODALS STARTS FROM HERE -->
+	  <!-- DATA MODAL OF ADD NEW CLALSS SECTION -->
+	  <div id= "brill_modal_create_new_classroom" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg brill-modal-dialog">
+          <div class="modal-content">
+               <form>
+                <section class="row brill-modal-container">
+                    <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                          
+                      <div class="add-new-staff">
+                          <h3> ADD NEW CLALSS ROOM</h3>
+                         <div class="brill-input-holders"> 
+                          <div class="inputs-container">
+    
+                            <div class="brill-row">
+                                <div>
+                                    <label for="classRoomName">Class room name</label>
+                                    <input type="text" name="classRoomName" id = "classRoomName" class="input" placeholder="Class room name"/>
+                                </div>
+
+                                <div>
+                                    <label for="classRoomCode">Class room code</label>
+                                    <input type="text" name="classRoomCode" id = "classRoomCode" class="input" placeholder="Class room code"/>
+                                </div>
+
+                                <div>
+                                    <label for="classRoomSeats">Seats</label>
+                                    <input type="number" name="classRoomSeats" id = "classRoomSeats" class="input" placeholder="Number of seats"/>
+                                </div>
+                            </div>
+
+                            <div class="brill-row">
+
+                                <div>
+                                    <label for="classRoomNotes"> Notes</label>
+                                    <textarea  name="classRoomNotes" id = "classRoomNotes" rows="4" placeholder="You can leave it blank if you want"> </textarea>
+                                </div>
+
+                                <div>
+                                    <label for="classRoomDesc">Description</label>
+                                    <textarea  name="classRoomDesc" id = "classRoomDesc" rows="4" placeholder="You can leave it blank if you want"> </textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="classroom-img-preview">
+                                <label for="classRoomImage">Class room image
+                                  <span  class="lnr lnr-picture brill-input-file-span"></span>
+                                  <input type="file" (change)="readURL($event);" name="classRoomSeats" id = "classRoomImage" class="input" placeholder="Use a HD image for the room"/>
+                                  <img id="blah" [src]="imageSrc || 'http://placehold.it/180'" alt="your image" />
+                                </label>
+                            </div>
+                        
+                          </div>
+                        </div>
+                      </div>
+   
+                      <hr>
+                         <div class="modal-footer">
+                                <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                                <button type="submit" class="brill-btn-3">Add Sect</button>
+                         </div>
+                   </section>
+                </form> 
+          </div>
+        </div>
+      </div>
+
+ 

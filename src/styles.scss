@@ -755,6 +755,29 @@ input[type="color" i] {
   width: 0;
 }
 
+//INPUT TYPE FILE GLOBAL
+.inputs-container .brill-input-file-span{
+  display: block;
+  font-size: 3em;
+  padding: 6px 30px 6px 30px;
+  background: #e2e2e2;
+  border-radius: 20px;
+  width: 200px;
+  color: #24272f;
+  text-align: center;
+  border: 1px solid #000;
+  cursor: pointer;
+  &:hover{
+      background-color: #ffffff;
+  }
+
+}
+
+
+.inputs-container input[type="file"] {
+  display: none;
+}
+
 
 
 

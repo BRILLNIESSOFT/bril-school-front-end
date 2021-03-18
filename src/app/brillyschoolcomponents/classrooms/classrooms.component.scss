@@ -3,7 +3,7 @@
 }
 
 .classroom-item-card{
-     border: 2px solid #474D5E;
+     border: 1px solid #474D5E;
     border-radius: 14px;
     padding: 20px;
     margin-bottom: 10px;
@@ -27,8 +27,8 @@ margin-top: 20px;
 }
 
 .classroom-item-card ul li{
-    font-size: 1.4em;
-    border-bottom: 1px solid #b7b7b7;
+    font-size: 1.2em;
+    border-bottom: 1px solid #dbdbdb;
     padding: 10px;
     color: #545454;
     margin-bottom: 10px;
@@ -37,5 +37,28 @@ margin-top: 20px;
 .classroom-item-control{
     padding: 10px;
 }  
+
+
+.classroom-img-preview{
+    float: left;
+   display: block;
+   margin-top: 20px;
+
+}
+
+.classroom-img-preview img{
+    border-radius: 20px;
+    width: 200px;
+    margin-top: 10px;
+    border: 2px solid #2dc2ef;
+    height: 180px;
+    
+}
+
+
+
+
+
+
 
 

@@ -1,0 +1,53 @@
+.claassroom-list {
+  padding: 20px;
+}
+
+.classroom-item-card {
+  border: 1px solid #474D5E;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 10px;
+  width: 48%;
+  margin-right: 2%;
+}
+
+.classroom-item-card img {
+  width: 100%;
+  border: 1px solid #474D5E;
+  border-radius: 14px;
+}
+
+.classroom-item-card ul {
+  list-style: none;
+  width: 100%;
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-top: 20px;
+}
+
+.classroom-item-card ul li {
+  font-size: 1.2em;
+  border-bottom: 1px solid #dbdbdb;
+  padding: 10px;
+  color: #545454;
+  margin-bottom: 10px;
+}
+
+.classroom-item-control {
+  padding: 10px;
+}
+
+.classroom-img-preview {
+  float: left;
+  display: block;
+  margin-top: 20px;
+}
+
+.classroom-img-preview img {
+  border-radius: 20px;
+  width: 200px;
+  margin-top: 10px;
+  border: 2px solid #2dc2ef;
+  height: 180px;
+}
+/*# sourceMappingURL=classrooms.component.css.map */
