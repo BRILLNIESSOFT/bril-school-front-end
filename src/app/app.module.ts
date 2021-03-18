@@ -43,6 +43,7 @@ import { CheckComponent } from './brillyschoolcomponents/timetables/check/check.
 import { SubjectComponent } from './brillyschoolcomponents/subjects/subject/subject.component';
 import { AttandanceComponent } from './brillyschoolcomponents/students/attandance/attandance.component';
 import { DesignationsComponent } from './brillyschoolcomponents/designations/designations.component';
+import { ClassroomsComponent } from './brillyschoolcomponents/classrooms/classrooms.component';
  
 
 //REGISTER PLUGINS OF FULLCALENDER JS
@@ -69,6 +70,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     SubjectComponent,
     AttandanceComponent,
     DesignationsComponent,
+    ClassroomsComponent,
    ],
   imports: [
     NgSelectModule,

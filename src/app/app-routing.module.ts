@@ -10,7 +10,7 @@ import {CheckComponent } from './brillyschoolcomponents/timetables/check/check.c
 import {SubjectComponent } from './brillyschoolcomponents/subjects/subject/subject.component';
 import {AttandanceComponent} from './brillyschoolcomponents/students/attandance/attandance.component';
 import { DesignationsComponent } from './brillyschoolcomponents/designations/designations.component'
-
+import { ClassroomsComponent } from './brillyschoolcomponents/classrooms/classrooms.component'
 
 const routes: Routes = [
   {path : 'students/register', component: RegistrationComponent} ,
@@ -21,6 +21,8 @@ const routes: Routes = [
   {path : 'subjects/subject', component: SubjectComponent} , 
   {path : 'students/attendance', component: AttandanceComponent} , 
   {path : 'school/designations', component: DesignationsComponent} , 
+  {path : 'school/classrooms', component: ClassroomsComponent} , 
+
 ];
 
 @NgModule({
