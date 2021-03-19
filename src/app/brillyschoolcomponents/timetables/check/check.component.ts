@@ -88,6 +88,7 @@ export class CheckComponent implements OnInit {
 
               eventDragStop( ) {
                 console.log("STARTED ");
+                (<any>$('#brill_modal_resize_timetable_event')).modal('show');
               } ,
 
               drop(elem:any){
