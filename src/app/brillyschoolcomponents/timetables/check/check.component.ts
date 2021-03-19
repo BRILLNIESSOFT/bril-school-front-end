@@ -1,5 +1,9 @@
 import { Component, ElementRef, ViewChild,OnInit , AfterViewInit} from '@angular/core';
 import { SubjectsElement } from './../timetable-animation'
+//IMPRTO JQUERY TYPE DEFINATION DOLLAR SIGN 
+ declare var $:any;
+
+
 //FULL CALENDER IMPORTS 
 import { Calendar } from '@fullcalendar/core';
 
@@ -17,7 +21,7 @@ import { Calendar } from '@fullcalendar/core';
   animations:[SubjectsElement]
 })
 export class CheckComponent implements OnInit {
-
+ 
   //GET ALL DUBJECTS
   public allSubjectsArray:any[] = [];
 
