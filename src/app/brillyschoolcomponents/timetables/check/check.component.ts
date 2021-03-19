@@ -73,19 +73,30 @@ export class CheckComponent implements OnInit {
     
 
         //ON THE USER STARTS DRUGGING 
-              eventDragStop( ) {
-                console.log("STOPED ");
+        //ON EVENT DRAGGING OR DROPPING
+              eventDragStart( ){
+                console.log("STARTED ");
               } ,
 
+              select(){
+                (<any>$('#brill_modal_create_new_timetable_event')).modal('show');
+              } ,
 
-              eventDragStart( ){
+              eventDragStop( ) {
                 console.log("STARTED ");
               } ,
 
               drop(elem:any){
                 elem = <any>document.querySelector('.subjects-list-draggable');
                 elem.style.opacity = "1";
-              }
+              } , 
+
+              eventResizeStop(){
+                
+                console.log("RESIZED FIXED ");
+                (<any>$('#brill_modal_resize_timetable_event')).modal('show');
+
+              } 
 
                 
     };
@@ -138,5 +149,11 @@ export class CheckComponent implements OnInit {
     this.subjectElmIsShown = false;   
   }
 
+
+  //ASSIGN SUBJECT TO THE NEW EVENT
+  onSetSubjectToNewEvent(subjectRef:any, id:number){
+    subjectRef.style.opacity = "1";
+    console.log(  + " " + id);
+  }
 
 }

@@ -779,6 +779,88 @@ input[type="color" i] {
 }
 
 
+.brill-input-holders .inputs-container input.input-disbled-f {
+  background: #d85858;
+  border: 1px solid;
+  width: 100%;
+  padding: 11px 18px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  border-radius: 30px;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.brill-input-holders .inputs-container input.input-disbled-s {
+  background: #009e90;
+  border: 1px solid;
+  width: 100%;
+  padding: 11px 18px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  border-radius: 30px;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+
+//EVENT TIMELINE
+.time-table-event-edit-header{
+   margin-bottom: 20px;
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+.time-table-event-edit-header .event-subject{
+   background-color: #b4004b;
+  color: #ffffff;
+   width: 24%;
+   height: 45px;
+   }
+
+
+ .time-table-event-edit-header .event-subject h5{
+     font-size: 1em;
+    font-weight: 600;
+    margin-top: 10px;
+ }
+
+ .time-table-event-edit-header .event-data{
+    background-color: #d1d1d1;
+    color: #3a3a3a;
+    height: 45px;
+     border-left: 1px solid #bebebe;
+    border-right: 1px solid #bebebe;
+   }
+
+   .time-table-event-edit-header .event-data h5{
+    font-weight: 600;
+    margin-top: 10px;
+    text-align: left;
+    padding: 0px;
+    font-size: 12px;
+   
+  }
+
+  .time-table-event-edit-header .event-data h5 i{
+    font-size: 1.5em;
+    font-weight: 800;
+     margin-right: 4px;   
+   }
+
+
+
+
+ //modal styles
+.modal .brill-input-holders{
+  margin-top: 10px;
+  display: block;
+  clear: both;
+}
+
 
 
 

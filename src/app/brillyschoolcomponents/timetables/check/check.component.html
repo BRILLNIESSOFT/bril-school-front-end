@@ -30,7 +30,7 @@
         </div>
       </div>
    
- <div class="time-table-content col-lg-12">
+ <div class="time-table-content col-sm-12">
          <full-calendar [options]="CalendarOptions">
 
          </full-calendar>
@@ -46,7 +46,7 @@
              <h3>SUBJECTS</h3>
 
              <div *ngFor = "let subject of allSubjectsArray" class="fc-event subjects-list-draggable-item ">
-                <i class="fas fa-square-root-alt" style="background-color:{{subject.color }}"></i> 
+                <i class="fas fa-square-root-alt" style="background-color: {{subject.color }} "></i> 
                 <h5> {{subject.name }}</h5>
              </div>
  
@@ -55,3 +55,158 @@
 
          </div>
  </div>
+
+
+
+
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+   <!-- DATA MODAL RESIZE THE EVENT -->
+	  <div id= "brill_modal_resize_timetable_event" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg brill-modal-dialog">
+          <div class="modal-content">
+               <form>
+                <section class="row brill-modal-container">
+                    <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                          
+                      <div class="add-new-staff">
+                          <h3> CONFIRM THE DURATION CHANGE</h3>
+
+                        <div class="time-table-event-edit-header">
+                            <div class="event-subject col-md-2">
+                                <h5>MATHEMATIC</h5>
+                            </div>
+
+                            <div class="event-day event-data col-md-2">
+                                <h5><i class="fas fa-calendar-week"></i> : SUNDAY</h5>
+                            </div>
+                            <div class="event-day event-data col-md-3">
+                                <h5><i class="lnr lnr-briefcase"></i> : AHMED NOUREDDIEN</h5>
+                            </div>
+                            <div class="event-day event-data col-md-2">
+                                <h5><i class="fas fa-chalkboard-teacher"></i> : AC12</h5>
+                            </div>
+
+                            <div class="event-day event-data col-md-2">
+                                <h5><i class="lnr lnr-clock"></i> : 120 m</h5>
+                            </div>
+                        </div> 
+
+                         <div class="brill-input-holders">
+                          <div class="inputs-container">
+                            
+                             <div class="brill-row">
+                                <div>
+                                    <label for="oldTimeStart">Old time start</label>
+                                    <input name="oldTimeStart" type="text" placeholder="OLD TIME START" value="39-454-4545" disabled class="input-disbled-f">
+                                </div>
+                                <div>
+                                    <label for="oldTimeStart">Old time end</label>
+                                    <input name="oldTimeStart" type="text" placeholder="Section code" value="39-454-4545" disabled class="input-disbled-f">
+                                </div>
+
+                                <div>
+                                    <label for="newTimeStart">New time start</label>
+                                    <input name="oldTimeStart" type="text" placeholder="NEW TIME START" value="39-454-4545" disabled class="input-disbled-s">
+                                </div>
+                                <div>
+                                    <label for="newTimeStart">New time end</label>
+                                    <input name="oldTimeStart" type="text" placeholder="NEW TIME END" value="39-454-4545" disabled class="input-disbled-s">
+                                </div>
+                             </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+   
+                      <hr>
+                         <div class="modal-footer">
+                                <button type="button" class="brill-btn-2" data-dismiss="modal">CANCEL</button>
+                                <button type="submit" class="brill-btn-3">APPLY</button>
+                         </div>
+                   </section>
+                </form> 
+          </div>
+        </div>
+  </div>
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- DATA MODAL ADD NEW EVENT -->
+<div id= "brill_modal_create_new_timetable_event" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg brill-modal-dialog">
+      <div class="modal-content">
+           <form>
+            <section class="row brill-modal-container">
+                <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                      
+                  <div class="add-new-event-to-timetable">
+                      <h3> SET NEW TIMETABLE EVENT</h3>
+
+                    <div class="time-table-event-edit-header">
+                        <div class="event-subject col-md-2">
+                            <h5>MATHEMATIC</h5>
+                        </div>
+
+                        <div class="event-day event-data col-md-2">
+                            <h5><i class="fas fa-calendar-week"></i> : SUNDAY</h5>
+                        </div>
+                        <div class="event-day event-data col-md-3">
+                            <h5><i class="lnr lnr-briefcase"></i> : AHMED NOUREDDIEN</h5>
+                        </div>
+                        <div class="event-day event-data col-md-2">
+                            <h5><i class="fas fa-chalkboard-teacher"></i> : AC12</h5>
+                        </div>
+
+                        <div class="event-day event-data col-md-2">
+                            <h5><i class="lnr lnr-clock"></i> : 120 m</h5>
+                        </div>
+                    </div> 
+
+                    <div class="new-timetable-event-select-subject">
+                        <h5>Selected Subjects</h5>
+                        <div *ngFor= "let subject of allSubjectsArray">
+                             <button  style="background-color: {{ subject.color }}" type="button" #selectedSubjecToEvent (click)="onSetSubjectToNewEvent(selectedSubjecToEvent,subject.id)" class="col-md-2">
+                                 {{ subject.name }}  
+                             </button>
+                         </div>
+                    </div>
+
+                     <div class="brill-input-holders">
+                      <div class="inputs-container">
+                        <div class="brill-row">
+                            <div>
+                                <label for="oldTimeStart">Old time start</label>
+                                <input name="oldTimeStart" type="text" placeholder="OLD TIME START" value="39-454-4545" disabled class="input-disbled-f">
+                            </div>
+                            <div>
+                                <label for="oldTimeStart">Old time end</label>
+                                <input name="oldTimeStart" type="text" placeholder="Section code" value="39-454-4545" disabled class="input-disbled-f">
+                            </div>
+
+                            <div>
+                                <label for="newTimeStart">New time start</label>
+                                <input name="oldTimeStart" type="text" placeholder="NEW TIME START" value="39-454-4545" disabled class="input-disbled-s">
+                            </div>
+                            <div>
+                                <label for="newTimeStart">New time end</label>
+                                <input name="oldTimeStart" type="text" placeholder="NEW TIME END" value="39-454-4545" disabled class="input-disbled-s">
+                            </div>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr>
+                     <div class="modal-footer">
+                            <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                            <button type="submit" class="brill-btn-3">Add Sect</button>
+                     </div>
+               </section>
+            </form> 
+      </div>
+    </div>
+</div>
+
+ 

@@ -3,7 +3,7 @@
 }
 
 .classroom-item-card {
-  border: 1px solid #474D5E;
+  border: 1px solid #bebebe;
   border-radius: 14px;
   padding: 20px;
   margin-bottom: 10px;
@@ -13,7 +13,7 @@
 
 .classroom-item-card img {
   width: 100%;
-  border: 1px solid #474D5E;
+  border: 1px solid #dddddd;
   border-radius: 14px;
 }
 
