@@ -166,8 +166,8 @@
 
                     <div class="new-timetable-event-select-subject">
                         <h5>Selected Subjects</h5>
-                        <div *ngFor= "let subject of allSubjectsArray">
-                             <button  style="background-color: {{ subject.color }}" type="button" #selectedSubjecToEvent (click)="onSetSubjectToNewEvent(selectedSubjecToEvent,subject.id)" class="col-md-2">
+                        <div *ngFor= "let subject of allSubjectsArray" #allSubjectElmParent>
+                             <button  style="background-color: {{ subject.color }}" type="button" #selectedSubjecToEvent (click)="onSetSubjectToNewEvent(allSubjectElmParent,selectedSubjecToEvent,subject.id)" class="col-md-2">
                                  {{ subject.name }}  
                              </button>
                          </div>
@@ -202,8 +202,8 @@
                              
                             <div>
                                 <!--Using ng-option and for loop-->
-                                <label for="timetableClassRoom">Class room</label>
-                                <ng-select [clearable]="false" [(ngModel)]="NewEventSelectTeacher" name="newEventSetTeacher" (change)="onSelectTeacherAddNewTimeTable()">
+                                <label for="timetableClassRoom">Teacher name</label>
+                                <ng-select [clearable]="false" [(ngModel)]="NewTimeTableEventData.teacherId" name="newEventSetTeacher" (change)="onSelectTeacherAddNewTimeTable()">
                                     <ng-option *ngFor = "let staff of allStaffsArray" [value]="staff.id">
                                         {{ staff.contact.first_name + staff.contact.last_name }}</ng-option>
                                 </ng-select>                           

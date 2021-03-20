@@ -34,6 +34,21 @@ export class CheckComponent implements OnInit {
 
   public CalendarOptions = {};
 
+  //OBJECT OF A NEW TIMETABLE
+    //NEW TIMETABLE EVENT 
+    //NEW EVENT OBJECT SELECTION
+    public NewTimeTableEventData = {
+         id:null,
+         teacherId: null,
+         subjectId: null,
+         roomId: null,
+         duration: null,
+         startTime: null,
+         endTime: null
+      }
+
+
+
  //NEW EVENT DATA INITIALIZING
  public NewEventSelectTeacher?:number;
   
@@ -42,9 +57,7 @@ export class CheckComponent implements OnInit {
   @ViewChild('SubjectsElmRef') subjectElementReference!:ElementRef; 
 
      constructor(private subjectSerice: SubjectService, private staffService:StaffService) { 
-         const name = Calendar.name; 
-           //NEW TIMETABLE EVENT 
-        
+         const name = Calendar.name;         
 
     }
 
@@ -96,12 +109,16 @@ export class CheckComponent implements OnInit {
                 console.log("STARTED ");
               } ,
 
-              select(currentTimes:any){
-                
-                localStorage.setItem('eventDur',  <any>moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes());
-                localStorage.setItem('eventStartTime',<any>currentTimes.startStr);
-                localStorage.setItem('eventEndTime',<any>currentTimes.endStr);
-                 //console.log(moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes());
+              select : (currentTimes:any) => {
+                //ASIGMING DATA TO THE OBJECT OF NEW EVENT 
+                this.NewTimeTableEventData.id = <any>2;
+                this.NewTimeTableEventData.duration = <any>moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes();
+                this.NewTimeTableEventData.startTime = <any>currentTimes.startStr;
+                this.NewTimeTableEventData.endTime = <any>currentTimes.endStr;
+                console.log(this.NewTimeTableEventData);
+                 // localStorage.setItem('eventStartTime',<any>currentTimes.startStr);
+                // localStorage.setItem('eventEndTime',<any>currentTimes.endStr);
+                  //console.log(moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes());
                  (<any>$('#brill_modal_create_new_timetable_event')).modal('show');
               } ,
 
@@ -183,21 +200,57 @@ export class CheckComponent implements OnInit {
 
 
   //ASSIGN SUBJECT TO THE NEW EVENT
-  onSetSubjectToNewEvent(subjectRef:any, id:number){
-    if(localStorage.getItem('subjectID') === null){
-      localStorage.setItem('subjectID', <any>id);
+  onSetSubjectToNewEvent(allSubjectParent:any,subjectRef:any, id:number){
+    //TRY THE ARRAY
+    subjectRef.style.opacity = "0";
+
+    let subjectArrCounter:any[] = [];
+
+    //IF SUBJECT IS ALREADY SELECTED
+    if(subjectArrCounter.length === 0){
+      subjectArrCounter.push(id)
+      subjectRef.style.opacity = "1";
+    }else{
+      subjectArrCounter.pop();
+      subjectRef.style.opacity = "0";
+      subjectArrCounter.push(id);
       subjectRef.style.opacity = "1";
     }
+    //SET OPACITY
+    // subjectRef.style.opacity = ".4";
+    // let tempOpacity = 1;
+    // if(localStorage.getItem('subjectID') === null){
+    //   localStorage.setItem('subjectID', <any>id);
+    //   subjectRef.style.opacity = "1";
+    // }
+
+    // let parentOfSubjectEl = subjectRef;
+    // subjectRef.style.opacity = tempOpacity;
+   // let parentOfSubjectEl = allSubjectParent;
+ 
+    //FOR LOOP TO STYLE ALL THE CHILDREN THERE
+    // for(let i = 0; i <= 3; i ++){
+    //   console.log(i);
+    // }
+     
+    console.log(subjectArrCounter.length);
+
+    //console.log(parentOfSubjectEl);
+
+    this.NewTimeTableEventData.subjectId = <any>id;
+
+    console.log(this.NewTimeTableEventData);
+ 
   }
 
   //ON SELECT TEACHER TO BE ADDED TO THE TIME TABLE 
   onSelectTeacherAddNewTimeTable(){
-   localStorage.setItem('teacherId',<any>this.NewEventSelectTeacher);
+    console.log(this.NewTimeTableEventData);
   }
 
   //ON ADD THE TIMETABLE
   onAddTimeTableEvent(){
-    console.log(localStorage);
+    //console.log(localStorage);
   }
 
 }
