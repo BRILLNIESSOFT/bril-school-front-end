@@ -6,12 +6,13 @@ import { SubjectsElement } from './../timetable-animation'
 
 //FULL CALENDER IMPORTS 
 import { Calendar } from '@fullcalendar/core';
+import * as moment from 'moment';
 
  import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 
  //IMPORTING ALL SERVICES
  import { SubjectService } from './../../../brillyschoolservices/subject.service';
- 
+ import { StaffService } from './../../../brillyschoolservices/staff.service';
 
 
 @Component({
@@ -21,6 +22,9 @@ import { Calendar } from '@fullcalendar/core';
   animations:[SubjectsElement]
 })
 export class CheckComponent implements OnInit {
+
+  //GETTING THE NECCESSARY APIs
+  public allStaffsArray:any[] = [];
  
   //GET ALL DUBJECTS
   public allSubjectsArray:any[] = [];
@@ -30,12 +34,23 @@ export class CheckComponent implements OnInit {
 
   public CalendarOptions = {};
 
+ //NEW EVENT DATA INITIALIZING
+ public NewEventSelectTeacher?:number;
+  
+
   //BINDING REFERENCES
   @ViewChild('SubjectsElmRef') subjectElementReference!:ElementRef; 
 
-  constructor(private subjectSerice: SubjectService) {  const name = Calendar.name;  }
+     constructor(private subjectSerice: SubjectService, private staffService:StaffService) { 
+         const name = Calendar.name; 
+           //NEW TIMETABLE EVENT 
+        
+
+    }
 
   ngOnInit(): void {
+  //CLEARING THE LOCAL STORAGE
+  localStorage.clear();  
   //INIZIALIZING THE CALENDER SETTING THE DEFUAL OPTIONS
   this.CalendarOptions = {
           //CALENDER HEADERS
@@ -74,7 +89,6 @@ export class CheckComponent implements OnInit {
 
           } , 
 
-    
 
         //ON THE USER STARTS DRUGGING 
         //ON EVENT DRAGGING OR DROPPING
@@ -82,8 +96,13 @@ export class CheckComponent implements OnInit {
                 console.log("STARTED ");
               } ,
 
-              select(){
-                (<any>$('#brill_modal_create_new_timetable_event')).modal('show');
+              select(currentTimes:any){
+                
+                localStorage.setItem('eventDur',  <any>moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes());
+                localStorage.setItem('eventStartTime',<any>currentTimes.startStr);
+                localStorage.setItem('eventEndTime',<any>currentTimes.endStr);
+                 //console.log(moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes());
+                 (<any>$('#brill_modal_create_new_timetable_event')).modal('show');
               } ,
 
               eventDragStop( ) {
@@ -101,10 +120,18 @@ export class CheckComponent implements OnInit {
                 console.log("RESIZED FIXED ");
                 (<any>$('#brill_modal_resize_timetable_event')).modal('show');
 
-              } 
-
-                
+              }           
     };
+
+    //THE END OF CALENDAR OPTIONAL OPTIIONS
+
+    //GET ALL STAFFS SUBSCRIPTION
+    this.staffService.getAllStaffs()
+     .subscribe(
+       (data:any) => this.allStaffsArray = data.data,
+       error => console.log("ERROR", error)
+     );
+    
 
   //GETTING ALL THE SUJECTS
   this.subjectSerice.getAllSubjects()
@@ -157,8 +184,20 @@ export class CheckComponent implements OnInit {
 
   //ASSIGN SUBJECT TO THE NEW EVENT
   onSetSubjectToNewEvent(subjectRef:any, id:number){
-    subjectRef.style.opacity = "1";
-    console.log(  + " " + id);
+    if(localStorage.getItem('subjectID') === null){
+      localStorage.setItem('subjectID', <any>id);
+      subjectRef.style.opacity = "1";
+    }
+  }
+
+  //ON SELECT TEACHER TO BE ADDED TO THE TIME TABLE 
+  onSelectTeacherAddNewTimeTable(){
+   localStorage.setItem('teacherId',<any>this.NewEventSelectTeacher);
+  }
+
+  //ON ADD THE TIMETABLE
+  onAddTimeTableEvent(){
+    console.log(localStorage);
   }
 
 }

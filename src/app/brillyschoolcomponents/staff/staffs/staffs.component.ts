@@ -68,7 +68,7 @@ export class StaffsComponent implements OnInit {
         instagram: ['instagram.co.com'] ,
         image: ['moh.png'] ,
         note: ['The given staff is responsibile for testing data'] ,
-        employee_id: [3] ,
+        employee_id: [1] ,
         qualification: ['Phd'] ,
         work_exp: ['almost six years'] ,
         father_name: ['AbdelMalek'] ,

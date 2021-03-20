@@ -23,4 +23,8 @@ export class StaffService {
   getAllStaffs(){
     return this.req.get(this.baseURL);
   }
+  //GET ALL STAFFS BRIEF INFORMATION
+  // getAllStaffsBried(){
+
+  // }
 }
