@@ -110,11 +110,11 @@ export class ClassessComponent implements OnInit {
  submitNewSction(){
    
     console.log(this.addNewSectionForm.value);
-    // this.addNewClassSer.addNewSectionService(this.addNewSectionForm.value)
-    // .subscribe(
-    //   response => console.log('RESPONSE', response),
-    //   error => console.log("ERROR OCCURS", error)
-    // );
+    this.addNewClassSer.addNewSectionService(this.addNewSectionForm.value)
+    .subscribe(
+      response => console.log('RESPONSE', response),
+      error => console.log("ERROR OCCURS", error)
+    );
   }
 
   // ON CHECK SELECT BUTTON
