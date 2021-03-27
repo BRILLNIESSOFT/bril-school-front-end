@@ -37,7 +37,7 @@ export class DesignationsComponent implements OnInit {
    onSubmitNewRole(){
     this.roleService.addNewRole(this.addRoleForm.value)
      .subscribe(
-       (data:any) => console.log("Error",) , 
+       (data:any) => console.log("SUCCESS", data.data) , 
        error => console.log("ERROR" , error)
      );
       

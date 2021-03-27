@@ -13,7 +13,10 @@ import * as moment from 'moment';
  //IMPORTING ALL SERVICES
  import { SubjectService } from './../../../brillyschoolservices/subject.service';
  import { StaffService } from './../../../brillyschoolservices/staff.service';
-
+ import { ClassroomService } from './../../../brillyschoolservices/classroom.service';
+ import { TimetableService } from './../../../brillyschoolservices/timetable.service';
+import { data } from 'jquery';
+import { error } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-check',
@@ -25,6 +28,8 @@ export class CheckComponent implements OnInit {
 
   //GETTING THE NECCESSARY APIs
   public allStaffsArray:any[] = [];
+  //ALL CLASSROOM ARRAY
+  public allClassRoomsLess:any[] = [];
  
   //GET ALL DUBJECTS
   public allSubjectsArray:any[] = [];
@@ -38,14 +43,27 @@ export class CheckComponent implements OnInit {
     //NEW TIMETABLE EVENT 
     //NEW EVENT OBJECT SELECTION
     public NewTimeTableEventData = {
-         id:null,
+         dayIndex:null,
          teacherId: null,
          subjectId: null,
          roomId: null,
          duration: null,
+         date:null,
          startTime: null,
          endTime: null
       }
+
+
+  //ADD EVENT HEADER STATIC INFO
+  public addEventHeaderStaticInfo = {
+    day : moment().format("dddd") ,
+    class : "CLASS 1" ,
+    classSection : "AB3"
+  }     
+   
+   //ARRAY FOR CONTROLLING ADD NEW TIME TABKE EVENT SUBJECT ATTACH
+   //AND HIDED AND SHOW BUTTON BY OPACITY
+   public newEventAssignSubject:any[] = [];   
 
 
 
@@ -56,7 +74,8 @@ export class CheckComponent implements OnInit {
   //BINDING REFERENCES
   @ViewChild('SubjectsElmRef') subjectElementReference!:ElementRef; 
 
-     constructor(private subjectSerice: SubjectService, private staffService:StaffService) { 
+     constructor(private subjectSerice: SubjectService, private timeTableService:TimetableService
+      , private staffService:StaffService , private classRoomService: ClassroomService) { 
          const name = Calendar.name;         
 
     }
@@ -110,11 +129,12 @@ export class CheckComponent implements OnInit {
               } ,
 
               select : (currentTimes:any) => {
-                //ASIGMING DATA TO THE OBJECT OF NEW EVENT 
-                this.NewTimeTableEventData.id = <any>2;
+                //ASIGMING DATA TO THE OBJECT OF NEW EVENT
+                this.NewTimeTableEventData.date = <any>moment(currentTimes.startStr).format('dd-mm-yyyy');
+                this.NewTimeTableEventData.dayIndex = <any>moment(currentTimes.startStr).day();
                 this.NewTimeTableEventData.duration = <any>moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes();
-                this.NewTimeTableEventData.startTime = <any>currentTimes.startStr;
-                this.NewTimeTableEventData.endTime = <any>currentTimes.endStr;
+                this.NewTimeTableEventData.startTime = <any>moment(currentTimes.startStr).format('hh:mm');
+                this.NewTimeTableEventData.endTime = <any>moment(currentTimes.endStr).format('hh:mm');
                 console.log(this.NewTimeTableEventData);
                  // localStorage.setItem('eventStartTime',<any>currentTimes.startStr);
                 // localStorage.setItem('eventEndTime',<any>currentTimes.endStr);
@@ -156,6 +176,14 @@ export class CheckComponent implements OnInit {
      (data:any) => this.allSubjectsArray = data.data,
      error => console.log("THIS IS ERROR", error)
    )
+
+      //GET CLASS ROOM LESS INFO
+      this.classRoomService.getClassRoomsLes()
+      .subscribe(
+        (data: any) => this.allClassRoomsLess = data.data,
+        error => console.log("error", error)
+      );
+  
 
  }
   
@@ -201,46 +229,10 @@ export class CheckComponent implements OnInit {
 
   //ASSIGN SUBJECT TO THE NEW EVENT
   onSetSubjectToNewEvent(allSubjectParent:any,subjectRef:any, id:number){
-    //TRY THE ARRAY
-    subjectRef.style.opacity = "0";
-
-    let subjectArrCounter:any[] = [];
-
-    //IF SUBJECT IS ALREADY SELECTED
-    if(subjectArrCounter.length === 0){
-      subjectArrCounter.push(id)
-      subjectRef.style.opacity = "1";
-    }else{
-      subjectArrCounter.pop();
-      subjectRef.style.opacity = "0";
-      subjectArrCounter.push(id);
-      subjectRef.style.opacity = "1";
-    }
-    //SET OPACITY
-    // subjectRef.style.opacity = ".4";
-    // let tempOpacity = 1;
-    // if(localStorage.getItem('subjectID') === null){
-    //   localStorage.setItem('subjectID', <any>id);
-    //   subjectRef.style.opacity = "1";
-    // }
-
-    // let parentOfSubjectEl = subjectRef;
-    // subjectRef.style.opacity = tempOpacity;
-   // let parentOfSubjectEl = allSubjectParent;
- 
-    //FOR LOOP TO STYLE ALL THE CHILDREN THERE
-    // for(let i = 0; i <= 3; i ++){
-    //   console.log(i);
-    // }
-     
-    console.log(subjectArrCounter.length);
-
-    //console.log(parentOfSubjectEl);
-
+    document.getElementById("new_event_select_subject_placer")!.style.backgroundColor = subjectRef.style.backgroundColor;
+    document.getElementById("new_event_select_subject_placer")!.innerHTML = subjectRef.innerHTML;
+    document.getElementById("new_event_select_subject_placer")!.style.color = "#ffffff";
     this.NewTimeTableEventData.subjectId = <any>id;
-
-    console.log(this.NewTimeTableEventData);
- 
   }
 
   //ON SELECT TEACHER TO BE ADDED TO THE TIME TABLE 
@@ -250,7 +242,37 @@ export class CheckComponent implements OnInit {
 
   //ON ADD THE TIMETABLE
   onAddTimeTableEvent(){
-    //console.log(localStorage);
+   //Reconstracting new Single event Object
+    let timetable = {
+              timetable:{
+                class_id: 2,
+                section_id : 1,
+                 subject_id: this.NewTimeTableEventData.subjectId,
+                teacher_id: this.NewTimeTableEventData.teacherId,
+                timetable_type_id: null,
+                timetable_day: this.NewTimeTableEventData.dayIndex,
+                timetable_date: "1994-04-04",
+                start_time: this.NewTimeTableEventData.startTime,
+                end_time: this.NewTimeTableEventData.endTime,
+                classroom_id: this.NewTimeTableEventData.roomId,
+                priority: null,
+                note: "no note"
+              }
+     }
+
+     console.log(timetable);
+
+ 
+
+     //SUBSCRIE TO TIMETABLE SERVICE TO ADD NEW TIMETABKLE EVENT SINGLER
+     this.timeTableService.addNewSingleEventTimeTable(timetable)
+     .subscribe(
+       (data:any) => console.log("SUCCESS", data),
+        error => console.log("ERROR" , error)
+     )
+
+
   }
 
 }
+//addNewSingleEventTimeTable

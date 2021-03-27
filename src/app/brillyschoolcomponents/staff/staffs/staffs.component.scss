@@ -14,7 +14,7 @@
 
  .staff-card-child{
     border: 1px solid #d2d2d2;
-    min-height: 350px;
+    min-height: 375px;
  }
 
 .staff-card img{
@@ -42,4 +42,89 @@
     margin: 4px 0px 4px 0px;
     font-size: 1.1em;
     color: #505050;
+}
+
+
+.staff-card .brill-card-options button {
+    background: no-repeat;
+    border: none;
+    font-size: 1.8em;
+    bottom: 3px;
+    position: absolute;
+    bottom: 14px;
+    right: 10px;
+}
+
+.teacher-options h4 {
+  clear: both;
+  display: block;
+}
+
+
+.teacher-options .teacher-option-card {
+        padding: 10px;
+        border: 1px solid #dcdcdc;
+}
+
+.teacher-options .teacher-option-card h5{
+    background-color: #ffffff;
+    padding: 14px;
+    border: 1px solid #e2e2e2;
+    font-weight: 700;
+      font-size: 1em;
+}
+
+//TEACHER OPTION CLASS SECTIONS
+.teacher-options .teacher-option-card button{
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    padding: 4px;
+    border: 1px solid #c3c3c3;
+    background: white;
+    margin: 2px 0px 2px 0px;
+    &:hover{
+    background-color: #028dad;
+    color: #fff;
+    }
+}
+
+//SUBJECTS
+ 
+.teacher-subject-cards{
+    clear: both;
+    display: block;
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.teacher-subject-cards h4{
+  font-size: 18px;
+}
+
+.teacher-subject-cards .subject-item{
+background-color: #00e8e8;
+color: #ffffff;
+padding: 10px;
+ height: 50px;
+ margin: 1px 0px 1px 0px;
+ border: 1px solid #ffffff;
+ cursor: pointer;
+ opacity: 0.4;
+
+}
+
+.teacher-subject-cards .subject-item:hover{
+opacity: 1;
+border-right: 6px solid #474d5e;
+}
+
+.subject-item h4{
+background-color: aqua;
+color: #ffffff;
+padding: 10px;
+}
+.item-title{
+padding: 10px;
 }

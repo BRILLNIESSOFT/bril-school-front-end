@@ -9,68 +9,20 @@
     </div> 
 
     <div class="claassroom-list">
-       <div class="classroom-item-card col-md-6" >
-           <img src="assets/icons/classroom1.png">
+        <div *ngFor = "let room of allClassRoomsLess" class="classroom-item-card col-md-6" >
+            <img src="assets/icons/classroom1.png">
 
-           <ul>
-               <li><i class="fas fa-chalkboard-teacher"></i> NAME : A3</li>
-               <li><i class="fas fa-chair"></i> Seats : 50</li>
-           </ul>
+            <ul>
+                <li><i class="fas fa-chalkboard-teacher"></i> {{ room.name }} </li>
+                <li><i class="fas fa-chair"></i> {{ room.number }} </li>
+            </ul>
 
-           <div class="classroom-item-control">
+            <div class="classroom-item-control">
                 <button type="button" class="brill-btn-s-2"><i class="lnr lnr-plus-circle"></i></button>
                 <button type="button" class="brill-btn-s-0"><i class="lnr lnr-cross-circle"></i></button>
                 <button type="button" class="brill-btn-s-1"><i class="lnr lnr-pencil"></i></button>               
-           </div>
-       </div>
-
-       <div class="classroom-item-card col-md-6" >
-        <img src="assets/icons/classroom1.png">
-
-        <ul>
-            <li><i class="fas fa-chalkboard-teacher"></i> NAME : A3</li>
-            <li><i class="fas fa-chair"></i> Seats : 50</li>
-        </ul>
-
-        <div class="classroom-item-control">
-             <button type="button" class="brill-btn-s-2"><i class="lnr lnr-plus-circle"></i></button>
-             <button type="button" class="brill-btn-s-0"><i class="lnr lnr-cross-circle"></i></button>
-             <button type="button" class="brill-btn-s-1"><i class="lnr lnr-pencil"></i></button>               
+            </div>
         </div>
-    </div>
-
-    <div class="classroom-item-card col-md-6" >
-        <img src="assets/icons/classroom1.png">
-
-        <ul>
-            <li><i class="fas fa-chalkboard-teacher"></i> NAME : A3</li>
-            <li><i class="fas fa-chair"></i> Seats : 50</li>
-        </ul>
-
-        <div class="classroom-item-control">
-             <button type="button" class="brill-btn-s-2"><i class="lnr lnr-plus-circle"></i></button>
-             <button type="button" class="brill-btn-s-0"><i class="lnr lnr-cross-circle"></i></button>
-             <button type="button" class="brill-btn-s-1"><i class="lnr lnr-pencil"></i></button>               
-        </div>
-    </div>
-
-
-    <div class="classroom-item-card col-md-6" >
-        <img src="assets/icons/classroom1.png">
-
-        <ul>
-            <li><i class="fas fa-chalkboard-teacher"></i> NAME : A3</li>
-            <li><i class="fas fa-chair"></i> Seats : 50</li>
-        </ul>
-
-        <div class="classroom-item-control">
-             <button type="button" class="brill-btn-s-2"><i class="lnr lnr-plus-circle"></i></button>
-             <button type="button" class="brill-btn-s-0"><i class="lnr lnr-cross-circle"></i></button>
-             <button type="button" class="brill-btn-s-1"><i class="lnr lnr-pencil"></i></button>               
-        </div>
-    </div>
-
-       
     </div>
 
 </div>    
@@ -82,11 +34,11 @@
 	  <div id= "brill_modal_create_new_classroom" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg brill-modal-dialog">
           <div class="modal-content">
-               <form>
+               <form [formGroup] = "classRoomFormGroup" (ngSubmit)="onSubmitNewClassRoom()">
                 <section class="row brill-modal-container">
                     <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
                           
-                      <div class="add-new-staff">
+                      <div class="add-new-class-room" formGroupName = "classroom">
                           <h3> ADD NEW CLALSS ROOM</h3>
                          <div class="brill-input-holders"> 
                           <div class="inputs-container">
@@ -94,17 +46,22 @@
                             <div class="brill-row">
                                 <div>
                                     <label for="classRoomName">Class room name</label>
-                                    <input type="text" name="classRoomName" id = "classRoomName" class="input" placeholder="Class room name"/>
+                                    <input formControlName = "name" type="text" name="classRoomName" id = "classRoomName" class="input" placeholder="Class room name"/>
+                                </div>
+
+                                <div>
+                                    <label for="classRoomCode">Class room Number</label>
+                                    <input formControlName = "number" type="text" name="classRoomNumber" id = "classRoomCode" class="input" placeholder="Class room number"/>
                                 </div>
 
                                 <div>
                                     <label for="classRoomCode">Class room code</label>
-                                    <input type="text" name="classRoomCode" id = "classRoomCode" class="input" placeholder="Class room code"/>
+                                    <input formControlName = "code" type="text" name="classRoomCode" id = "classRoomCode" class="input" placeholder="Class room code"/>
                                 </div>
 
                                 <div>
                                     <label for="classRoomSeats">Seats</label>
-                                    <input type="number" name="classRoomSeats" id = "classRoomSeats" class="input" placeholder="Number of seats"/>
+                                    <input formControlName = "seats" type="number" name="classRoomSeats" id = "classRoomSeats" class="input" placeholder="Number of seats"/>
                                 </div>
                             </div>
 
@@ -112,12 +69,12 @@
 
                                 <div>
                                     <label for="classRoomNotes"> Notes</label>
-                                    <textarea  name="classRoomNotes" id = "classRoomNotes" rows="4" placeholder="You can leave it blank if you want"> </textarea>
+                                    <textarea formControlName = "note" name="classRoomNotes" id = "classRoomNotes" rows="4" placeholder="You can leave it blank if you want"> </textarea>
                                 </div>
 
                                 <div>
                                     <label for="classRoomDesc">Description</label>
-                                    <textarea  name="classRoomDesc" id = "classRoomDesc" rows="4" placeholder="You can leave it blank if you want"> </textarea>
+                                    <textarea formControlName = "description" name="classRoomDesc" id = "classRoomDesc" rows="4" placeholder="You can leave it blank if you want"> </textarea>
                                 </div>
 
                             </div>

@@ -4,6 +4,8 @@ import { FormBuilder } from '@angular/forms';
 //import services 
 import { StaffService } from './../../../brillyschoolservices/staff.service';
 import { RolesService } from '../../../brillyschoolservices/roles.service';
+import { ClassService } from './../../../brillyschoolservices/classes/class.service';
+
 
 @Component({
   selector: 'app-staffs',
@@ -16,12 +18,19 @@ export class StaffsComponent implements OnInit {
   //ALL STAFFS 
   public allStaffs:any[] = [];
 
+  //GET ALL CLASSES
+  public allClasses:any[] = [];
+
   //ALL ROLES
   public allRolesArray:any[] = [];
 
+  //BUTTOM FIXED BUTTON
   public bottomFixedMenuCase:boolean = true;
 
-  constructor(private FB:FormBuilder, private roleServices:RolesService ,private _staffServices:StaffService) { }
+  //SHOW IF THE ROLE IS TEACHER SHOW THE OTHER OPTIONS
+  public showOptionIfTeacher = false;
+
+  constructor(private FB:FormBuilder, private classesService:ClassService ,private roleServices:RolesService ,private _staffServices:StaffService) { }
 
   ngOnInit(): void {
             //GET ALL ROLES AVALIABLE
@@ -35,8 +44,9 @@ export class StaffsComponent implements OnInit {
             this._staffServices.getAllStaffs()
              .subscribe(
                (data:any) => this.allStaffs = data.data,
-               error =>console.log("ERROR", error)
-             )
+               error =>console.log("ERROR", error) 
+             );
+             
   }
 
   //ADDSTAFF FORM GROUP
@@ -68,7 +78,7 @@ export class StaffsComponent implements OnInit {
         instagram: ['instagram.co.com'] ,
         image: ['moh.png'] ,
         note: ['The given staff is responsibile for testing data'] ,
-        employee_id: [1] ,
+        employee_id: ['34'] ,
         qualification: ['Phd'] ,
         work_exp: ['almost six years'] ,
         father_name: ['AbdelMalek'] ,
@@ -97,6 +107,24 @@ export class StaffsComponent implements OnInit {
         } 
       }),
   });
+
+
+ //CHECK THE SELECTED ROLE
+ onWhichRoleSelected(){
+  // console.log("SELECTED ROLE IS", this.AddNewStaffFormGroup.get('staff.role_id')?.value);
+      if(this.AddNewStaffFormGroup.get('staff.role_id')?.value != null && this.showOptionIfTeacher == false){
+                       //GET ALL THE AVALIABLE CLASSES
+                       this.classesService.getAllClass()
+                       .subscribe(
+                         (data:any) => this.allClasses = data.data,
+                         error => console.log("error", error),
+                         () => this.showOptionIfTeacher = true
+                       );
+      }
+
+      console.log(this.allClasses);
+ } 
+
 
 
   //ADD NE STAFF SUBMIT BUTTON 

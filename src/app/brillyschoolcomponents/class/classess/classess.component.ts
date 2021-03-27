@@ -22,6 +22,8 @@ export class ClassessComponent implements OnInit {
    public ClassesArray:any = [];
   //GET ALL SECTIONS 
   public allSubjectsList: any [] = [];
+    //SECTIONS SUBJECT ASSIGNER
+    public sectionSubjectsAssiner = [];
 
   constructor(private FB:FormBuilder, private addNewClassSer: ClassService ,
     public subjectsService: SubjectService) { }
@@ -65,12 +67,12 @@ export class ClassessComponent implements OnInit {
           code: [''],
           description: [''],
           note: [''],
-          seats: ['']
+          seats: [''] ,
+          subjects: []
         })
   });
 
-  //SECTIONS SUBJECT ASSIGNER
-  public sectionSubjectsAssiner = [];
+
 
   //HIDE AND SHOW THE BOTTOM RIGHT MENU BAR 
      onMouseOverTheFixedMenu(){
@@ -106,12 +108,13 @@ export class ClassessComponent implements OnInit {
 
  //ADD NEW SECTION SUBMIT BUTTON
  submitNewSction(){
+   
     console.log(this.addNewSectionForm.value);
-    this.addNewClassSer.addNewSectionService(this.addNewSectionForm.value)
-    .subscribe(
-      response => console.log('RESPONSE', response),
-      error => console.log("ERROR OCCURS", error)
-    );
+    // this.addNewClassSer.addNewSectionService(this.addNewSectionForm.value)
+    // .subscribe(
+    //   response => console.log('RESPONSE', response),
+    //   error => console.log("ERROR OCCURS", error)
+    // );
   }
 
   // ON CHECK SELECT BUTTON
@@ -120,6 +123,8 @@ export class ClassessComponent implements OnInit {
           this.onStyleSelectedSubjects(subjictRef);
           this.sectionSubjectsAssiner.push(<never>subId);
           console.log(this.sectionSubjectsAssiner);
+          this.addNewSectionForm.get('section.subjects')?.setValue(this.sectionSubjectsAssiner);
+          // console.log(this.addNewSectionForm.get('section.subjects')?.setValue(this.sectionSubjectsAssiner));
        }else{
          const subIndex =  this.sectionSubjectsAssiner.indexOf(<never>subId);
         this.sectionSubjectsAssiner.splice(subIndex, 1);

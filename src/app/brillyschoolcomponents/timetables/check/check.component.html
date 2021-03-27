@@ -166,8 +166,8 @@
 
                     <div class="new-timetable-event-select-subject">
                         <h5>Selected Subjects</h5>
-                        <div *ngFor= "let subject of allSubjectsArray" #allSubjectElmParent>
-                             <button  style="background-color: {{ subject.color }}" type="button" #selectedSubjecToEvent (click)="onSetSubjectToNewEvent(allSubjectElmParent,selectedSubjecToEvent,subject.id)" class="col-md-2">
+                        <div class="new-event-subjects-holder" *ngFor= "let subject of allSubjectsArray" #allSubjectElmParent>
+                             <button id="new_event_select_subject{{newEventAssignSubject[0]}}"  style="background-color: {{ subject.color }}" type="button" #selectedSubjecToEvent (click)="onSetSubjectToNewEvent(allSubjectElmParent,selectedSubjecToEvent,subject.id)" class="col-md-2">
                                  {{ subject.name }}  
                              </button>
                          </div>
@@ -191,12 +191,9 @@
                                 
                                <!--Using ng-option and for loop-->
                                <label for="timetableClassRoom">Class room</label>
-                               <ng-select [clearable]="false">
-                                   <ng-option>jnkjhkddk</ng-option>
-                                   <ng-option>jnkjhkddk</ng-option>
-                                   <ng-option>jnkjhkddk</ng-option>
-                                   <ng-option>jnkjhkddk</ng-option>
-                               </ng-select>                           
+                               <ng-select [clearable]="false" [(ngModel)]="NewTimeTableEventData.roomId" name="newEventSetRoom">
+                                     <ng-option *ngFor = "let room of allClassRoomsLess" [value]="room.id"> {{ room.name }} </ng-option>
+                                </ng-select>                           
                              </div>
 
                              
@@ -210,6 +207,14 @@
                               </div>
 
                          </div>
+
+                         <div class="brill-row">
+                             <div id="new_event_select_subject_placer" class="new-event-selected-subject-input">
+                                 <h5>Subject</h5>
+                             </div>
+                         </div>
+
+
                       </div>
                     </div>
                   </div>

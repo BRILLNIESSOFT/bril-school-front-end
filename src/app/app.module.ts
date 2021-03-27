@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 
 //THIRD PARTIES ADDITIONAL MODULES
 import { NgSelectModule } from '@ng-select/ng-select';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+
 
 
 //IMPORTING CALENDER FULL-CALENDER JS MODULES
@@ -85,7 +87,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatNativeDateModule,
     ReactiveFormsModule,
     BrowserModule, 
-    FullCalendarModule // register FullCalendar plugins
+    FullCalendarModule, // register FullCalendar plugins
+    IvyCarouselModule
    ],
   providers: [RegistrationService],
   bootstrap: [AppComponent]

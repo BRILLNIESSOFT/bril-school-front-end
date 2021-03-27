@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { error } from 'selenium-webdriver';
+import { ClassroomService } from './../../brillyschoolservices/classroom.service';
 
 @Component({
   selector: 'app-classrooms',
@@ -7,15 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClassroomsComponent implements OnInit {
 
+  //GET ALL CLASS ROOM LESS INFO
+  public allClassRoomsLess:any[] = [];
+
   //CLASS ROOM PHOTO PICKER
   public imageSrc?: any;
 
-  constructor() { }
+  constructor(private FB:FormBuilder, private classRoomService:ClassroomService) { }
 
   ngOnInit(): void {
 
-    
+    //GET CLASS ROOM LESS INFO
+    this.classRoomService.getClassRoomsLes()
+     .subscribe(
+       (data: any) => this.allClassRoomsLess = data.data,
+       error => console.log("error", error)
+     )
+
   }
+
+
+  // FORM GROUP TO ADD A NEW CLASSROOM
+  classRoomFormGroup = this.FB.group({
+    classroom: this.FB.group({
+      number: [''], 
+      name: [''], 
+      code: [''], 
+      description: [''], 
+      color: [''], 
+      seats: [''], 
+      Image: [''] ,
+      note: ['']
+
+    })
+  });
 
   //GET THE IMAGE TO SHOW A PREVIEW FOR THE ADD NEW CLASS ROOM
   readURL(event: any): void {
@@ -28,5 +56,14 @@ export class ClassroomsComponent implements OnInit {
         reader.readAsDataURL(file);
     }
 }
+
+//ADD NEW CLASS ROOM TO THE DATABASE
+  onSubmitNewClassRoom(){
+        this.classRoomService.addNewClassRoom(this.classRoomFormGroup.value)
+          .subscribe(
+            (data:any) => console.log("success",data),
+             error => console.log("SUCCEDED", error)
+          )
+    }
 
 }

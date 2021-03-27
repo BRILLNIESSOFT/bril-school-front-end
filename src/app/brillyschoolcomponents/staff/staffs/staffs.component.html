@@ -140,7 +140,7 @@
 
 
                             <div class="brill-row">
-                                <div>
+                                 <div>
                                     <label for="staff_work_shift">Work shift</label>
                                     <input formControlName = "work_shift" name="staff_work_shift" type="date" placeholder="Lieu de naissance" class="input">
                                 </div>
@@ -164,13 +164,36 @@
                                 <div>
                                     <label for="staffRole">Job title</label>
 
-                                    <select formControlName = "role_id" name="staffRole" class="input-select" id="staffRole">
+                                    <select formControlName = "role_id" name="staffRole" (change)="onWhichRoleSelected()" class="input-select" id="staffRole">
                                         <option *ngFor = "let role of allRolesArray" value="{{ role.id }}">{{ role.name }}</option>
                                      </select>
 
                                 </div>
-                        
                             </div> 
+
+
+                           <section *ngIf="showOptionIfTeacher" class="teacher-other-options">
+                               <h3>ASSIGN TO TEACHER</h3>
+                                <div class="brill-row teacher-options">
+                                    <carousel>  
+                                        <div *ngFor="let class of allClasses" class="teacher-option-card carousel-cell">
+                                            <h5> {{ class.name }} </h5>
+                                            <button *ngFor="let section of class.sections">{{ section.name }}</button>
+                                        </div>
+                                    </carousel>      
+                                </div>
+
+                                <!-- ASSIGN SUBJECTS TO TEACHER -->
+                                <div class="teacher-subject-cards">
+                                    <h4>Selected Subjects</h4>
+                                    <div >
+                                         <button style="background-color: #000" class="subject-item col-md-2">
+                                             MATHEMATIC 
+                                         </button>
+                                     </div>
+                                </div>
+                            </section>     
+
                            </div>
                         </div>
                     
