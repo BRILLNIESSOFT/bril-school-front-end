@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { toggleFixedBottomMenu } from './../../../global-animation';
 import { FormBuilder } from '@angular/forms';
 //import services 
 import { StaffService } from './../../../brillyschoolservices/staff.service';
 import { RolesService } from '../../../brillyschoolservices/roles.service';
 import { ClassService } from './../../../brillyschoolservices/classes/class.service';
-
+import { SubjectService } from './../../../brillyschoolservices/subject.service';
+ 
 
 @Component({
   selector: 'app-staffs',
@@ -14,6 +15,10 @@ import { ClassService } from './../../../brillyschoolservices/classes/class.serv
   animations: [toggleFixedBottomMenu]
 })
 export class StaffsComponent implements OnInit {
+
+  //GETTING ELEMENTS REFRENCES
+  //GET TEACHER SELECT SECTION
+ //@ViewChild('sectionNameRef') teacherSectionRef?:ElementRef;
 
   //ALL STAFFS 
   public allStaffs:any[] = [];
@@ -24,13 +29,27 @@ export class StaffsComponent implements OnInit {
   //ALL ROLES
   public allRolesArray:any[] = [];
 
+  //ALL SUBJECTS ARRAY
+  public allSubjectsArray:any[] = [];
+
   //BUTTOM FIXED BUTTON
   public bottomFixedMenuCase:boolean = true;
 
+
   //SHOW IF THE ROLE IS TEACHER SHOW THE OTHER OPTIONS
   public showOptionIfTeacher = false;
+  //SHOW THE BUTTON TO ADD SINGLE SUBJECT OF SECTIONS
+  public addSingleSubjectButton = false;
+  //TEACHER ARRAY TO CHECK IF A SUJECT SELECTED BEFOR SELECTING SECTIONS
+  public TeachersubjectSelected = null;
 
-  constructor(private FB:FormBuilder, private classesService:ClassService ,private roleServices:RolesService ,private _staffServices:StaffService) { }
+  //SINGLE ARRAY OF SECTIONS
+  public SingleArrayOfSections:any[] = [];
+
+  //AN ARRAY HOLDING THE TEACHER SUBJECTS AND ITS SECTIONS
+  public selectedTecherSubjectAndItsSections:any[] = [];
+
+  constructor(private FB:FormBuilder, private subjectService:SubjectService ,private classesService:ClassService ,private roleServices:RolesService ,private _staffServices:StaffService) { }
 
   ngOnInit(): void {
             //GET ALL ROLES AVALIABLE
@@ -45,6 +64,13 @@ export class StaffsComponent implements OnInit {
              .subscribe(
                (data:any) => this.allStaffs = data.data,
                error =>console.log("ERROR", error) 
+             );
+
+             //GET ALL SUBJECTS
+             this.subjectService.getAllSubjects()
+             .subscribe(
+                (data:any) => this.allSubjectsArray = data.data,
+                error => console.log("ERROR", error)
              );
              
   }
@@ -135,9 +161,93 @@ export class StaffsComponent implements OnInit {
        response => console.log("Response", response),
        error => console.log("Error occurs, try to enter the data again", error)
      );
+}
 
+
+
+//ON SELECT THE SUBJECT FOR THE TEACHER
+onSelectTeacherSubject(teacherSubjectRef:any, subjectId:any){
+
+//GET THE CHILDREN OF THIS REF PARENT
+let childrenSubjects = teacherSubjectRef.parentNode.childNodes;
+// console.log(childrenSubjects.length);
+// childrenSubjects[2].style.opacity = "0.4";
+
+
+  if(this.TeachersubjectSelected === null){
+    this.TeachersubjectSelected = subjectId;
+    teacherSubjectRef.style.opacity = "1";
+    teacherSubjectRef.style.borderRight = "8px solid #474d5e";
+   }else{
+
+    for(let i = 0; i <= childrenSubjects.length; i++){
+      try{
+       childrenSubjects[i].style.opacity = "0.4";
+      }catch(e){
+        console.log("ERROR IS  UNDLED");
+      }
+    }
+    
+    //DISPLAYING SECTON WITH WHITE BACKGROUND
+   // this.teacherSectionRef!.nativeElement.style.backgroundColor = "#ffffff";
+    //TEACHER SUBJECT STYLING
+     teacherSubjectRef.style.opacity = "1";
+     teacherSubjectRef.style.borderRight = "8px solid #474d5e";
+     this.TeachersubjectSelected = subjectId;
+
+     //ENABLING THE USER TO SELECT SECTIONS
+     //<ElementRef>this.teacherSectionRef!.nativeElement.disabled;
+ 
+  }
+   console.log(this.TeachersubjectSelected);
+   // console.log(subjectId);
+}
+
+
+//SELECT A NEW SECTION 
+onSelectSection(secId:number,secRef:any,classRef:any){
+  // console.log(secId);
+  // console.log(secRef);
+  // console.log(classRef);
+
+  //STYLING THE SELECTED SECTIONS
+  if(this.TeachersubjectSelected){
+    this.onSelectedSectionStyling(secId,secRef,classRef);
+  }
+}
+
+//STYLING THE ONSELECTED SECTIONS
+onSelectedSectionStyling(secId:any,sectionRef:any,classRef:any){
+
+
+    if(!this.SingleArrayOfSections.includes(secId)){
+      classRef.style.backgroundColor = "#009ab3";
+      classRef.style.color = "#ffffff";
+      sectionRef.style.backgroundColor = "#028dad";
+      sectionRef.style.color = "#ffffff";
+      this.SingleArrayOfSections.push(secId);
+    }else{
+      this.SingleArrayOfSections.splice(this.SingleArrayOfSections.indexOf(secId,1));
+      classRef.style.backgroundColor = "#009ab3";
+      classRef.style.color = "#ffffff";
+      sectionRef.style.backgroundColor = "#ebebeb";
+      sectionRef.style.color = "#000000";
+    }
+
+   if(this.SingleArrayOfSections.length > 0){  
+    this.addSingleSubjectButton = true;
+  }else{
+    this.addSingleSubjectButton = false; 
   }
 
+  
+
+ console.log(this.SingleArrayOfSections);
+
+}
+ 
+
+//BUTTOM MENU OPTIONS BAR
   onMouseOverTheFixedMenu(){
      this.bottomFixedMenuCase = false;
   }

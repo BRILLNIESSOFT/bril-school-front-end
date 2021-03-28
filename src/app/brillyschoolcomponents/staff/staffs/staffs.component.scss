@@ -81,12 +81,12 @@
     border-radius: 10px;
     padding: 4px;
     border: 1px solid #c3c3c3;
-    background: white;
+    background: #ebebeb;
     margin: 2px 0px 2px 0px;
-    &:hover{
-    background-color: #028dad;
-    color: #fff;
-    }
+    // &:hover{
+    // background-color: #028dad;
+    // color: #fff;
+    // }
 }
 
 //SUBJECTS
@@ -96,7 +96,7 @@
     display: block;
     float: left;
     width: 100%;
-    margin-top: 20px;
+    padding: 20px;
 }
 
 .teacher-subject-cards h4{
