@@ -179,7 +179,7 @@
                                  <!-- ASSIGN SUBJECTS TO TEACHER -->
                                  <div class="teacher-subject-cards">
                                     <h4>Select Subject then select then select the class section of that subjects </h4>
-                                        <div>
+                                        <div id="teacher_subjects_section">
                                              <button *ngFor="let subject of allSubjectsArray" type="button" #teacherSubjetRef style="background-color:{{ subject.color }}" (click)="onSelectTeacherSubject(teacherSubjetRef, subject.id)" class="subject-item col-md-2">
                                                 {{ subject.name }} 
                                             </button>
@@ -188,18 +188,18 @@
                                 </div>
                                 
                                 
-                                <div class="brill-row teacher-options">
+                                <div class="brill-row teacher-options" id="teacher_sections">
                                     <carousel>  
                                         <div *ngFor="let class of allClasses" class="teacher-option-card carousel-cell">
                                             <h5 #classNameRef> {{ class.name }} </h5> 
-                                            <button *ngFor="let section of class.sections" id="teacher_section" [disabled]="false" type="button" #sectionNameRef (click)="onSelectSection(section.id,sectionNameRef,classNameRef)">
+                                            <button *ngFor="let section of class.sections"  [disabled]="false" type="button" #sectionNameRef (click)="onSelectSection(section.id,sectionNameRef,classNameRef)">
                                                  {{ section.name }} </button>
                                         </div>
                                     </carousel>  
     
                                 </div>
                                 <div *ngIf="addSingleSubjectButton">
-                                    <button type="button">ADD SECTION</button>
+                                    <button type="button" (click)="onStoreSingleSubjectSects()">ADD SECTION</button>
                                 </div>
                             </section>     
 

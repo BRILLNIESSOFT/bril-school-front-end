@@ -220,30 +220,87 @@ onSelectSection(secId:number,secRef:any,classRef:any){
 onSelectedSectionStyling(secId:any,sectionRef:any,classRef:any){
 
 
-    if(!this.SingleArrayOfSections.includes(secId)){
-      classRef.style.backgroundColor = "#009ab3";
-      classRef.style.color = "#ffffff";
-      sectionRef.style.backgroundColor = "#028dad";
-      sectionRef.style.color = "#ffffff";
-      this.SingleArrayOfSections.push(secId);
-    }else{
-      this.SingleArrayOfSections.splice(this.SingleArrayOfSections.indexOf(secId,1));
-      classRef.style.backgroundColor = "#009ab3";
-      classRef.style.color = "#ffffff";
+if(this.SingleArrayOfSections.includes(secId)){
+   let checkIfArrayExist = this.SingleArrayOfSections;
+      this.SingleArrayOfSections.splice(checkIfArrayExist.indexOf(secId,1));
+      // classRef.style.backgroundColor = "#009ab3";
+      // classRef.style.color = "#ffffff";
       sectionRef.style.backgroundColor = "#ebebeb";
       sectionRef.style.color = "#000000";
-    }
+      console.log("already exits ");
 
-   if(this.SingleArrayOfSections.length > 0){  
-    this.addSingleSubjectButton = true;
-  }else{
-    this.addSingleSubjectButton = false; 
-  }
+}else{
+     this.SingleArrayOfSections.push(secId);
+     if(this.SingleArrayOfSections.includes(secId)){
+      sectionRef.style.backgroundColor = "#028dad";
+      sectionRef.style.color = "#ffffff";
+      console.log("SELECTED ");
+     }else{
+      sectionRef.style.backgroundColor = "#ebebeb";
+      sectionRef.style.color = "#000000";
+     }
+}
 
-  
+if(this.SingleArrayOfSections.length >= 1){  
+ 
+  this.addSingleSubjectButton = true;
+}
+
+
+if(this.SingleArrayOfSections.length === 0){
+ 
+    this.addSingleSubjectButton = false;
+}
+
+
+    // if(!this.SingleArrayOfSections.includes(secId)){
+    //   classRef.style.backgroundColor = "#009ab3";
+    //   classRef.style.color = "#ffffff";
+    //   sectionRef.style.backgroundColor = "#028dad";
+    //   sectionRef.style.color = "#ffffff";
+    //   this.SingleArrayOfSections.push(secId);
+    // } 
 
  console.log(this.SingleArrayOfSections);
 
+}
+
+
+onStoreSingleSubjectSects(){
+
+  //ADD NEW SET OF SECTIONS
+  try{
+    this.selectedTecherSubjectAndItsSections.push({
+      subjectId: this.TeachersubjectSelected ,
+      sectionsIds: this.SingleArrayOfSections
+    });
+    this.TeachersubjectSelected = null;
+    this.SingleArrayOfSections = [];
+     let subjectsItemsRefs = <any>document.getElementById('teacher_subjects_section')?.getElementsByTagName('button');
+
+                       //LOOP TO SET THE BACKGROUND COLOR OF THE ITEMS
+                       for(let j = 0; j <= subjectsItemsRefs.length ; j++){
+                           subjectsItemsRefs[j].style.opacity = "0.4";
+                           subjectsItemsRefs[j].style.border = "none";
+                         }
+          }catch(e){
+
+ }
+
+      try{
+        let sectsItemsRefs = <any>document.getElementById('teacher_sections')?.getElementsByTagName('button');
+                 //LOOP TO SET THE BACKGROUND COLOR OF THE ITEMS
+                 for(let i = 0; i <= sectsItemsRefs?.length ;i++){
+                  sectsItemsRefs[i].style.backgroundColor = "#ffffff";
+                  sectsItemsRefs[i].style.color = "#000000";
+                 }
+      }catch(e){
+
+      }        
+
+  
+
+  console.log(this.selectedTecherSubjectAndItsSections);
 }
  
 
