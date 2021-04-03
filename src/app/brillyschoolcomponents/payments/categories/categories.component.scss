@@ -1,0 +1,110 @@
+.paymnet-categories-card{
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #d4d4d4;
+    margin: 5px;
+     width: 48%;
+}
+
+.paymnet-categories-card-control{
+    background-color: #cccccc;
+    padding: 6px;
+    top: 0px;
+    right: 0px;
+    position: absolute;
+ }
+
+.paymnet-categories-card-control button{
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: large;
+    border-radius: 40px;
+    border: 1px solid #000000;
+    border: none;
+    background: #f3f3f3;
+    margin: 0px 2px 0px 2px 0px;
+    color: #000000;
+    border: solid 1px #a9a9a9;
+    margin-left: 2px;
+    margin-right: 2px;
+    &:hover{
+        background: #e4e4e4;
+    }
+}
+
+
+.paymnet-categories-card h3{
+    text-align: left;
+}
+
+.paymnet-categories-card p{
+    padding: 0px 4px 0px 4;
+}
+
+
+.paymnet-categories-batch{
+    float: right;
+    background-color: #8a00b1;
+    padding: 8px;
+    font-size: 1.6em;
+    border-radius: 50%;
+    color: #ffffff;
+    font-weight: 900;
+}
+
+
+
+  .paymnet-categories-table-roles{
+      padding: 20px;
+  }
+
+  .paymnet-categories-table-roles h4{
+       margin-top: 20px;
+       font-size: 1.2em;
+  }
+  
+  .paymnet-categories-table-roles .role-delete h4{
+    background-color: #ce0430;
+    padding: 6px;
+    color: #ffffff;
+    width: 90%;
+    text-align: center;
+    border-radius: 20px;
+
+  }
+
+  .paymnet-categories-table-roles .role-update h4{
+    background-color: #ce4404;
+    padding: 6px;
+    color: #ffffff;
+    width: 90%;
+    text-align: center;
+    border-radius: 20px;
+
+  }
+
+  .paymnet-categories-table-roles .role-add h4{
+    background-color: #e6c300;
+    padding: 6px;
+    color: #ffffff;
+    width: 90%;
+    text-align: center;
+    border-radius: 20px;
+
+  }
+
+  .paymnet-categories-table-roles .role-view h4{
+    background-color: #0087d6;
+    padding: 6px;
+    color: #ffffff;
+    width: 90%;
+    text-align: center;
+    border-radius: 20px;
+
+  }
+
+  
+
+
+

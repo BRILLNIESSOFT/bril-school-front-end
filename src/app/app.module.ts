@@ -47,7 +47,10 @@ import { SubjectComponent } from './brillyschoolcomponents/subjects/subject/subj
 import { AttandanceComponent } from './brillyschoolcomponents/students/attandance/attandance.component';
 import { DesignationsComponent } from './brillyschoolcomponents/designations/designations.component';
 import { ClassroomsComponent } from './brillyschoolcomponents/classrooms/classrooms.component';
- 
+import { PaymentTypeComponent } from './brillyschoolcomponents/payments/payment-type/payment-type.component';
+import { CategoriesComponent } from './brillyschoolcomponents/payments/categories/categories.component';
+import { MasterComponent } from './brillyschoolcomponents/payments/master/master.component';
+  
 
 //REGISTER PLUGINS OF FULLCALENDER JS
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -74,7 +77,10 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     AttandanceComponent,
     DesignationsComponent,
     ClassroomsComponent,
-   ],
+    PaymentTypeComponent,
+    CategoriesComponent,
+    MasterComponent
+     ],
   imports: [
     NgSelectModule,
     FormsModule,

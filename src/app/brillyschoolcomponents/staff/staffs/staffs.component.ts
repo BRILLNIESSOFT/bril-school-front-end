@@ -130,7 +130,8 @@ export class StaffsComponent implements OnInit {
           latitude: '' ,
           longitude: '' ,
           note: '' ,
-        } 
+        },
+        caseTeacher : []
       }),
   });
 
@@ -155,12 +156,13 @@ export class StaffsComponent implements OnInit {
 
   //ADD NE STAFF SUBMIT BUTTON 
   onAddNewStaff(){
+    this.AddNewStaffFormGroup.get('staff.caseTeacher')?.setValue(this.selectedTecherSubjectAndItsSections);
     console.log(this.AddNewStaffFormGroup.value);
-    this._staffServices.addNewStaff(this.AddNewStaffFormGroup.value)
-     .subscribe(
-       response => console.log("Response", response),
-       error => console.log("Error occurs, try to enter the data again", error)
-     );
+    // this._staffServices.addNewStaff(this.AddNewStaffFormGroup.value)
+    //  .subscribe(
+    //    response => console.log("Response", response),
+    //    error => console.log("Error occurs, try to enter the data again", error)
+    //  );
 }
 
 
@@ -172,8 +174,6 @@ onSelectTeacherSubject(teacherSubjectRef:any, subjectId:any){
 let childrenSubjects = teacherSubjectRef.parentNode.childNodes;
 // console.log(childrenSubjects.length);
 // childrenSubjects[2].style.opacity = "0.4";
-
-
   if(this.TeachersubjectSelected === null){
     this.TeachersubjectSelected = subjectId;
     teacherSubjectRef.style.opacity = "1";
@@ -225,7 +225,7 @@ if(this.SingleArrayOfSections.includes(secId)){
       this.SingleArrayOfSections.splice(checkIfArrayExist.indexOf(secId,1));
       // classRef.style.backgroundColor = "#009ab3";
       // classRef.style.color = "#ffffff";
-      sectionRef.style.backgroundColor = "#ebebeb";
+      sectionRef.style.backgroundColor = "#ffffff";
       sectionRef.style.color = "#000000";
       console.log("already exits ");
 
@@ -267,10 +267,11 @@ if(this.SingleArrayOfSections.length === 0){
 
 
 onStoreSingleSubjectSects(){
-
+  
+  console.log(document.getElementById('teacher_prestored_subjects_holder'));
   //ADD NEW SET OF SECTIONS
   try{
-    this.selectedTecherSubjectAndItsSections.push({
+      this.selectedTecherSubjectAndItsSections.push({
       subjectId: this.TeachersubjectSelected ,
       sectionsIds: this.SingleArrayOfSections
     });

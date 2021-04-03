@@ -862,5 +862,14 @@ input[type="color" i] {
 }
 
 
+.brill-configure-btn{
 
-
+  padding: 10px;
+  float: right;
+  border: 1px solid #bbb9b9;
+  border-radius: 20px;
+  background-color: white;
+  &:hover{
+    background-color: #ececec;
+  }
+}

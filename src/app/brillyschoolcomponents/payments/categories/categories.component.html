@@ -1,0 +1,93 @@
+<div class="brill-container-g staffs col-md-12">
+
+    <!-- BRILL BOTTOM IICONS  -->
+    <div class="global-fixed-control-btns">
+        <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_payment_category"><i class="lnr lnr-plus-circle"> </i></button>
+    </div>
+
+
+        <div class="global-container-header">
+        <h3> PAYMENT CATEGORIES , </h3>
+        <p>Set payment categories to distingush between all of the payment types you have</p>
+        </div>  
+
+
+        <div class="paymnet-categories-list col-md-12">
+
+            <div *ngFor= "let paymentCat of allPaymnetCategoriesArray" class="paymnet-categories-card col-md-6">
+                    <div class="paymnet-categories-card-control">
+                        <button><i class="lnr lnr-cross-circle"></i></button>
+                        <button><i class="lnr lnr-pencil"></i></button>
+                    </div> 
+                <h3> {{ paymentCat.name }}</h3>
+                <p> {{ paymentCat.description }}
+                </p>
+            </div>
+
+</div>
+
+
+</div>        
+
+
+
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+
+<!-- DATA MODAL ADD NEW PAYMENT TYPE -->
+
+<div id= "brill_modal_create_new_payment_category" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg brill-modal-dialog">
+      <div class="modal-content">
+           <form [formGroup] = "paymentCategoryForm" (ngSubmit)="onSubmitNewPaymentCategory()">
+            <section class="row brill-modal-container">
+                <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                      
+                  <div class="add-new-class-room" formGroupName = "fee_category">
+                      <h3> ADD NEW PAYMENT CATEGORY</h3>
+                     <div class="brill-input-holders"> 
+                      <div class="inputs-container">
+
+                        <div class="brill-row">
+
+                            <div>
+                                <label for="paymentCategoryCode">Category name</label>
+                                <input formControlName = "name" type="text" name="paymentCategoryCode" id = "paymentCategoryCode" class="input" placeholder="Payment name"/>
+                            </div>
+
+                            <div>
+                                <label for="paymentCategorySeats">Category type code</label>
+                                <input formControlName = "code" type="number" name="paymentCategorySeats" id = "paymentCategorySeats" class="input" placeholder="payment code"/>
+                            </div>
+
+                            <div>
+                                <label for="paymentCategoryNotes">Category Notes</label>
+                                <textarea formControlName = "note" name="paymentCategoryNotes" id = "paymentCategoryNotes" rows="2" placeholder="You can leave it blank if you want"> </textarea>
+                            </div>
+
+                            <div>
+                                <label for="paymentCategoryDesc">Category Description</label>
+                                <textarea formControlName = "description" name="paymentCategoryDesc" id = "paymentCategoryDesc" rows="2" placeholder="You can leave it blank if you want"> </textarea>
+                            </div>
+                        </div>
+                    
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr>
+                     <div class="modal-footer">
+                            <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                            <button type="submit" class="brill-btn-3">Add Cat</button>
+                     </div>
+               </section>
+            </form> 
+      </div>
+    </div>
+  </div>
+
+
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->

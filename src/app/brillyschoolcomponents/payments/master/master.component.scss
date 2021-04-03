@@ -1,0 +1,65 @@
+.paymnet-master-card{
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #d4d4d4;
+    margin: 5px;
+     width: 31%;
+}
+
+.paymnet-master-card-control{
+    background-color: #cccccc;
+    padding: 4px;
+    top: 0px;
+    right: 0px;
+    position: absolute;
+ }
+
+.paymnet-master-card-control button{
+    padding: 6px;
+    width: 30px;
+    height: 30px;
+    font-size: large;
+    border-radius: 40px;
+    border: 1px solid #000000;
+    border: none;
+    background: #f3f3f3;
+    margin: 0px 2px 0px 2px 0px;
+    color: #000000;
+    border: solid 1px #a9a9a9;
+    margin-left: 2px;
+    margin-right: 2px;
+    &:hover{
+        background: #e4e4e4;
+    }
+}
+
+
+.paymnet-master-card h3{
+    text-align: left;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 10px;
+}
+
+.paymnet-master-card p{
+    padding: 0px 4px 0px 4;
+}
+
+
+.paymnet-master-batch{
+    float: right;
+    background-color: #8a00b1;
+    padding: 8px;
+    font-size: 1.6em;
+    border-radius: 50%;
+    color: #ffffff;
+    font-weight: 900;
+}
+
+
+.paymnet-master-list .paymnet-master-card .master-detail{
+    color: #474d5e;
+    font-size: 1.1em;
+    padding: 4px;
+    display: block;
+}

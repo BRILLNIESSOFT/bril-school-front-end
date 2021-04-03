@@ -10,7 +10,12 @@ import {CheckComponent } from './brillyschoolcomponents/timetables/check/check.c
 import {SubjectComponent } from './brillyschoolcomponents/subjects/subject/subject.component';
 import {AttandanceComponent} from './brillyschoolcomponents/students/attandance/attandance.component';
 import { DesignationsComponent } from './brillyschoolcomponents/designations/designations.component'
-import { ClassroomsComponent } from './brillyschoolcomponents/classrooms/classrooms.component'
+import { ClassroomsComponent } from './brillyschoolcomponents/classrooms/classrooms.component';
+import { PaymentTypeComponent } from './brillyschoolcomponents/payments/payment-type/payment-type.component';
+import { CategoriesComponent } from './brillyschoolcomponents/payments/categories/categories.component';
+import { MasterComponent } from './brillyschoolcomponents/payments/master/master.component';
+
+
 
 const routes: Routes = [
   {path : 'students/register', component: RegistrationComponent} ,
@@ -22,7 +27,9 @@ const routes: Routes = [
   {path : 'students/attendance', component: AttandanceComponent} , 
   {path : 'school/designations', component: DesignationsComponent} , 
   {path : 'school/classrooms', component: ClassroomsComponent} , 
-
+  {path : 'payment/payment-type', component: PaymentTypeComponent} , 
+  {path : 'payment/categories', component: CategoriesComponent} , 
+  {path : 'payment/master' , component: MasterComponent}
 ];
 
 @NgModule({

@@ -9,7 +9,6 @@
 
     <div class="global-container-header">
         <h3> STAFF MEMBERS OF THE SCHOOL </h3>
- 
     </div>  
 <hr>
         <div class="brill-filter-by-click">
@@ -196,12 +195,21 @@
                                                  {{ section.name }} </button>
                                         </div>
                                     </carousel>  
-    
                                 </div>
-                                <div *ngIf="addSingleSubjectButton">
-                                    <button type="button" (click)="onStoreSingleSubjectSects()">ADD SECTION</button>
+                                <!-- *ngIf="addSingleSubjectButton" -->
+                                <div>
+                                    <button class="teacher-store-sections-btn" [class.teacher-store-sections-btn-active] = "addSingleSubjectButton" type="button" (click)="onStoreSingleSubjectSects()" [disabled]="!addSingleSubjectButton">ADD SECTION</button>
                                 </div>
-                            </section>     
+                            </section>   
+                            
+                            <div *ngIf="addSingleSubjectButton" id="teacher_prestored_subjects_holder" class="teacher-prestored-subjects col-md-12">
+                                <div id="teacher_prestored_subjects_section" class="col-sm-2">
+                                  <button class="closed-prestored-subject-btn">  <i class="lnr lnr-cross-circle"></i>  </button>
+                                    <button class="prestored-subject-item" type="button"  style="background-color:#000000">
+                                       ARABIC 
+                                   </button>
+                               </div>
+                            </div>
 
                            </div>
                         </div>

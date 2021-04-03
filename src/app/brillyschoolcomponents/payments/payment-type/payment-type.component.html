@@ -1,0 +1,145 @@
+<div class="brill-container-g staffs col-md-12">
+
+            <!-- BRILL BOTTOM IICONS  -->
+            <div class="global-fixed-control-btns">
+                <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_payment_type"><i class="lnr lnr-plus-circle"> </i></button>
+            </div>
+
+
+
+
+    <div class="global-container-header">
+        <h3> PAYMENT TYPE , AND PAYMENT  </h3>
+        <p>Payment types are the types of payment you make on the school like transport and assurance</p>
+
+    </div>  
+
+  <div class="payment-type-container col-md-12">
+
+    <div *ngFor = "let type of allPaymnetTypesArray" class="payment-type-card col-md-4">
+        <span class="pay-type-cat"> CATEGORY</span>
+          <h4> {{ type.name }} </h4>
+         <div class="paymentType-item-control">
+            <button type="button" class="brill-btn-s-2"><i class="lnr lnr-plus-circle"></i></button>
+            <button type="button" class="brill-btn-s-0"><i class="lnr lnr-cross-circle"></i></button>
+            <button type="button" class="brill-btn-s-1"><i class="lnr lnr-pencil"></i></button>   
+            <button type="button" data-toggle="modal" data-target="#brill_modal_configure_payment_type" class="brill-configure-btn">Configure</button>                    
+        </div>
+    </div>
+ 
+
+  </div>  
+
+</div>    
+
+
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+
+<!-- DATA MODAL ADD NEW PAYMENT TYPE -->
+
+<div id= "brill_modal_create_new_payment_type" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg brill-modal-dialog">
+      <div class="modal-content">
+           <form [formGroup] = "paymentTypeForm" (ngSubmit)="onSubmitNewPaymentType()">
+            <section class="row brill-modal-container">
+                <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                      
+                  <div class="add-new-class-room" formGroupName = "fee_type">
+                      <h3> ADD NEW PAYMENT TYPE</h3>
+                     <div class="brill-input-holders"> 
+                      <div class="inputs-container">
+
+                        <div class="brill-row">
+                          <div>
+                            <label for="paymentTypeCatId">Payment category name</label>
+                            <select formControlName = "fee_category_id" name="catId" class="input-select" >
+                               <option *ngFor = "let cat  of PaymnetCategoriesArray" value="{{ cat.id }}"> {{ cat.name }} </option>
+                            </select>
+                        </div>
+
+                            <div>
+                                <label for="paymentTypeCode">Payment type name</label>
+                                <input formControlName = "name" type="text" name="paymentTypeCode" id = "paymentTypeCode" class="input" placeholder="Payment name"/>
+                            </div>
+
+                            <div>
+                                <label for="paymentTypeSeats">Payment type code</label>
+                                <input formControlName = "code" type="number" name="paymentTypeSeats" id = "paymentTypeSeats" class="input" placeholder="payment code"/>
+                            </div>
+                        </div>
+
+                        <div class="brill-row">
+
+                              <div>
+                                <label for="paymentTypeNotes"> Notes</label>
+                                 <textarea formControlName = "description" name="paymentTypeNotes" id = "paymentTypeNotes" rows="2" placeholder="You can leave it blank if you want"> </textarea>
+                              </div>
+
+                            <div>
+                                <label for="paymentTypeDesc">Description</label>
+                                <textarea formControlName = "note" name="paymentTypeDesc" id = "paymentTypeDesc" rows="2" placeholder="You can leave it blank if you want"> </textarea>
+                            </div>
+                        </div>
+                    
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr>
+                     <div class="modal-footer">
+                            <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                            <button type="submit" class="brill-btn-3">Add Sect</button>
+                     </div>
+               </section>
+            </form> 
+      </div>
+    </div>
+  </div>
+
+
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- DATA MODAL ADD NEW PAYMENT TYPE -->
+
+<div id= "brill_modal_configure_payment_type" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg brill-modal-dialog">
+      <div class="modal-content">
+        <form>   
+            <section class="row brill-modal-container">
+                <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+       <div class="add-new-staff">
+                      <h3> PAYMENT TYPE CONFIGURATION BY CLASSES</h3>
+
+              <div class="brill-input-holders"> 
+   
+                        
+                        <div class="payment-configure-class-card col-md-12">
+                            <div class="parent-class col-md-12">
+                                <ul>
+                                    <li> <h4> CLASS AB </h4> </li>
+                                    <li> <input type="text" disabled value="560 MAD / MOUNTH" /> <button type="button"> <i class="lnr lnr-pencil"></i> </button></li>
+                                </ul>
+                            </div>
+
+                            <!-- SECTIONS OF THE CLASS -->
+                            <div class="children-of-class">
+                                
+                            </div>
+
+                        </div>
+
+
+                     </div>
+                  </div>
+               <hr>
+                     <div class="modal-footer">
+                            <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                            <button type="submit" class="brill-btn-3">ADD STAFF</button>
+                     </div>
+               </section>
+            </form> 
+      </div>
+    </div>

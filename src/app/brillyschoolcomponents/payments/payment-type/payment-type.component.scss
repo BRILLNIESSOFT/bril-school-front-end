@@ -1,0 +1,89 @@
+
+.payment-type-container{
+    background-color: #fbfbfb;
+    margin: 10px;
+    min-height: 500px;
+}
+
+.payment-type-card{
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    margin: 10px 2px 10px 2px;
+    border: 1px dashed #dadada;
+    width: 32%;
+}
+
+
+.payment-type-card img{
+    width: 70%;
+    /* text-align: center; */
+    margin: auto;
+    display: block;
+}
+
+.payment-type-card h4{
+    text-align: center;
+    color: #545454;
+    font-size: 1.6em;
+    padding: 20px 0px 40px 0px;
+    border-bottom: 1px dashed #bfbebe;
+     clear: both;
+}
+
+
+.payment-configure-class-card{
+    display: block;
+    clear: both;
+    padding: 20px;
+    background-color: #e4f0fb;
+}
+
+
+.payment-type-card .pay-type-cat{
+
+    float: right;
+    padding: 8px;
+    background-color: #b50068;
+    color: #ffffff;
+    border-radius: 50px;
+}
+
+
+.payment-configure-class-card .parent-class ul{
+  float: left;
+  list-style: none;
+}
+
+.payment-configure-class-card .parent-class ul li{
+    float: left;
+   }
+
+  .payment-configure-class-card .parent-class ul li h4{
+    background-color: #24272f;
+    padding: 14px;
+     color: #ffffff;
+   }
+
+  .payment-configure-class-card .parent-class ul li input{
+    padding: 15px;
+    background-color: white;
+    border: none;
+     border: 1px solid #cecece;
+     font-weight: 800;
+     font-size: 1.3em;
+  }
+ 
+  .payment-configure-class-card .parent-class ul li button{
+         padding: 13px;
+         background-color: #037679;
+         border: none;
+         font-size: 1.2em;
+         color: #ffffff;
+         &:hover{
+            background-color: #039196; 
+         }
+  }
+ 
+
+ 
