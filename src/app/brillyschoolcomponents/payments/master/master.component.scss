@@ -57,9 +57,58 @@
 }
 
 
-.paymnet-master-list .paymnet-master-card .master-detail{
+.paymnet-master-list .paymnet-master-card .configure-master .master-detail{
     color: #474d5e;
     font-size: 1.1em;
     padding: 4px;
     display: block;
+}
+
+.paymnet-master-card .configure-master button{
+    float: right;
+    padding: 10px;
+    display: block;
+    clear: both;
+    border-radius: 30px;
+    border: 1px solid #c3c3c3;
+    background-color: #ffffff;
+    &:hover{
+        background-color: #f2f2f2;
+    }
+}
+
+
+
+.teacher-options{
+    margin-top: 20px;
+    background: #f7ffff;
+    padding: 10px;
+}
+
+.teacher-options .teacher-option-card {
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+}
+
+.teacher-options .teacher-option-card h5{
+background-color: #ffffff;
+padding: 14px;
+border: 1px solid #e2e2e2;
+font-weight: 700;
+  font-size: 1em;
+}
+
+//TEACHER OPTION CLASS SECTIONS
+.teacher-options .teacher-option-card button{
+display: block;
+width: 100%;
+border-radius: 10px;
+padding: 4px;
+border: 1px solid #c3c3c3;
+background: #ffffff;
+margin: 2px 0px 2px 0px;
+// &:hover{
+// background-color: #028dad;
+// color: #fff;
+// }
 }

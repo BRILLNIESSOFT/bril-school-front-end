@@ -1,4 +1,11 @@
 <div class="brill-container-g student-payment col-md-12">
+
+        <!-- BRILL BOTTOM IICONS  -->
+        <div class="global-fixed-control-btns">
+            <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_payment_master"><i class="lnr lnr-plus-circle"> </i></button>
+        </div>
+
+
     <div class="global-container-header">
         <h3> PAYMENT MASTER</h3>
          <p> Create new payment master to set diffrent payment amount for each class </p>
@@ -14,70 +21,96 @@
                         <button><i class="lnr lnr-pencil"></i></button>
                     </div> 
                 <h3> NAME</h3>
-              <span class="fas fa-file-invoice-dollar master-detail"> &nbsp; Trans fee</span>
-              <span class="fas fa-money-bill-alt master-detail"> &nbsp; 300 MAD</span>
-              <span class="fas fa-calendar-check master-detail"> &nbsp; 23-04-2021</span>
-              <span class="fas fa-calendar-times master-detail"> &nbsp; 23-04-2021</span>
-
+                    <div class="configure-master">  
+                            <span class="fas fa-file-invoice-dollar master-detail"> &nbsp; Trans fee</span>
+                            <span class="fas fa-dollar-sign master-detail"> &nbsp; 300 MAD</span>
+                            <span class="fas fa-calendar-check master-detail"> &nbsp; 23-04-2021</span>
+                            <span class="fas fa-calendar-times master-detail"> &nbsp; 23-04-2021</span>
+                            <button type="button" class=" ">Configure details</button>
+                            
+                    </div>
             </div>
-
-            <div  class="paymnet-master-card col-md-3">
-                <div class="paymnet-master-card-control">
-                    <button><i class="lnr lnr-cross-circle"></i></button>
-                    <button><i class="lnr lnr-pencil"></i></button>
-                </div> 
-            <h3> NAME</h3>
-          <span class="fas fa-file-invoice-dollar master-detail"> &nbsp; Trans fee</span>
-          <span class="fas fa-money-bill-alt master-detail"> &nbsp; 300 MAD</span>
-          <span class="fas fa-calendar-check master-detail"> &nbsp; 23-04-2021</span>
-          <span class="fas fa-calendar-times master-detail"> &nbsp; 23-04-2021</span>
-
         </div>
-
-        <div  class="paymnet-master-card col-md-3">
-            <div class="paymnet-master-card-control">
-                <button><i class="lnr lnr-cross-circle"></i></button>
-                <button><i class="lnr lnr-pencil"></i></button>
-            </div> 
-        <h3> NAME</h3>
-      <span class="fas fa-file-invoice-dollar master-detail"> &nbsp; Trans fee</span>
-      <span class="fas fa-money-bill-alt master-detail"> &nbsp; 300 MAD</span>
-      <span class="fas fa-calendar-check master-detail"> &nbsp; 23-04-2021</span>
-      <span class="fas fa-calendar-times master-detail"> &nbsp; 23-04-2021</span>
-
-    </div>
+</div>    
 
 
-    <div  class="paymnet-master-card col-md-3">
-        <div class="paymnet-master-card-control">
-            <button><i class="lnr lnr-cross-circle"></i></button>
-            <button><i class="lnr lnr-pencil"></i></button>
-        </div> 
-    <h3> NAME</h3>
-  <span class="fas fa-file-invoice-dollar master-detail"> &nbsp; Trans fee</span>
-  <span class="fas fa-money-bill-alt master-detail"> &nbsp; 300 MAD</span>
-  <span class="fas fa-calendar-check master-detail"> &nbsp; 23-04-2021</span>
-  <span class="fas fa-calendar-times master-detail"> &nbsp; 23-04-2021</span>
+<!-- ALL THE MODALS STARTS FROM HERE -->
+	  <!-- DATA MODAL ADD NEW PAYMENT MASTER -->
+    <!-- ALL THE MODALS STARTS FROM HERE -->
+	  <!-- DATA MODAL ADD NEW PAYMENT MASTER -->
+	  <div id= "brill_modal_create_new_payment_master" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg brill-modal-dialog">
+            <div class="modal-content">
+                <form [formGroup] = "paymentMasterForm" (ngSubmit)="onSubmitNewpaymentMaster()">
+                 <section class="row brill-modal-container">
+                     <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                           
+                       <div class="add-new-class-room" formGroupName = "fee_master">
+                           <h3> ADD NEW PAYMENT MASTER</h3>
+                          <div class="brill-input-holders"> 
+                           <div class="inputs-container">
+     
+                             <div class="brill-row">
+     
+                                <div>
+                                    <label for="paymentTypeCatId"> Class section </label>
+                                    <select formControlName = "class_section_id" name="catId" class="input-select" >
+                                        <option value="2">type</option>
+                                    </select>
+                                </div>
 
-</div>
-
-
-<div  class="paymnet-master-card col-md-3">
-    <div class="paymnet-master-card-control">
-        <button><i class="lnr lnr-cross-circle"></i></button>
-        <button><i class="lnr lnr-pencil"></i></button>
-    </div> 
-<h3> NAME</h3>
-<span class="fas fa-file-invoice-dollar master-detail"> &nbsp; Trans fee</span>
-<span class="fas fa-money-bill-alt master-detail"> &nbsp; 300 MAD</span>
-<span class="fas fa-calendar-check master-detail"> &nbsp; 23-04-2021</span>
-<span class="fas fa-calendar-times master-detail"> &nbsp; 23-04-2021</span>
-
-</div>
-
-        </div>
-
+                                <div>
+                                    <label for="paymentTypeMaster">Payment type </label>
+                                    <select formControlName = "fee_type_id" name="paymentTypeMaster" class="input-select" >
+                                        <option value="2">Master</option>
+                                     </select>
+                                </div>
 
  
+                                <div>
+                                    <label for="paymentMasterAmount">Fee amount</label>
+                                    <input formControlName = "amount" type="number" name="paymentMasterAmount" id = "paymentMasterCode" class="input" placeholder="ammount"/>
+                                </div>
 
-</div>    
+                                                                     
+                                <div>
+                                    <label for="paymentMasterDate">Due Date </label>
+                                    <input formControlName = "due_date" type="date" name="paymentMasterDate" id = "paymentMasterCode" class="input" placeholder="Due date"/>
+                                </div>
+
+                             </div>
+
+                             <div class="brill-row">
+                                <div>
+                                    <label for="paymentMasterDateMax">Due Date max</label>
+                                    <input formControlName = "due_date_max" type="date" name="paymentMasterDateMax" id = "paymentMasterCode" class="input" placeholder="Max"/>
+                                </div>
+                             </div>
+                           </div>
+
+                           
+                           <div class="brill-row teacher-options" id="teacher_sections">
+                            <carousel>  
+                                <div *ngFor="let class of allClasses" class="teacher-option-card carousel-cell">
+                                    <h5 #classNameRef> {{ class.name }} </h5> 
+                                    <button *ngFor="let section of class.sections"  [disabled]="false" type="button" #sectionNameRef (click)="seectMasterSection(section.id,sectionNameRef,classNameRef)">
+                                         {{ section.name }} </button>
+                                </div>
+                            </carousel>  
+                        </div>
+
+
+                         </div>
+                       </div>
+     
+                       <hr>
+                          <div class="modal-footer">
+                                 <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                                 <button type="submit" class="brill-btn-3">Add Cat</button>
+                          </div>
+                    </section>
+                 </form> 
+           </div>
+        </div>
+      </div>
+  
