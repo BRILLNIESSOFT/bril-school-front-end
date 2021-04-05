@@ -12,10 +12,11 @@ import { PaymenttypeService } from '../../../brillyschoolservices/payment/paymen
 })
 export class PaymentTypeComponent implements OnInit {
 
-  //ALL PAYMENT CATEGORY ARRAY
-  public PaymnetCategoriesArray:any[] = [];
+    //ALL PAYMENT CATEGORY ARRAY
+    public PaymnetCategoriesArray:any[] = [];
     //ALL PAYMENT TYPES ARRAY
     public allPaymnetTypesArray:any[] = [];
+
 
   constructor(private FB: FormBuilder, private paymentTypeService: PaymenttypeService) { }
 
@@ -28,12 +29,13 @@ export class PaymentTypeComponent implements OnInit {
               error => console.log("ERROR OCCURS" , error)
             );
 
-         // GET ALL PAYMENT CATEGORIES
-         this.paymentTypeService.getAllPaymentCategories()
-         .subscribe(
-           (data:any) => this.PaymnetCategoriesArray = data.data,
-           error => console.log("ERROR OCCURS" , error)
-         );
+            // GET ALL PAYMENT CATEGORIES
+            this.paymentTypeService.getAllPaymentCategories()
+            .subscribe(
+              (data:any) => this.PaymnetCategoriesArray = data.data,
+              error => console.log("ERROR OCCURS" , error)
+            );
+
   }
 
 
@@ -51,12 +53,13 @@ paymentTypeForm = this.FB.group({
 
     //submit new payment 
     onSubmitNewPaymentType(){
-      console.log(this.paymentTypeForm);
-      this.paymentTypeService.addNewPaymentType(this.paymentTypeForm.value)
+       this.paymentTypeService.addNewPaymentType(this.paymentTypeForm.value)
        .subscribe(
          (data:any) => console.log("ADDED SUCCESSFULYY", data.data),
          error => console.log("ERROR" , error)
        )
+
+
     }
 
 }
