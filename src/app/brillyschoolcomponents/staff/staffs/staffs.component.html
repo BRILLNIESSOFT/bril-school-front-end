@@ -163,7 +163,7 @@
                                 <div>
                                     <label for="staffRole">Job title</label>
 
-                                    <select formControlName = "role_id" name="staffRole" (change)="onWhichRoleSelected()" class="input-select" id="staffRole">
+                                    <select [(ngModel)]="checkRoleSelected" formControlName = "role_id" name="staffRole" (change)="onWhichRoleSelected()" class="input-select" id="staffRole">
                                         <option *ngFor = "let role of allRolesArray" value="{{ role.id }}">{{ role.name }}</option>
                                      </select>
 

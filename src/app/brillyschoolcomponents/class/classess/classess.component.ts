@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
 import { toggleFixedBottomMenu } from './../../../global-animation';
-import { FormBuilder } from '@angular/forms';
+import { showClassDetails } from './../classess/classess-animations';
 
+ import { FormBuilder } from '@angular/forms';
+
+
+ 
 //IMPORTING BRILL SERVICES
 import { ClassService } from './../../../brillyschoolservices/classes/class.service';
 import { SubjectService } from './../../../brillyschoolservices/subject.service';
@@ -12,7 +16,7 @@ import { SubjectService } from './../../../brillyschoolservices/subject.service'
   selector: 'app-classess',
   templateUrl: './classess.component.html',
   styleUrls: ['./classess.component.scss'] ,
-  animations: [toggleFixedBottomMenu]
+  animations: [toggleFixedBottomMenu,showClassDetails]
 
 })
 export class ClassessComponent implements OnInit {
@@ -25,8 +29,15 @@ export class ClassessComponent implements OnInit {
     //SECTIONS SUBJECT ASSIGNER
     public sectionSubjectsAssiner = [];
 
+    //ON CLASS DETAILS IS SHOWN
+    public classDetailsShown:boolean = false;
+
+ //CONSTRUCTION FUBCTIONS
   constructor(private FB:FormBuilder, private addNewClassSer: ClassService ,
-    public subjectsService: SubjectService) { }
+    public subjectsService: SubjectService) {
+        //GIDE THE CLASS DETAILS ALL INCLUDING CLASS SECTION ON DUCEMENT CLICKED
+ 
+     }
 
   ngOnInit(): void {
     //ASSIGN ALL SECTION TO THE MEMBER VARIABKE
@@ -147,6 +158,27 @@ export class ClassessComponent implements OnInit {
     objRef.style.borderRight = "1px solid #ffffff";
      objRef.style.opacity = "0.4";
   }
+
+  OnshowClassDetails(){
+    if( this.classDetailsShown === false){
+      const slideMP3 = new Audio();
+      slideMP3.src = "../../../assets/sounds/slide.mp3";
+      slideMP3.load();
+      slideMP3.play();
+      this.classDetailsShown = true;
+    }
+  }
+
+    //GIDE THE CLASS DETAILS ALL INCLUDING CLASS SECTION ON DUCEMENT CLICKED
+
+  onHideTheClassDetails(){
+     if( this.classDetailsShown === true){
+      this.classDetailsShown = false;
+    }
+  }
+  
+
+ 
 
 
 }

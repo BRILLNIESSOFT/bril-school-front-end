@@ -1,0 +1,37 @@
+@import "../vehicle/vehicle.component.scss";
+
+//OVERIDING IT
+.classroom-item-card{
+    width: 100%;
+    border: 1px solid #bebebe;
+   border-radius: 14px;
+   padding: 20px;
+   margin-bottom: 10px;
+   margin-right: 2%;
+   height: 380px;
+}
+
+
+.classroom-item-card .ixcon{
+     border: 1px solid #dddddd;
+     height: 200px;
+    border-radius: 14px;
+}
+
+.classroom-item-card .ixcon i{
+    width: 99%;
+    height: 99%;
+    font-size: 10em;
+     margin-top: 20px;
+    text-align: center;
+}
+
+
+.classroom-item-card ul li{
+    font-size: 1.6em;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 2px;
+    color: #545454;
+    margin-bottom: 6px;
+    padding-bottom: 20px;
+}   

@@ -14,6 +14,9 @@ import { ClassroomsComponent } from './brillyschoolcomponents/classrooms/classro
 import { PaymentTypeComponent } from './brillyschoolcomponents/payments/payment-type/payment-type.component';
 import { CategoriesComponent } from './brillyschoolcomponents/payments/categories/categories.component';
 import { MasterComponent } from './brillyschoolcomponents/payments/master/master.component';
+import { VehicleComponent } from './brillyschoolcomponents/transportation/vehicle/vehicle.component';
+import { RouteComponent } from './brillyschoolcomponents/transportation/route/route.component';
+import { AttendanceComponent } from './brillyschoolcomponents/transportation/attendance/attendance.component';
 
 
 
@@ -29,7 +32,11 @@ const routes: Routes = [
   {path : 'school/classrooms', component: ClassroomsComponent} , 
   {path : 'payment/payment-type', component: PaymentTypeComponent} , 
   {path : 'payment/categories', component: CategoriesComponent} , 
-  {path : 'payment/master' , component: MasterComponent}
+  {path : 'payment/master' , component: MasterComponent},
+  {path : 'transportation/vehicle' , component: VehicleComponent},
+  {path : 'transportation/routes' , component: RouteComponent},
+  {path : 'transportation/attendance' , component: AttendanceComponent}
+
 ];
 
 @NgModule({

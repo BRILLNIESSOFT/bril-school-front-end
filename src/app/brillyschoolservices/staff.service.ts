@@ -9,6 +9,8 @@ export class StaffService {
 
   //BASE URL
   public baseURL = 'http://127.0.0.1:8000/api/staffs/';
+
+
   
 
   constructor(private req:HttpClient) { }
@@ -23,6 +25,8 @@ export class StaffService {
   getAllStaffs(){
     return this.req.get(this.baseURL);
   }
+
+
   //GET ALL STAFFS BRIEF INFORMATION
   // getAllStaffsBried(){
 

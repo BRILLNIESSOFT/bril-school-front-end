@@ -11,6 +11,9 @@ export class RolesService {
   //ROLL BASE URL for post and get all roles
   private baseURL:string = "http://127.0.0.1:8000/api/roles";
   //ONE SINGLE ROLL
+  
+  //GET TRUE VALUE IF THE SELECTED STAFF IS TEACHER
+  public checkIsTeacherURL = 'http://127.0.0.1:8000/api/roles/is_teacher/';
 
   constructor(private http:HttpClient) { }
 
@@ -25,4 +28,10 @@ export class RolesService {
   addNewRole(data:any){
     return this.http.post(this.baseURL,data);
   }
+
+    //GET TRUE IF THE STAFF IS TEAHER
+    isTheStafIsTeacher(id:any){
+      
+      return this.http.get(this.checkIsTeacherURL + id);
+    }
 }

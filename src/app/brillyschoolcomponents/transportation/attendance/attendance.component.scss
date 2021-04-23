@@ -1,0 +1,157 @@
+@import "../../../brillyschoolcomponents/students/attandance/attandance.component.scss";
+
+
+.attendance-mark{
+    background-color: #ffffff;
+    margin-top: 10px;
+    min-height: 700px;
+}
+
+.attendance-mark-2{
+    overflow: auto;
+    height:450px;
+    padding: 10px;
+    border: 1px solid #d6d6d6;
+}
+
+.attendance-mark .student-info-card{
+    display: block;
+     margin-top: 10px;
+    border: 1px solid #d4d4d4;
+    padding: 10px;
+    border-radius: 8px;
+    width: 24%;
+    margin: 2px 1px 2px 1px;
+  }
+
+.attendance-mark .student-info-card img{
+    display: block;
+    clear:both;
+    border-radius: 50%;
+    width: 99%;
+    border: 6px solid #1c9db7;
+ }
+
+ .attendance-mark .student-info-card h3{
+    display: block;
+    clear:both;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 10px;
+ }
+
+ .attendance-mark .student-info-card .control-btn{
+     text-align: center;
+     display: block;
+     clear: both;
+  }
+
+ .attendance-mark .student-info-card .control-btn button{
+   width: 30%;
+   margin: 0px 2px 0px 2px ;
+   padding: 10px;
+   font-weight: bold;
+ }
+
+ 
+
+ .attendance-mark-2{
+     display: block !important;
+ }  
+ 
+ .student-card-2{
+     display: none;
+ }
+
+ .student-card-m{
+    background-color: #ffffff;
+    direction: ltr;
+    padding: 10px 10px 10px 20px;
+    border: 1px solid #ccc9c9;
+    border-radius: 8px;
+    margin: 4px 0px 4px 0px;
+ }
+
+
+ .student-card-m img{
+     /* padding: 8px; */
+     border-radius: 50%;
+     border: 4px solid #00749c;
+ }
+
+
+
+ .student-card-m h4{
+       font-weight: 600;
+       padding: 10px 0px 0px 0px;
+       color: #01799c;
+  }
+
+ .student-card-m .lecture-control-btns{
+   float: right;
+   margin-top: 4px;
+ }
+
+ .student-card-m .lecture-control-btns ul{
+    float: right;
+  }
+
+  .student-card-m .lecture-control-btns ul li{
+    float: right;
+    margin: 0px 2px 0px 2px;
+  }
+
+
+ .student-card-m img{
+     width: 70px;
+}
+ 
+
+
+  //DESKTOP VIEW
+  @media only screen and (min-width: 768px){
+    .student-card-m{
+        display: block;
+    }
+  }
+
+
+
+  .btn-red-empty {
+    color: #c40454;
+    background: #fff;
+    width: 80px;
+    height: 80px;
+     &:hover{
+        color: #fff;
+        background: #c40454;
+        width: 80px;
+        height: 80px;
+     }
+}
+
+.btn-green-empty {
+    color: #009f47;
+    background: #fff;
+    width: 80px;
+    height: 80px;
+     &:hover{
+        color: #fff;
+        background: #009f47;
+        width: 80px;
+        height: 80px;
+     }
+}
+
+.btn-blue-empty {
+    color: #0076bf;
+    background: #fff;
+    width: 80px;
+    height: 80px;
+     &:hover{
+        color: #fff;
+        background: #0076bf;
+        width: 80px;
+        height: 80px;
+     }
+}

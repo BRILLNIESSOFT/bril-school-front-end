@@ -90,15 +90,16 @@ export class MasterComponent implements OnInit {
     
   //ON SUBMIT NEW FEE MASTER
   onSubmitNewpaymentMaster(){
-    console.log(this.paymentMasterForm.value);
-    this.paymentService.addNewPaymentMaster(this.paymentMasterForm.value)
-     .subscribe(
-      (data:any) => console.log(data),
-      error => console.log("ERROR", error)
-     );    
+      console.log(this.paymentMasterForm.value);
+      this.paymentService.addNewPaymentMaster(this.paymentMasterForm.value)
+      .subscribe(
+        (data:any) => console.log(data),
+        error => console.log("ERROR", error)
+      );    
 
-     console.log(this.allPaymentMaster);
-
+      console.log(this.allPaymentMaster);
   }
+
+
 
 }

@@ -1,4 +1,182 @@
-<div class="brill-container-g classes col-md-12">
+
+ 
+ 
+<!-- SHOW CLASS DETAIL  -->
+ <!-- SHOW CLASS DETAIL  -->
+<!-- SHOW CLASS DETAIL  -->
+<!-- SHOW CLASS DETAIL  -->
+<!-- SHOW CLASS DETAIL  -->
+ <div [@classDetailHolder]="classDetailsShown ? 'onopned' : 'onclosed'" class="show-class-details">
+    <header class="header">
+      <button class="col-md-2" type="button" (click) = "onHideTheClassDetails()">
+         <i class="lnr lnr-chevron-right"></i>
+      </button>
+       <h4 class="col-md-10 title"> CLASS 1EME ANNE</h4>
+    </header>
+
+    <!-- THE BODY CONTAINER -->
+    <div class="class-details-containers">
+        <!-- THE CLASS INFORMATION -->
+        <div class="class-info">
+           <h5 class="col-md-11">CLASS NAME : CLASS 1EME ANNE</h5>
+            <p class="col-md-11">
+                  the class discription should be here the class discription should be here 
+                  the class discription should be herethe class discription should be here              
+                       the class discription should be herethe class discription should be here 
+              </p>
+        </div>
+
+                <!-- THE CLASS SECTIONS -->
+                <div class="class-sections">
+                  <h5 class="col-md-11">CLASS SECTION | 6 SECTION</h5>
+
+                    <div class="class-section-items col-md-12">
+                          <div class="class-item-section col-sm-2">
+                            <button type="button">AB2</button>
+                        </div>
+
+                        <div class="class-item-section col-sm-2">
+                          <button type="button">AB2</button>
+                      </div>
+                    </div>  
+                 </div>   
+                 
+                 
+                 
+                 <div class="student-list">
+                  <table class="table table-hover brill-tables">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name <button class="brill-table-hide-col" id="brill_table_hide_col" title="HIDE COLUMD" data-toggle='tooltip' data-placement='top'>
+                                <span class="lnr lnr-eye"> </span>
+                            </button> </th>
+            
+                            <th>LatName Name <button class="brill-table-hide-col" id="brill_table_hide_col" title="HIDE COLUMD" data-toggle='tooltip' data-placement='top'>
+                                    <span class="lnr lnr-eye"> </span>
+                                </button> </th>
+            
+                                <th>User name <button class="brill-table-hide-col" id="brill_table_hide_col" title="HIDE COLUMD" data-toggle='tooltip' data-placement='top'>
+                                        <span class="lnr lnr-eye"> </span>
+                                </button> </th>
+            
+                                <th>Operationse <button class="brill-table-hide-col" id="brill_table_hide_col" title="HIDE COLUMD" data-toggle='tooltip' data-placement='top'>
+                                        <span class="lnr lnr-eye"> </span>
+                                </button> </th>											
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Steve</td>
+                            <td>Jobs</td>
+                            <td>@steve</td>
+                            <td class="brill-table-operations">
+                                <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
+                                <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
+                                <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                          <td>1</td>
+                          <td>Steve</td>
+                          <td>Jobs</td>
+                          <td>@steve</td>
+                          <td class="brill-table-operations">
+                              <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
+                              <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
+                              <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
+                          </td>
+                      </tr>
+
+                      <tr>
+                        <td>1</td>
+                        <td>Steve</td>
+                        <td>Jobs</td>
+                        <td>@steve</td>
+                        <td class="brill-table-operations">
+                            <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
+                            <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
+                            <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                      <td>1</td>
+                      <td>Steve</td>
+                      <td>Jobs</td>
+                      <td>@steve</td>
+                      <td class="brill-table-operations">
+                          <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
+                          <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
+                          <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
+                      </td>
+                  </tr>
+
+                  <tr>
+                    <td>1</td>
+                    <td>Steve</td>
+                    <td>Jobs</td>
+                    <td>@steve</td>
+                    <td class="brill-table-operations">
+                        <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
+                        <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
+                        <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
+                    </td>
+                </tr>
+
+                <tr>
+                  <td>1</td>
+                  <td>Steve</td>
+                  <td>Jobs</td>
+                  <td>@steve</td>
+                  <td class="brill-table-operations">
+                      <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
+                      <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
+                      <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
+                  </td>
+              </tr>
+
+              <tr>
+                <td>1</td>
+                <td>Steve</td>
+                <td>Jobs</td>
+                <td>@steve</td>
+                <td class="brill-table-operations">
+                    <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
+                    <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
+                    <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
+                </td>
+            </tr>
+
+            <tr>
+              <td>1</td>
+              <td>Steve</td>
+              <td>Jobs</td>
+              <td>@steve</td>
+              <td class="brill-table-operations">
+                  <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
+                  <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
+                  <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
+              </td>
+          </tr>
+                    </tbody>
+                </table>
+
+                <hr>
+                <hr>
+                </div>
+ 
+     </div>   
+</div>
+
+<!-- THE MAIN CONTAINES AFTER THE SHOW CLASS DETAILS ABSOLUTE DIVIDION ENDS  -->
+<!-- THE MAIN CONTAINES AFTER THE SHOW CLASS DETAILS ABSOLUTE DIVIDION ENDS  -->
+<!-- THE MAIN CONTAINES AFTER THE SHOW CLASS DETAILS ABSOLUTE DIVIDION ENDS  -->
+<!-- THE MAIN CONTAINES AFTER THE SHOW CLASS DETAILS ABSOLUTE DIVIDION ENDS  -->
+<div class="brill-container-g col-md-12">
+
 
         <!-- BRILL BOTTOM IICONS  -->
         <div class="global-fixed-control-btns" (mouseover)="onMouseOverTheFixedMenu()" (mouseout)="onMouseOutTheFixedMenu()" [@fixedMenuClosed]="bottomFixedMenuCase ? 'onopned' : 'onclosed'">
@@ -12,182 +190,22 @@
         <h3> ALL CLASSES OF YOUR SCHOOL </h3>
     </div>  
 
+            <div class="classes-list col-md-12">
+                <!-- STUDENT TABLE-->
+                
 
-    <div class="classes-list col-md-12">
-        <!-- STUDENT TABLE-->
-        <div class="brill-table-container col-md-10">
-            <table class="table table-hover brill-tables">
-                <thead>
-                      <tr>
-                          <th class="this">Num <button class="brill-table-hide-col" id="brill_table_hide_col" title="HIDE COLUMD" data-toggle='tooltip' data-placement='top'>
-                                <span class="lnr lnr-eye"> </span>
-                                </button> 
-                        </th>
-        
-                        <th>Nom 
-                            <button class="brill-table-hide-col" id="brill_table_hide_col" title="HIDE COLUMD" data-toggle='tooltip' data-placement='top'>
-                                <span class="lnr lnr-eye"> </span>
-                            </button> 
-                        </th>
-        
-                        <th>Prénom
-                            <button class="brill-table-hide-col" id="brill_table_hide_col" title="HIDE COLUMD" data-toggle='tooltip' data-placement='top'>
-                                    <span class="lnr lnr-eye"> </span>
-                            </button> 
-                        </th>								
-        
-                        <th class="this">statut de paiement
-                            <button class="brill-table-hide-col" id="brill_table_hide_col" title="HIDE COLUMD" data-toggle='tooltip' data-placement='top'>
-                                <span class="lnr lnr-eye"> </span>
-                            </button> 
-                        </th>		
-                    
-                        <th class="this">date d'nissanse
-                            <button class="brill-table-hide-col" id="brill_table_hide_col" title="HIDE COLUMD" data-toggle='tooltip' data-placement='top'>
-                                <span class="lnr lnr-eye"> </span>
-                            </button> 
-                        </th>
-                        <th>Operationse <button class="brill-table-hide-col" id="brill_table_hide_col" title="HIDE COLUMD" data-toggle='tooltip' data-placement='top'>
-                            <span class="lnr lnr-eye"> </span>
-                     </button> </th>									
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="this">1</td>
-                        <td>Ait rha</td>
-                        <td>mohamed</td>
-                         <td class="this">Bien</td>
-                        <td class="this">2021/01/02</td>
-                        <td class="brill-table-operations">
-                            <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
-                            <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
-                            <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="this">1</td>
-                        <td>Steve</td>
-                        <td>Jobs</td>
-                        <td>@steve</td>
-                        <td class="this">Bien</td>
-                         <td class="brill-table-operations">
-                            <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
-                            <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
-                            <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="this">1</td>
-                        <td>Steve</td>
-                        <td>Jobs</td>
-                        <td>@steve</td>
-                        <td class="this">Bien</td>
-                         <td class="brill-table-operations">
-                            <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
-                            <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
-                            <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="this">1</td>
-                        <td>Steve</td>
-                        <td>Jobs</td>
-                        <td>@steve</td>
-                        <td class="this">Bien</td>
-                         <td class="brill-table-operations">
-                            <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
-                            <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
-                            <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="this">1</td>
-                        <td>Steve</td>
-                        <td>Jobs</td>
-                        <td>@steve</td>
-                        <td class="this">Bien</td>
-                         <td class="brill-table-operations">
-                            <span><button data-toggle="tooltip" data-placement="bottom" title="EDIT STUDENT'S DETAILS"><i class="lnr lnr-pencil"></i></button></span>
-                            <span><button data-toggle="tooltip" data-placement="bottom" title="SHOW ALL STUDENT'S DETAILS"><i class="lnr lnr-list"></i></button></span>
-                            <span><button id="brillTableDeleteStudent" data-toggle="tooltip" data-placement="bottom" title="DELETE STUDENT'S DETAILS"><i class="lnr lnr-cross"></i></button></span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                <div *ngFor = "let class of ClassesArray" class="payment-type-card col-md-4">
+                    <span class="pay-type-cat"> Primary</span>
+                      <h4> {{ class.name }}</h4>
+                     <div class="paymentType-item-control">
+                        <button type="button" class="brill-btn-s-2"><i class="lnr lnr-plus-circle"></i></button>
+                        <button type="button" class="brill-btn-s-0"><i class="lnr lnr-cross-circle"></i></button>
+                        <button type="button" class="brill-btn-s-1"><i class="lnr lnr-pencil"></i></button>   
+                        <button type="button" (click) = "OnshowClassDetails()" class="brill-configure-btn">Detail</button>                    
+                    </div>
+                </div>
 
-
-        </div>
-
- <!--START SIDE BAR FIX RIGHT-->
- <div class="col-md-2 brill-left-sidebar-search-tab">
-    <div class="select-options-container">
-      <input class="brill-inputs brill-side-bar-search-name" placeholder="nom de etudiant ...">
-      <select class="brill-inputs brill-inputs-select-text" id="select_class_number">
-        <option value="sal1">sal1</option>
-        <option value="sal1">sal1</option>
-        <option value="sal1">sal1</option>
-        <option value="sal1">sal1</option>
-        <option value="sal1">sal1</option>
-        <option value="sal1">sal1</option>
-        <option value="sal1">sal1</option>
-        <option value="sal1">sal1</option>
-        <option value="sal1">sal1</option>
-        <option value="sal1">sal1</option>
-        <option value="sal1">sal1</option>
-        <option value="sal1">sal1</option>												
-      </select>
-
-      <select class="brill-inputs brill-inputs-select-text" id="select_class_number2">
-            <option value="sal1">sal1</option>
-            <option value="sal1">sal1</option>
-            <option value="sal1">sal1</option>
-            <option value="sal1">sal1</option>
-            <option value="sal1">sal1</option>
-            <option value="sal1">sal1</option>
-            <option value="sal1">sal1</option>
-            <option value="sal1">sal1</option>
-            <option value="sal1">sal1</option>
-            <option value="sal1">sal1</option>
-            <option value="sal1">sal1</option>
-            <option value="sal1">sal1</option>												
-          </select>
-
-          <select class="brill-inputs brill-inputs-select-text" id="select_class_number3">
-                <option value="sal1">sal1</option>
-                <option value="sal1">sal1</option>
-                <option value="sal1">sal1</option>
-                <option value="sal1">sal1</option>
-                <option value="sal1">sal1</option>
-                <option value="sal1">sal1</option>
-                <option value="sal1">sal1</option>
-                <option value="sal1">sal1</option>
-                <option value="sal1">sal1</option>
-                <option value="sal1">sal1</option>
-                <option value="sal1">sal1</option>
-                <option value="sal1">sal1</option>												
-              </select>
-
-              <select class="brill-inputs brill-inputs-select-text" id="select_class_number4">
-                    <option value="sal1">sal1</option>
-                    <option value="sal1">sal1</option>
-                    <option value="sal1">sal1</option>
-                    <option value="sal1">sal1</option>
-                    <option value="sal1">sal1</option>
-                    <option value="sal1">sal1</option>
-                    <option value="sal1">sal1</option>
-                    <option value="sal1">sal1</option>
-                    <option value="sal1">sal1</option>
-                    <option value="sal1">sal1</option>
-                    <option value="sal1">sal1</option>
-                    <option value="sal1">sal1</option>												
-                  </select>
-    </div>						
-</div>
-
-
-
-    </div>
+            </div>
 </div>
 
 
@@ -363,3 +381,8 @@
         </div>
       </div>   -->
       
+<!-- 
+  SHOW CLASS DETAIL AND ALL RELATED INFORMATION INCLUDING SECTIONS AND 
+  EVERYTHIN YOU WANT TO ADD, SHOW CLASSESS     -->
+
+ 

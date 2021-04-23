@@ -49,6 +49,9 @@ export class StaffsComponent implements OnInit {
   //AN ARRAY HOLDING THE TEACHER SUBJECTS AND ITS SECTIONS
   public selectedTecherSubjectAndItsSections:any[] = [];
 
+  //CHECK IF THE ROLE SELECTED IS TEACHER
+  public checkRoleSelected = null;
+
   constructor(private FB:FormBuilder, private subjectService:SubjectService ,private classesService:ClassService ,private roleServices:RolesService ,private _staffServices:StaffService) { }
 
   ngOnInit(): void {
@@ -141,12 +144,31 @@ export class StaffsComponent implements OnInit {
   // console.log("SELECTED ROLE IS", this.AddNewStaffFormGroup.get('staff.role_id')?.value);
       if(this.AddNewStaffFormGroup.get('staff.role_id')?.value != null && this.showOptionIfTeacher == false){
                        //GET ALL THE AVALIABLE CLASSES
-                       this.classesService.getAllClass()
-                       .subscribe(
-                         (data:any) => this.allClasses = data.data,
-                         error => console.log("error", error),
-                         () => this.showOptionIfTeacher = true
-                       );
+                      //  this.classesService.getAllClass()
+                      //  .subscribe(
+                      //    (data:any) => this.allClasses = data.data,
+                      //    error => console.log("error", error),
+                      //    () => this.showOptionIfTeacher = true
+                      //  );
+                     // this.roleServices.checkIsTeacherURL(this.)
+                
+                 if(this.onWhichRoleSelected != null){
+                     this.roleServices.isTheStafIsTeacher(this.checkRoleSelected)
+                      .subscribe(
+                         (data:any) => {
+                           if(data.data == true){
+                           // GET ALL THE AVALIABLE CLASSES
+                              this.classesService.getAllClass()
+                              .subscribe(
+                                (data:any) => this.allClasses = data.data,
+                                error => console.log("error", error),
+                                () => this.showOptionIfTeacher = true
+                              );
+                           }
+                         },
+                         error => console.log("THE DATA IS FALSE")
+                      )
+                 }    
       }
 
       console.log(this.allClasses);
