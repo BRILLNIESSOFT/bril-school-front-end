@@ -1,0 +1,30 @@
+@import "../../../brillyschoolcomponents/payments/payment-type/payment-type.component.scss";
+
+
+.payment-type-card{
+    border: 1px solid #b7b7b7;
+    width: 24%;
+}
+
+
+.payment-type-card {
+    padding: 10px;
+    background-color: #474d5e;
+    border-radius: 8px;
+    margin: 10px 2px 10px 2px;
+     width: 32%;
+ }
+
+ .payment-type-card h4{
+  color: #ffffff;
+  border-bottom: 1px solid#bfbebe;
+ }
+
+
+ .payment-type-card .pay-type-cat {
+    float: right;
+    padding: 8px;
+    background-color: #cc1e72;
+    color: #ffffff;
+    border-radius: 50px;
+}

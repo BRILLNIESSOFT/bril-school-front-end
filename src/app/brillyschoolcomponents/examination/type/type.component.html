@@ -1,0 +1,87 @@
+<div class="brill-container-g student-payment col-md-12">
+    <!-- BRILL BOTTOM IICONS  -->
+    <div class="global-fixed-control-btns">
+        <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_class_examaniyion_type"><i class="lnr lnr-plus-circle"> </i></button>
+    </div>
+
+
+    <div class="global-container-header">
+        <h3> EXAMINATION - TYPE</h3>
+        <p> Manage examination of yout school , add type schudele  </p>
+    </div> 
+
+
+    <div class="classes-list col-md-12">
+        <!-- STUDENT TABLE-->
+        
+
+        <div *ngFor = "let examType of allExamTypes" class="payment-type-card col-md-4">
+              <h4>{{examType.name}}"</h4>
+             <div class="paymentType-item-control">
+                <button type="button" class="brill-btn-s-2"><i class="lnr lnr-plus-circle"></i></button>
+                <button type="button" class="brill-btn-s-2"><i class="lnr lnr-cross-circle"></i></button>
+                <button type="button" class="brill-btn-s-2"><i class="lnr lnr-pencil"></i></button>   
+                <button type="button" class="brill-configure-btn">Detail</button>                    
+            </div>
+        </div>
+
+      
+</div>
+
+
+      <!-- ALL THE MODALS STARTS FROM HERE -->
+	  <!-- DATA MODAL OF ADD NEW CLALSS SECTION -->
+	  <div id= "brill_modal_create_new_class_examaniyion_type" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg brill-modal-dialog">
+          <div class="modal-content">
+               <form [formGroup] = "ExaminationTypeFormGroup" (ngSubmit) = "submitNewExaminationType()">
+                <section class="row brill-modal-container">
+                    <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                          
+                      <div class="add-new-staff">
+                          <h3> ADD NEW EXAMINATION TYPE</h3>
+                         <div class="brill-input-holders"> 
+                          <div class="inputs-container" formGroupName = "exam_type">
+
+                            <div class="brill-row">
+
+                                <div>
+                                    <label for="ExaminationTypName">Examination name</label>
+                                    <input formControlName = "name" name="ExaminationTypName" type="text" placeholder="Examination name" class="input obliger">
+                                </div>
+                                <div>
+                                    <label for="">Examination code</label>
+                                    <input formControlName = "code" name="ExaminationTypCode" type="number" placeholder="Examination code" class="input obliger">
+                                </div>
+
+                                <div>
+                                    <label for="ExaminationTypeNote">Examination Notes</label>
+                                    <textarea formControlName = "note" name="ExaminationTypeNote" id = "ExaminationTypeNote" rows="2" placeholder="You can leave it blank if you want"> </textarea>
+                                </div>
+                                <div>
+                                    <label for="ExaminationTypeDesc">Examination description</label>
+                                    <textarea formControlName = "description" name="ExaminationTypeDesc" rows="2" placeholder="You can leave it blank if you want"> </textarea>
+                                </div>
+
+                            </div>
+
+                        
+                          </div>
+                        </div>
+                      </div>
+                      <!-- ADD MATERIALS TO THE GROUP -->
+                      <hr>
+                         <div class="modal-footer">
+                                <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                                <button type="submit" class="brill-btn-3">Add Class</button>
+                         </div>
+                   </section>
+                </form> 
+          </div>
+        </div>
+      </div>
+
+<!--  
+      ADDING NEW EXAMANITION TYPE
+      ADDING NEW EXAMANITION TYPE
+      ADDING NEW EXAMANITION TYPE -->

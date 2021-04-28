@@ -1,0 +1,100 @@
+<div class="brill-container-g student-payment col-md-12">
+    <!-- BRILL BOTTOM IICONS  -->
+    <div class="global-fixed-control-btns">
+        <button type="button" data-toggle="modal" data-target="#brill_modal_create_new_examination_exam"><i class="lnr lnr-plus-circle"> </i></button>
+    </div>
+
+
+    <div class="global-container-header">
+        <h3> EXAMINATION - EXAMS</h3>
+        <p> Manage examination of your school , add examinations  </p>
+    </div> 
+
+
+     <div class="classes-list col-md-12">
+        <!-- STUDENT TABLE-->
+
+                  <!-- STUDENT TABLE-->
+                  <div *ngFor = "let exam of allExamsArr" class="payment-type-card col-md-3">
+                     <span class="pay-type-cat"> {{ exam.code }}</span>
+                    <h4> {{ exam.name }} </h4>
+                    <div class="paymentType-item-control">
+                        <button type="button" class="brill-btn-s-2"><i class="lnr lnr-plus-circle"></i></button>
+                        <button type="button" class="brill-btn-s-2"><i class="lnr lnr-cross-circle"></i></button>
+                        <button type="button" class="brill-btn-s-2"><i class="lnr lnr-pencil"></i></button>   
+                        <button type="button" class="brill-configure-btn">Detail</button>                    
+                    </div>
+                </div> 
+            
+         </div>
+
+</div>   
+
+
+
+      <!-- ALL THE MODALS STARTS FROM HERE -->
+	  <!-- DATA MODAL OF ADD NEW CLALSS SECTION -->
+	  <div id= "brill_modal_create_new_examination_exam" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg brill-modal-dialog">
+          <div class="modal-content">
+               <form [formGroup] = "ExaminationExamFormGroup" (ngSubmit) = "submitNewExaminationExam()">
+                <section class="row brill-modal-container">
+                    <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                          
+                      <div class="add-new-staff">
+                          <h3> ADD NEW EXAM </h3>
+                         <div class="brill-input-holders"> 
+                          <div class="inputs-container" formGroupName = "exam">
+                            
+                            <div class="brill-row">
+
+                                <div>
+                                    <label for="examaTypeId">Class name</label>
+                                    <select formControlName = "exam_type_id" class="input-select"  name="class_name" id="examaTypeId">
+                                        <option  *ngFor="let examType of allExamTypes" value="{{ examType.id }}"> {{ examType.name }} </option>
+                                     </select>
+                                </div>
+
+                                <div>
+                                    <label for="ExamName">Exam name</label>
+                                    <input formControlName = "name" name="ExamName" type="text" placeholder="Exam name" class="input obliger">
+                                </div>
+                                <div>
+                                    <label for="">exam code</label>
+                                    <input formControlName = "code" name="ExaminationTypCode" type="number" placeholder="Examination code" class="input obliger">
+                                </div>
+
+                                <div>
+                                    <label for="ExaminationExamNote">exam Notes</label>
+                                    <textarea formControlName = "note" name="ExaminationExamNote" id = "ExaminationExamNote" rows="2" placeholder="You can leave it blank if you want"> </textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="brill-row">
+                                <div>
+                                    <label for="ExaminationDesc">exam description</label>
+                                    <textarea formControlName = "description" name="ExaminationDesc" rows="2" placeholder="You can leave it blank if you want"> </textarea>
+                                </div>
+                            </div>
+
+                        
+                          </div>
+                        </div>
+                      </div>
+                      <!-- ADD MATERIALS TO THE GROUP -->
+                      <hr>
+                         <div class="modal-footer">
+                                <button type="button" class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                                <button type="submit" class="brill-btn-3">Add Class</button>
+                         </div>
+                   </section>
+                </form> 
+          </div>
+        </div>
+      </div>
+
+<!--  
+      ADDING NEW EXAMANITION TYPE
+      ADDING NEW EXAMANITION TYPE
+      ADDING NEW EXAMANITION TYPE -->

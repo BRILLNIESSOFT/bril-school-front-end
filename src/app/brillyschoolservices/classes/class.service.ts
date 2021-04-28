@@ -9,13 +9,19 @@ import { Observable } from 'rxjs';
 export class ClassService {
 
   public classesURL:string = "http://127.0.0.1:8000/api/classes/";
-  public sectionsURL:string = "http://127.0.0.1:8000/api/sections/";
+   public sectionsURL:string = "http://127.0.0.1:8000/api/sections/";
+
   constructor(private http:HttpClient) { }
 
 
     //GET ALL CLASSES id s and names
     getAllClass(){
       return this.http.get(this.classesURL);
+    }
+
+    //GET CLASS BY ID
+    getClassById(classId: number | string){
+      return this.http.get(this.classesURL + classId);
     }
     //GET ALL SECTIONS
     getAllSectionById(secId:number):Observable<ISections[]>{

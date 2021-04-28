@@ -53,6 +53,8 @@ import { MasterComponent } from './brillyschoolcomponents/payments/master/master
 import { VehicleComponent } from './brillyschoolcomponents/transportation/vehicle/vehicle.component';
 import { RouteComponent } from './brillyschoolcomponents/transportation/route/route.component';
 import { AttendanceComponent } from './brillyschoolcomponents/transportation/attendance/attendance.component';
+import { TypeComponent } from './brillyschoolcomponents/examination/type/type.component';
+import { ExamComponent } from './brillyschoolcomponents/examination/exam/exam.component';
    
 
 //REGISTER PLUGINS OF FULLCALENDER JS
@@ -86,6 +88,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     VehicleComponent,
     RouteComponent,
     AttendanceComponent,
+    TypeComponent,
+    ExamComponent
      ],
   imports: [
     NgSelectModule,

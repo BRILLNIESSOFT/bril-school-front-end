@@ -22,6 +22,9 @@ import { SubjectService } from './../../../brillyschoolservices/subject.service'
 export class ClassessComponent implements OnInit {
   public bottomFixedMenuCase:boolean = true;
 
+  //CURRENT SELECTED CLASS INFO
+  public CurrentselectedClass:any = {};
+
   //GETTING ALL THE NESSESERY APIS TO FETCH
    public ClassesArray:any = [];
   //GET ALL SECTIONS 
@@ -159,13 +162,24 @@ export class ClassessComponent implements OnInit {
      objRef.style.opacity = "0.4";
   }
 
-  OnshowClassDetails(){
+  OnshowClassDetails(classId: number | string){
     if( this.classDetailsShown === false){
-      const slideMP3 = new Audio();
-      slideMP3.src = "../../../assets/sounds/slide.mp3";
-      slideMP3.load();
-      slideMP3.play();
-      this.classDetailsShown = true;
+
+      this.addNewClassSer.getClassById(classId)
+       .subscribe(
+          (data: any) => this.CurrentselectedClass = data,
+           error => console.log("ERROR", error) ,
+           () => {
+            const slideMP3 = new Audio();
+            slideMP3.src = "../../../assets/sounds/slidebutton.wav";
+            slideMP3.load();
+            slideMP3.play();
+            this.classDetailsShown = true;
+            console.log(this.CurrentselectedClass);
+           }
+       );
+
+
     }
   }
 
@@ -173,6 +187,7 @@ export class ClassessComponent implements OnInit {
 
   onHideTheClassDetails(){
      if( this.classDetailsShown === true){
+      this.CurrentselectedClass = {};
       this.classDetailsShown = false;
     }
   }

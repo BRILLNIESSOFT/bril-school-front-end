@@ -62,21 +62,9 @@ $brillContainerBorder: 1px solid #474d5e38;
 
   //BRILLNIRSSCHOOL BTNS
  //BRILL BTns
-.brill-btn-s-2{
-  border-radius: 40px;
-  background-color: 759492;
-  border: none;
-   padding: 10px;
-   font-size: 1.3em;
-     color: #ffffff;
-  margin: 2px 4px 2px 4px;    
-  background-color: #759492;
-  &:hover{
-      background-color: #92B2B0;
-  }
-}
 
-.brill-btn-s-0{
+
+ .brill-btn-s-0{
   border-radius: 40px;
   font-size: 1.3em;
 
@@ -88,6 +76,55 @@ $brillContainerBorder: 1px solid #474d5e38;
   margin: 2px 4px 2px 4px;
   &:hover{
       background-color: #DF2263;
+  }
+}
+
+
+
+
+.brill-btn-s-1{
+  border-radius: 40px;
+  background-color: 759492;
+  font-size: 1.3em;
+
+  border: none;
+  padding: 10px;
+    color: #ffffff;
+  background-color: #0096AE;
+  margin: 2px 4px 2px 4px;
+  &:hover{
+      background-color: #14AD70;
+  }
+}
+
+.brill-btn-s-2{
+  border-radius: 40px;
+  background-color: 759492;
+  border: none;
+  width: 40px;
+  height: 40px;
+  padding: 12px;
+  font-size: 1em;
+  color: #0c0c0c;
+  margin: 2px 4px 2px 4px;
+  background-color: #ededed;
+  &:hover{
+      background-color: #d0d0d0;
+   }
+}
+
+
+.brill-btn-s-3{
+  border-radius: 40px;
+  background-color: 759492;
+  font-size: 1.3em;
+  border: none;
+  padding: 10px;
+   color: #ffffff;
+  background-color: #009D5E;
+  margin: 2px 4px 2px 4px;
+  &:hover{
+      background-color: #14AD70;
   }
 }
 
@@ -109,35 +146,13 @@ margin: 2px 4px 2px 4px;
 
 
 
-.brill-btn-s-1{
-  border-radius: 40px;
-  background-color: 759492;
-  font-size: 1.3em;
-
-  border: none;
-  padding: 10px;
-    color: #ffffff;
-  background-color: #0096AE;
-  margin: 2px 4px 2px 4px;
-  &:hover{
-      background-color: #14AD70;
-  }
-}
-
-.brill-btn-s-3{
-  border-radius: 40px;
-  background-color: 759492;
-  font-size: 1.3em;
-  border: none;
-  padding: 10px;
-   color: #ffffff;
-  background-color: #009D5E;
-  margin: 2px 4px 2px 4px;
-  &:hover{
-      background-color: #14AD70;
-  }
-}
-
+ //BRILLNIRSSCHOOL BTNS
+ //BRILL BTns
+ 
+ //BRILLNIRSSCHOOL BTNS
+ //BRILL BTns
+ //BRILLNIRSSCHOOL BTNS
+ //BRILL BTns
  //BRILLNIRSSCHOOL BTNS
  //BRILL BTns
 .brill-btn-2{

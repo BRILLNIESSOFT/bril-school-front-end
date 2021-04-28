@@ -11,33 +11,28 @@
       <button class="col-md-2" type="button" (click) = "onHideTheClassDetails()">
          <i class="lnr lnr-chevron-right"></i>
       </button>
-       <h4 class="col-md-10 title"> CLASS 1EME ANNE</h4>
+       <h4 class="col-md-10 title"> {{ CurrentselectedClass.name | uppercase }}</h4>
     </header>
 
     <!-- THE BODY CONTAINER -->
     <div class="class-details-containers">
         <!-- THE CLASS INFORMATION -->
         <div class="class-info">
-           <h5 class="col-md-11">CLASS NAME : CLASS 1EME ANNE</h5>
+           <h5 class="col-md-11">CLASS NAME : {{ CurrentselectedClass.name | uppercase }}</h5>
             <p class="col-md-11">
-                  the class discription should be here the class discription should be here 
-                  the class discription should be herethe class discription should be here              
-                       the class discription should be herethe class discription should be here 
+                {{ CurrentselectedClass.description }} 
               </p>
         </div>
 
                 <!-- THE CLASS SECTIONS -->
                 <div class="class-sections">
-                  <h5 class="col-md-11">CLASS SECTION | 6 SECTION</h5>
+                  <h5 class="col-md-11">CLASS SECTION | {{ CurrentselectedClass.sections?.length + " SECTION" || 'No section yet' }}
+                </h5>
 
                     <div class="class-section-items col-md-12">
-                          <div class="class-item-section col-sm-2">
-                            <button type="button">AB2</button>
+                          <div *ngFor = "let section of CurrentselectedClass.sections" class="class-item-section col-sm-2">
+                            <button type="button">{{ section.name }}</button>
                         </div>
-
-                        <div class="class-item-section col-sm-2">
-                          <button type="button">AB2</button>
-                      </div>
                     </div>  
                  </div>   
                  
@@ -201,7 +196,7 @@
                         <button type="button" class="brill-btn-s-2"><i class="lnr lnr-plus-circle"></i></button>
                         <button type="button" class="brill-btn-s-0"><i class="lnr lnr-cross-circle"></i></button>
                         <button type="button" class="brill-btn-s-1"><i class="lnr lnr-pencil"></i></button>   
-                        <button type="button" (click) = "OnshowClassDetails()" class="brill-configure-btn">Detail</button>                    
+                        <button type="button" (click) = "OnshowClassDetails(class.id)" class="brill-configure-btn">Detail</button>                    
                     </div>
                 </div>
 
