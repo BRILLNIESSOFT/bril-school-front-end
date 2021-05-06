@@ -206,11 +206,12 @@ $accents: (
 }
 
 .new-timetable-event-select-subject button{
-  padding: 20px;
+  padding: 2px;
   border: 1px solid #464646;
   color: #ffffff;
   opacity: 0.4;
-  font-weight: 700;
+  height: 60px;
+  font-weight: 400;
   cursor: pointer;
   &:hover{
     opacity: 1;

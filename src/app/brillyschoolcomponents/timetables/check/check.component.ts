@@ -18,6 +18,9 @@ import * as moment from 'moment';
 import { data } from 'jquery';
 import { error } from 'selenium-webdriver';
 
+//CALENDER COMPONENT
+import { FullCalendarComponent } from '@fullcalendar/angular';
+
 @Component({
   selector: 'app-check',
   templateUrl: './check.component.html',
@@ -25,6 +28,9 @@ import { error } from 'selenium-webdriver';
   animations:[SubjectsElement]
 })
 export class CheckComponent implements OnInit {
+
+  //CURRENT SECTION EVENTS
+  public currentSectionEvent:any[] = [];
 
   //GETTING THE NECCESSARY APIs
   public allStaffsArray:any[] = [];
@@ -37,7 +43,15 @@ export class CheckComponent implements OnInit {
   //IS SUBJECT DIV ELEMENT SHOWN
   public subjectElmIsShown:boolean = false;
 
+  //CALENDAR ELEMENT REFRENCE
+   //CALENDER OPTION OBJECTS
   public CalendarOptions = {};
+  // calender events
+ 
+
+
+  //CALENDAR EVENTS
+  //@ViewChild('calendarElementRef') calendarComponent!: FullCalendarComponent;
 
   //OBJECT OF A NEW TIMETABLE
     //NEW TIMETABLE EVENT 
@@ -74,152 +88,96 @@ export class CheckComponent implements OnInit {
   //BINDING REFERENCES
   @ViewChild('SubjectsElmRef') subjectElementReference!:ElementRef; 
 
-     constructor(private subjectSerice: SubjectService, private timeTableService:TimetableService
-      , private staffService:StaffService , private classRoomService: ClassroomService) { 
-         const name = Calendar.name;         
-
+   constructor(private subjectSerice: SubjectService, private timeTableService:TimetableService
+          ,private staffService:StaffService , private classRoomService: ClassroomService) { 
+          const name = Calendar.name;         
     }
 
-  ngOnInit(): void {
-  //CLEARING THE LOCAL STORAGE
-  localStorage.clear();  
-  //INIZIALIZING THE CALENDER SETTING THE DEFUAL OPTIONS
-  this.CalendarOptions = {
-          //CALENDER HEADERS
-          headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'timeGridWeek',
-          } ,
-            //CALENDER INITIAL VIEWS
-            height: 550,
-            initialView: 'timeGridWeek',
-            weekends: true,
-            allDaySlot: false,
-            editable: true,
-            selectable: true,
-            selectMirror: true,
-            dayMaxEvents: true,
-            droppable: true,
-            //DISPLAY FROM TO ONLY BUSSNIESS HOURS
-            slotMinTime: '08:00:00',
-            slotMaxTime: '19:00:00',
 
-          //CALENDER EVENTS
-          dateClick: this.handleDateClick.bind(this), // bind is important!
-          events: [
-            { title: 'event 1', date: '2021-02-21T00:00:00' },
-            { title: 'event 2', date: '2021-02-21T00:01:00' }
-          ] ,
-          //SET DRAGGABLE DRAG SUBJECTS INTO THE CALENDER
-          businessHours: {
-            // days of week. an array of zero-based day of week integers (0=Sunday)
-            daysOfWeek: [ 1, 2, 3, 4 ,5 , 6 , 7], // Monday - Thursday
+//ON NG INITIALIZIED    
+//ON NG INITIALIZIED    
+//ON NG INITIALIZIED    
+  ngOnInit(): void {    
+    // console.log("NG ON INTT", this.currentSectionEvent);
+          //GET ALL STAFFS SUBSCRIPTION
+          this.staffService.getAllStaffs()
+          .subscribe(
+            (data:any) => this.allStaffsArray = data.data,
+            error => console.log("ERROR", error)
+          );
           
-            startTime: '08:00', // a start time (10am in this example)
-            endTime: '18:00', // an end time (6pm in this example)
 
-          } , 
+        //GETTING ALL THE SUJECTS
+        this.subjectSerice.getAllSubjects()
+        .subscribe(
+          (data:any) => this.allSubjectsArray = data.data,
+          error => console.log("THIS IS ERROR", error)
+        )
 
+            //GET CLASS ROOM LESS INFO
+            this.classRoomService.getClassRoomsLes()
+            .subscribe(
+              (data: any) => this.allClassRoomsLess = data.data,
+              error => console.log("error", error)
+            );
 
-        //ON THE USER STARTS DRUGGING 
-        //ON EVENT DRAGGING OR DROPPING
-              eventDragStart( ){
-                console.log("STARTED ");
-              } ,
+        //GETTING THE NESSESARRY APIs FOR EVENTS AND OTHER PURPOSES
+          this.timeTableService.getEventsOfSection()
+              .subscribe(
+                (data: any) => this.currentSectionEvent = data.data ,
+                error => console.log('error', error)
+              );
 
-              select : (currentTimes:any) => {
-                //ASIGMING DATA TO THE OBJECT OF NEW EVENT
-                this.NewTimeTableEventData.date = <any>moment(currentTimes.startStr).format('dd-mm-yyyy');
-                this.NewTimeTableEventData.dayIndex = <any>moment(currentTimes.startStr).day();
-                this.NewTimeTableEventData.duration = <any>moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes();
-                this.NewTimeTableEventData.startTime = <any>moment(currentTimes.startStr).format('hh:mm');
-                this.NewTimeTableEventData.endTime = <any>moment(currentTimes.endStr).format('hh:mm');
-                console.log(this.NewTimeTableEventData);
-                 // localStorage.setItem('eventStartTime',<any>currentTimes.startStr);
-                // localStorage.setItem('eventEndTime',<any>currentTimes.endStr);
-                  //console.log(moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes());
-                 (<any>$('#brill_modal_create_new_timetable_event')).modal('show');
-              } ,
+        //CLEARING THE LOCAL STORAGE
+        localStorage.clear();  
+        //INIZIALIZING THE CALENDER SETTING THE DEFUAL OPTIONS
 
-              eventDragStop( ) {
-                console.log("STARTED ");
-                (<any>$('#brill_modal_resize_timetable_event')).modal('show');
-              } ,
-
-              drop(elem:any){
-                elem = <any>document.querySelector('.subjects-list-draggable');
-                elem.style.opacity = "1";
-              } , 
-
-              eventResizeStop(){
-                
-                console.log("RESIZED FIXED ");
-                (<any>$('#brill_modal_resize_timetable_event')).modal('show');
-
-              }           
-    };
-
-    //THE END OF CALENDAR OPTIONAL OPTIIONS
-
-    //GET ALL STAFFS SUBSCRIPTION
-    this.staffService.getAllStaffs()
-     .subscribe(
-       (data:any) => this.allStaffsArray = data.data,
-       error => console.log("ERROR", error)
-     );
-    
-
-  //GETTING ALL THE SUJECTS
-  this.subjectSerice.getAllSubjects()
-   .subscribe(
-     (data:any) => this.allSubjectsArray = data.data,
-     error => console.log("THIS IS ERROR", error)
-   )
-
-      //GET CLASS ROOM LESS INFO
-      this.classRoomService.getClassRoomsLes()
-      .subscribe(
-        (data: any) => this.allClassRoomsLess = data.data,
-        error => console.log("error", error)
-      );
-  
-
- }
+        this.settingPrimaryCalSettiings();
+      //THE END OF CALENDAR OPTIONAL OPTIIONS
+   }
   
 
  //NG AFTER INITIALIZING CALL
   ngAfterViewInit(){
-    //DRAGG TJE EXTERNAL EVENTS INTO THE CALENDAR PROPERLY
-    new Draggable(this.subjectElementReference.nativeElement, {
-      itemSelector: '.fc-event',
-      eventData: function(eventEl:any) {
-        eventEl.parentNode.style.opacity = "0.0001";
-         return {
-          title: eventEl.innerText,
-          color: eventEl.childNodes[0].style.backgroundColor
-         };
-       }, 
-   
-  });
-  
+       // console.log("NG AFTER VIEW INTT", this.currentSectionEvent);
+      //DRAGG TJE EXTERNAL EVENTS INTO THE CALENDAR PROPERLY
+          new Draggable(this.subjectElementReference.nativeElement, {
+              itemSelector: '.fc-event',
+              eventData: function(eventEl:any) {
+                eventEl.parentNode.style.opacity = "0.0001";
+                return {
+                  title: eventEl.innerText,
+                  color: eventEl.childNodes[0].style.backgroundColor
+                };
+              }, 
+        });
   }
+
  //NG AFTER VIEW INIT ENDS
+  //   ngAfterContentInit(){
+  //     console.log("NG AFTER CONTENT INTT", this.currentSectionEvent);
+  //   }
+  // //NG AFTER VIEW INIT ENDS
+   
+
  
   //ONCLICK EVENT
   handleDateClick(arg:any) {
-    alert('date click! ' + arg.dateStr)
+    // this.CalendarOptions = {
+    //   events: this.currentSectionEvent,
+    // }
+     this.settingPrimaryCalSettiings();
+
   }
 
   //SHOW THE SUBJECTS
   showSubjectsElement(){
-   if(!this.subjectElmIsShown){
-    this.subjectElmIsShown = true;
-   }else{
-    this.subjectElmIsShown = false;
+      if(!this.subjectElmIsShown){
+        this.subjectElmIsShown = true;
+      }else{
+        this.subjectElmIsShown = false;
+      }
    }
-    console.log(this.subjectElementReference.nativeElement);
-  }
 
   //HIDE BUTTON ELEMENT
   hideSubjectsElement(){
@@ -246,7 +204,7 @@ export class CheckComponent implements OnInit {
     let timetable = {
               timetable:{
                 class_id: 2,
-                section_id : 1,
+                section_id : 6,
                  subject_id: this.NewTimeTableEventData.subjectId,
                 teacher_id: this.NewTimeTableEventData.teacherId,
                 timetable_type_id: null,
@@ -262,17 +220,101 @@ export class CheckComponent implements OnInit {
 
      console.log(timetable);
 
- 
 
-     //SUBSCRIE TO TIMETABLE SERVICE TO ADD NEW TIMETABKLE EVENT SINGLER
-     this.timeTableService.addNewSingleEventTimeTable(timetable)
-     .subscribe(
-       (data:any) => console.log("SUCCESS", data),
-        error => console.log("ERROR" , error)
-     )
-
+        //SUBSCRIE TO TIMETABLE SERVICE TO ADD NEW TIMETABKLE EVENT SINGLER
+        this.timeTableService.addNewSingleEventTimeTable(timetable)
+        .subscribe(
+          (data:any) => console.log("SUCCESS", data),
+            error => console.log("ERROR" , error)
+        )
 
   }
+
+      //SETTING CALENDAR SETTINGS
+      //SETTING CALENDAR SETTINGS
+      //SETTING CALENDAR SETTINGS
+      //SETTING CALENDAR SETTINGS
+      settingPrimaryCalSettiings(){
+                  this.CalendarOptions = {
+                    //CALENDER HEADERS
+                    headerToolbar: {
+                      left: 'prev,next today',
+                      center: 'title',
+                      right: 'timeGridWeek',
+                    } ,
+                      //CALENDER INITIAL VIEWS
+                      height: 550,
+                      lazyFetching: false,
+                      nowIndicator: true,
+                      refetchResourcesOnNavigate: true,
+                      initialView: 'timeGridWeek',
+                      weekends: true,
+                      allDaySlot: false,
+                      editable: true,
+                      selectable: true,
+                      selectMirror: true,
+                      dayMaxEvents: true,
+                      droppable: true,
+                      events:this.currentSectionEvent,
+                      //DISPLAY FROM TO ONLY BUSSNIESS HOURS
+                      slotMinTime: '08:00:00',
+                      slotMaxTime: '19:00:00',
+                    //CALENDER EVENTS
+                    dateClick: this.handleDateClick.bind(this), // bind is important!
+                  // events:this.currentSectionEvent,
+                    //SET DRAGGABLE DRAG SUBJECTS INTO THE CALENDER
+                    businessHours: {
+                      // days of week. an array of zero-based day of week integers (0=Sunday)
+                      daysOfWeek: [ 1, 2, 3, 4 ,5 , 6 , 7], // Monday - Thursday
+                    
+                      startTime: '08:00', // a start time (10am in this example)
+                      endTime: '18:00', // an end time (6pm in this example)
+
+                    } , 
+
+
+                  //ON THE USER STARTS DRUGGING 
+                  //ON EVENT DRAGGING OR DROPPING
+                        eventDragStart( ){
+                          console.log("STARTED ");
+                        } ,
+
+                        select : (currentTimes:any) => {
+                          //ASIGMING DATA TO THE OBJECT OF NEW EVENT
+                          this.NewTimeTableEventData.date = <any>moment(currentTimes.startStr).format('dd-mm-yyyy');
+                          this.NewTimeTableEventData.dayIndex = <any>moment(currentTimes.startStr).day();
+                          this.NewTimeTableEventData.duration = <any>moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes();
+                          this.NewTimeTableEventData.startTime = <any>moment(currentTimes.startStr).format('hh:mm');
+                          this.NewTimeTableEventData.endTime = <any>moment(currentTimes.endStr).format('hh:mm');
+                         // console.log(this.NewTimeTableEventData);
+                          // localStorage.setItem('eventStartTime',<any>currentTimes.startStr);
+                          // localStorage.setItem('eventEndTime',<any>currentTimes.endStr);
+                            //console.log(moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes());
+                          (<any>$('#brill_modal_create_new_timetable_event')).modal('show');
+                        } ,
+
+                        eventDragStop( ) {
+                          console.log("STARTED ");
+                          (<any>$('#brill_modal_resize_timetable_event')).modal('show');
+                        } ,
+
+                        drop(elem:any){
+                          elem = <any>document.querySelector('.subjects-list-draggable');
+                          elem.style.opacity = "1";
+                        } , 
+
+                        eventResizeStop(){
+                          
+                          console.log("RESIZED FIXED ");
+                          (<any>$('#brill_modal_resize_timetable_event')).modal('show');
+
+                        }           
+              };
+      }
+      //ENDS OF SETTING CALENDAR SETTINGS
+      //ENDS OF SETTING CALENDAR SETTINGS
+       //ENDS OF SETTING CALENDAR SETTINGS
+      //ENDS OF SETTING CALENDAR SETTINGS
 
 }
 //addNewSingleEventTimeTable

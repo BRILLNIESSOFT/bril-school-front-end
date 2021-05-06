@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ClassService {
 
   public classesURL:string = "http://127.0.0.1:8000/api/classes/";
-   public sectionsURL:string = "http://127.0.0.1:8000/api/sections/";
+   public sectionsURL:string = "http://127.0.0.1:8000/api/sections/6";
 
   constructor(private http:HttpClient) { }
 

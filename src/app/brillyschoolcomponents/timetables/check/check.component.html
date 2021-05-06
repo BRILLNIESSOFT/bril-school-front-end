@@ -31,7 +31,8 @@
       </div>
    
  <div class="time-table-content col-sm-12">
-         <full-calendar [options]="CalendarOptions">
+         <full-calendar  #calendarElementRef
+           [options]="CalendarOptions">
 
          </full-calendar>
 
@@ -47,7 +48,7 @@
 
              <div *ngFor = "let subject of allSubjectsArray" class="fc-event subjects-list-draggable-item ">
                 <i class="fas fa-square-root-alt" style="background-color: {{subject.color }} "></i> 
-                <h5> {{subject.name }}</h5>
+                <h5> {{subject.name | slice:0:20}}</h5>
              </div>
  
              <button (click)="hideSubjectsElement()" class="close-edge-element-btn"> 
@@ -167,8 +168,8 @@
                     <div class="new-timetable-event-select-subject">
                         <h5>Selected Subjects</h5>
                         <div class="new-event-subjects-holder" *ngFor= "let subject of allSubjectsArray" #allSubjectElmParent>
-                             <button id="new_event_select_subject{{newEventAssignSubject[0]}}"  style="background-color: {{ subject.color }}" type="button" #selectedSubjecToEvent (click)="onSetSubjectToNewEvent(allSubjectElmParent,selectedSubjecToEvent,subject.id)" class="col-md-2">
-                                 {{ subject.name }}  
+                             <button title="{{ subject.name}}" id="new_event_select_subject{{newEventAssignSubject[0]}}"  style="background-color: {{ subject.color }}" type="button" #selectedSubjecToEvent (click)="onSetSubjectToNewEvent(allSubjectElmParent,selectedSubjecToEvent,subject.id)" class="col-md-2">
+                                 {{ subject.name  | slice:0:20 }}  
                              </button>
                          </div>
                     </div>
