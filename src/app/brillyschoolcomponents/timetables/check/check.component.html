@@ -8,6 +8,8 @@
         <button type="button"><i class="lnr lnr-pencil"> </i></button>
     </div>
 
+ 
+
     <div class="global-container-header">
          <h3> STUDENTS TIME TABLES </h3>
          <p> Check time table for all classes and groups by choosing your the class groups </p>
@@ -146,12 +148,10 @@
                       <h3> SET NEW TIMETABLE EVENT</h3>
 
                     <div class="time-table-event-edit-header">
-                        <div class="event-subject col-md-2">
-                            <h5>MATHEMATIC</h5>
-                        </div>
+ 
 
                         <div class="event-day event-data col-md-2">
-                            <h5><i class="fas fa-calendar-week"></i> : SUNDAY</h5>
+                            <h5><i class="fas fa-calendar-week"></i> : {{ NewTimeTableEventData.dayName }}</h5>
                         </div>
                         <div class="event-day event-data col-md-3">
                             <h5><i class="lnr lnr-briefcase"></i> : AHMED NOUREDDIEN</h5>
@@ -161,7 +161,7 @@
                         </div>
 
                         <div class="event-day event-data col-md-2">
-                            <h5><i class="lnr lnr-clock"></i> : 120 m</h5>
+                            <h5><i class="lnr lnr-clock"></i> : {{ NewTimeTableEventData.duration }} m</h5>
                         </div>
                     </div> 
 
@@ -179,11 +179,11 @@
                         <div class="brill-row">
                             <div>
                                 <label for="oldTimeStart"> time start</label>
-                                <input name="oldTimeStart" type="text" placeholder=" TIME START" value="39-454-4545" disabled class="input-disbled-s">
+                                <input [(ngModel)]="NewTimeTableEventData.startTime" name="TimeStart" type="text" placeholder=" TIME START" value="39-454-4545" disabled class="input-disbled-s">
                             </div>
                             <div>
                                 <label for="oldTimeStart"> time end</label>
-                                <input name="oldTimeStart" type="text" placeholder="TIME END" value="39-454-4545" disabled class="input-disbled-s">
+                                <input [(ngModel)]="NewTimeTableEventData.endTime" name="TimeEnd" type="text" placeholder="TIME END" value="39-454-4545" disabled class="input-disbled-s">
                             </div>
 
   
@@ -231,4 +231,54 @@
     </div>
 </div>
 
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- DATA MODAL SHOW CURRENT SELECTED EVENT DETAILS-->
+
+<div id= "brill_modal_show_single_timetable_event" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg brill-modal-dialog">
+      <div class="modal-content">
+           <form>
+            <section class="row brill-modal-container">
+                <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
+                      
+                  <div class="add-new-event-to-timetable">
+                      <h3> EVENT DETAILS</h3>
+
+                    <div class="time-table-event-edit-header">
  
+
+                        <div class="event-day event-data col-md-2">
+                            <h5><i class="fas fa-calendar-week"></i> : saturday</h5>
+                        </div>
+                        <div class="event-day event-data col-md-3">
+                            <h5><i class="lnr lnr-briefcase"></i> : AHMED NOUREDDIEN</h5>
+                        </div>
+                        <div class="event-day event-data col-md-2">
+                            <h5><i class="fas fa-chalkboard-teacher"></i> : AC12</h5>
+                        </div>
+
+                        <div class="event-day event-data col-md-2">
+                            <h5><i class="lnr lnr-clock"></i> : 398  m</h5>
+                        </div>
+                    </div> 
+
+ 
+                  </div>
+
+                  <hr>
+                     <div class="modal-footer">
+                            <button type="button"  class="brill-btn-2" data-dismiss="modal">GO BACK</button>
+                            <button type="button" class="brill-btn-3">Add Sect</button>
+                     </div>
+               </section>
+            </form> 
+      </div>
+    </div>
+</div>
+
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- ALL THE MODALS STARTS FROM HERE -->
+<!-- DATA MODAL SHOW CURRENT SELECTED EVENTS-->

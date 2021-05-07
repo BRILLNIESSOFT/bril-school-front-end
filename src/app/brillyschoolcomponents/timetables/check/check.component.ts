@@ -1,5 +1,7 @@
 import { Component, ElementRef, ViewChild,OnInit , AfterViewInit} from '@angular/core';
 import { SubjectsElement } from './../timetable-animation'
+import { ToastrService } from 'ngx-toastr';
+
 //IMPRTO JQUERY TYPE DEFINATION DOLLAR SIGN 
  declare var $:any;
 
@@ -64,7 +66,8 @@ export class CheckComponent implements OnInit {
          duration: null,
          date:null,
          startTime: null,
-         endTime: null
+         endTime: null,
+         dayName: null
       }
 
 
@@ -89,7 +92,7 @@ export class CheckComponent implements OnInit {
   @ViewChild('SubjectsElmRef') subjectElementReference!:ElementRef; 
 
    constructor(private subjectSerice: SubjectService, private timeTableService:TimetableService
-          ,private staffService:StaffService , private classRoomService: ClassroomService) { 
+          ,private staffService:StaffService , private classRoomService: ClassroomService, private toastr: ToastrService) { 
           const name = Calendar.name;         
     }
 
@@ -224,8 +227,8 @@ export class CheckComponent implements OnInit {
         //SUBSCRIE TO TIMETABLE SERVICE TO ADD NEW TIMETABKLE EVENT SINGLER
         this.timeTableService.addNewSingleEventTimeTable(timetable)
         .subscribe(
-          (data:any) => console.log("SUCCESS", data),
-            error => console.log("ERROR" , error)
+          (data:any) => this.showSuccess(data),
+            error => this.showError(error),
         )
 
   }
@@ -259,11 +262,17 @@ export class CheckComponent implements OnInit {
                       //DISPLAY FROM TO ONLY BUSSNIESS HOURS
                       slotMinTime: '08:00:00',
                       slotMaxTime: '19:00:00',
-                    //CALENDER EVENTS
-                    dateClick: this.handleDateClick.bind(this), // bind is important!
-                  // events:this.currentSectionEvent,
-                    //SET DRAGGABLE DRAG SUBJECTS INTO THE CALENDER
-                    businessHours: {
+                      //CALENDER EVENTS
+                      dateClick: this.handleDateClick.bind(this), // bind is important!
+
+                      //EVENT CLICK 
+                      eventClick: () => {
+                       //console.log();
+                        (<any>$('#brill_modal_show_single_timetable_event')).modal('show');
+                      },
+                      // events:this.currentSectionEvent,
+                      //SET DRAGGABLE DRAG SUBJECTS INTO THE CALENDER
+                      businessHours: {
                       // days of week. an array of zero-based day of week integers (0=Sunday)
                       daysOfWeek: [ 1, 2, 3, 4 ,5 , 6 , 7], // Monday - Thursday
                     
@@ -281,11 +290,14 @@ export class CheckComponent implements OnInit {
 
                         select : (currentTimes:any) => {
                           //ASIGMING DATA TO THE OBJECT OF NEW EVENT
-                          this.NewTimeTableEventData.date = <any>moment(currentTimes.startStr).format('dd-mm-yyyy');
+                          this.NewTimeTableEventData.date = <any>moment(currentTimes.startStr).format('HH:MM-yyyy');
                           this.NewTimeTableEventData.dayIndex = <any>moment(currentTimes.startStr).day();
                           this.NewTimeTableEventData.duration = <any>moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes();
-                          this.NewTimeTableEventData.startTime = <any>moment(currentTimes.startStr).format('hh:mm');
-                          this.NewTimeTableEventData.endTime = <any>moment(currentTimes.endStr).format('hh:mm');
+                          this.NewTimeTableEventData.startTime = <any>moment(currentTimes.startStr).format('HH:MM');
+                          this.NewTimeTableEventData.endTime = <any>moment(currentTimes.endStr).format('HH:MM');
+                          this.NewTimeTableEventData.dayName = <any>moment(currentTimes.endStr).format('dddd');
+
+                          
                          // console.log(this.NewTimeTableEventData);
                           // localStorage.setItem('eventStartTime',<any>currentTimes.startStr);
                           // localStorage.setItem('eventEndTime',<any>currentTimes.endStr);
@@ -315,6 +327,17 @@ export class CheckComponent implements OnInit {
       //ENDS OF SETTING CALENDAR SETTINGS
        //ENDS OF SETTING CALENDAR SETTINGS
       //ENDS OF SETTING CALENDAR SETTINGS
+
+            //TOASTER TOASTER NOTIFICATION
+            //SHOW SUCCESS
+            showSuccess(msg: any) {
+              console.log(msg);
+             this.toastr.success(msg.message , 'Action Success!');
+            }
+            //SHOW SUCCESS
+            showError(msg: any) {
+               this.toastr.error( msg.error.message , 'Action Failed!');
+            }
 
 }
 //addNewSingleEventTimeTable

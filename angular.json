@@ -35,7 +35,8 @@
               "src/styles.scss",
               "src/assets/vendor/bootstrap/css/bootstrap.css",
               "src/assets/brill-framework/css/main.css", 
-              "src/assets/brill-framework/css/brill-main.css"
+              "src/assets/brill-framework/css/brill-main.css",
+              "src/assets/brill-framework/css/notification-toaster.scss"
              ],
 
             "scripts": [

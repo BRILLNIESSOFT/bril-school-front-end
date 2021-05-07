@@ -55,6 +55,8 @@ import { RouteComponent } from './brillyschoolcomponents/transportation/route/ro
 import { AttendanceComponent } from './brillyschoolcomponents/transportation/attendance/attendance.component';
 import { TypeComponent } from './brillyschoolcomponents/examination/type/type.component';
 import { ExamComponent } from './brillyschoolcomponents/examination/exam/exam.component';
+import { ToastrModule } from 'ngx-toastr';
+
    
 
 //REGISTER PLUGINS OF FULLCALENDER JS
@@ -104,7 +106,13 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ReactiveFormsModule,
     BrowserModule, 
     FullCalendarModule, // register FullCalendar plugins
-    IvyCarouselModule
+    IvyCarouselModule ,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-left',
+      preventDuplicates: true ,
+       closeButton: true
+    })
    ],
   providers: [RegistrationService],
   bootstrap: [AppComponent]
