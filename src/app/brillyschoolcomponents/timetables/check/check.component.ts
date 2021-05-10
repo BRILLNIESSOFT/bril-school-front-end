@@ -49,7 +49,7 @@ export class CheckComponent implements OnInit {
    //CALENDER OPTION OBJECTS
   public CalendarOptions = {};
   // calender events
- 
+  public refetshedCalAllESectionvents:any[] = []; 
 
 
   //CALENDAR EVENTS
@@ -89,7 +89,13 @@ export class CheckComponent implements OnInit {
   
 
   //BINDING REFERENCES
+  //BINDING SUBJECT ELEMENTS
   @ViewChild('SubjectsElmRef') subjectElementReference!:ElementRef; 
+  //binding callender cmponent
+  @ViewChild('calendarElementRef') fullcalendarRef?: FullCalendarComponent;
+  //@ViewChild('calendarElementRef') fc: FullCalendar;
+
+
 
    constructor(private subjectSerice: SubjectService, private timeTableService:TimetableService
           ,private staffService:StaffService , private classRoomService: ClassroomService, private toastr: ToastrService) { 
@@ -101,6 +107,16 @@ export class CheckComponent implements OnInit {
 //ON NG INITIALIZIED    
 //ON NG INITIALIZIED    
   ngOnInit(): void {    
+    
+        //GETTING THE NESSESARRY APIs FOR EVENTS AND OTHER PURPOSES
+        this.timeTableService.getEventsOfSection()
+        .subscribe(
+          (data: any) => this.currentSectionEvent = data.data,
+          error => console.log('error', error) , 
+          () => {
+                this.fetchingAndConfiiguringCalendarEvents(this.currentSectionEvent);
+          }
+        );
     // console.log("NG ON INTT", this.currentSectionEvent);
           //GET ALL STAFFS SUBSCRIPTION
           this.staffService.getAllStaffs()
@@ -124,19 +140,22 @@ export class CheckComponent implements OnInit {
               error => console.log("error", error)
             );
 
-        //GETTING THE NESSESARRY APIs FOR EVENTS AND OTHER PURPOSES
-          this.timeTableService.getEventsOfSection()
-              .subscribe(
-                (data: any) => this.currentSectionEvent = data.data ,
-                error => console.log('error', error)
-              );
 
         //CLEARING THE LOCAL STORAGE
         localStorage.clear();  
-        //INIZIALIZING THE CALENDER SETTING THE DEFUAL OPTIONS
+        //SET TIMETABLEEVENTS
+        //this.timetableEvents = this.fetchingAndConfiiguringCalendarEvents(this.currentSectionEvent);
+ 
 
-        this.settingPrimaryCalSettiings();
+        //INIZIALIZING THE CALENDER SETTING THE DEFUAL OPTIONS
+      this.settingPrimaryCalSettiings();
       //THE END OF CALENDAR OPTIONAL OPTIIONS
+       //FETCHING AND PREPARING EVENTS
+       //events:this.currentSectionEvent,
+       //CALENDER LOADING
+        //CALENDAR REFRESH EVENT
+        //this.calRefreshEvent();
+
    }
   
 
@@ -154,8 +173,13 @@ export class CheckComponent implements OnInit {
                 };
               }, 
         });
+
+                 //CALENDER LOADING
+                 //CALENDAR REFRESH EVENT
+                this.calRefreshEvent();
   }
 
+ 
  //NG AFTER VIEW INIT ENDS
   //   ngAfterContentInit(){
   //     console.log("NG AFTER CONTENT INTT", this.currentSectionEvent);
@@ -166,10 +190,18 @@ export class CheckComponent implements OnInit {
  
   //ONCLICK EVENT
   handleDateClick(arg:any) {
+   // this.settingPrimaryCalSettiings(this.currentSectionEvent);
+   //this.settingPrimaryCalSettiings();
+   this.calRefreshEvent();
+
     // this.CalendarOptions = {
     //   events: this.currentSectionEvent,
     // }
-     this.settingPrimaryCalSettiings();
+     // (<any>)this.CalendarOptions.events = this.currentSectionEvent;
+   // this.fetchingAndConfiiguringCalendarEvents(this.currentSectionEvent);
+   console.log(this.refetshedCalAllESectionvents);
+     //this.settingPrimaryCalSettiings();
+     this.calRefreshEvent();
 
   }
 
@@ -196,43 +228,73 @@ export class CheckComponent implements OnInit {
     this.NewTimeTableEventData.subjectId = <any>id;
   }
 
-  //ON SELECT TEACHER TO BE ADDED TO THE TIME TABLE 
-  onSelectTeacherAddNewTimeTable(){
-    console.log(this.NewTimeTableEventData);
-  }
+      //ON SELECT TEACHER TO BE ADDED TO THE TIME TABLE 
+      onSelectTeacherAddNewTimeTable(){
+        console.log(this.NewTimeTableEventData);
+      }
 
-  //ON ADD THE TIMETABLE
-  onAddTimeTableEvent(){
-   //Reconstracting new Single event Object
-    let timetable = {
-              timetable:{
-                class_id: 2,
-                section_id : 6,
-                 subject_id: this.NewTimeTableEventData.subjectId,
-                teacher_id: this.NewTimeTableEventData.teacherId,
-                timetable_type_id: null,
-                timetable_day: this.NewTimeTableEventData.dayIndex,
-                timetable_date: "1994-04-04",
-                start_time: this.NewTimeTableEventData.startTime,
-                end_time: this.NewTimeTableEventData.endTime,
-                classroom_id: this.NewTimeTableEventData.roomId,
-                priority: null,
-                note: "no note"
-              }
-     }
+        //ON ADD THE TIMETABLE
+        onAddTimeTableEvent(){
+        //Reconstracting new Single event Object
+          let timetable = {
+                    timetable:{
+                      class_id: 2,
+                      section_id : 6,
+                      subject_id: this.NewTimeTableEventData.subjectId,
+                      teacher_id: this.NewTimeTableEventData.teacherId,
+                      timetable_type_id: null,
+                      timetable_day: this.NewTimeTableEventData.dayIndex,
+                      timetable_date: "1994-04-04",
+                      start_time: this.NewTimeTableEventData.startTime,
+                      end_time: this.NewTimeTableEventData.endTime,
+                      classroom_id: this.NewTimeTableEventData.roomId,
+                      priority: null,
+                      note: "no note"
+                    }
+          }
 
-     console.log(timetable);
+          console.log(timetable);
+              //SUBSCRIE TO TIMETABLE SERVICE TO ADD NEW TIMETABKLE EVENT SINGLER
+              this.timeTableService.addNewSingleEventTimeTable(timetable)
+              .subscribe(
+                (data:any) => this.showSuccess(data),
+                  error => this.showError(error),
+              )
+        }
 
 
-        //SUBSCRIE TO TIMETABLE SERVICE TO ADD NEW TIMETABKLE EVENT SINGLER
-        this.timeTableService.addNewSingleEventTimeTable(timetable)
-        .subscribe(
-          (data:any) => this.showSuccess(data),
-            error => this.showError(error),
-        )
+      //FETCHING AND ORGANIZING CALENDAR EVENTS
+      fetchingAndConfiiguringCalendarEvents(calEvents:any[]){
+          //console.log(calEvents);
+            let calInRendredEvnts = calEvents;
+            let calOutRendredEvents:any[] = [];
+            for(let i = 0; i < calInRendredEvnts.length ; i++){
+                let event = {
+                  id : calInRendredEvnts[i].id | 1,
+                  title : calInRendredEvnts[i].subject + calInRendredEvnts[i].teacher,
+                  daysOfWeek : calInRendredEvnts[i].daysOfWeek, 
+                  classroom : calInRendredEvnts[i].classroom ,
+                  start_time : calInRendredEvnts[i].start_time ,
+                  end_time : calInRendredEvnts[i].end_time ,
+                  color : calInRendredEvnts[i].color ,
+                  timetable_day : calInRendredEvnts[i].timetable_day ,
+                  timetable_date : calInRendredEvnts[i].timetable_date
+                }
 
-  }
+              calOutRendredEvents.push(event);
+            }
+         
+           this.refetshedCalAllESectionvents = calOutRendredEvents;
+      }
 
+
+      //CALENDAR REFRESH EVENTS, REFRESH EVENT 
+       calRefreshEvent() {
+        //this.fullcalendarRef?.getApi().render();
+          this.fullcalendarRef?.getApi().removeAllEventSources();
+          this.fullcalendarRef?.getApi().addEventSource(this.currentSectionEvent);
+          this.fullcalendarRef?.getApi().refetchEvents();
+      }
       //SETTING CALENDAR SETTINGS
       //SETTING CALENDAR SETTINGS
       //SETTING CALENDAR SETTINGS
@@ -247,7 +309,7 @@ export class CheckComponent implements OnInit {
                     } ,
                       //CALENDER INITIAL VIEWS
                       height: 550,
-                      lazyFetching: false,
+                      lazyFetching: true,
                       nowIndicator: true,
                       refetchResourcesOnNavigate: true,
                       initialView: 'timeGridWeek',
@@ -258,10 +320,10 @@ export class CheckComponent implements OnInit {
                       selectMirror: true,
                       dayMaxEvents: true,
                       droppable: true,
-                      events:this.currentSectionEvent,
                       //DISPLAY FROM TO ONLY BUSSNIESS HOURS
                       slotMinTime: '08:00:00',
                       slotMaxTime: '19:00:00',
+                      events :  this.refetshedCalAllESectionvents,
                       //CALENDER EVENTS
                       dateClick: this.handleDateClick.bind(this), // bind is important!
 
@@ -323,20 +385,21 @@ export class CheckComponent implements OnInit {
                         }           
               };
       }
-      //ENDS OF SETTING CALENDAR SETTINGS
-      //ENDS OF SETTING CALENDAR SETTINGS
-       //ENDS OF SETTING CALENDAR SETTINGS
-      //ENDS OF SETTING CALENDAR SETTINGS
-
+          //ENDS OF SETTING CALENDAR SETTINGS
+          //ENDS OF SETTING CALENDAR SETTINGS
+          //ENDS OF SETTING CALENDAR SETTINGS
+          //ENDS OF SETTING CALENDAR SETTINGS
             //TOASTER TOASTER NOTIFICATION
             //SHOW SUCCESS
             showSuccess(msg: any) {
               console.log(msg);
              this.toastr.success(msg.message , 'Action Success!');
+             
             }
             //SHOW SUCCESS
             showError(msg: any) {
                this.toastr.error( msg.error.message , 'Action Failed!');
+               //console.log(this.fullcalendarRef);
             }
 
 }

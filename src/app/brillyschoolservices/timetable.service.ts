@@ -8,7 +8,7 @@ export class TimetableService {
 
   //ADD NEW TIMETABLE EVENT URL
   private addNewURL: string = 'http://127.0.0.1:8000/api/timetables/';
-  private sectionEventURL: string = 'http://127.0.0.1:8000/api/timetables/class_section/6';
+  private sectionEventURL: string = 'http://127.0.0.1:8000/api/timetables/data/class_section/6';
 
   constructor(private req: HttpClient) { }
 
