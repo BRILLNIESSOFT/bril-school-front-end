@@ -72,7 +72,7 @@
                <form>
                 <section class="row brill-modal-container">
                     <button class="brill-close-modal-top-righ" data-dismiss="modal"> <span class="lnr lnr-cross"></span></button>
-                          
+                          <input type="hidden" id="timetable_change_duration_input_event_id"/>
                       <div class="add-new-staff">
                           <h3> CONFIRM THE DURATION CHANGE</h3>
 
@@ -98,24 +98,47 @@
 
                          <div class="brill-input-holders">
                           <div class="inputs-container">
+
+                            <div class="brill-row">
+                                <div>
+                                    <label for="oldTimeStart">Old Day</label>
+                                    <input [(ngModel)] = "timetableDurationChange.oldDayOfTheWeek" name="oldday" type="text" placeholder="oldday" disabled class="input-disbled-f">
+                                </div>           
+                                
+                                <div>
+                                    <label for="oldTimeStart">New Day </label>
+                                    <input [(ngModel)] = "timetableDurationChange.NewDayOfTheWeek" name="newday" type="text" placeholder="NEW DAY"  disabled class="input-disbled-s">
+                                </div>    
+
+                                <div>
+                                    <label for="oldTimeStart">Old Duration </label>
+                                    <input [(ngModel)] = "timetableDurationChange.oldDuration" name="oldDuration" type="text" placeholder="OLD DURATION"  disabled class="input-disbled-f">
+                                </div>  
+
+                                <div>
+                                    <label for="NewTimeStart">New Duration </label>
+                                    <input [(ngModel)] = "timetableDurationChange.NewDuration" name="newDuration" type="text" placeholder="NEW DURATION"  disabled class="input-disbled-s">
+                                </div>  
+                            </div>
                             
+
                              <div class="brill-row">
                                 <div>
                                     <label for="oldTimeStart">Old time start</label>
-                                    <input name="oldTimeStart" type="text" placeholder="OLD TIME START" value="39-454-4545" disabled class="input-disbled-f">
+                                    <input [(ngModel)] = "timetableDurationChange.oldSartTime" name="oldTimeStart" type="text" placeholder="OLD TIME START" value="39-454-4545" disabled class="input-disbled-f">
                                 </div>
                                 <div>
                                     <label for="oldTimeStart">Old time end</label>
-                                    <input name="oldTimeStart" type="text" placeholder="Section code" value="39-454-4545" disabled class="input-disbled-f">
+                                    <input [(ngModel)] = "timetableDurationChange.oldEndTime" name="oldTimeEnd" type="text" placeholder="Section code" value="39-454-4545" disabled class="input-disbled-f">
                                 </div>
 
                                 <div>
                                     <label for="newTimeStart">New time start</label>
-                                    <input name="oldTimeStart" type="text" placeholder="NEW TIME START" value="39-454-4545" disabled class="input-disbled-s">
+                                    <input [(ngModel)] = "timetableDurationChange.NewSartTime" name="NewTimeStart" type="text" placeholder="NEW TIME START" value="39-454-4545" disabled class="input-disbled-s">
                                 </div>
                                 <div>
                                     <label for="newTimeStart">New time end</label>
-                                    <input name="oldTimeStart" type="text" placeholder="NEW TIME END" value="39-454-4545" disabled class="input-disbled-s">
+                                    <input [(ngModel)] = "timetableDurationChange.NewEndTime" name="NewTimeEnd" type="text" placeholder="NEW TIME END" value="39-454-4545" disabled class="input-disbled-s">
                                 </div>
                              </div>
                             
@@ -126,7 +149,7 @@
                       <hr>
                          <div class="modal-footer">
                                 <button type="button" class="brill-btn-2" data-dismiss="modal">CANCEL</button>
-                                <button type="submit" class="brill-btn-3">APPLY</button>
+                                <button (click) = "onSubmitDurationChangeByDragging()" type="button" class="brill-btn-3">APPLY</button>
                          </div>
                    </section>
                 </form> 

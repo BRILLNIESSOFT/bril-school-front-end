@@ -49,8 +49,8 @@ export class CheckComponent implements OnInit {
    //CALENDER OPTION OBJECTS
   public CalendarOptions = {};
   // calender events
-  public refetshedCalAllESectionvents:any[] = []; 
-
+  public refetshedAllSectionEvents:any[] = [];
+ 
 
   //CALENDAR EVENTS
   //@ViewChild('calendarElementRef') calendarComponent!: FullCalendarComponent;
@@ -70,6 +70,22 @@ export class CheckComponent implements OnInit {
          dayName: null
       }
 
+   //PUBLIC OBJECT OF CHANGE EVENT DURATION MODEL DATA
+   //CHANGE EVENT DURATION OR DATE
+   public timetableDurationChange = {
+     id: null,
+      daysOfTheWeek:NaN,
+      oldDayOfTheWeek:null ,
+      NewDayOfTheWeek: null,
+      oldSartTime: null,
+      oldEndTime: null,
+      NewSartTime: null,
+      NewEndTime: null ,
+      oldDuration : null ,
+      NewDuration : null
+   }
+
+    
 
   //ADD EVENT HEADER STATIC INFO
   public addEventHeaderStaticInfo = {
@@ -114,8 +130,8 @@ export class CheckComponent implements OnInit {
           (data: any) => this.currentSectionEvent = data.data,
           error => console.log('error', error) , 
           () => {
-                this.fetchingAndConfiiguringCalendarEvents(this.currentSectionEvent);
           }
+ 
         );
     // console.log("NG ON INTT", this.currentSectionEvent);
           //GET ALL STAFFS SUBSCRIPTION
@@ -140,44 +156,46 @@ export class CheckComponent implements OnInit {
               error => console.log("error", error)
             );
 
+            this.settingPrimaryCalSettiings();
+            this.calRefreshEvent(this.refetshedAllSectionEvents);
 
         //CLEARING THE LOCAL STORAGE
-        localStorage.clear();  
+       // localStorage.clear();  
         //SET TIMETABLEEVENTS
         //this.timetableEvents = this.fetchingAndConfiiguringCalendarEvents(this.currentSectionEvent);
  
 
         //INIZIALIZING THE CALENDER SETTING THE DEFUAL OPTIONS
-      this.settingPrimaryCalSettiings();
       //THE END OF CALENDAR OPTIONAL OPTIIONS
        //FETCHING AND PREPARING EVENTS
        //events:this.currentSectionEvent,
        //CALENDER LOADING
         //CALENDAR REFRESH EVENT
         //this.calRefreshEvent();
-
+       // console.log(this.fetchingAndConfiiguringCalendarEvents(this.currentSectionEvent));
    }
   
 
  //NG AFTER INITIALIZING CALL
   ngAfterViewInit(){
-       // console.log("NG AFTER VIEW INTT", this.currentSectionEvent);
-      //DRAGG TJE EXTERNAL EVENTS INTO THE CALENDAR PROPERLY
-          new Draggable(this.subjectElementReference.nativeElement, {
-              itemSelector: '.fc-event',
-              eventData: function(eventEl:any) {
-                eventEl.parentNode.style.opacity = "0.0001";
-                return {
-                  title: eventEl.innerText,
-                  color: eventEl.childNodes[0].style.backgroundColor
-                };
-              }, 
-        });
+   // console.log('REFETCHED EVENTS after NG INITIAL', this.fetchingAndConfiiguringCalendarEvents(this.currentSectionEvent));
+       console.log("NG AFTER VIEW INTT", this.currentSectionEvent);
+        //DRAGG TJE EXTERNAL EVENTS INTO THE CALENDAR PROPERLY
+            new Draggable(this.subjectElementReference.nativeElement, {
+                itemSelector: '.fc-event',
+                eventData: function(eventEl:any) {
+                  eventEl.parentNode.style.opacity = "0.0001";
+                  return {
+                    title: eventEl.innerText,
+                    color: eventEl.childNodes[0].style.backgroundColor
+                  };
+                }, 
+          });
 
+          //this.fetchingAndConfiiguringCalendarEvents(this.currentSectionEvent);
                  //CALENDER LOADING
                  //CALENDAR REFRESH EVENT
-                this.calRefreshEvent();
-  }
+   }
 
  
  //NG AFTER VIEW INIT ENDS
@@ -192,17 +210,15 @@ export class CheckComponent implements OnInit {
   handleDateClick(arg:any) {
    // this.settingPrimaryCalSettiings(this.currentSectionEvent);
    //this.settingPrimaryCalSettiings();
-   this.calRefreshEvent();
-
+ 
     // this.CalendarOptions = {
     //   events: this.currentSectionEvent,
     // }
      // (<any>)this.CalendarOptions.events = this.currentSectionEvent;
    // this.fetchingAndConfiiguringCalendarEvents(this.currentSectionEvent);
-   console.log(this.refetshedCalAllESectionvents);
-     //this.settingPrimaryCalSettiings();
-     this.calRefreshEvent();
-
+      //this.settingPrimaryCalSettiings();
+      this.calRefreshEvent(this.currentSectionEvent);
+ 
   }
 
   //SHOW THE SUBJECTS
@@ -238,8 +254,8 @@ export class CheckComponent implements OnInit {
         //Reconstracting new Single event Object
           let timetable = {
                     timetable:{
-                      class_id: 2,
-                      section_id : 6,
+                      class_id: 1,
+                      section_id : 5,
                       subject_id: this.NewTimeTableEventData.subjectId,
                       teacher_id: this.NewTimeTableEventData.teacherId,
                       timetable_type_id: null,
@@ -263,38 +279,20 @@ export class CheckComponent implements OnInit {
         }
 
 
-      //FETCHING AND ORGANIZING CALENDAR EVENTS
-      fetchingAndConfiiguringCalendarEvents(calEvents:any[]){
-          //console.log(calEvents);
-            let calInRendredEvnts = calEvents;
-            let calOutRendredEvents:any[] = [];
-            for(let i = 0; i < calInRendredEvnts.length ; i++){
-                let event = {
-                  id : calInRendredEvnts[i].id | 1,
-                  title : calInRendredEvnts[i].subject + calInRendredEvnts[i].teacher,
-                  daysOfWeek : calInRendredEvnts[i].daysOfWeek, 
-                  classroom : calInRendredEvnts[i].classroom ,
-                  start_time : calInRendredEvnts[i].start_time ,
-                  end_time : calInRendredEvnts[i].end_time ,
-                  color : calInRendredEvnts[i].color ,
-                  timetable_day : calInRendredEvnts[i].timetable_day ,
-                  timetable_date : calInRendredEvnts[i].timetable_date
-                }
+        //ONSUBMOIT DURATION CHANGE BY DRAGGING THE EVENT 
+        onSubmitDurationChangeByDragging(){
+          console.log(this.timetableDurationChange);
+        }
 
-              calOutRendredEvents.push(event);
-            }
-         
-           this.refetshedCalAllESectionvents = calOutRendredEvents;
-      }
 
 
       //CALENDAR REFRESH EVENTS, REFRESH EVENT 
-       calRefreshEvent() {
-        //this.fullcalendarRef?.getApi().render();
+       calRefreshEvent(originalEvnts:any) {
+         //this.fullcalendarRef?.getApi().render();
           this.fullcalendarRef?.getApi().removeAllEventSources();
-          this.fullcalendarRef?.getApi().addEventSource(this.currentSectionEvent);
+          this.fullcalendarRef?.getApi().addEventSource(originalEvnts);
           this.fullcalendarRef?.getApi().refetchEvents();
-      }
+       }
       //SETTING CALENDAR SETTINGS
       //SETTING CALENDAR SETTINGS
       //SETTING CALENDAR SETTINGS
@@ -323,8 +321,7 @@ export class CheckComponent implements OnInit {
                       //DISPLAY FROM TO ONLY BUSSNIESS HOURS
                       slotMinTime: '08:00:00',
                       slotMaxTime: '19:00:00',
-                      events :  this.refetshedCalAllESectionvents,
-                      //CALENDER EVENTS
+                       //CALENDER EVENTS
                       dateClick: this.handleDateClick.bind(this), // bind is important!
 
                       //EVENT CLICK 
@@ -346,14 +343,18 @@ export class CheckComponent implements OnInit {
 
                   //ON THE USER STARTS DRUGGING 
                   //ON EVENT DRAGGING OR DROPPING
-                        eventDragStart( ){
-                          console.log("STARTED ");
+                        eventDragStart(info:any){
+                          console.log(info.event.id);
+                         // (<any>$('#timetable_change_duration_input_event_id')).val(info.event.id)
+
+                          //Requesting ther single event information
+                          
                         } ,
 
                         select : (currentTimes:any) => {
                           //ASIGMING DATA TO THE OBJECT OF NEW EVENT
                           this.NewTimeTableEventData.date = <any>moment(currentTimes.startStr).format('HH:MM-yyyy');
-                          this.NewTimeTableEventData.dayIndex = <any>moment(currentTimes.startStr).day();
+                          this.NewTimeTableEventData.dayIndex = <any>moment(currentTimes.startStr).day() + 1;
                           this.NewTimeTableEventData.duration = <any>moment.duration(moment(currentTimes.endStr).diff(moment(currentTimes.startStr))).asMinutes();
                           this.NewTimeTableEventData.startTime = <any>moment(currentTimes.startStr).format('HH:MM');
                           this.NewTimeTableEventData.endTime = <any>moment(currentTimes.endStr).format('HH:MM');
@@ -367,10 +368,36 @@ export class CheckComponent implements OnInit {
                           (<any>$('#brill_modal_create_new_timetable_event')).modal('show');
                         } ,
 
-                        eventDragStop( ) {
-                          console.log("STARTED ");
-                          (<any>$('#brill_modal_resize_timetable_event')).modal('show');
+                        eventDragStop : (info:any) => {
+ 
                         } ,
+
+                        //ON EVENT DROPPED AND READY TO HOLD NEW INFO
+                        eventDrop : (info:any) => {
+                         //console.log(info.event);
+                          // let eventId = (<number | any>$('#timetable_change_duration_input_event_id')).val();
+                          this.timeTableService.getSingleEvent(info.event.id)
+                            .subscribe(
+                              (data:any) => {
+                                this.timetableDurationChange.id = info.event.id,
+                                this.timetableDurationChange.daysOfTheWeek = NaN;
+                                this.timetableDurationChange.oldDayOfTheWeek = <any>this.getDayNameByNumber(data.data[0].daysOfWeek[0] + 1);
+                                this.timetableDurationChange.NewDayOfTheWeek = <any>moment(info.event.end).format('dddd');;
+                                //this.timetableDurationChange.oldDayOfTheWeek = <any>moment.weekdays()
+                                this.timetableDurationChange.oldDuration = <any>moment.duration(moment('2021-05-11T' + data.data[0].endTime).diff(moment('2021-05-11T' + data.data[0].startTime))).asMinutes();
+                                this.timetableDurationChange.NewDuration = <any>moment.duration(moment(info.event.end).diff(moment(info.event.start))).asMinutes();
+                                this.timetableDurationChange.oldSartTime = data.data[0].startTime;
+                                this.timetableDurationChange.oldEndTime = data.data[0].endTime;
+                                this.timetableDurationChange.NewSartTime = <any>moment(info.event.start).format('HH:MM:SS'),
+                                this.timetableDurationChange.NewEndTime = <any>moment(info.event.end).format('HH:MM:SS');
+                                console.log('TESTING TIME AND DATE', moment('2021-05-11T' + data.data[0].endTime).format('YY:MM:SS HH:MM:SS'));
+                                 
+                                } , 
+                              error => console.log('error', error)
+                            );  
+
+                          (<any>$('#brill_modal_resize_timetable_event')).modal('show');
+                        },
 
                         drop(elem:any){
                           elem = <any>document.querySelector('.subjects-list-draggable');
@@ -378,29 +405,86 @@ export class CheckComponent implements OnInit {
                         } , 
 
                         eventResizeStop(){
-                          
                           console.log("RESIZED FIXED ");
                           (<any>$('#brill_modal_resize_timetable_event')).modal('show');
-
                         }           
               };
+              
       }
-          //ENDS OF SETTING CALENDAR SETTINGS
-          //ENDS OF SETTING CALENDAR SETTINGS
-          //ENDS OF SETTING CALENDAR SETTINGS
-          //ENDS OF SETTING CALENDAR SETTINGS
+
+
+
+        //FETCHING AND ORGANIZING CALENDAR EVENTS
+          // fetchingAndConfiiguringCalendarEvents(calEvents:any[]){
+          //     //console.log(calEvents);
+          //       let calInRendredEvnts = calEvents;
+          //       let calOutRendredEvents:any[] = [];
+          //         for(let i = 0; i < calInRendredEvnts.length ; i++){
+          //             let event = {
+          //               id : calInRendredEvnts[i].id | 1,
+          //               title : calInRendredEvnts[i].subject + calInRendredEvnts[i].teacher,
+          //               daysOfWeek : calInRendredEvnts[i].daysOfWeek, 
+          //               classroom : calInRendredEvnts[i].classroom ,
+          //               start_time : calInRendredEvnts[i].start_time ,
+          //               end_time : calInRendredEvnts[i].end_time ,
+          //               color : calInRendredEvnts[i].color ,
+          //               timetable_day : calInRendredEvnts[i].timetable_day ,
+          //               timetable_date : calInRendredEvnts[i].timetable_date
+          //             }
+          //           calOutRendredEvents.push(event);
+          //         }
+          //     this.refetshedAllSectionEvents = calOutRendredEvents;
+          //    // this.calRefreshEvent(this.currentSectionEvent);
+          // }
+
+          //GET DAY NAME BY NUMBER FOR THE TIMRTABLE
+          getDayNameByNumber(dayIndex:number | string):number | string{
+               switch(dayIndex){
+                 case 1 :
+                    return "Sunday";
+                    break;
+
+                    case 2 :
+                      return "monday";
+                      break;  
+                      case 3 :
+                        return "tuesday";
+                        break;
+                        case 4 :
+                          return "wedensday";
+                          break;
+                          case 5 :
+                            return "thursday";
+                            break;
+                            case 6 :
+                              return "friday";
+                              break;
+                              case 7 :
+                                return "saturDay";
+                                break;     
+                                default: 
+                                return NaN;                      
+
+               }
+
+          }
+
+            //ENDS OF SETTING CALENDAR SETTINGS
+            //ENDS OF SETTING CALENDAR SETTINGS
+            //ENDS OF SETTING CALENDAR SETTINGS
+            //ENDS OF SETTING CALENDAR SETTINGS
             //TOASTER TOASTER NOTIFICATION
             //SHOW SUCCESS
-            showSuccess(msg: any) {
-              console.log(msg);
-             this.toastr.success(msg.message , 'Action Success!');
-             
-            }
-            //SHOW SUCCESS
-            showError(msg: any) {
-               this.toastr.error( msg.error.message , 'Action Failed!');
-               //console.log(this.fullcalendarRef);
-            }
+              showSuccess(msg: any) {
+                console.log(msg);
+              this.toastr.success(msg.message , 'Action Success!');
+              
+              }
+              //SHOW SUCCESS
+              showError(msg: any) {
+                this.toastr.error( msg.error.message , 'Action Failed!');
+                //console.log(this.fullcalendarRef);
+              }
 
 }
 //addNewSingleEventTimeTable
