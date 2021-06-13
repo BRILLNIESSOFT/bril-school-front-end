@@ -111,12 +111,12 @@
                                 </div>    
 
                                 <div>
-                                    <label for="oldTimeStart">Old Duration </label>
+                                    <label for="oldTimeStart">Old Duration (Minutes) </label>
                                     <input [(ngModel)] = "timetableDurationChange.oldDuration" name="oldDuration" type="text" placeholder="OLD DURATION"  disabled class="input-disbled-f">
                                 </div>  
 
                                 <div>
-                                    <label for="NewTimeStart">New Duration </label>
+                                    <label for="NewTimeStart">New Duration (Minutes)</label>
                                     <input [(ngModel)] = "timetableDurationChange.NewDuration" name="newDuration" type="text" placeholder="NEW DURATION"  disabled class="input-disbled-s">
                                 </div>  
                             </div>
@@ -271,23 +271,41 @@
 
                     <div class="time-table-event-edit-header">
  
+                        <div class="event-day event-data col-md-4">
+                            <h5><i class="fas fa-calendar-week"></i> {{ timeTableShowClickedEventData.daysOfTheWeek }} : saturday</h5>
+                        </div>
+                        <div class="event-day event-data col-md-4">
+                            <h5><i class="lnr lnr-briefcase"></i> {{ timeTableShowClickedEventData.teacher }} : AHMED NOUREDDIEN</h5>
+                        </div>
+                        <div class="event-day event-data col-md-2">
+                            <h5><i class="fas fa-chalkboard-teacher"></i> {{ timeTableShowClickedEventData.classRoom }} </h5>
+                        </div>
 
                         <div class="event-day event-data col-md-2">
-                            <h5><i class="fas fa-calendar-week"></i> : saturday</h5>
-                        </div>
-                        <div class="event-day event-data col-md-3">
-                            <h5><i class="lnr lnr-briefcase"></i> : AHMED NOUREDDIEN</h5>
-                        </div>
-                        <div class="event-day event-data col-md-2">
-                            <h5><i class="fas fa-chalkboard-teacher"></i> : AC12</h5>
+                            <h5><i class="lnr lnr-clock"></i> :  {{ timeTableShowClickedEventData.duration }}</h5>
                         </div>
 
-                        <div class="event-day event-data col-md-2">
-                            <h5><i class="lnr lnr-clock"></i> : 398  m</h5>
-                        </div>
                     </div> 
 
  
+                    <div class="time-table-event-edit-header">
+ 
+                        <div class="event-day event-data col-md-4">
+                            <h5><i class="fas fa-calendar-week"></i>Subject : {{ timeTableShowClickedEventData.subject }}</h5>
+                        </div>
+                        <div class="event-day event-data col-md-3">
+                            <h5><i class="lnr lnr-briefcase"></i>{{ timeTableShowClickedEventData.startTime }} : from</h5>
+                        </div>
+                        <div class="event-day event-data col-md-2">
+                            <h5><i class="fas fa-chalkboard-teacher"></i>{{ timeTableShowClickedEventData.endTime }}  : to</h5>
+                        </div>
+
+                        <div class="event-day event-data col-md-3">
+                            <h5><i class="lnr lnr-clock"></i>  {{ timeTableShowClickedEventData.duration }}</h5>
+                        </div>
+                        
+                    </div> 
+
                   </div>
 
                   <hr>

@@ -270,7 +270,7 @@ export class RegistrationComponent implements OnInit {
       
     
       public toggleWebcam(): void {
-        if(this.startWebcam !== undefined) { this.startWebcam = undefined }       
+        // if(this.startWebcam !== undefined) { this.startWebcam = undefined }       
         this.isLanchedAnimate = false;
         this.showWebcam = !this.showWebcam;
       }
@@ -306,7 +306,7 @@ export class RegistrationComponent implements OnInit {
 
       //TAKE ANOTHER PHOTO
       takeAnotherPhoto(){
-        this.webcamImage = undefined;       
+        //this.webcamImage = undefined;       
         this.startWebcam = true;
         this.isLanchedAnimate = true;
       }

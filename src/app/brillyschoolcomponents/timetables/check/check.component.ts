@@ -17,8 +17,8 @@ import * as moment from 'moment';
  import { StaffService } from './../../../brillyschoolservices/staff.service';
  import { ClassroomService } from './../../../brillyschoolservices/classroom.service';
  import { TimetableService } from './../../../brillyschoolservices/timetable.service';
-import { data } from 'jquery';
-import { error } from 'selenium-webdriver';
+  import { data } from 'jquery';
+  import { error } from 'selenium-webdriver';
 
 //CALENDER COMPONENT
 import { FullCalendarComponent } from '@fullcalendar/angular';
@@ -70,22 +70,33 @@ export class CheckComponent implements OnInit {
          dayName: null
       }
 
-   //PUBLIC OBJECT OF CHANGE EVENT DURATION MODEL DATA
-   //CHANGE EVENT DURATION OR DATE
-   public timetableDurationChange = {
-     id: null,
-      daysOfTheWeek:NaN,
-      oldDayOfTheWeek:null ,
-      NewDayOfTheWeek: null,
-      oldSartTime: null,
-      oldEndTime: null,
-      NewSartTime: null,
-      NewEndTime: null ,
-      oldDuration : null ,
-      NewDuration : null
-   }
+    //PUBLIC OBJECT OF CHANGE EVENT DURATION MODEL DATA
+    //CHANGE EVENT DURATION OR DATE
+    public timetableDurationChange = {
+        id: null,
+        daysOfTheWeek:NaN,
+        oldDayOfTheWeek:null ,
+        NewDayOfTheWeek: null,
+        oldSartTime: null,
+        oldEndTime: null,
+        NewSartTime: null,
+        NewEndTime: null ,
+        oldDuration : null ,
+        NewDuration : null
+    }
 
-    
+
+    //SHOW SINGLE EVENT INFORMATION 
+      public timeTableShowClickedEventData = {
+          id: 5,
+          daysOfTheWeek:0,
+          startTime: '08:11:2010',
+          endTime: '10:10:2018' ,
+          duration : '30 min' ,
+          teacher : 'ahmed' ,
+          classRoom : '5AB', 
+          subject : 'MATHEMATHIC'
+      }
 
   //ADD EVENT HEADER STATIC INFO
   public addEventHeaderStaticInfo = {
@@ -325,9 +336,19 @@ export class CheckComponent implements OnInit {
                       dateClick: this.handleDateClick.bind(this), // bind is important!
 
                       //EVENT CLICK 
-                      eventClick: () => {
+                      eventClick: (info:any) => {
+                        //INITIALIZING THE OBJECT OF SHOW SINGLE EVENT
+                        this.timeTableShowClickedEventData.id = info.event.id;
+                        this.timeTableShowClickedEventData.startTime = <any>moment(info.event.start).format('HH:MM:SS');
+                        this.timeTableShowClickedEventData.endTime = <any>moment(info.event.end).format('HH:MM:SS');
+                        this.timeTableShowClickedEventData.duration = <any>moment.duration(moment(info.event.end).diff(moment(info.event.start))).asMinutes();
+                        this.timeTableShowClickedEventData.teacher = 'The Houssam';
+                        this.timeTableShowClickedEventData.subject = 'Geographic';
+                        this.timeTableShowClickedEventData.classRoom = info.event.classroom_id;
+
                        //console.log();
                         (<any>$('#brill_modal_show_single_timetable_event')).modal('show');
+                        console.log(info.event);
                       },
                       // events:this.currentSectionEvent,
                       //SET DRAGGABLE DRAG SUBJECTS INTO THE CALENDER
@@ -345,10 +366,6 @@ export class CheckComponent implements OnInit {
                   //ON EVENT DRAGGING OR DROPPING
                         eventDragStart(info:any){
                           console.log(info.event.id);
-                         // (<any>$('#timetable_change_duration_input_event_id')).val(info.event.id)
-
-                          //Requesting ther single event information
-                          
                         } ,
 
                         select : (currentTimes:any) => {

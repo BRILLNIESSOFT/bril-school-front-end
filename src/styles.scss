@@ -518,6 +518,7 @@ background: #474d5e;
 
 .brill-input-holders .inputs-container input.input.obliger::-webkit-input-placeholder {
   color: #f57e7e;
+  opacity: 0.1;
 }
 
 
@@ -782,7 +783,7 @@ input[type="color" i] {
   text-align: center;
   border: 1px solid #000;
   cursor: pointer;
-  &:hover{
+   &:hover{
       background-color: #ffffff;
   }
 
